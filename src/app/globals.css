@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Sora:wght@100..800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: rbga(255, 237, 236, 0.3);
+  --primary: #3d0b6d;
+  --primary-light: rgba(199, 125, 255, 0.3);
+  --foreground: #171717;
+  --Poppin: Poppins, sans-serif;
+  --Sora: Sora, sans-serif;
+  --white: #ffffff;
+  --border-color: #c2a4d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: rbga(255, 237, 236, 0.3);
+    --primary: #3d0b6d;
+    --primary-light: rgba(199, 125, 255, 0.3);
+
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--primary);
+  font-family: var(--Poppin);
+  font-style: normal;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--foreground);
+}
+.cmnbtn {
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-family: var(--Sora);
+  font-weight: 600;
+  line-height: 15px;
+  font-size: 15px;
+}
+.card {
+  background-color: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  color: var(--primary);
+  gap: 30px;
+}
+
+.frm-input {
+  background-color: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  color: var(----border-color);
+  gap: 30px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+.frm-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+}
