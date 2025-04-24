@@ -1,3 +1,5 @@
+import Link from "next/link.js";
+
 const LoginForm = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -37,9 +39,9 @@ const LoginForm = () => {
               required
             />
             <div className="text-right">
-              <a href="#" className=" text-sm hover:underline">
+              <Link href="#" className=" text-sm hover:underline">
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -49,9 +51,12 @@ const LoginForm = () => {
         </form>
         <div className="flex items-center justify-between mt-6">
           <p className="font-semibold text-base ">Don’t have an account? </p>
-          <a href="#" className="font-semibold text-[15px] hover:underline">
+          <Link
+            href="/signup"
+            className="font-semibold text-[15px] hover:underline"
+          >
             Register here
-          </a>
+          </Link>
         </div>
       </div>
     </div>

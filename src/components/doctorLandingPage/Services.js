@@ -1,4 +1,6 @@
-export default function FeatureSection() {
+import React from "react";
+
+const Services = () => {
   return (
     <section className="p-25">
       <div className="justify-center text-center px-[234px] mb-[50px]">
@@ -113,4 +115,6 @@ export default function FeatureSection() {
       </div>
     </section>
   );
-}
+};
+
+export default Services;

@@ -2,7 +2,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: rbga(255, 237, 236, 0.3);
+  --background: rgba(255, 237, 236, 0.3);
+  --background-1: #fdf3f7;
+  --background-2: #ffedec;
+  --background-dark: #fcf7ff;
   --primary: #3d0b6d;
   --primary-light: rgba(199, 125, 255, 0.3);
   --foreground: #171717;
@@ -10,6 +13,7 @@
   --Sora: Sora, sans-serif;
   --white: #ffffff;
   --border-color: #c2a4d8;
+  --border-color-light: #c77dff;
 }
 
 @theme inline {
@@ -37,6 +41,11 @@ body {
   background-color: var(--primary);
   color: var(--foreground);
 }
+.btn-outline {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
 .cmnbtn {
   border-radius: 10px;
   padding: 15px 30px;
@@ -44,6 +53,12 @@ body {
   font-weight: 600;
   line-height: 15px;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.cmnbtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .card {
   background-color: var(--white);
@@ -52,6 +67,28 @@ body {
   padding: 30px;
   color: var(--primary);
   gap: 30px;
+}
+.border-light {
+  border: 1px solid var(--border-color-light) !important;
+}
+.card-background {
+  background-color: var(--background-1) !important;
+}
+.card-border-20 {
+  border-radius: 20px !important;
+}
+.border-bottom {
+  border-bottom: 1px solid var(--border-color-light) !important;
+}
+
+.card-gap-0 {
+  gap: 0 !important;
+}
+.card-gap-20 {
+  gap: 20px !important;
+}
+.card-p-0 {
+  padding: 0 !important;
 }
 
 .frm-input {
