@@ -33,7 +33,6 @@ export default function HeroSection() {
             </Link>
             <Link href="/smile-analysis">
               <button 
-                variant="outline" 
                 className="border-white text-white hover:bg-white hover:text-purple-900 rounded-md"
               >
                 Try Smile Analysis
