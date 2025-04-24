@@ -69,3 +69,78 @@ body {
   font-weight: 600;
   color: var(--primary);
 }
+
+.faq-hero {
+  background-image: url(/bg.png);  
+  width: 100%;
+  height: 473px;
+  background-color: #CACACA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.faq-header {
+  width: 798px;
+  height: 213px;
+  position: absolute;
+  top: 190px;
+  left: 321px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.faq-header h1 {
+  width: 732px;
+  height: 69px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  background: #3D0B6D;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+
+.faq-header p {
+  width: 702px;
+  height: 30px;
+  gap: 20px;
+  position: relative;
+  top: 160px;
+  left: 300px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  color: #3D0B6D;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.faq-search {
+  width: 601px;
+  height: 54px;
+  border-radius: 10px;
+  border: 1px solid #C2A4D8;
+  padding: 15px 30px;
+  background: #FFFFFF99; /* semi-transparent white */
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #3D0B6D;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+}

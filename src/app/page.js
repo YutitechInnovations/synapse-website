@@ -11,8 +11,8 @@ export default function LandingPage() {
       <Navbar />
 
       <main className="flex items-center justify-center pt-35 pb-12 px-4">
-        <HeroSection />
-        <FeatureSection />
+        {/* <HeroSection />
+        <FeatureSection /> */}
         <EngagementSection />
         
 
