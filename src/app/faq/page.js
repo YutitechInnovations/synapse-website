@@ -1,4 +1,3 @@
-
 import FaqSection from "@/components/FAQ/FaqSection.js";
 import Footer from "../../components/footer/Footer.js";
 import Navbar from "../../components/navbar/Navbar.js";
