@@ -16,7 +16,7 @@ const MissionNVision = () => {
                 and seamlessly supported through intelligent, integrated care.
               </p>
             </div>
-            <div className="h-auto md:h-[424px] w-full">
+            <div className=" h-[424px]">
               <img
                 src="/images/bulb.png"
                 className="h-full w-full object-cover"
@@ -25,7 +25,7 @@ const MissionNVision = () => {
             </div>
           </div>
           <div className="w-full flex flex-col-reverse md:flex-row h-auto md:h-[424px] rounded-b-[20px]">
-            <div className="h-auto md:h-[424px] w-full">
+            <div className="h-[424px]">
               <img
                 src="/images/hand-team.png"
                 className="h-full w-full object-cover"
@@ -33,9 +33,7 @@ const MissionNVision = () => {
               />
             </div>
             <div className="w-full py-6 md:py-[125px] flex flex-col gap-6 md:gap-[30px] justify-center items-center px-6 md:px-[134px]">
-              <h2 className="font-semibold text-2xl md:text-4xl">
-                Mission Statement
-              </h2>
+              <h2 className="font-semibold text-4xl">Mission Statement</h2>
               <p className="text-center text-base md:text-xl font-normal">
                 We are out on a mission to empower dental professionals with
                 seamless support across clinical and practice needs—delivering
@@ -55,12 +53,12 @@ const MissionNVision = () => {
             alt="Landing Page"
           />
         </div>
-        <div className="relative w-full h-[200px] md:h-[308px] flex flex-col items-center justify-center top-0 p-6 md:p-12">
-          <h1 className="text-2xl md:text-4xl font-semibold text-center">
+        <div className="relative w-full h-[308px] flex flex-row item-center justify-between top-0 p-25">
+          <h1 className="text-4xl font-semibold text-left">
             With a commitment to transparency, innovation, and ongoing
             collaboration.
           </h1>
-          <p className="text-base md:text-xl font-normal text-center">
+          <p className="text-xl font-normal text-left">
             We’re here to ensure that both you and your patients experience care
             that’s thoughtful, informed, and consistently excellent.
           </p>
