@@ -1,1 +1,9 @@
-
+.navbar {
+  background-color: #004c4494;
+  border-radius: 20px;
+  gap: 30px;
+  padding: 15px 30px;
+  margin-top: 30px;
+  /* margin-right: 100px; */
+  color: var(--white);
+}

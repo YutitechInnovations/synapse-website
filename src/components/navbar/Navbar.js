@@ -2,8 +2,10 @@ import NavLink from "../navlink/NavLink.js";
 import styles from "./navbar.module.css";
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-center w-full fixed top-0 z-50  px-25">
-      <nav className={`navbar flex items-center justify-start w-full`}>
+    <div className="flex items-center justify-center w-full fixed top-0 z-50 bg-transparent px-25">
+      <nav
+        className={`${styles.navbar} flex items-center justify-start w-full`}
+      >
         <img src="/svgs/hamburger.svg" />
         <div
           className="w-[32px] h-[0px] border-bottom-white "
