@@ -2,9 +2,9 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className="p-25">
-      <div className="justify-center text-center px-[234px] mb-[50px]">
-        <h2 className="text-5xl font-semibold mb-[20px]">
+    <section className="lg:p-25 md:p-16 sm:p-8 p-6">
+      <div className="justify-center text-center lg:px-[234px] md:px-[150px] sm-px[100px] px-20 mb-[50px]">
+        <h2 className="lg:text-5xl sm:text-[36px] text-[30px] font-semibold mb-[20px]">
           Synapse - Your Partner in Ortho
         </h2>
         <p className="text-xl font-normal">
@@ -16,101 +16,81 @@ const Services = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
         {/* Feature 1 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-[#F1E5FA] rounded-full p-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#5C1E8A"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
+            <div className="bg-(--primary-light) rounded-full p-4">
+              <img
+                src="/svgs/jaw.svg"
+                alt="Jaw Icon"
+                className="w-[31px] h-[31px]"
+              />
             </div>
           </div>
           <h3 className="text-2xl font-semibold mb-5 text-start">
-            Premiere Aligners
+            Aligners Treatment Planning Solutions{" "}
           </h3>
-          <p className=" text-sm font-normal">
-            Engineered for precision, comfort, and aesthetics, ClearCurve
-            aligners are the ultimate orthodontic tool for your practice. Built
-            from decades of material science research and innovation, our
-            aligners combine our proprietary ClearMatch technology, Performative
-            Timelines, and scientifically-proven "AttractiveFit" materials to
-            help your patients achieve their orthodontic goals.
-          </p>
+          <li className=" text-sm font-normal">
+            Offered by an In-house team of experienced Orthodontists 
+          </li>
+          <li className=" text-sm font-normal">
+            Treatment planning for both direct and indirect print aligners -
+            create precise, customized treatment plans based on your material of
+            choice{" "}
+          </li>
         </div>
 
         {/* Feature 2 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-[#F1E5FA] rounded-full p-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#5C1E8A"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 20V10"></path>
-                <path d="M18 20V4"></path>
-                <path d="M6 20v-6"></path>
-              </svg>
+            <div className="bg-(--primary-light) rounded-full p-4">
+              <img
+                src="/svgs/manufacture.svg"
+                alt="manufacture Icon"
+                className="w-[31px] h-[31px]"
+              />
             </div>
           </div>
 
           <h3 className="text-2xl font-semibold mb-5 text-start">
-            Empowering digital workflow
+            Manufacturing Services{" "}
           </h3>
-          <p className=" text-sm font-normal">
-            OrthoConnect's powerful digital tools give you control and
-            flexibility over your treatments while improving productivity. With
-            intuitive interfaces, seamless integration with healthcare
-            solutions, and advanced clinical planning tools, creating and
-            editing optimal treatment plans has never been easier.
-          </p>
+          <li className=" text-sm font-normal">
+            Fabrication of 3D solutions like aligners and surgical guides using
+            the best in class printers and consumables 
+          </li>
+          <li className="text-sm font-normal">
+            Transparent production and dispatch tracking offering full status
+            visibility
+          </li>
         </div>
 
         {/* Feature 3 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-[#F1E5FA] rounded-full p-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#5C1E8A"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
+            <div className="bg-(--primary-light) rounded-full p-4">
+              <img
+                src="/svgs/shake-hand.svg"
+                alt="shake-hand Icon"
+                className="w-[31px] h-[31px]"
+              />
             </div>
           </div>
           <h3 className="text-2xl font-semibold mb-5 text-start">
-            Partners in clinical excellence
+            Marketing Services{" "}
           </h3>
-          <p className="text-[#5C1E8A] text-sm mb-4">
-            Combining our clinical expertise with our commitment to education,
-            global support, and collaboration, we offer bespoke customized plans
-            to support OrthoConnect users and help you unlock the potential your
-            practice and ultimately, of people's lives.
-          </p>
+          <li className="text-sm font-normal">
+            Personalized customer engagement and marketing support through
+            branding and education
+          </li>
+          <li className="text-sm font-normal">
+            OrthoSync™ platform for treatment management and RxTrack™ platform
+            for patient compliance tracking
+          </li>
+          <div className="text-right mt-[15px]">
+            <p className="text-sm font-normal  hover:underline cursor-pointer">
+              View More
+            </p>
+          </div>
         </div>
       </div>
     </section>

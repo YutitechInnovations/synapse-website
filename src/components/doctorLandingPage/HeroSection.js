@@ -27,7 +27,7 @@ const HeroSection = () => {
             can stay confident in every case you deliver.
           </p>
 
-          <div className="flex flex-wrap gap-6">
+          {/* <div className="flex flex-wrap gap-6">
             <Link href="/orthosynce">
               <button className="btn-primary cmnbtn">Access OrthoSync</button>
             </Link>
@@ -36,7 +36,7 @@ const HeroSection = () => {
                 Try Smile Analysis
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
