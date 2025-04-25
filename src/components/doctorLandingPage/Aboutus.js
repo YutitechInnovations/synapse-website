@@ -4,7 +4,7 @@ const Aboutus = () => {
   return (
     <section className="w-full">
       <div className="flex flex-col items-center justify-center p-6 md:p-12 gap-8 md:gap-12">
-        <div className="flex flex-col items-center justify-center gap-6 md:gap-8">
+        <div className="flex flex-col items-center justify-center gap-6 px-[108px]">
           <h1 className="text-2xl md:text-4xl font-semibold">About Us</h1>
           <p className="text-sm md:text-base font-normal text-center">
             Led by a seasoned leadership team with deep expertise across
