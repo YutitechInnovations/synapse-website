@@ -63,13 +63,13 @@ body {
   background-color: var(--white);
   border-radius: 10px;
   border: 1px solid #006D38 !important;
-  padding: 0;
+  padding: 30px;
   color: #006D38;
 }
 .border-light {
   border: 1px solid #006D38 !important;
 }
-.card-background {
+.card2-background {
   background-color: var(--background-1) !important;
 }
 .card-border-20 {
@@ -107,7 +107,7 @@ body {
 }
 
 .faq-hero {
-  background-image: url(/images/bg.png);  
+  background-image: url(/bg.png);  
   width: 100%;
   height: 473px;
   background-color: #CACACA;
@@ -194,12 +194,12 @@ body {
   pointer-events: none;
 }
 
-.card summary {
+.card2 summary {
   list-style: none;
   padding: 20px;
 }
 
-.card summary::-webkit-details-marker {
+.card2 summary::-webkit-details-marker {
   display: none;
 }
 
@@ -207,15 +207,15 @@ body {
   background: rgba(0, 109, 56, 0.05);
 }
 
-.card[open] svg {
+.card2[open] svg {
   transform: rotate(180deg);
 }
 
-.card:hover {
+.card2:hover {
   background: rgba(0, 109, 56, 0.05);
 }
 
-.card div {
+.card2 div {
   padding: 0 20px 15px 20px;
   color: #006D38;
 }
@@ -276,4 +276,85 @@ details .group:hover svg {
     height: 48px;
     padding: 12px 50px 12px 20px;
   }
+}
+
+.reward-card {
+  background: white;
+  border: 1px solid rgba(0, 109, 56, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.reward-card h3 {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #006D38;
+  margin-bottom: 4px;
+  font-family: var(--Poppin);
+}
+
+.reward-card p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0, 109, 56, 0.7);
+  font-family: var(--Poppin);
+}
+
+.reward-card .points {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #006D38;
+  margin-top: 12px;
+  font-family: var(--Poppin);
+}
+
+/* Table Styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #006D38;
+  background: white;
+  padding: 16px 24px;
+  text-align: left;
+  font-family: var(--Poppin);
+}
+
+td {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #006D38;
+  padding: 16px 24px;
+  font-family: var(--Poppin);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.status-badge {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-family: var(--Poppin);
+}
+
+.status-badge.earned {
+  background: rgba(0, 109, 56, 0.1);
+  color: #006D38;
+}
+
+.status-badge.redeemed {
+  background: rgba(255, 107, 107, 0.1);
+  color: #FF6B6B;
 }
