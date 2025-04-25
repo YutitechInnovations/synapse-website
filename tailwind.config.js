@@ -1,12 +1,16 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
   content: [
-    "./src/**/*.{html,js,ts,jsx,tsx}", // Include your paths where Tailwind should look for class names
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
 
   theme: {
     fontFamily: {
-      sans: ["Manrope", "system-ui", "serif"], // Define a custom sans-serif font family
+      sans: ['var(--font-geist-sans)'],
+      mono: ['var(--font-geist-mono)'],
     },
     extend: {
       boxShadow: {
@@ -72,13 +76,28 @@ module.exports = {
         64: "64px",
       },
       colors: {
+        primary: {
+          DEFAULT: '#4A148C',
+          light: '#7c43bd',
+          dark: '#12005e',
+        },
+        purple: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+        },
         cyan: {
           500: "var(--color-primary)",
           600: "var(--color-primary)",
           700: "var(--color-primary)",
         },
-
-        primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
         info: "var(--color-info)",
         success: "var(--color-success)",
@@ -114,4 +133,5 @@ module.exports = {
       },
     },
   },
+  plugins: [],
 };
