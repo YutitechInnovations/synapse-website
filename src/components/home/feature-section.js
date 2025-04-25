@@ -14,7 +14,7 @@ export default function FeatureSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
         {/* Feature 1 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg
@@ -47,7 +47,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Feature 2 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg
@@ -81,7 +81,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Feature 3 */}
-        <div className="card border-light">
+        <div className="card  ">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg

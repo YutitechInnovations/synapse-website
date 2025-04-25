@@ -19,7 +19,7 @@ const LoginForm = () => {
               Email
             </label>
             <input
-              className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full frm-input focus:outline-none "
               type="email"
               id="email"
               placeholder="example@synapse.com"
@@ -32,7 +32,7 @@ const LoginForm = () => {
               Password
             </label>
             <input
-              className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full frm-input focus:outline-none "
               type="password"
               id="password"
               placeholder="● ● ● ● ● ● ● ●"

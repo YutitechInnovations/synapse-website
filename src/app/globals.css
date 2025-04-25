@@ -6,18 +6,19 @@
 
 :root {
   --background: rgba(255, 237, 236, 0.3);
-  --background-1: #fdf3f7;
+  --background-1: #f6f6f3;
   --background-2: #ffedec;
-  --background-dark: #fcf7ff;
-  --primary: #3d0b6d;
-  --primary-light: rgba(199, 125, 255, 0.3);
+  --background-dark: #f6f6f3;
+  --text-primary: #004c44;
+  --primary: #004c44;
+  --primary-light: rgba(0, 76, 68, 0.5);
   --foreground: #171717;
   --Poppin: Poppins, sans-serif;
   --Sora: Sora, sans-serif;
   --white: #ffffff;
-  --border-color: #c2a4d8;
-  --border-color-light: #c77dff;
-  --primary-color: #4A148C;
+  --border-color: rgba(0, 76, 68, 0.5);
+  --border-color-light: #7fdfc9;
+  --primary-color: #4a148c;
   --primary-dark: #12005e;
 }
 
@@ -28,16 +29,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: rgba(255, 237, 236, 0.3);
-    --primary: #3d0b6d;
-    --primary-light: rgba(199, 125, 255, 0.3);
+    --background: rbga(255, 237, 236, 0.3);
+    --primary: #003431;
+    --primary-light: rgba(0, 75, 68, 0.3);
+
     --foreground: #ededed;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--primary);
+  color: var(--text-primary);
   font-family: var(--Poppin);
   font-style: normal;
 }
@@ -46,9 +48,12 @@ body {
   color: var(--foreground);
 }
 .btn-outline {
-  background-color: var(--white);
+  background-color: transparent;
   color: var(--primary);
   border: 2px solid var(--primary);
+}
+.border-bottom-white {
+  border-bottom: 1px solid var(--white) !important;
 }
 .cmnbtn {
   border-radius: 10px;
@@ -59,29 +64,32 @@ body {
   font-size: 15px;
   cursor: pointer;
 }
-
+.color-primary-light {
+  color: var(--primary-light);
+}
 .cmnbtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 .card {
   background-color: var(--white);
-  border-radius: 10px;
-  border: 1px solid #006D38 !important;
-  padding: 0;
-  color: #006D38;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  color: var(--text-primary);
+  gap: 30px;
 }
 .border-light {
-  border: 1px solid #006D38 !important;
+  border: 1px solid var(--border-color-light) !important;
 }
 .card-background {
-  background-color: var(--background-1) !important;
+  background-color: var(--background-1);
 }
 .card-border-20 {
   border-radius: 20px !important;
 }
 .border-bottom {
-  border-bottom: 1px solid var(--border-color-light) !important;
+  border-bottom: 1px solid var(--border-color) !important;
 }
 
 .card-gap-0 {
@@ -99,23 +107,26 @@ body {
   border-radius: 10px;
   border: 1px solid var(--border-color);
   padding: 15px;
-  color: var(--border-color);
+  color: var(----border-color);
   gap: 30px;
   font-weight: 400;
   margin: 10px 0;
   outline: none;
 }
+.frm-input:focus {
+  border: 1px solid var(--primary);
+}
 .frm-label {
   font-size: 15px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 .faq-hero {
-  background-image: url(/bg.png);  
+  background-image: url(/bg.png);
   width: 100%;
   height: 473px;
-  background-color: #CACACA;
+  background-color: #cacaca;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,7 +165,7 @@ body {
   line-height: 1.2;
   letter-spacing: 0%;
   text-align: center;
-  color: #006D38;
+  color: #006d38;
   margin: 0;
   padding: 0;
 }
@@ -167,7 +178,7 @@ body {
   font-family: var(--Poppin);
   font-size: 20px;
   line-height: 1.2;
-  color: #006D38;
+  color: #006d38;
   text-align: center;
   margin: 0 auto;
 }
@@ -177,17 +188,17 @@ body {
   max-width: 601px;
   height: 54px;
   border-radius: 10px;
-  border: 1px solid #006D38;
+  border: 1px solid #006d38;
   padding: 15px 50px 15px 20px;
   background: rgba(255, 255, 255, 0.6);
   font-family: var(--Poppin);
   font-size: 16px;
-  color: #006D38;
+  color: #006d38;
   outline: none;
 }
 
 .faq-search::placeholder {
-  color: #006D38;
+  color: #006d38;
   opacity: 0.7;
 }
 
@@ -199,12 +210,12 @@ body {
   pointer-events: none;
 }
 
-.card summary {
+.card2 summary {
   list-style: none;
   padding: 20px;
 }
 
-.card summary::-webkit-details-marker {
+.card2 summary::-webkit-details-marker {
   display: none;
 }
 
@@ -212,23 +223,23 @@ body {
   background: rgba(0, 109, 56, 0.05);
 }
 
-.card[open] svg {
+.card2[open] svg {
   transform: rotate(180deg);
 }
 
-.card:hover {
+.card2:hover {
   background: rgba(0, 109, 56, 0.05);
 }
 
-.card div {
+.card2 div {
   padding: 0 20px 15px 20px;
-  color: #006D38;
+  color: #006d38;
 }
 
 /* FAQ Styles */
 details > summary {
   list-style: none;
-  color: #006D38;
+  color: #006d38;
   padding: 15px 20px !important;
 }
 
@@ -249,7 +260,7 @@ details[open] summary svg {
 }
 
 details p {
-  color: #006D38;
+  color: #006d38;
   padding: 0 20px 15px 20px;
 }
 
@@ -259,7 +270,7 @@ details summary:hover {
 }
 
 details .group:hover svg {
-  stroke: #006D38;
+  stroke: #006d38;
 }
 
 /* Responsive styles */
@@ -268,17 +279,98 @@ details .group:hover svg {
     top: 150px;
     padding: 0 15px;
   }
-  
+
   .faq-header h1 {
     font-size: 32px;
   }
-  
+
   .faq-header p {
     font-size: 18px;
   }
-  
+
   .faq-search {
     height: 48px;
     padding: 12px 50px 12px 20px;
   }
+}
+
+.reward-card {
+  background: white;
+  border: 1px solid rgba(0, 109, 56, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.reward-card h3 {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #006d38;
+  margin-bottom: 4px;
+  font-family: var(--Poppin);
+}
+
+.reward-card p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0, 109, 56, 0.7);
+  font-family: var(--Poppin);
+}
+
+.reward-card .points {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #006d38;
+  margin-top: 12px;
+  font-family: var(--Poppin);
+}
+
+/* Table Styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #006d38;
+  background: white;
+  padding: 16px 24px;
+  text-align: left;
+  font-family: var(--Poppin);
+}
+
+td {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #006d38;
+  padding: 16px 24px;
+  font-family: var(--Poppin);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.status-badge {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-family: var(--Poppin);
+}
+
+.status-badge.earned {
+  background: rgba(0, 109, 56, 0.1);
+  color: #006d38;
+}
+
+.status-badge.redeemed {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
 }
