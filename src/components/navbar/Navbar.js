@@ -1,3 +1,4 @@
+import NavLink from "../navlink/NavLink.js";
 import styles from "./navbar.module.css";
 const Navbar = () => {
   return (
@@ -5,23 +6,35 @@ const Navbar = () => {
       <nav
         className={`${styles.navbar} flex items-center justify-start w-full`}
       >
-        <div className="text-2xl font-bold ">SYNAPSE</div>
-
+        <img src="/svgs/hamburger.svg" />
+        <div
+          className="w-[32px] h-[0px] border-bottom-white "
+          style={{
+            transform: "rotate(90deg)",
+          }}
+        ></div>
         <div className="flex item-center w-full justify-between">
-          <ul className="flex space-x-4 items-center">
+          <ul className="flex space-x-4 items-center gap-[30px]">
             <li>
-              <a href="/">Home</a>
+              <NavLink href="/">Home</NavLink>
             </li>
             <li>
-              <a href="/about">Education</a>
+              <NavLink href="/education">Education</NavLink>
             </li>
             <li>
-              <a href="/contact">About</a>
+              <NavLink href="/about">About</NavLink>
             </li>
           </ul>
-          <a className="btn-primary cmnbtn" href="/login">
+          {/* <NavLink className="btn-primary cmnbtn" href="/login">
             Login
-          </a>
+          </NavLink> */}
+        </div>
+        <div className="flex items-center justify-center h-[45px]">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="h-[45px] object-contain"
+          />
         </div>
       </nav>
     </div>

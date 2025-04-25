@@ -68,7 +68,7 @@ const SignupForm = () => {
                 Full Name
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full f focus:outline-none"
                 type="text"
                 id="name"
                 placeholder="First & Last Name"
@@ -82,7 +82,7 @@ const SignupForm = () => {
                 Mobile Number
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="number"
                 id="Mobile"
                 value={data.mobile}
@@ -96,7 +96,7 @@ const SignupForm = () => {
                 Email
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="email"
                 id="email"
                 value={data.email}
@@ -111,7 +111,7 @@ const SignupForm = () => {
                 iOS Registration Number
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="number"
                 value={data.registrationNumber}
                 onChange={(e) =>
@@ -173,7 +173,7 @@ const SignupForm = () => {
                 Email
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="email"
                 id="email"
                 value={resetPasswordData.email}
@@ -193,7 +193,7 @@ const SignupForm = () => {
                 Password
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="password"
                 id="password"
                 value={resetPasswordData.password}
@@ -213,7 +213,7 @@ const SignupForm = () => {
                 Re-type Password
               </label>
               <input
-                className="w-full frm-input focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full frm-input focus:outline-none"
                 type="re-password"
                 id="re-password"
                 value={resetPasswordData.rePassword}
