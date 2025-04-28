@@ -22,7 +22,7 @@ const Navbar = () => {
               <NavLink href="/education">Education</NavLink>
             </li>
             <li>
-              <NavLink href="/about">About</NavLink>
+              <NavLink href="/aboutus">About Us</NavLink>
             </li>
           </ul>
           {/* <NavLink className="btn-primary cmnbtn" href="/login">
