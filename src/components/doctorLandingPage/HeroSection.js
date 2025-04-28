@@ -1,12 +1,16 @@
-import Link from "next/link.js";
+"use client";
+import { usePathname } from "next/navigation";
 
 const HeroSection = () => {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <section className="relative w-full">
       {/* Background Image */}
       <div className="absolute w-full h-[705px]">
         <img
-          src="/images/landingPage3.png"
+          src={`/images/${isHome ? "landingPage4.png" : "landingPage3.png"}`}
           className="h-[705px] w-full object-cover opacity-50"
           alt="Landing Page"
         />
@@ -15,7 +19,9 @@ const HeroSection = () => {
       <div className="relative h-[705px] flex items-start justify-start pt-42 px-25">
         <div className="max-w-xl">
           <h1 className="text-[46px] font-semibold mb-6">
-            Welcome to a New Kind of Dental Partnership
+            {isHome
+              ? "Welcome to a New Kind of Dental Partnership"
+              : "About Us"}
           </h1>
           <p className="font-medium text-xl mb-6">
             Our workflow has been designed to support your orthodontic expertise
