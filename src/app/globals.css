@@ -230,15 +230,19 @@ body {
 }
 
 .card2 {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(0, 76, 68, 0.2);
-  margin-bottom: 1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 76, 68, 0.1);
+  margin-bottom: 50px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .card2 summary {
   list-style: none;
   padding: 1.5rem;
   color: #004C44;
+  border-radius: 20px;
+  margin-bottom: 0;
 }
 
 .card2 summary span {
@@ -253,11 +257,13 @@ body {
 
 .card2[open] {
   background: rgba(0, 76, 68, 0.05);
+  border-radius: 20px;
 }
 
 .card2[open] summary {
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
   border-bottom: 1px solid rgba(0, 76, 68, 0.1);
-  background: rgba(255, 255, 255, 0.9);
 }
 
 .card2[open] svg {
@@ -265,14 +271,15 @@ body {
 }
 
 .card2:hover {
-  background: rgba(0, 76, 68, 0.05);
+  background: rgba(0, 76, 68, 0.02);
   transition: background-color 0.2s ease;
 }
 
 .card2 div {
   padding: 1.5rem;
   color: #004C44;
-  background: rgba(255, 255, 255, 0.9);
+  background: #FFFFFF;
+  border-radius: 0 0 20px 20px;
 }
 
 .card2 p {
