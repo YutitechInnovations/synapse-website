@@ -1,6 +1,10 @@
 import Navbar from "../components/navbar/Navbar.js";
 import Footer from "../components/footer/Footer.js";
 
+import HeroSection from "../components/doctorLandingPage/HeroSection.js";
+import Services from "../components/doctorLandingPage/Services.js";
+import MissionNVision from "../components/doctorLandingPage/MissionNVision.js";
+import Aboutus from "../components/doctorLandingPage/Aboutus.js";
 import { LandingPage } from "../components/landingPage/LandingPage.js";
 
 export default function Home() {
