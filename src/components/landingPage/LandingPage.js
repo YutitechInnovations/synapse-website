@@ -8,6 +8,7 @@ import { useState } from "react";
 import Services from "../doctorLandingPage/Services.js";
 import MissionNVision from "../doctorLandingPage/MissionNVision.js";
 import Aboutus from "../doctorLandingPage/Aboutus.js";
+import Connection from "../doctorLandingPage/Connection.js";
 
 export const LandingPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -23,8 +24,7 @@ export const LandingPage = () => {
         <>
           <Hero2 />
           <Services />
-          <MissionNVision />
-          <Aboutus />
+          <Connection />
         </>
       )}
     </>
