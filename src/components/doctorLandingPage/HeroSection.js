@@ -4,27 +4,24 @@ const HeroSection = () => {
   return (
     <section className="relative w-full">
       {/* Background Image */}
-      <div className="absolute w-full h-[664px]">
+      <div className="absolute w-full h-[705px]">
         <img
-          src="/images/landingPage.png"
-          className="h-[664px]"
+          src="/images/landingPage3.png"
+          className="h-[705px] w-full object-cover opacity-50"
           alt="Landing Page"
         />
       </div>
       {/* Content */}
-      <div className="relative h-[664px] flex items-start justify-start pt-42 px-25">
-        <div className="max-w-2xl">
+      <div className="relative h-[705px] flex items-start justify-start pt-42 px-25">
+        <div className="max-w-xl">
           <h1 className="text-[46px] font-semibold mb-6">
-            Welcome to a New Kind
-            <br />
-            of Dental Partnership
+            Welcome to a New Kind of Dental Partnership
           </h1>
           <p className="font-medium text-xl mb-6">
-            We’re here to support your practice with dependable, high-quality
-            solutions—from aligners to advanced lab services—all crafted with
-            care, precision, and the latest in 3D manufacturing. Our focus on
-            quality materials, thoughtful planning, and consistency means you
-            can stay confident in every case you deliver.
+            Our workflow has been designed to support your orthodontic expertise
+            with dependable high-quality solutions ranging from aligners to
+            advanced lab services, all crafted with the latest in 3D
+            manufacturing and with precision and care.
           </p>
 
           {/* <div className="flex flex-wrap gap-6">
