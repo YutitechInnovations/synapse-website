@@ -34,7 +34,7 @@ const ZigZagCard = ({ items }) => {
             <div
               key={index}
               className={`w-full flex flex-col-reverse md:flex-row h-auto md:h-[424px] ${
-                index + 1 == length && "rounded-b-[20px]"
+                index + 1 === items.length && "rounded-b-[20px]"
               } ${
                 index + 1 !== items.length ? "border-bottom" : ""
               } overflow-hidden`}
