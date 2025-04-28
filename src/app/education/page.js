@@ -24,7 +24,7 @@ export default function Education() {
     {
       title: 'Patients\' FAQs',
       image: '/faq.png',
-      link: '/faqs'
+      link: '/faq'
     }
   ];
 
