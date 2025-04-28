@@ -5,7 +5,7 @@ export default function HeroSection() {
     <section className="relative w-full">
       {/* Background Image */}
       <div className="absolute w-full h-[664px]">
-        <img
+        <image
           src="/images/landingPage.png"
           className="h-[664px]"
           alt="Landing Page"

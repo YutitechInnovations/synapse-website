@@ -43,7 +43,7 @@ const Navbar = () => {
             {links.map((link) => (
               <li key={link.href}>
                 <NavLink href={link.href}>{link.label}</NavLink>
-              </li>
+            </li>
             ))}
           </ul>
           {/* <NavLink className="btn-primary cmnbtn" href="/login">
