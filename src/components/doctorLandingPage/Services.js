@@ -3,22 +3,24 @@ import React from "react";
 const Services = () => {
   return (
     <section className="lg:p-25 md:p-16 sm:p-8 p-6">
-      <div className="justify-center text-center lg:px-[234px] md:px-[150px] sm-px[100px] px-20 mb-[50px]">
-        <h2 className="lg:text-5xl sm:text-[36px] text-[30px] font-semibold mb-[20px]">
+      <div className="justify-center text-center lg:px-[125px] md:px-[100px] sm-px5] px-20 mb-[50px]">
+        <h2 className="lg:text-4xl sm:text-[36px] text-[30px] font-semibold mb-[20px]">
           Synapse - Your Partner in Ortho
         </h2>
         <p className="text-xl font-normal">
-          Synapse is at the forefront of orthodontic innovation, combining
-          cutting-edge technology with clinical expertise to transform patient
-          care.
+          Our partnership does not stop at the product. We help you stay engaged
+          with your patients through personalized treatment journeys and
+          marketing support built on transparency and a shared commitment to
+          better care. While you focus on your expertise, we shall take care of
+          the rest.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
         {/* Feature 1 */}
         <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-(--primary-light) rounded-full p-4">
+            <div className="bg-(--primary-lights) rounded-full p-4">
               <img
                 src="/svgs/jaw.svg"
                 alt="Jaw Icon"
@@ -42,7 +44,7 @@ const Services = () => {
         {/* Feature 2 */}
         <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-(--primary-light) rounded-full p-4">
+            <div className="bg-(--primary-lights) rounded-full p-4">
               <img
                 src="/svgs/manufacture.svg"
                 alt="manufacture Icon"
@@ -67,7 +69,7 @@ const Services = () => {
         {/* Feature 3 */}
         <div className="card  ">
           <div className="mb-5 flex justify-start">
-            <div className="bg-(--primary-light) rounded-full p-4">
+            <div className="bg-(--primary-lights) rounded-full p-4">
               <img
                 src="/svgs/shake-hand.svg"
                 alt="shake-hand Icon"

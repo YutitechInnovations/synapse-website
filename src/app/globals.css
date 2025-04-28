@@ -11,7 +11,7 @@
   --background-dark: #f6f6f3;
   --text-primary: #004c44;
   --primary: #004c44;
-  --primary-light: rgba(0, 76, 68, 0.5);
+  --primary-lights: #004c4494;
   --foreground: #171717;
   --Poppin: Poppins, sans-serif;
   --Sora: Sora, sans-serif;
@@ -31,7 +31,7 @@
   :root {
     --background: rbga(255, 237, 236, 0.3);
     --primary: #003431;
-    --primary-light: rgba(0, 75, 68, 0.3);
+    --primary-lights: rgba(0, 75, 68, 0.3);
 
     --foreground: #ededed;
   }
@@ -65,7 +65,7 @@ body {
   cursor: pointer;
 }
 .color-primary-light {
-  color: var(--primary-light);
+  color: var(--primary-lights);
 }
 .cmnbtn:disabled {
   opacity: 0.5;
@@ -100,6 +100,15 @@ body {
 }
 .card-p-0 {
   padding: 0 !important;
+}
+.navbar {
+  background-color: #004b4482;
+  border-radius: 20px;
+  gap: 30px;
+  padding: 15px 30px;
+  margin-top: 30px;
+  /* margin-right: 100px; */
+  color: var(--white);
 }
 
 .frm-input {
