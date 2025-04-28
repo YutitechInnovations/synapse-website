@@ -133,9 +133,12 @@ body {
 
 .faq-hero {
   background-image: url(/bg.png);
+  background-repeat: no-repeat;         
+  background-size: cover;              
+  background-position: center;         
   width: 100%;
   height: 473px;
-  background-color: #cacaca;
+  background-color: #CACACA;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,7 +147,9 @@ body {
   text-align: center;
   margin: 0 auto;
   position: relative;
+  opacity: 0.8;
 }
+
 
 .faq-header {
   width: 100%;
@@ -161,6 +166,7 @@ body {
   gap: 20px;
   text-align: center;
   padding: 0 20px;
+  
 }
 
 .faq-header h1 {
@@ -174,7 +180,7 @@ body {
   line-height: 1.2;
   letter-spacing: 0%;
   text-align: center;
-  color: #006d38;
+  color:#004C44;
   margin: 0;
   padding: 0;
 }
@@ -187,7 +193,7 @@ body {
   font-family: var(--Poppin);
   font-size: 20px;
   line-height: 1.2;
-  color: #006d38;
+  color: #004C44;
   text-align: center;
   margin: 0 auto;
 }
@@ -197,27 +203,32 @@ body {
   max-width: 601px;
   height: 54px;
   border-radius: 10px;
-  border: 1px solid #006d38;
-  padding: 15px 50px 15px 20px;
+  border: 1px solid #004C44;
+  padding: 15px 30px 15px 30px;
   background: rgba(255, 255, 255, 0.6);
   font-family: var(--Poppin);
   font-size: 16px;
-  color: #006d38;
+  color: #004C44;
   outline: none;
 }
 
 .faq-search::placeholder {
-  color: #006d38;
+  color: #004C44;
   opacity: 0.7;
+  width: 58px;
+  height: 24px;
 }
 
 .faq-search-icon {
   position: absolute;
-  right: 20px;
   top: 50%;
+  left:626.28px ;
   transform: translateY(-50%);
   pointer-events: none;
+  width: 22px;
+  height: 22px;
 }
+
 
 .card2 summary {
   list-style: none;
@@ -242,13 +253,13 @@ body {
 
 .card2 div {
   padding: 0 20px 15px 20px;
-  color: #006d38;
+  color: #004C44;
 }
 
 /* FAQ Styles */
 details > summary {
   list-style: none;
-  color: #006d38;
+  color: #004C44;
   padding: 15px 20px !important;
 }
 
@@ -269,7 +280,7 @@ details[open] summary svg {
 }
 
 details p {
-  color: #006d38;
+  color:#004C44;
   padding: 0 20px 15px 20px;
 }
 
@@ -279,7 +290,7 @@ details summary:hover {
 }
 
 details .group:hover svg {
-  stroke: #006d38;
+  stroke:#004C44;
 }
 
 /* Responsive styles */
@@ -303,83 +314,3 @@ details .group:hover svg {
   }
 }
 
-.reward-card {
-  background: white;
-  border: 1px solid rgba(0, 109, 56, 0.2);
-  border-radius: 12px;
-  padding: 24px;
-}
-
-.reward-card h3 {
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 500;
-  color: #006d38;
-  margin-bottom: 4px;
-  font-family: var(--Poppin);
-}
-
-.reward-card p {
-  font-size: 14px;
-  line-height: 1.4;
-  color: rgba(0, 109, 56, 0.7);
-  font-family: var(--Poppin);
-}
-
-.reward-card .points {
-  font-size: 32px;
-  line-height: 1.2;
-  font-weight: 600;
-  color: #006d38;
-  margin-top: 12px;
-  font-family: var(--Poppin);
-}
-
-/* Table Styles */
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
-
-th {
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 500;
-  color: #006d38;
-  background: white;
-  padding: 16px 24px;
-  text-align: left;
-  font-family: var(--Poppin);
-}
-
-td {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #006d38;
-  padding: 16px 24px;
-  font-family: var(--Poppin);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-.status-badge {
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 500;
-  padding: 4px 16px;
-  border-radius: 100px;
-  font-family: var(--Poppin);
-}
-
-.status-badge.earned {
-  background: rgba(0, 109, 56, 0.1);
-  color: #006d38;
-}
-
-.status-badge.redeemed {
-  background: rgba(255, 107, 107, 0.1);
-  color: #ff6b6b;
-}

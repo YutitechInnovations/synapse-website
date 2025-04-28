@@ -13,8 +13,9 @@ const FaqSection = () => {
               className="faq-search"
               aria-label="Search FAQs"
             />
+            <div className="faq-search-icon">
             <svg
-              className="faq-search-icon"
+              
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -29,6 +30,8 @@ const FaqSection = () => {
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
+              
+            </div>
           </div>
         </div>
       </div>
@@ -57,7 +60,7 @@ const FaqSection = () => {
           </div>
         </details>
 
-        <details className="card card-p-0 border-light group cursor-pointer">
+        <details className="card card-p-0 card2 border-light group cursor-pointer">
           <summary className="flex justify-between items-center">
             <span className="font-semibold text-lg">Are there food restrictions during aligner treatment?</span>
             <svg
