@@ -4,13 +4,14 @@ import { usePathname } from "next/navigation";
 const HeroSection = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAbout = pathname === "/aboutus";
 
   return (
     <section className="relative w-full">
       {/* Background Image */}
       <div className="absolute w-full min-h-[300px] h-[50vw] max-h-[705px]">
         <img
-          src={`/images/${isHome ? "landingPage4.png" : "landingPage3.png"}`}
+          src={`/images/${isHome ? "bg2.jpg" : isAbout ? "bg3.jpg" : "landingPage3.png"}`}
           className="w-full h-full object-cover opacity-50"
           alt="Landing Page"
         />

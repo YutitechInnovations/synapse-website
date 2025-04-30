@@ -1,4 +1,9 @@
+"use client";
+import { usePathname } from "next/navigation";
+
 const Footer = () => {
+  const pathname = usePathname();
+  const showLoginButton = ["/", "/login", "/signup", "/aboutus"].includes(pathname);
   return (
     <footer className="w-full items-center justify-items-center">
       <div className="bg-[var(--primary)] p-[20px] md:py-[50px] md:py-0 w-full  gap-[50px]">
@@ -9,6 +14,13 @@ const Footer = () => {
             <p className="mt-5 text-lg md:text-xl font-normal">
               Bringing technology and expertise in orthodontic solutions.
             </p>
+            {showLoginButton && (
+              <a href="/login">
+                <button className="mt-8 px-10 py-4 bg-white text-[var(--primary)] font-semibold rounded-lg shadow-md hover:bg-gray-100 transition">
+                  Login
+                </button>
+              </a>
+            )}
           </div>
 
           {/* Quick Links Section */}
