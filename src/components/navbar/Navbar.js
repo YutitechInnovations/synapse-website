@@ -6,25 +6,28 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const isLandingPage = pathname === "/";
+  const isMinimalPage = pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus";
 
-  const landingPageLinks = [
+  // Home, signup, login pages links
+  const minimalLinks = [
     { href: "/", label: "Home" },
     { href: "/education", label: "Education" },
-    { href: "/aboutus", label: "About Us" },
+    { href: "/aboutus", label: "About us" },
+    { href: "/careers", label: "Careers" },
   ];
 
-  const otherPageLinks = [
+  // Figma design links
+  const figmaLinks = [
     { href: "/", label: "Home" },
-    { href: "/education", label: "Education" },
-    { href: "/smile-analysis", label: "Smile Analysis" },
+    { href: "/rxtrack", label: "RxTrack" },
     { href: "/orthosync", label: "OrthoSync" },
     { href: "/reward-program", label: "Doctor Reward Program" },
-    { href: "/community", label: "Community" },
+    { href: "/alignmasters", label: "AlignMasters" },
     { href: "/e-shop", label: "E-Shop" },
+    { href: "/careers", label: "Careers" },
   ];
 
-  const links = isLandingPage ? landingPageLinks : otherPageLinks;
+  const links = isMinimalPage ? minimalLinks : figmaLinks;
 
   return (
     <div className="flex items-center justify-center w-full fixed top-0 z-50 bg-transparent px-25">
