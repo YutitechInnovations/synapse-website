@@ -4,13 +4,13 @@ const FaqSection = () => {
     <section className="relative w-full">
       <div className="faq-hero">
         <div className="faq-header">
-          <h1>Frequently Asked Questions</h1>
-          <p>Answers to the questions your patients ask the most</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frequently Asked Questions</h1>
+          <p className="text-base sm:text-lg md:text-xl">Answers to the questions your patients ask the most</p>
           <div className="relative w-full">
             <input 
               type="text" 
               placeholder="Search" 
-              className="faq-search"
+              className="faq-search w-full max-w-lg mx-auto"
               aria-label="Search FAQs"
             />
             <div className="faq-search-icon">
@@ -36,7 +36,7 @@ const FaqSection = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-[798px] mx-auto px-4 py-16 space-y-4">
+      <div className="w-full max-w-3xl mx-auto px-4 py-8 md:py-16 space-y-4">
         <details className="card card-p-0 card2 border-light group cursor-pointer">
           <summary className="flex justify-between items-center">
             <span className="font-semibold text-lg">Is Aligner treatment painful?</span>

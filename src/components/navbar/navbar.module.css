@@ -1,9 +1,26 @@
 .navbar {
   background-color: #004c4494;
-  border-radius: 20px;
-  gap: 30px;
-  padding: 15px 30px;
-  margin-top: 30px;
+  border-radius: 1.25rem;
+  gap: 1.875rem;
+  padding: 0.9375rem 1.875rem;
+  margin-top: 1.875rem;
   /* margin-right: 100px; */
   color: var(--white);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1.25rem;
+    margin-top: 1.25rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.625rem 1rem;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
 }

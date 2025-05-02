@@ -1,20 +1,20 @@
 export default function FeatureSection() {
   return (
-    <section className="p-25">
-      <div className="justify-center text-center px-[234px] mb-[50px]">
-        <h2 className="text-5xl font-semibold mb-[20px]">
+    <section className="py-10 md:py-16 lg:py-20 px-4 md:px-8">
+      <div className="justify-center text-center px-2 md:px-16 lg:px-32 mb-8 md:mb-12">
+        <h2 className="text-2xl md:text-4xl font-semibold mb-4 md:mb-6">
           Synapse - Your Partner in Ortho
         </h2>
-        <p className="text-xl font-normal">
+        <p className="text-base md:text-xl font-normal">
           Synapse is at the forefront of orthodontic innovation, combining
           cutting-edge technology with clinical expertise to transform patient
           care.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[50px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
         {/* Feature 1 */}
-        <div className="card  ">
+        <div className="card">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg
@@ -47,7 +47,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Feature 2 */}
-        <div className="card  ">
+        <div className="card">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg
@@ -81,7 +81,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Feature 3 */}
-        <div className="card  ">
+        <div className="card">
           <div className="mb-5 flex justify-start">
             <div className="bg-[#F1E5FA] rounded-full p-4">
               <svg

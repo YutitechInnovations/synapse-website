@@ -3,27 +3,27 @@ import Link from "next/link";
 export default function EngagementSection() {
   return (
     <>
-      <div className="relative w-full h-[672px]">
+      <div className="relative w-full min-h-[200px] h-[40vw] max-h-[44rem]">
         <img
           src="/images/landingPage2.png"
-          className="h-[672px]"
+          className="w-full h-full object-cover opacity-50"
           alt="Landing Page"
         />
       </div>
       <section className="w-full">
-        <div className="p-25">
+        <div className="py-10 md:py-16 lg:py-20 px-4 md:px-8">
           {/* Aligner Image */}
 
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#5C1E8A] mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center text-[#5C1E8A] mb-4 md:mb-6">
             Our Engagement Strategies
           </h2>
-          <p className="text-[#5C1E8A] text-center max-w-3xl mx-auto mb-12">
+          <p className="text-[#5C1E8A] text-center max-w-3xl mx-auto mb-8 md:mb-12 text-base md:text-lg">
             Synapse employs four key strategies to enhance orthodontic practice
             and patient outcomes, creating a comprehensive ecosystem for modern
             care.
           </p>
 
-          <div className="flex gap-[30px]">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             {/* 3D Printing */}
             <div className="bg-white border border-purple-100 rounded-xl p-6 h-full">
               <div className="mb-4 flex justify-center">
