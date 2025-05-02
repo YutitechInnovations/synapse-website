@@ -38,7 +38,7 @@ const FaqSection = () => {
 
       <div className="w-full max-w-[798px] mx-auto px-4 py-16">
         <div className="space-y-4">
-          <details className="card2">
+          <details className="card card-p-0 card2 border-light group cursor-pointer">
             <summary className="flex justify-between items-center">
               <span>Is Aligner treatment painful?</span>
               <svg

@@ -2,7 +2,7 @@ import React from "react";
 
 const Connection = () => {
   return (
-    <section className="w-full p-25">
+    <section className="w-full p-25" style={{ background: '#F6F6F3' }}>
       <div className="justify-center text-center lg:px-[315px] md:px-[160px] sm:px-[50px] px-20 mb-[50px]">
         <h2 className="lg:text-4xl sm:text-[36px] text-[30px] font-semibold mb-[20px]">
           Where Care Meets Connection
