@@ -2,7 +2,7 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const blogData = Array(8).fill({
@@ -35,7 +35,7 @@ const TABS = [
   },
 ];
 
-export default function Blogs() {
+function BlogsContent() {
   const searchParams = useSearchParams();
   const initialTab = (() => {
     const tabParam = searchParams.get("tab");
@@ -135,5 +135,13 @@ export default function Blogs() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function Blogs() {
+  return (
+    <Suspense>
+      <BlogsContent />
+    </Suspense>
   );
 } 

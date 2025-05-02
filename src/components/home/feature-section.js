@@ -41,7 +41,7 @@ export default function FeatureSection() {
             aligners are the ultimate orthodontic tool for your practice. Built
             from decades of material science research and innovation, our
             aligners combine our proprietary ClearMatch technology, Performative
-            Timelines, and scientifically-proven "AttractiveFit" materials to
+            Timelines, and scientifically-proven &quot;AttractiveFit&quot; materials to
             help your patients achieve their orthodontic goals.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function FeatureSection() {
             Empowering digital workflow
           </h3>
           <p className=" text-sm font-normal">
-            OrthoConnect's powerful digital tools give you control and
+            OrthoConnect&apos;s powerful digital tools give you control and
             flexibility over your treatments while improving productivity. With
             intuitive interfaces, seamless integration with healthcare
             solutions, and advanced clinical planning tools, creating and
@@ -107,7 +107,7 @@ export default function FeatureSection() {
             Combining our clinical expertise with our commitment to education,
             global support, and collaboration, we offer bespoke customized plans
             to support OrthoConnect users and help you unlock the potential your
-            practice and ultimately, of people's lives.
+            practice and ultimately, of people&apos;s lives.
           </p>
         </div>
       </div>
