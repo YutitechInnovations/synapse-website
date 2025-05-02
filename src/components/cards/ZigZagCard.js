@@ -20,7 +20,7 @@ const ZigZagCard = ({ items }) => {
                   {item.description}
                 </p>
               </div>
-              <div className=" md:w-full lg:w-[315px]">
+              <div className="md:w-full lg:w-[636px] h-[424px]">
                 <img
                   src={item.image}
                   className="h-full w-full object-cover"
@@ -39,7 +39,7 @@ const ZigZagCard = ({ items }) => {
                 index + 1 !== items.length ? "border-bottom" : ""
               } overflow-hidden`}
             >
-              <div className=" md:w-full lg:w-[317px]">
+              <div className="md:w-full lg:w-[636px] h-[424px]">
                 <img
                   src={item.image}
                   className="h-full w-full object-cover"
