@@ -226,17 +226,41 @@ body {
   height: 1.375rem;
 }
 
+.card2 {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 76, 68, 0.1);
+  margin-bottom: 50px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
 .card2 summary {
   list-style: none;
-  padding: 1.25rem;
+  padding: 1.5rem;
+  color: #004C44;
+  border-radius: 20px;
+  margin-bottom: 0;
+}
+
+.card2 summary span {
+  color: #004C44;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .card2 summary::-webkit-details-marker {
   display: none;
 }
 
-.card[open] {
-  background: rgba(0, 109, 56, 0.05);
+.card2[open] {
+  background: rgba(0, 76, 68, 0.05);
+  border-radius: 20px;
+}
+
+.card2[open] summary {
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid rgba(0, 76, 68, 0.1);
 }
 
 .card2[open] svg {
@@ -244,49 +268,52 @@ body {
 }
 
 .card2:hover {
-  background: rgba(0, 109, 56, 0.05);
+  background: rgba(0, 76, 68, 0.02);
+  transition: background-color 0.2s ease;
 }
 
 .card2 div {
-  padding: 0 1.25rem 0.9375rem 1.25rem;
+  padding: 1.5rem;
   color: #004C44;
+  background: #FFFFFF;
+  border-radius: 0 0 20px 20px;
+}
+
+.card2 p {
+  color: #004C44;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 /* FAQ Styles */
 details > summary {
   list-style: none;
   color: #004C44;
-  padding: 0.9375rem 1.25rem !important;
-}
-
-details > summary::-webkit-details-marker {
-  display: none;
+  padding: 1.5rem;
 }
 
 details[open] summary {
-  border-radius: 0.625rem 0.625rem 0 0;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 details:not([open]) summary {
-  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 details[open] summary svg {
   transform: rotate(180deg);
-}
-
-details p {
-  color:#004C44;
-  padding: 0 1.25rem 0.9375rem 1.25rem;
+  transition: transform 0.2s ease;
 }
 
 /* Hover effects for FAQ items */
 details summary:hover {
-  background-color: rgba(0, 109, 56, 0.1);
+  background: rgba(0, 76, 68, 0.05);
+  transition: background-color 0.2s ease;
 }
 
 details .group:hover svg {
-  stroke:#004C44;
+  stroke: #004C44;
+  transition: stroke 0.2s ease;
 }
 
 /* Responsive styles */

@@ -6,13 +6,14 @@ let items = [
     title: "Vision Statement",
     description:
       "To redefine how dental practices grow and connect—by enabling a future where every patient journey is informed, personalized, and seamlessly supported through intelligent, integrated care.",
-    image: "/images/bulb.png",
+    image: "/images/vision.jpg",
+    
   },
   {
     title: "Mission Statement",
     description:
       "We are out on a mission to empower dental professionals with seamless support across clinical and practice needs—delivering reliable, innovative solutions that foster transparency, elevate patient experiences, and build enduring relationships through informed, personalized care.",
-    image: "/images/hand-team.png",
+    image: "/images/mission.jpg",
   },
 ];
 
