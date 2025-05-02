@@ -128,12 +128,16 @@ const SignupForm = () => {
               </div>
             </div>
 
+            <p className="text-sm text-gray-600">
+              By signing up, you agree to our Terms of Service and Privacy Policy. We&apos;ll occasionally send you account related emails.
+            </p>
+
             <button className="btn-primary cmnbtn w-full" type="submit">
               Register
             </button>
           </form>
           <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-2">
-            <p className="font-semibold text-base text-center sm:text-left">Don't have an account? </p>
+            <p className="font-semibold text-base text-center sm:text-left">Don&apos;t have an account? </p>
             <Link
               href="/signup"
               className="font-semibold text-[15px] hover:underline"
