@@ -4,13 +4,13 @@ const FaqSection = () => {
     <section className="relative w-full">
       <div className="faq-hero">
         <div className="faq-header">
-          <h1>Frequently Asked Questions</h1>
-          <p>Answers to the questions your patients ask the most</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Frequently Asked Questions</h1>
+          <p className="text-base sm:text-lg md:text-xl">Answers to the questions your patients ask the most</p>
           <div className="relative w-full">
             <input 
               type="text" 
               placeholder="Search" 
-              className="faq-search"
+              className="faq-search w-full max-w-lg mx-auto"
               aria-label="Search FAQs"
             />
             <div className="faq-search-icon">

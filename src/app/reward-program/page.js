@@ -55,15 +55,15 @@ export default function RewardProgram() {
     <div className="min-h-screen flex flex-col bg-[#FFEDEC4D]">
       <Navbar />
       <main className="flex-grow">
-        <div className="max-w-[1200px] mx-auto">
-          <h1 className="text-[46px] leading-[1.2] font-semibold text-[#004C44] text-center mt-[205px] mx-[309px]">
+        <div className="max-w-screen-lg mx-auto px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl leading-[1.2] font-semibold text-[#004C44] text-center mt-20 md:mt-40 mb-4">
             Doctor Reward Program
           </h1>
-          <p className="text-center text-[20px] leading-[1.4] text-[#004C44] mt-4 mb-16">
+          <p className="text-center text-base sm:text-lg md:text-xl text-[#004C44] mt-4 mb-8 md:mb-16">
             Track your reward points, redeem them for products, and view your reward history.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16">
             <div className="bg-white rounded-xl border border-[#006D38]/20 p-6">
               <div className="flex justify-between items-start">
                 <div>
@@ -106,10 +106,10 @@ export default function RewardProgram() {
             </div>
           </div>
 
-          <div className="mb-16">
-            <h2 className="text-[24px] leading-[1.2] font-semibold text-[#004C44] mb-6">Reward History</h2>
-            <div className="bg-white rounded-xl border border-[#004C44]/20 overflow-hidden">
-              <table className="w-full border-spacing-0">
+          <div className="mb-8 md:mb-16">
+            <h2 className="text-lg sm:text-xl md:text-2xl leading-[1.2] font-semibold text-[#004C44] mb-4 md:mb-6">Reward History</h2>
+            <div className="bg-white rounded-xl border border-[#004C44]/20 overflow-x-auto">
+              <table className="w-full border-spacing-0 min-w-[600px]">
                 <thead>
                   <tr>
                     <th className="text-left py-4 px-6 text-[14px] font-medium text-[#004C44] border-b border-[#004C44]/10">Date</th>
@@ -142,7 +142,7 @@ export default function RewardProgram() {
                 </tbody>
               </table>
               <div className="p-4 text-center">
-                <button className="px-8 py-2.5 border border-[#004C44] text-[#004C44] rounded-lg text-[14px] font-medium hover:bg-[#004C44]/5 transition-colors">
+                <button className="px-4 sm:px-8 py-2.5 border border-[#004C44] text-[#004C44] rounded-lg text-[14px] font-medium hover:bg-[#004C44]/5 transition-colors">
                   Load More
                 </button>
               </div>

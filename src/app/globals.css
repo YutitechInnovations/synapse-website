@@ -86,47 +86,46 @@ body {
   background-color: var(--background-1);
 }
 .card-border-20 {
-  border-radius: 20px !important;
+  border-radius: 1.25rem !important;
 }
 .border-bottom {
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 0.0625rem solid var(--border-color) !important;
 }
 
 .card-gap-0 {
   gap: 0 !important;
 }
 .card-gap-20 {
-  gap: 20px !important;
+  gap: 1.25rem !important;
 }
 .card-p-0 {
   padding: 0 !important;
 }
 .navbar {
   background-color: #004b4482;
-  border-radius: 20px;
-  gap: 30px;
-  padding: 15px 30px;
-  margin-top: 30px;
-  /* margin-right: 100px; */
+  border-radius: 1.25rem;
+  gap: 1.875rem;
+  padding: 0.9375rem 1.875rem;
+  margin-top: 1.875rem;
   color: var(--white);
 }
 
 .frm-input {
   background-color: var(--white);
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  padding: 15px;
+  border-radius: 0.625rem;
+  border: 0.0625rem solid var(--border-color);
+  padding: 0.9375rem;
   color: var(----border-color);
-  gap: 30px;
+  gap: 1.875rem;
   font-weight: 400;
-  margin: 10px 0;
+  margin: 0.625rem 0;
   outline: none;
 }
 .frm-input:focus {
-  border: 1px solid var(--primary);
+  border: 0.0625rem solid var(--primary);
 }
 .frm-label {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -137,46 +136,44 @@ body {
   background-size: cover;              
   background-position: center;         
   width: 100%;
-  height: 473px;
+  height: 29.5625rem;
   background-color: #CACACA;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 1.25rem;
   text-align: center;
   margin: 0 auto;
   position: relative;
   opacity: 0.8;
 }
 
-
 .faq-header {
   width: 100%;
-  max-width: 798px;
-  height: 213px;
+  max-width: 49.875rem;
+  height: 13.3125rem;
   position: absolute;
-  top: 190px;
+  top: 11.875rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
   text-align: center;
-  padding: 0 20px;
-  
+  padding: 0 1.25rem;
 }
 
 .faq-header h1 {
   width: 100%;
-  max-width: 732px;
+  max-width: 45.75rem;
   height: auto;
-  min-height: 69px;
+  min-height: 4.3125rem;
   font-family: var(--Poppin);
   font-weight: 600;
-  font-size: 46px;
+  font-size: 2.875rem;
   line-height: 1.2;
   letter-spacing: 0%;
   text-align: center;
@@ -187,11 +184,11 @@ body {
 
 .faq-header p {
   width: 100%;
-  max-width: 702px;
+  max-width: 43.875rem;
   height: auto;
-  min-height: 30px;
+  min-height: 1.875rem;
   font-family: var(--Poppin);
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.2;
   color: #004C44;
   text-align: center;
@@ -200,14 +197,14 @@ body {
 
 .faq-search {
   width: 100%;
-  max-width: 601px;
-  height: 54px;
-  border-radius: 10px;
-  border: 1px solid #004C44;
-  padding: 15px 30px 15px 30px;
+  max-width: 37.5625rem;
+  height: 3.375rem;
+  border-radius: 0.625rem;
+  border: 0.0625rem solid #004C44;
+  padding: 0.9375rem 1.875rem;
   background: rgba(255, 255, 255, 0.6);
   font-family: var(--Poppin);
-  font-size: 16px;
+  font-size: 1rem;
   color: #004C44;
   outline: none;
 }
@@ -215,18 +212,18 @@ body {
 .faq-search::placeholder {
   color: #004C44;
   opacity: 0.7;
-  width: 58px;
-  height: 24px;
+  width: 3.625rem;
+  height: 1.5rem;
 }
 
 .faq-search-icon {
   position: absolute;
   top: 50%;
-  left:626.28px ;
+  left: 39.1425rem;
   transform: translateY(-50%);
   pointer-events: none;
-  width: 22px;
-  height: 22px;
+  width: 1.375rem;
+  height: 1.375rem;
 }
 
 .card2 {
@@ -320,22 +317,45 @@ details .group:hover svg {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .faq-header {
-    top: 150px;
-    padding: 0 15px;
+    top: 9.375rem;
+    padding: 0 0.9375rem;
   }
 
   .faq-header h1 {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   .faq-header p {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
+}
 
+@media (max-width: 30rem) {
+  .faq-hero {
+    height: 25rem;
+  }
+  
+  .faq-header {
+    top: 7.5rem;
+  }
+  
+  .faq-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .faq-header p {
+    font-size: 1rem;
+  }
+  
   .faq-search {
-    height: 48px;
-    padding: 12px 50px 12px 20px;
+    max-width: 90%;
+    height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+  }
+  
+  .faq-search-icon {
+    left: 85%;
   }
 }

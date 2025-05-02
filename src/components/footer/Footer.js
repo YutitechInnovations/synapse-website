@@ -6,7 +6,7 @@ const Footer = () => {
   const showLoginButton = ["/", "/login", "/signup", "/aboutus"].includes(pathname);
   return (
     <footer className="w-full items-center justify-items-center">
-      <div className="bg-[var(--primary)] p-[20px] md:py-[50px] md:py-0 w-full  gap-[50px]">
+      <div className="bg-[#004C44] p-[20px] md:py-[50px] md:py-0 w-full  gap-[50px]">
         <div className="container mx-auto flex flex-col md:flex-row justify-between text-white space-y-8 md:space-y-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {/* Left Section */}
           <div className="mb-6 md:mb-10 w-full md:w-[365px] lg:w-[300px] col-span-2 md:col-span-3 lg:col-span-1">

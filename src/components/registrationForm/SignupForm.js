@@ -50,14 +50,14 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-semibold">Sign Up to your account</h1>
-      <p className="text-base font-normal mt-2 mb-4">
+    <div className="w-full flex flex-col items-center justify-center px-4">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">Sign Up to your account</h1>
+      <p className="text-base font-normal mt-2 mb-4 text-center">
         Access your Synapse dashboard and tools
       </p>
       {!isSubmited && (
-        <div className="card flex-col w-[545px]">
-          <h2 className="text-2xl font-semibold">Register</h2>
+        <div className="card flex-col w-full max-w-md">
+          <h2 className="text-xl md:text-2xl font-semibold">Register</h2>
           <p className="text-base font-normal mb-6">
             Enter your credentials to create your account
           </p>
@@ -68,7 +68,7 @@ const SignupForm = () => {
                 Full Name
               </label>
               <input
-                className="w-full f focus:outline-none"
+                className="w-full frm-input focus:outline-none"
                 type="text"
                 id="name"
                 placeholder="First & Last Name"
@@ -128,12 +128,16 @@ const SignupForm = () => {
               </div>
             </div>
 
+            <p className="text-sm text-gray-600">
+              By signing up, you agree to our Terms of Service and Privacy Policy. We&apos;ll occasionally send you account related emails.
+            </p>
+
             <button className="btn-primary cmnbtn w-full" type="submit">
               Register
             </button>
           </form>
-          <div className="flex items-center justify-between mt-6">
-            <p className="font-semibold text-base ">Don’t have an account? </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-2">
+            <p className="font-semibold text-base text-center sm:text-left">Don&apos;t have an account? </p>
             <Link
               href="/signup"
               className="font-semibold text-[15px] hover:underline"
@@ -144,8 +148,8 @@ const SignupForm = () => {
         </div>
       )}
       {isSubmited && !passwordSection && (
-        <div className="card flex-col w-[545px]">
-          <h2 className="text-2xl font-semibold">Registration Complete</h2>
+        <div className="card flex-col w-full max-w-md">
+          <h2 className="text-xl md:text-2xl font-semibold">Registration Complete</h2>
           <p className="text-base font-normal mb-6">
             Once your information has been approved by the admin, you can set
             your password.
@@ -161,8 +165,8 @@ const SignupForm = () => {
         </div>
       )}
       {passwordSection && (
-        <div className="card flex-col w-[545px]">
-          <h2 className="text-2xl font-semibold">Login</h2>
+        <div className="card flex-col w-full max-w-md">
+          <h2 className="text-xl md:text-2xl font-semibold">Login</h2>
           <p className="text-base font-normal mb-6">
             Enter your credentials to access your account
           </p>

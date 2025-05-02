@@ -2,13 +2,13 @@ import Link from "next/link.js";
 
 const LoginForm = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-semibold">Sign In to your account</h1>
-      <p className="text-base font-normal mt-2 mb-4">
+    <div className="w-full flex flex-col items-center justify-center px-4">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">Sign In to your account</h1>
+      <p className="text-base font-normal mt-2 mb-4 text-center">
         Access your Synapse dashboard and tools
       </p>
-      <div className="card flex-col w-[545px]">
-        <h2 className="text-2xl font-semibold">Login</h2>
+      <div className="card flex-col w-full max-w-md">
+        <h2 className="text-xl md:text-2xl font-semibold">Login</h2>
         <p className="text-base font-normal mb-6">
           Enter your credentials to access your account
         </p>
@@ -49,8 +49,8 @@ const LoginForm = () => {
             Login
           </button>
         </form>
-        <div className="flex items-center justify-between mt-6">
-          <p className="font-semibold text-base ">Don’t have an account? </p>
+        <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-2">
+          <p className="font-semibold text-base text-center sm:text-left">Don’t have an account? </p>
           <Link
             href="/signup"
             className="font-semibold text-[15px] hover:underline"
