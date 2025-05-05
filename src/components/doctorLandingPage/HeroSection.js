@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
         <img
           src={`/images/${isHome ? "bg2.jpg" : isAbout ? "bg3.jpg" : "landingPage3.png"}`}
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover object-top opacity-50"
           alt="Landing Page"
         />
       </div>
