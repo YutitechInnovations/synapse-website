@@ -2,7 +2,7 @@ import React from "react";
 
 const ZigZagCard = ({ items }) => {
   return (
-    <div className="card w-full max-w-screen-lg mx-auto flex flex-col card-p-0 overflow-hidden card-gap-0 rounded-t-[1.25rem]">
+    <div className="card w-full flex flex-col card-p-0 overflow-hidden card-gap-0 rounded-t-[1.25rem]">
       {items?.map((item, index) => {
         if ((index + 1) % 2 !== 0) {
           return (
@@ -12,7 +12,7 @@ const ZigZagCard = ({ items }) => {
                 index + 1 !== items.length ? "border-bottom" : ""
               } overflow-hidden`}
             >
-              <div className="w-full py-6 md:py-12 flex flex-col gap-6 md:gap-8 justify-center items-center px-4 md:px-12">
+              <div className="w-full py-4 md:py-8 flex flex-col gap-4 md:gap-6 justify-center items-center px-2 md:px-6">
                 <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl">
                   {item.title}
                 </h2>
@@ -46,7 +46,7 @@ const ZigZagCard = ({ items }) => {
                   alt={item.title}
                 />
               </div>
-              <div className="w-full py-6 md:py-12 flex flex-col gap-6 md:gap-8 justify-center items-center px-4 md:px-12">
+              <div className="w-full py-4 md:py-8 flex flex-col gap-4 md:gap-6 justify-center items-center px-2 md:px-6">
                 <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl">{item.title}</h2>
                 <p className="text-center text-sm md:text-base lg:text-xl font-normal">
                   {item.description}
