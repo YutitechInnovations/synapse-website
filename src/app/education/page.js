@@ -36,24 +36,24 @@ export default function Education() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[50px] gap-y-[32px] justify-items-center">
             {insightCards.map((card, index) => (
               card.link ? (
-                <a
-                  key={index}
-                  href={card.link}
-                  className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
-                >
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  {/* Gradient overlay for text visibility */}
-                  <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                  <div className="absolute bottom-8 left-8 z-20">
-                    <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none">
-                      {card.title}
-                    </h3>
-                  </div>
-                </a>
+              <a
+                key={index}
+                href={card.link}
+                className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                {/* Gradient overlay for text visibility */}
+                <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
+                <div className="absolute bottom-8 left-8 z-20">
+                  <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none">
+                    {card.title}
+                  </h3>
+                </div>
+              </a>
               ) : (
                 <div
                   key={index}
