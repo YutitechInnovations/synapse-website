@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMinimalPage = pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus";
+  const isMinimalPage = pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education";
 
   // Prevent background scroll when menu is open
   useEffect(() => {
