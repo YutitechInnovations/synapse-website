@@ -25,12 +25,12 @@ const items = [
 const Services = () => {
   return (
     <section className="w-full bg-[#F6F6F3] py-8 md:py-14 lg:py-20">
-      <div className="max-w-screen-lg mx-auto px-4 md:px-8 flex flex-col gap-6 md:gap-10">
+      <div className="w-full px-[100px] flex flex-col gap-6 md:gap-10">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#004C44] mb-2 md:mb-4">Synapse - Services Offered</h2>
-        <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-2 md:mb-4 max-w-4xl">
+        <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-2 md:mb-4 w-full">
           Our partnership does not stop at the product. We help you stay engaged with your patients through personalized treatment journeys and marketing support built on transparency and a shared commitment to better care. While you focus on your expertise, we shall take care of the rest
         </p>
-        <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-8 md:mb-12 max-w-4xl">
+        <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-8 md:mb-12 w-full">
           We offer the below services and you can please feel free to reach out for more details !
         </p>
         <ZigZagCard items={items} />
