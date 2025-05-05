@@ -7,7 +7,7 @@ export default function HeroSection() {
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
         <img
           src="/images/landingPage.png"
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover object-top opacity-50"
           alt="Landing Page"
         />
       </div>
