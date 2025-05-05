@@ -74,15 +74,23 @@ const Navbar = () => {
 
           {/* Mobile menu */}
           <div
-            className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center fixed md:static top-0 left-0 w-full h-full md:w-auto md:h-auto bg-[#004c44] md:bg-transparent rounded-none md:rounded-none z-50 transition-all duration-300`}
+            className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center fixed md:static top-0 left-0 w-full h-full md:w-auto md:h-auto bg-[#F8FAF9] md:bg-transparent rounded-none md:rounded-none z-50 transition-all duration-300`}
             style={{}}
           >
-            <ul className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-4 md:gap-[1.875rem] p-8 md:p-0 w-full md:w-auto h-full md:h-auto">
+            <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:space-x-4 md:gap-[1.875rem] p-8 md:p-0 w-full md:w-auto h-full md:h-auto">
             {links.map((link) => (
-                <li key={link.href} className="w-full md:w-auto text-center">
+                <li key={link.href} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
                   <NavLink href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</NavLink>
             </li>
             ))}
+            {/* Login button for mobile view */}
+            <li className="block md:hidden w-full mt-8">
+              <a href="/login">
+                <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                  Login
+                </button>
+              </a>
+            </li>
           </ul>
         </div>
 

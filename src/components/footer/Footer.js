@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
             {showLoginButton && (
               <a href="/login">
-                <button className="mt-8 px-10 py-4 bg-white text-[var(--primary)] font-semibold rounded-lg shadow-md hover:bg-gray-100 transition">
+                <button className="mt-8 px-10 py-4 bg-white text-[var(--primary)] font-semibold rounded-lg shadow-md hover:bg-gray-100 transition cursor-pointer">
                   Login
                 </button>
               </a>
