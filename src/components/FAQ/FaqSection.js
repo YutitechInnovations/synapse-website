@@ -36,8 +36,8 @@ const FaqSection = () => {
         </div>
       </div>
 
-      <div className="w-full flex justify-center px-4 py-16">
-        <div className="space-y-4 w-[1040px]">
+      <div className="w-full flex justify-center px-2 sm:px-4 py-8 sm:py-16">
+        <div className="space-y-4 w-full max-w-2xl">
           <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span>Is Aligner treatment painful?</span>
