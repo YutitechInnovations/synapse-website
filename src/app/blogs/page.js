@@ -35,7 +35,7 @@ function BlogsContent() {
     if (tabParam === "materials" && activeTab !== "materials") setActiveTab("materials");
     if (tabParam === "research" && activeTab !== "research") setActiveTab("research");
     if (!tabParam && activeTab !== "blogs") setActiveTab("blogs");
-  }, [searchParams]);
+  }, [searchParams, activeTab]);
   const currentTab = TABS.find((tab) => tab.key === activeTab);
 
   return (

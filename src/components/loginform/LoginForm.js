@@ -1,6 +1,24 @@
+"use client";
 import Link from "next/link.js";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const users = JSON.parse(localStorage.getItem('mockUsers') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+      localStorage.setItem('mockLoggedIn', 'true');
+      window.location.href = "/";
+    } else {
+      setError("Invalid email or password");
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">Sign In to your account</h1>
@@ -13,7 +31,7 @@ const LoginForm = () => {
           Enter your credentials to access your account
         </p>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label className="frm-label" htmlFor="email">
               Email
@@ -24,6 +42,8 @@ const LoginForm = () => {
               id="email"
               placeholder="example@synapse.com"
               required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
 
@@ -37,6 +57,8 @@ const LoginForm = () => {
               id="password"
               placeholder="● ● ● ● ● ● ● ●"
               required
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
             <div className="text-right">
               <Link href="#" className=" text-sm hover:underline">
@@ -45,12 +67,14 @@ const LoginForm = () => {
             </div>
           </div>
 
+          {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
+
           <button className="btn-primary cmnbtn w-full" type="submit">
             Login
           </button>
         </form>
         <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-2">
-          <p className="font-semibold text-base text-center sm:text-left">Don’t have an account? </p>
+          <p className="font-semibold text-base text-center sm:text-left">Don&apos;t have an account? </p>
           <Link
             href="/signup"
             className="font-semibold text-[15px] hover:underline"

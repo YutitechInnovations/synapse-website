@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const Connection = () => {
   return (
@@ -18,10 +19,12 @@ const Connection = () => {
           <div>
             <div className="mb-1 flex justify-center items-center">
               <div className="bg-[#C7D7CB] rounded-full p-4 flex items-center justify-center">
-              <img
-                src="/svgs/jaw.svg"
+              <Image
+                src="/images/img6.png"
+                width={40}
+                height={40}
+                className="w-8 h-8 md:w-[31px] md:h-[31px]"
                 alt="Jaw Icon"
-                  className="w-8 h-8 md:w-[31px] md:h-[31px]"
               />
               </div>
             </div>
@@ -36,10 +39,12 @@ const Connection = () => {
           <div>
             <div className="mb-1 flex justify-center items-center">
               <div className="bg-[#C7D7CB] rounded-full p-4 flex items-center justify-center">
-              <img
-                src="/svgs/manufacture.svg"
+              <Image
+                src="/images/img5.jpg"
+                width={40}
+                height={40}
+                className="w-8 h-8 md:w-[31px] md:h-[31px]"
                 alt="manufacture Icon"
-                  className="w-8 h-8 md:w-[31px] md:h-[31px]"
               />
               </div>
             </div>
@@ -54,10 +59,12 @@ const Connection = () => {
           <div>
             <div className="mb-1 flex justify-center items-center">
               <div className="bg-[#C7D7CB] rounded-full p-4 flex items-center justify-center">
-              <img
-                src="/svgs/shake-hand.svg"
+              <Image
+                src="/images/img4.jpg"
+                width={40}
+                height={40}
+                className="w-8 h-8 md:w-[31px] md:h-[31px]"
                 alt="shake-hand Icon"
-                  className="w-8 h-8 md:w-[31px] md:h-[31px]"
               />
               </div>
             </div>

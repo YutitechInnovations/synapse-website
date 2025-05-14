@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const ZigZagCard = ({ items }) => {
   return (
@@ -21,8 +22,10 @@ const ZigZagCard = ({ items }) => {
                 </p>
               </div>
               <div className="md:w-1/2 lg:w-[40%] h-[16rem] md:h-full">
-                <img
+                <Image
                   src={item.image}
+                  width={400}
+                  height={256}
                   className="h-full w-full object-cover"
                   alt={item.title}
                 />
@@ -40,8 +43,10 @@ const ZigZagCard = ({ items }) => {
               } overflow-hidden`}
             >
               <div className="md:w-1/2 lg:w-[40%] h-[16rem] md:h-full">
-                <img
+                <Image
                   src={item.image}
+                  width={400}
+                  height={256}
                   className="h-full w-full object-cover"
                   alt={item.title}
                 />

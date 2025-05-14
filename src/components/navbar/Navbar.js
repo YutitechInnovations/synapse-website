@@ -3,34 +3,70 @@
 import NavLink from "../navlink/NavLink.js";
 import styles from "./navbar.module.css";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from 'next/image';
 
-const Navbar = () => {
+// Minimal, bulletproof mock auth hook
+function useMockAuth() {
+  const [isLoggedIn, setIsLoggedIn] = useState(undefined);
+  // Always call both effects
+  useEffect(() => {
+    setIsLoggedIn(typeof window !== 'undefined' && localStorage.getItem('mockLoggedIn') === 'true');
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isLoggedIn !== undefined) {
+      localStorage.setItem('mockLoggedIn', isLoggedIn ? 'true' : 'false');
+    }
+  }, [isLoggedIn]);
+  return {
+    isLoggedIn,
+    login: () => setIsLoggedIn(true),
+    logout: () => setIsLoggedIn(false)
+  };
+}
+
+function ProfileDropdown({ onLogout }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+  return (
+    <div className="relative" ref={ref}>
+      <button onClick={() => setOpen((v) => !v)} className="flex items-center gap-2 focus:outline-none">
+        <Image src="/images/doc.jpg" width={36} height={36} alt="Profile" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
+        <svg width="20" height="20" fill="white" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4 4.5-4" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round"/></svg>
+      </button>
+      {open && (
+        <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
+          <a href="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+          <a href="/settings" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+          <button onClick={onLogout} className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMinimalPage = pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education";
+  const { isLoggedIn, login, logout } = useMockAuth();
+  // All hooks above this line, no early return
 
-  // Prevent background scroll when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
+  // Only render after login state is known
+  if (isLoggedIn === undefined) return null;
 
-  // Home, signup, login pages links
   const minimalLinks = [
     { href: "/", label: "Home" },
     { href: "/education", label: "Education" },
     { href: "/aboutus", label: "About us" },
     { href: "/careers", label: "Careers" },
   ];
-
-  // Figma design links
   const figmaLinks = [
     { href: "/", label: "Home" },
     { href: "/rxtrack", label: "RxTrack" },
@@ -40,7 +76,7 @@ const Navbar = () => {
     { href: "/e-shop", label: "E-Shop" },
     { href: "/careers", label: "Careers" },
   ];
-
+  const isMinimalPage = !isLoggedIn && (pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education");
   const links = isMinimalPage ? minimalLinks : figmaLinks;
 
   return (
@@ -84,25 +120,41 @@ const Navbar = () => {
             </li>
             ))}
             {/* Login button for mobile view */}
-            <li className="block md:hidden w-full mt-8">
+            {!isLoggedIn && (
+              <li className="block md:hidden w-full mt-8">
+                <a href="/login">
+                  <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                    Login
+                  </button>
+                </a>
+              </li>
+            )}
+            </ul>
+          </div>
+
+          {/* Desktop right side: Login or Profile */}
+          <span className="hidden md:block" style={{ marginLeft: '30px', marginRight: '30px', color: 'white', fontSize: '24px', fontWeight: 300, userSelect: 'none' }}>|</span>
+          <div className="hidden md:flex items-center">
+            {!isLoggedIn ? (
               <a href="/login">
-                <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base">
                   Login
                 </button>
               </a>
-            </li>
-          </ul>
-        </div>
+            ) : (
+              <ProfileDropdown onLogout={logout} />
+            )}
+          </div>
 
-          <div className="flex items-center justify-center h-[2.8125rem] ml-auto">
-          <img
+          <Image
             src="/images/logo.png"
+            width={120}
+            height={45}
             alt="Logo"
-              className="h-[2.8125rem] object-contain"
+            className="h-[2.8125rem] object-contain ml-auto"
           />
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
       {/* Add top padding to main content for mobile so it's not hidden behind navbar */}
       <style jsx global>{`
         @media (max-width: 768px) {
@@ -113,6 +165,4 @@ const Navbar = () => {
       `}</style>
     </>
   );
-};
-
-export default Navbar;
+}

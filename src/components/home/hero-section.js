@@ -1,12 +1,14 @@
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
     <section className="relative w-full hero-section">
       {/* Background Image */}
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-        <img
+        <Image
           src="/images/landingPage.png"
+          fill
           className="w-full h-full object-cover object-top opacity-50"
           alt="Landing Page"
         />
