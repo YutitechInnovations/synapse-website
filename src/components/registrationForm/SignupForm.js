@@ -26,12 +26,6 @@ const SignupForm = () => {
     // Otherwise, set it to false
     // This will disable the button if the passwords do not match
 
-    if (resetPasswordData.email != "") {
-      setPasswordSection(true);
-    } else {
-      setPasswordSection(false);
-    }
-
     if (
       resetPasswordData.password != "" &&
       resetPasswordData.rePassword != "" &&
@@ -46,7 +40,30 @@ const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmited(true);
-    // Handle form submission logic here
+  };
+
+  // Add this handler for the set password form
+  const handleSetPassword = (e) => {
+    e.preventDefault();
+    if (!resetPasswordData.password || resetPasswordData.password !== resetPasswordData.rePassword) {
+      alert('Passwords do not match or are empty.');
+      return;
+    }
+    const users = JSON.parse(localStorage.getItem('mockUsers') || '[]');
+    if (users.find(u => u.email === data.email)) {
+      alert('A user with this email already exists.');
+      return;
+    }
+    users.push({
+      name: data.name,
+      mobile: data.mobile,
+      email: data.email,
+      registrationNumber: data.registrationNumber,
+      password: resetPasswordData.password
+    });
+    localStorage.setItem('mockUsers', JSON.stringify(users));
+    alert('Registration complete! You can now log in.');
+    window.location.href = '/login';
   };
 
   return (
@@ -156,7 +173,7 @@ const SignupForm = () => {
           </p>
           <button
             className="btn-primary cmnbtn w-full"
-            type="submit"
+            type="button"
             disabled={!isApproved}
             onClick={() => setPasswordSection(true)}
           >
@@ -171,7 +188,7 @@ const SignupForm = () => {
             Enter your credentials to access your account
           </p>
 
-          <form>
+          <form onSubmit={handleSetPassword}>
             <div className="mb-6">
               <label className="frm-label" htmlFor="email">
                 Email
@@ -189,6 +206,7 @@ const SignupForm = () => {
                 }
                 placeholder="example@synapse.com"
                 required
+                disabled
               />
             </div>
 
@@ -218,7 +236,7 @@ const SignupForm = () => {
               </label>
               <input
                 className="w-full frm-input focus:outline-none"
-                type="re-password"
+                type="password"
                 id="re-password"
                 value={resetPasswordData.rePassword}
                 onChange={(e) =>

@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
+import Image from 'next/image';
 
 export default function Education() {
   const insightCards = [
@@ -41,8 +42,10 @@ export default function Education() {
                 href={card.link}
                 className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
               >
-                <img
+                <Image
                   src={card.image}
+                  width={595}
+                  height={448}
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -59,8 +62,10 @@ export default function Education() {
                   key={index}
                   className="relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
                 >
-                  <img
+                  <Image
                     src={card.image}
+                    width={595}
+                    height={448}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />

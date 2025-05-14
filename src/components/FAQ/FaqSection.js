@@ -1,4 +1,3 @@
-// eslint-disable-next-line react/display-name
 const FaqSection = () => {
   return (
     <section className="relative w-full">

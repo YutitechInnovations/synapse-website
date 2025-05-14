@@ -1,5 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
+import Image from 'next/image';
 
 const HeroSection = () => {
   const pathname = usePathname();
@@ -10,8 +11,9 @@ const HeroSection = () => {
     <section className="relative w-full">
       {/* Background Image */}
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-        <img
+        <Image
           src={`/images/${isHome ? "bg2.jpg" : isAbout ? "bg3.jpg" : "landingPage3.png"}`}
+          fill
           className="w-full h-full object-cover object-top opacity-50"
           alt="Landing Page"
         />
