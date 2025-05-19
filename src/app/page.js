@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
       <ClientOnly>
-        <Navbar />
+      <Navbar />
       </ClientOnly>
 
       <main

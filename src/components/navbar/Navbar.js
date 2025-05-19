@@ -121,16 +121,16 @@ export default function Navbar() {
             ))}
             {/* Login button for mobile view */}
             {!isLoggedIn && (
-              <li className="block md:hidden w-full mt-8">
-                <a href="/login">
-                  <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
-                    Login
-                  </button>
-                </a>
-              </li>
+            <li className="block md:hidden w-full mt-8">
+              <a href="/login">
+                <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                  Login
+                </button>
+              </a>
+            </li>
             )}
-            </ul>
-          </div>
+          </ul>
+        </div>
 
           {/* Desktop right side: Login or Profile */}
           <span className="hidden md:block" style={{ marginLeft: '30px', marginRight: '30px', color: 'white', fontSize: '24px', fontWeight: 300, userSelect: 'none' }}>|</span>
@@ -153,8 +153,8 @@ export default function Navbar() {
             alt="Logo"
             className="h-[2.8125rem] object-contain ml-auto"
           />
-        </nav>
-      </div>
+      </nav>
+    </div>
       {/* Add top padding to main content for mobile so it's not hidden behind navbar */}
       <style jsx global>{`
         @media (max-width: 768px) {
