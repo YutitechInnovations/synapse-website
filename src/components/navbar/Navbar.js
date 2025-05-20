@@ -5,6 +5,7 @@ import styles from "./navbar.module.css";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from 'next/image';
+import Link from "next/link";
 
 // Minimal, bulletproof mock auth hook
 function useMockAuth() {
@@ -62,19 +63,19 @@ export default function Navbar() {
   if (isLoggedIn === undefined) return null;
 
   const minimalLinks = [
-    { href: "/", label: "Home" },
-    { href: "/education", label: "Education" },
-    { href: "/aboutus", label: "About us" },
-    { href: "/careers", label: "Careers" },
+    { href: "/", label: "Home", key: "home" },
+    { href: "/coming-soon", label: "Education", key: "education" },
+    { href: "/coming-soon", label: "About us", key: "about" },
+    { href: "/coming-soon", label: "Careers", key: "careers" },
   ];
   const figmaLinks = [
-    { href: "/", label: "Home" },
-    { href: "/rxtrack", label: "RxTrack" },
-    { href: "/orthosync", label: "OrthoSync" },
-    { href: "/reward-program", label: "Doctor Reward Program" },
-    { href: "/alignmasters", label: "AlignMasters" },
-    { href: "/e-shop", label: "E-Shop" },
-    { href: "/careers", label: "Careers" },
+    { href: "/", label: "Home", key: "home" },
+    { href: "/coming-soon", label: "RxTrack", key: "rxtrack" },
+    { href: "/coming-soon", label: "OrthoSync", key: "orthosync" },
+    { href: "/coming-soon", label: "Doctor Reward Program", key: "doctor-reward" },
+    { href: "/coming-soon", label: "AlignMasters", key: "alignmasters" },
+    { href: "/coming-soon", label: "E-Shop", key: "eshop" },
+    { href: "/coming-soon", label: "Careers", key: "careers" },
   ];
   const isMinimalPage = !isLoggedIn && (pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education");
   const links = isMinimalPage ? minimalLinks : figmaLinks;
@@ -115,18 +116,18 @@ export default function Navbar() {
           >
             <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:space-x-4 md:gap-[1.875rem] p-8 md:p-0 w-full md:w-auto h-full md:h-auto">
             {links.map((link) => (
-                <li key={link.href} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
+                <li key={link.key} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
                   <NavLink href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</NavLink>
             </li>
             ))}
             {/* Login button for mobile view */}
             {!isLoggedIn && (
             <li className="block md:hidden w-full mt-8">
-              <a href="/login">
+              <Link href="/coming-soon">
                 <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
                   Login
                 </button>
-              </a>
+              </Link>
             </li>
             )}
           </ul>
@@ -136,11 +137,11 @@ export default function Navbar() {
           <span className="hidden md:block" style={{ marginLeft: '30px', marginRight: '30px', color: 'white', fontSize: '24px', fontWeight: 300, userSelect: 'none' }}>|</span>
           <div className="hidden md:flex items-center">
             {!isLoggedIn ? (
-              <a href="/login">
+              <Link href="/coming-soon">
                 <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base">
                   Login
                 </button>
-              </a>
+              </Link>
             ) : (
               <ProfileDropdown onLogout={logout} />
             )}
