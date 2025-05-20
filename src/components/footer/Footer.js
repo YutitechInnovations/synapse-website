@@ -1,5 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -15,11 +16,11 @@ const Footer = () => {
               Bringing technology and expertise in orthodontic solutions.
             </p>
             {showLoginButton && (
-              <a href="/login">
+              <Link href="/coming-soon" key="footer-login">
                 <button className="mt-8 px-10 py-4 bg-white text-[var(--primary)] font-semibold rounded-lg shadow-md hover:bg-gray-100 transition cursor-pointer">
                   Login
                 </button>
-              </a>
+              </Link>
             )}
           </div>
 
@@ -28,24 +29,16 @@ const Footer = () => {
             <h3 className="font-bold">Quick Links</h3>
             <ul className="mt-[13px] flex flex-col font-normal">
               <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Home
-                </a>
+                <Link href="/" key="footer-home" className="hover:underline">Home</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Education
-                </a>
+                <Link href="/coming-soon" key="footer-education" className="hover:underline">Education</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Community
-                </a>
+                <Link href="/coming-soon" key="footer-community" className="hover:underline">Community</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  E-Shop
-                </a>
+                <Link href="/coming-soon" key="footer-eshop" className="hover:underline">E-Shop</Link>
               </li>
             </ul>
           </div>
@@ -55,36 +48,28 @@ const Footer = () => {
             <h3 className="font-bold">Services</h3>
             <ul className="mt-[13px] flex flex-col font-normal">
               <li className="mt-[13px]">
-                <a href="#" className="">
-                  Smile Analysis
-                </a>
+                <Link href="/coming-soon" key="footer-smile-analysis" className="hover:underline">Smile Analysis</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="">
-                  Patient Management
-                </a>
+                <Link href="/coming-soon" key="footer-patient-management" className="hover:underline">Patient Management</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="">
-                  Doctor Rewards
-                </a>
+                <Link href="/coming-soon" key="footer-doctor-rewards" className="hover:underline">Doctor Rewards</Link>
               </li>
               <li className="mt-[13px]">
-                <a href="#" className="">
-                  Patient Rewards
-                </a>
+                <Link href="/coming-soon" key="footer-patient-rewards" className="hover:underline">Patient Rewards</Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Us Section */}
-          <div className="align-self-start text-base w-full md:w-auto">
+          <div className="mb-6 md:mb-0 text-base w-full md:w-auto">
             <h3 className="font-bold">Contact Us</h3>
-            <p className="mt-[13px]">+1 (555) 123-4567</p>
-            <p className="mt-[13px]">contact@synapse.com</p>
-            <p className="mt-[13px]">123 Technology Drive,</p>
-            <p>Suite 400 San,</p>
-            <p> Francisco, CA 94107</p>
+            <ul className="mt-[13px] flex flex-col font-normal">
+              <li className="mt-[13px]">Email: info@synapse.com</li>
+              <li className="mt-[13px]">Phone: +1 (555) 123-4567</li>
+              <li className="mt-[13px]">Address: 123 Education St, Learning City</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -93,15 +78,12 @@ const Footer = () => {
           &copy; 2025 Synapse. All rights reserved.
         </p>
         <div className="flex space-x-5 mt-4 md:mt-0">
-          <a href="/privacy-policy" className="flex space-x-4 hover:underline">
+          <Link href="/coming-soon" key="footer-privacy" className="hover:underline">
             Privacy Policy
-          </a>
-          <a
-            href="/terms-of-service"
-            className="flex space-x-4 hover:underline"
-          >
+          </Link>
+          <Link href="/coming-soon" key="footer-terms" className="hover:underline">
             Terms of Service
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
