@@ -5,21 +5,20 @@ let items = [
   {
     title: "Vision Statement",
     description:
-      "To redefine how dental practices grow and connect—by enabling a future where every patient journey is informed, personalized, and seamlessly supported through intelligent, integrated care.",
-    image: "/images/vision.jpg",
-    
+      "To elevate clinical practices through personalized care solutions that enhance every patient journey.",
+    image: "/images/vision.png",
   },
   {
     title: "Mission Statement",
     description:
-      "We are out on a mission to empower dental professionals with seamless support across clinical and practice needs—delivering reliable, innovative solutions that foster transparency, elevate patient experiences, and build enduring relationships through informed, personalized care.",
-    image: "/images/mission.jpg",
+      "Our purpose is to empower dental professionals with evidence-based, personalized solutions that streamline clinical workflows, support continuous learning, and enhance patient outcomes through every stage of care.",
+    image: "/images/mission.png",
   },
 ];
 
 const MissionNVision = () => {
   return (
-    <section className="w-full">
+    <section className="w-full" style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}>
       <div className="w-full flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
         <ZigZagCard items={items} />
       </div>
