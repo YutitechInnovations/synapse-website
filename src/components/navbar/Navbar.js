@@ -86,7 +86,14 @@ export default function Navbar() {
     { href: "/e-shop", label: "E-Shop" },
     { href: "/careers", label: "Careers" },
   ];
-  const isMinimalPage = !isLoggedIn && (pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education");
+  const isMinimalPage = !isLoggedIn && (
+    pathname === "/" ||
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/aboutus" ||
+    pathname === "/education" ||
+    pathname === "/aligners"
+  );
   const links = isMinimalPage ? minimalLinks : figmaLinks;
 
   return (
