@@ -63,13 +63,13 @@ export default function Aligners() {
               <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
                 <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ SM</div>
                 <div className="text-base font-semibold text-[#195B48] text-center">Our Shape Memory Aligner Option</div>
-              </div>
+            </div>
             </Link>
             <Link href="/aligners-biosmart-t" className="flex-1">
               <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
                 <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ T</div>
                 <div className="text-base font-semibold text-[#195B48] text-center">Our Thermoformed Aligner Option</div>
-              </div>
+            </div>
             </Link>
           </div>
           {/* Variant Container */}
