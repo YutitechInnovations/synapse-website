@@ -92,7 +92,9 @@ export default function Navbar() {
     pathname === "/signup" ||
     pathname === "/aboutus" ||
     pathname === "/education" ||
-    pathname === "/aligners"
+    pathname === "/aligners" ||
+    pathname === "/aligners-biosmart-sm" ||
+    pathname === "/aligners-biosmart-t"
   );
   const links = isMinimalPage ? minimalLinks : figmaLinks;
 

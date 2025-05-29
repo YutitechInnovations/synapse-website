@@ -1,6 +1,5 @@
 import ClientOnly from "../components/ClientOnly";
 import Navbar from "../components/navbar/Navbar.js";
-import Footer from "../components/footer/Footer.js";
 import HeroSection from "../components/home/hero-section.js";
 import ServicesOffered from "../components/home/ServicesOffered.js";
 import PreLoginFeatureSection from "../components/home/PreLoginFeatureSection.js";
@@ -16,7 +15,6 @@ export default function Home() {
         <ServicesOffered />
         <PreLoginFeatureSection />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/footer/Footer';
 import Image from 'next/image';
 
 export default function Education() {
@@ -82,7 +81,6 @@ export default function Education() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 } 

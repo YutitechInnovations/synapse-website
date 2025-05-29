@@ -3,7 +3,6 @@
 import RewardStats from '@/components/RewardStats';
 import RewardHistory from '@/components/RewardHistory';
 import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/footer/Footer';
 
 export default function RewardProgram() {
   const rewardHistory = [
@@ -52,9 +51,9 @@ export default function RewardProgram() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FFEDEC4D]">
+    <div className="min-h-screen flex flex-col bg-[#F8FAF9]">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow w-full pt-[100px]">
         <div className="max-w-screen-lg mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl md:text-5xl leading-[1.2] font-semibold text-[#004C44] text-center mt-20 md:mt-40 mb-4">
             Doctor Reward Program
@@ -150,7 +149,6 @@ export default function RewardProgram() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 } 

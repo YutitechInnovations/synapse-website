@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Aligners() {
   return (
@@ -31,7 +32,7 @@ export default function Aligners() {
       </section>
 
       {/* Smart Force Section */}
-      <section className="w-full flex justify-center">
+      <section className="w-full flex justify-center bg-[#F6F6F3]">
         <div
           className="w-[1082px] h-auto flex flex-col items-center text-center gap-[30px] mt-[100px] mx-[179px]"
         >
@@ -56,17 +57,23 @@ export default function Aligners() {
           <p className="text-lg text-[#195B48] text-center mb-10">
             Click on the system that fits your treatment philosophy to know more
           </p>
-          <div className="flex flex-row w-full gap-8 mb-10">
-            <div className="flex-1 border border-[#B6C3C7] rounded-[20px] p-8 flex flex-col items-center justify-center min-h-[110px] transition hover:shadow-md bg-white">
-              <div className="text-2xl font-bold text-[#195B48] mb-2">BioSmart™ SM</div>
-              <div className="text-base font-semibold text-[#195B48]">Our Shape Memory Aligner Option</div>
-            </div>
-            <div className="flex-1 border border-[#B6C3C7] rounded-[20px] p-8 flex flex-col items-center justify-center min-h-[110px] transition hover:shadow-md bg-white">
-              <div className="text-2xl font-bold text-[#195B48] mb-2">BioSmart™ T</div>
-              <div className="text-base font-semibold text-[#195B48]">Our Thermoformed Aligner Option</div>
-            </div>
+          {/* Cards Row */}
+          <div className="flex flex-row w-full max-w-[1040px] mx-auto gap-8 mb-10">
+            <Link href="/aligners-biosmart-sm" className="flex-1">
+              <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
+                <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ SM</div>
+                <div className="text-base font-semibold text-[#195B48] text-center">Our Shape Memory Aligner Option</div>
+              </div>
+            </Link>
+            <Link href="/aligners-biosmart-t" className="flex-1">
+              <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
+                <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ T</div>
+                <div className="text-base font-semibold text-[#195B48] text-center">Our Thermoformed Aligner Option</div>
+              </div>
+            </Link>
           </div>
-          <div className="w-[1240px] h-[424px] rounded-[20px] border border-[#B6C3C7] bg-white flex flex-row items-center justify-between overflow-hidden">
+          {/* Variant Container */}
+          <div className="w-full max-w-[1040px] mx-auto h-[320px] rounded-[20px] border border-[#B6C3C7] bg-white flex flex-row items-center justify-between overflow-hidden">
             <div className="flex-1 h-full flex flex-col justify-center pl-10 pr-6">
               <p className="text-xl text-[#195B48] mb-4">
                 And each system is available in three variants tailored<br />
@@ -78,7 +85,7 @@ export default function Aligners() {
                 <li><span className="font-bold">RxPro+</span> – For complex, multi-phase treatments</li>
               </ul>
             </div>
-            <div className="w-[424px] h-[424px] flex-shrink-0">
+            <div className="w-[320px] h-full flex-shrink-0">
               <img
                 src="/images/rxf.png"
                 alt="Doctor with aligner"
