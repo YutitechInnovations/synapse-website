@@ -20,23 +20,23 @@ const Footer = () => {
   const showLoginButton = ["/", "/login", "/signup", "/aboutus", "/education", "/faq", "/aligners", "/aligners-biosmart-sm", "/aligners-biosmart-t"].includes(pathname);
   return (
     <footer className="w-full bg-[#08544A] pt-0">
-      <div className="w-[1440px] max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0 p-[100px]" style={{height: 389}}>
+      <div className="w-full max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0 px-2 py-8 md:w-[1440px] md:max-w-[1440px] md:p-[100px] footer">
         {/* Left: Logo and tagline */}
         <div className="flex flex-col items-start md:w-1/3 mb-8 md:mb-0">
           <Image src="/images/logo.png" alt="Synapse Logo" width={160} height={40} className="mb-4" />
           <p className="text-white text-lg mb-8">Bridging technology and expertise.</p>
-            {showLoginButton && (
-              <a href="/login">
+          {showLoginButton && (
+            <a href="/login">
               <button className="bg-white text-[#08544A] font-semibold rounded-lg px-8 py-3 shadow-md hover:bg-gray-100 transition cursor-pointer text-lg">
-                  Login
-                </button>
-              </a>
-            )}
-          </div>
+                Login
+              </button>
+            </a>
+          )}
+        </div>
         {/* Center: Quick Links */}
         <div className="flex flex-col md:w-1/3 items-center">
           <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
-          <div className="flex flex-row gap-[98px]">
+          <div className="flex flex-col md:flex-row gap-[98px]">
             <ul className="space-y-2 text-base font-normal">
               {leftLinks.map(link => (
                 <li key={link.href}>
@@ -45,8 +45,8 @@ const Footer = () => {
                     className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
                   >
                     {link.label}
-                </a>
-              </li>
+                  </a>
+                </li>
               ))}
             </ul>
             <ul className="space-y-2 text-base font-normal">
@@ -57,8 +57,8 @@ const Footer = () => {
                     className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
                   >
                     {link.label}
-                </a>
-              </li>
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

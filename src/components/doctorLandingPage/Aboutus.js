@@ -32,27 +32,25 @@ const Aboutus = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center">
       <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-0 text-[#184C3A]"
-        style={{ marginTop: 100, marginLeft: 176, marginRight: 176 }}
+        className="text-3xl md:text-4xl font-bold text-center mb-0 text-[#184C3A] mt-[100px] mx-4 md:mx-[176px]"
       >
         Synapse Core Team
       </h2>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl w-full"
-        style={{ marginTop: 50, marginLeft: 100, marginRight: 100, marginBottom: 100 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-full px-2 md:max-w-6xl md:px-0 mt-[50px] mb-[100px]"
       >
         {team.map((member, idx) => (
-          <div key={idx} className="flex flex-row items-center bg-white border border-[#184C3A] rounded-2xl p-8 min-h-[240px] shadow-sm">
+          <div key={idx} className="flex flex-col md:flex-row items-center bg-white border border-[#184C3A] rounded-2xl p-4 md:p-8 min-h-[240px] shadow-sm w-full">
             <div className="flex-shrink-0">
               <Image
                 src={member.image}
                 alt={member.name}
-                width={140}
-                height={140}
-                className="rounded-lg object-cover"
+                width={100}
+                height={100}
+                className="rounded-lg object-cover w-24 h-24 md:w-[140px] md:h-[140px]"
               />
             </div>
-            <div className="ml-8 flex flex-col justify-center">
+            <div className="mt-4 md:mt-0 ml-0 md:ml-8 flex flex-col justify-center w-full">
               <div className="text-[#184C3A] text-xl md:text-2xl font-bold mb-1">{member.name}</div>
               <div className="text-[#184C3A] text-lg font-bold mb-1">{member.title}</div>
               <div className="text-[#184C3A] text-base font-normal">{member.description}</div>
