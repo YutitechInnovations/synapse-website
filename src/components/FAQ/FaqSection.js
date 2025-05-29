@@ -1,4 +1,3 @@
-// eslint-disable-next-line react/display-name
 const FaqSection = () => {
   return (
     <section className="relative w-full">
@@ -36,9 +35,9 @@ const FaqSection = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-[798px] mx-auto px-4 py-16">
-        <div className="space-y-4">
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+      <div className="w-full flex justify-center px-2 sm:px-4 py-8 sm:py-16">
+        <div className="space-y-4 w-full max-w-2xl">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span>Is Aligner treatment painful?</span>
               <svg
@@ -61,7 +60,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">Are there food restrictions during aligner treatment?</span>
               <svg
@@ -84,7 +83,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">Can I drink hot or cold beverages while wearing my aligners?</span>
               <svg
@@ -107,7 +106,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">Can I chew gum while wearing aligners?</span>
               <svg
@@ -130,7 +129,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0  card2 border-light group cursor-pointer">
+          <details className="card card-p-0  card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">Will smoking or chewing tobacco stain my aligners?</span>
               <svg
@@ -153,7 +152,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">How much should I soak direct aligner in hot water?</span>
               <svg
@@ -176,7 +175,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">What should I do if I lose or break an aligner?</span>
               <svg
@@ -199,7 +198,7 @@ const FaqSection = () => {
             </div>
           </details>
 
-          <details className="card card-p-0 card2 border-light group cursor-pointer">
+          <details className="card card-p-0 card2 border-light group cursor-pointer" style={{ borderRadius: '20px', borderWidth: '1px', padding: '30px' }}>
             <summary className="flex justify-between items-center">
               <span className="font-semibold text-lg">What happens if I lose or break an attachment?</span>
               <svg

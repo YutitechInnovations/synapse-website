@@ -1,107 +1,86 @@
 "use client";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+
+const leftLinks = [
+  { label: "OrthoSync™", href: "/orthosync" },
+  { label: "RxTrack™", href: "/rxtrack" },
+  { label: "AlignMasters™", href: "/alignmasters" },
+  { label: "E-Shop", href: "/e-shop" },
+];
+const rightLinks = [
+  { label: "Home", href: "/" },
+  { label: "Education", href: "/education" },
+  { label: "FAQs", href: "/faq" },
+  { label: "Careers", href: "/careers" },
+];
 
 const Footer = () => {
   const pathname = usePathname();
-  const showLoginButton = ["/", "/login", "/signup", "/aboutus"].includes(pathname);
+  const showLoginButton = ["/", "/login", "/signup", "/aboutus", "/education", "/faq", "/aligners", "/aligners-biosmart-sm", "/aligners-biosmart-t"].includes(pathname);
   return (
-    <footer className="w-full items-center justify-items-center">
-      <div className="bg-[#004C44] p-[20px] md:py-[50px] md:py-0 w-full  gap-[50px]">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between text-white space-y-8 md:space-y-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {/* Left Section */}
-          <div className="mb-6 md:mb-10 w-full md:w-[365px] lg:w-[300px] col-span-2 md:col-span-3 lg:col-span-1">
-            <h2 className="text-2xl font-bold">SYNAPSE</h2>
-            <p className="mt-5 text-lg md:text-xl font-normal">
-              Bringing technology and expertise in orthodontic solutions.
-            </p>
+    <footer className="w-full bg-[#08544A] pt-0">
+      <div className="w-[1440px] max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0 p-[100px]" style={{height: 389}}>
+        {/* Left: Logo and tagline */}
+        <div className="flex flex-col items-start md:w-1/3 mb-8 md:mb-0">
+          <Image src="/images/logo.png" alt="Synapse Logo" width={160} height={40} className="mb-4" />
+          <p className="text-white text-lg mb-8">Bridging technology and expertise.</p>
             {showLoginButton && (
               <a href="/login">
-                <button className="mt-8 px-10 py-4 bg-white text-[var(--primary)] font-semibold rounded-lg shadow-md hover:bg-gray-100 transition">
+              <button className="bg-white text-[#08544A] font-semibold rounded-lg px-8 py-3 shadow-md hover:bg-gray-100 transition cursor-pointer text-lg">
                   Login
                 </button>
               </a>
             )}
           </div>
-
-          {/* Quick Links Section */}
-          <div className="mb-6 md:mb-0 text-base w-full md:w-auto">
-            <h3 className="font-bold">Quick Links</h3>
-            <ul className="mt-[13px] flex flex-col font-normal">
-              <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Home
+        {/* Center: Quick Links */}
+        <div className="flex flex-col md:w-1/3 items-center">
+          <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
+          <div className="flex flex-row gap-[98px]">
+            <ul className="space-y-2 text-base font-normal">
+              {leftLinks.map(link => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                  >
+                    {link.label}
                 </a>
               </li>
-              <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Education
+              ))}
+            </ul>
+            <ul className="space-y-2 text-base font-normal">
+              {rightLinks.map(link => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                  >
+                    {link.label}
                 </a>
               </li>
-              <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  Community
-                </a>
-              </li>
-              <li className="mt-[13px]">
-                <a href="#" className="pointer">
-                  E-Shop
-                </a>
-              </li>
+              ))}
             </ul>
           </div>
-
-          {/* Services Section */}
-          <div className="mb-6 md:mb-0 text-base w-full md:w-auto">
-            <h3 className="font-bold">Services</h3>
-            <ul className="mt-[13px] flex flex-col font-normal">
-              <li className="mt-[13px]">
-                <a href="#" className="">
-                  Smile Analysis
-                </a>
-              </li>
-              <li className="mt-[13px]">
-                <a href="#" className="">
-                  Patient Management
-                </a>
-              </li>
-              <li className="mt-[13px]">
-                <a href="#" className="">
-                  Doctor Rewards
-                </a>
-              </li>
-              <li className="mt-[13px]">
-                <a href="#" className="">
-                  Patient Rewards
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Us Section */}
-          <div className="align-self-start text-base w-full md:w-auto">
-            <h3 className="font-bold">Contact Us</h3>
-            <p className="mt-[13px]">+1 (555) 123-4567</p>
-            <p className="mt-[13px]">contact@synapse.com</p>
-            <p className="mt-[13px]">123 Technology Drive,</p>
-            <p>Suite 400 San,</p>
-            <p> Francisco, CA 94107</p>
+        </div>
+        {/* Right: Contact Us */}
+        <div className="flex flex-col md:w-1/3 items-end">
+          <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
+          <div className="text-right">
+            <p className="text-white text-base mb-1">+1 (555) 123-4567</p>
+            <p className="text-white text-base mb-1">contact@synapse.com</p>
+            <p className="text-white text-base">123 Technology Drive,<br />Suite 400 San<br />Francisco, CA 94107</p>
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-center w-full h-auto md:h-[108px] px-5 md:px-25 pt-[30px] pb-[52px]">
-        <p className="text-sm font-normal text-center md:text-left">
-          &copy; 2025 Synapse. All rights reserved.
-        </p>
-        <div className="flex space-x-5 mt-4 md:mt-0">
-          <a href="/privacy-policy" className="flex space-x-4 hover:underline">
-            Privacy Policy
-          </a>
-          <a
-            href="/terms-of-service"
-            className="flex space-x-4 hover:underline"
-          >
-            Terms of Service
-          </a>
+      {/* Bottom Bar */}
+      <div className="w-full bg-white mt-0 py-4">
+        <div className="w-[1440px] max-w-full mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-0">
+          <p className="text-[#08544A] text-sm text-center md:text-left mb-2 md:mb-0">© 2025 Synapse. All rights reserved.</p>
+          <div className="flex space-x-6 mt-0 md:mt-0">
+            <a href="/privacy-policy" className="text-[#08544A] text-sm hover:underline">Privacy Policy</a>
+            <a href="/terms-of-service" className="text-[#08544A] text-sm hover:underline">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>

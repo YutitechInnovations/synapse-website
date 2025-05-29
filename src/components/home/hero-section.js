@@ -1,37 +1,29 @@
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full">
+    <section className="relative w-full hero-section">
       {/* Background Image */}
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-        <img
-          src="/images/landingPage.png"
-          className="w-full h-full object-cover object-top opacity-50"
-          alt="Landing Page"
+        <Image
+          src="/images/bg2.jpg"
+          fill
+          className="w-full h-full object-cover object-center"
+          alt="Hero Background"
         />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-white/60" />
       </div>
       {/* Content */}
-      <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex items-start justify-start pt-10 md:pt-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-2xl">
-          <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-4 md:mb-6">
-            Bridging Technology and<br />Expertise in Orthodontics
+      <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 px-2 sm:px-4 md:px-8 lg:px-16">
+        <div className="max-w-3xl w-full">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
+            Designed for the<br />Smiles You Shape
           </h1>
-          <p className="font-medium text-sm sm:text-base md:text-xl mb-4 md:mb-6">
-            Synapse revolutionizes orthodontic care with advanced technology
-            solutions, connecting practitioners with innovative tools for superior patient outcomes.
+          <p className="text-base md:text-xl font-medium text-[#184C3A]">
+            At Synapse, biomechanical insights and personalized workflows come together to support your clinical precision and elevate every treatment journey. From meticulous treatment planning to diligent manufacturing, each solution is crafted for comfort, control, and optimal outcomes. Backed by the latest in 3D technology, our partnership is built around your expertise—and every smile you help create.
           </p>
-
-          <div className="flex flex-wrap gap-4 md:gap-6">
-            <Link href="/orthosynce">
-              <button className="btn-primary cmnbtn">Access OrthoSync</button>
-            </Link>
-            <Link href="/smile-analysis">
-              <button variant="outline" className="cmnbtn btn-outline">
-                Try Smile Analysis
-              </button>
-            </Link>
-          </div>
         </div>
       </div>
     </section>

@@ -1,47 +1,64 @@
 import React from "react";
+import Image from "next/image";
+
+const team = [
+  {
+    name: "Sujit Hota",
+    title: "CEO & Co-Founder",
+    description: "IIM C Alum (>25 years of dental industry experience)",
+    image: "/images/sujit.png",
+  },
+  {
+    name: "Prabakar KP",
+    title: "COO & Co-Founder",
+    description: "IIML Alum (>15 years of dental + software experience)",
+    image: "/images/prabhakar.png",
+  },
+  {
+    name: "Dr Harmeet Kaur",
+    title: "Manager, Clinical & Education",
+    description: "Orthodontist (>8 years of experience)",
+    image: "/images/harmeet.png",
+  },
+  {
+    name: "Dr Ayushi",
+    title: "Customer Success Manager",
+    description: "Orthodontist (>3 years of experience)",
+    image: "/images/ayushi.png",
+  },
+];
 
 const Aboutus = () => {
   return (
-    <section className="w-full py-10 md:py-16 lg:py-20" style={{ background: '#FFFFFF' }}>
-      <div className="max-w-screen-lg mx-auto px-4 md:px-8 flex flex-col items-start justify-center gap-4 md:gap-8">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#004C44] mb-2 md:mb-4">About Us</h2>
-        <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-8 md:mb-12 max-w-3xl">
-          Led by an experienced team with a strong background in the oral care industry, we aim to combine practical insights and a clear direction to support modern dental practices.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
-          <div className="border rounded-[1rem] p-4 md:p-6 bg-white flex gap-4 md:gap-6 items-center">
-            <img src="/images/doc.jpg" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] rounded-[0.625rem] object-cover" alt="Sujit Hota" />
-            <div>
-              <div className="font-bold text-[#004C44] text-base md:text-lg mb-1">Sujit Hota</div>
-              <div className="font-semibold text-[#004C44] text-sm md:text-base mb-1">CEO & MD</div>
-              <div className="text-[#004C44] text-xs md:text-sm">IIM C Alum (&gt;25 years of dental industry experience)</div>
+    <section className="w-full flex flex-col items-center justify-center">
+      <h2
+        className="text-3xl md:text-4xl font-bold text-center mb-0 text-[#184C3A]"
+        style={{ marginTop: 100, marginLeft: 176, marginRight: 176 }}
+      >
+        Synapse Core Team
+      </h2>
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl w-full"
+        style={{ marginTop: 50, marginLeft: 100, marginRight: 100, marginBottom: 100 }}
+      >
+        {team.map((member, idx) => (
+          <div key={idx} className="flex flex-row items-center bg-white border border-[#184C3A] rounded-2xl p-8 min-h-[240px] shadow-sm">
+            <div className="flex-shrink-0">
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={140}
+                height={140}
+                className="rounded-lg object-cover"
+              />
+            </div>
+            <div className="ml-8 flex flex-col justify-center">
+              <div className="text-[#184C3A] text-xl md:text-2xl font-bold mb-1">{member.name}</div>
+              <div className="text-[#184C3A] text-lg font-bold mb-1">{member.title}</div>
+              <div className="text-[#184C3A] text-base font-normal">{member.description}</div>
             </div>
           </div>
-          <div className="border rounded-[1rem] p-4 md:p-6 bg-white flex gap-4 md:gap-6 items-center">
-            <img src="/images/doc2.jpg" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] rounded-[0.625rem] object-cover" alt="Prabakar KP" />
-            <div>
-              <div className="font-bold text-[#004C44] text-base md:text-lg mb-1">Prabakar KP</div>
-              <div className="font-semibold text-[#004C44] text-sm md:text-base mb-1">COO & Co-Founder</div>
-              <div className="text-[#004C44] text-xs md:text-sm">IIML Alum (&gt;15 years of dental + software experience)</div>
-            </div>
-          </div>
-          <div className="border rounded-[1rem] p-4 md:p-6 bg-white flex gap-4 md:gap-6 items-center">
-            <img src="/images/doc3.jpg" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] rounded-[0.625rem] object-cover" alt="Dr Harmeet Kaur" />
-            <div>
-              <div className="font-bold text-[#004C44] text-base md:text-lg mb-1">Dr Harmeet Kaur</div>
-              <div className="font-semibold text-[#004C44] text-sm md:text-base mb-1">Manager, Clinical & Education</div>
-              <div className="text-[#004C44] text-xs md:text-sm">Orthodontist (&gt;8 years of experience)</div>
-            </div>
-          </div>
-          <div className="border rounded-[1rem] p-4 md:p-6 bg-white flex gap-4 md:gap-6 items-center">
-            <img src="/images/doc4.jpg" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] rounded-[0.625rem] object-cover" alt="Dr Ayushi" />
-            <div>
-              <div className="font-bold text-[#004C44] text-base md:text-lg mb-1">Dr Ayushi</div>
-              <div className="font-semibold text-[#004C44] text-sm md:text-base mb-1">Customer Success Manager</div>
-              <div className="text-[#004C44] text-xs md:text-sm">Orthodontist (&gt;3 years of experience)</div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

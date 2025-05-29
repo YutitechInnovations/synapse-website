@@ -1,11 +1,13 @@
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function EngagementSection() {
   return (
     <>
       <div className="relative w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-        <img
+        <Image
           src="/images/landingPage2.png"
+          fill
           className="w-full h-full object-cover opacity-50"
           alt="Landing Page"
         />
