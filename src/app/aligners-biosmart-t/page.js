@@ -37,7 +37,7 @@ export default function BioSmartT() {
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16">
           <div className="w-full max-w-[976px] px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: '100%' }}>
             <p className="text-[#195B48] text-center w-full">
-              BioSmart™ T brings together advanced material science and precision modeling for aligners that are anything but old-school. This is tried-and-true—reimagined for today's practice.
+              BioSmart™ T brings together advanced material science and precision modeling for aligners that are anything but old-school. This is tried-and-true—reimagined for today&apos;s practice.
             </p>
           </div>
         </section>
@@ -57,11 +57,14 @@ export default function BioSmartT() {
                 <p className="text-base md:text-lg text-[#195B48] max-w-md">A multi-layered sheet structure with a responsive core offers higher durability, better elasticity, and reduced initial force—all engineered for smooth, controlled movement.</p>
               </div>
               <div className="flex-1 flex justify-center md:justify-end items-center">
-                <img 
-                  src="/images/layers.png" 
-                  alt="Layered Structure" 
-                  className="w-full max-w-[500px] h-auto md:h-[456px] md:ml-[63px] object-contain rounded-[16px]"
-                />
+                <div className="relative w-full max-w-[500px] h-[456px] md:ml-[63px]">
+                  <Image 
+                    src="/images/layers.png" 
+                    alt="Layered Structure" 
+                    fill
+                    className="object-contain rounded-[16px]"
+                  />
+                </div>
               </div>
             </div>
 
@@ -78,11 +81,14 @@ export default function BioSmartT() {
                 <p className="text-lg md:text-xl text-[#195B48]">Built for flexibility and strength, these aligners handle complex movements with confidence—while offering a break-resistant, attachment-compatible surface clinicians trust.</p>
               </div>
               <div className="flex-1 h-full flex items-center justify-center md:justify-end">
-                <img 
-                  src="/images/patient.jpg" 
-                  alt="Patient Friendly" 
-                  className="w-full max-w-[625px] h-auto md:h-[456px] object-cover rounded-[20px]"
-                />
+                <div className="relative w-full max-w-[625px] h-[456px]">
+                  <Image 
+                    src="/images/patient.jpg" 
+                    alt="Patient Friendly" 
+                    fill
+                    className="object-cover rounded-[20px]"
+                  />
+                </div>
               </div>
             </div>
 

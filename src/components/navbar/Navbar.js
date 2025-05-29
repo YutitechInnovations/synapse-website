@@ -94,7 +94,8 @@ export default function Navbar() {
     pathname === "/education" ||
     pathname === "/aligners" ||
     pathname === "/aligners-biosmart-sm" ||
-    pathname === "/aligners-biosmart-t"
+    pathname === "/aligners-biosmart-t" ||
+    pathname === "/careers"
   );
   const links = isMinimalPage ? minimalLinks : figmaLinks;
 
@@ -141,7 +142,8 @@ export default function Navbar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
+                  className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors focus:outline-none"
+                  style={{ background: 'none', color: 'inherit', boxShadow: 'none' }}
                   onClick={() => setProductDropdown((v) => !v)}
                 >
                   Product
@@ -149,12 +151,13 @@ export default function Navbar() {
                 </button>
                 {/* Dropdown menu */}
                 <div
-                  className={`$${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px] bg-white shadow-lg rounded-md py-2 z-50 group-hover:block`}
-                  style={{ display: productDropdown ? 'block' : 'none' }}
+                  className={`$${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full bg-[#004c4494] rounded-md py-2 z-50 group-hover:block shadow-lg`}
+                  style={{ display: productDropdown ? 'block' : 'none', minWidth: '0', width: '100%' }}
                 >
                   <a
                     href="/aligners"
-                    className="block px-4 py-2 text-[#195B48] hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                    className="block px-4 py-2 text-white hover:bg-[#195B48] hover:text-white transition-colors rounded-md text-center"
+                    style={{ minWidth: '0', width: '100%' }}
                   >
                     Aligners
                   </a>
