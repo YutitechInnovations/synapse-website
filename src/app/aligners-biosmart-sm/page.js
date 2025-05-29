@@ -37,7 +37,7 @@ export default function BioSmartSM() {
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16">
           <div className="w-full max-w-[976px] px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: '100%' }}>
             <p className="text-[#195B48] text-center w-full">
-              Forget the old rules. With Bio… Shape Memory Aligners by Synapse, you're not just upgrading materials—you're upgrading possibilities. Designed for precision, built for consistency, and aligned with sustainability, this is innovation at its most responsive.
+              Forget the old rules. With Bio… Shape Memory Aligners by Synapse, you&apos;re not just upgrading materials—you&apos;re upgrading possibilities. Designed for precision, built for consistency, and aligned with sustainability, this is innovation at its most responsive.
             </p>
           </div>
         </section>
@@ -53,11 +53,14 @@ export default function BioSmartSM() {
                 </div>
               </div>
               <div className="flex-1 flex justify-center md:justify-start items-center">
-                <img 
-                  src="/images/resin.png" 
-                  alt="Resin Precision" 
-                  className="w-full max-w-[600.91px] h-auto md:h-[284px] md:mt-[70px] md:ml-[12.04px] object-contain"
-                />
+                <div className="relative w-full max-w-[600.91px] h-[284px] md:mt-[70px] md:ml-[12.04px]">
+                  <Image 
+                    src="/images/resin.png" 
+                    alt="Resin Precision" 
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
 
@@ -78,7 +81,14 @@ export default function BioSmartSM() {
                 <p className="text-base md:text-lg text-[#195B48]">Our shape memory polymer maintains steady force over time—longer, more consistent, more controlled. That sustained force plays a key role in reducing unnecessary refinements and improving treatment rhythm.</p>
               </div>
               <div className="flex-1 flex justify-center items-center">
-                <img src="/images/smp.png" alt="Shape Memory Polymer" className="w-full max-w-[320px] h-auto" />
+                <div className="relative w-full max-w-[320px] h-[320px]">
+                  <Image 
+                    src="/images/smp.png" 
+                    alt="Shape Memory Polymer" 
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
 
@@ -89,7 +99,14 @@ export default function BioSmartSM() {
                 <p className="text-base md:text-lg text-[#195B48]">Our nitrogen-based curing process minimizes oxygen interference, delivering clarity and long-term durability.</p>
               </div>
               <div className="flex-1 flex justify-center">
-                <img src="/images/nbcp.png" alt="Curing Chart" className="w-full max-w-[320px] h-auto" />
+                <div className="relative w-full max-w-[320px] h-[320px]">
+                  <Image 
+                    src="/images/nbcp.png" 
+                    alt="Curing Chart" 
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
 
