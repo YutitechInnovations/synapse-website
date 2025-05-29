@@ -56,7 +56,17 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isLoggedIn, login, logout } = useMockAuth();
-  // All hooks above this line, no early return
+  // Dropdown state for Product (move up)
+  const [productDropdown, setProductDropdown] = useState(false);
+  const productRef = useRef();
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (productRef.current && !productRef.current.contains(e.target)) setProductDropdown(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
 
   // Only render after login state is known
   if (isLoggedIn === undefined) return null;
@@ -76,7 +86,16 @@ export default function Navbar() {
     { href: "/e-shop", label: "E-Shop" },
     { href: "/careers", label: "Careers" },
   ];
-  const isMinimalPage = !isLoggedIn && (pathname === "/" || pathname === "/login" || pathname === "/signup" || pathname === "/aboutus" || pathname === "/education");
+  const isMinimalPage = !isLoggedIn && (
+    pathname === "/" ||
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/aboutus" ||
+    pathname === "/education" ||
+    pathname === "/aligners" ||
+    pathname === "/aligners-biosmart-sm" ||
+    pathname === "/aligners-biosmart-t"
+  );
   const links = isMinimalPage ? minimalLinks : figmaLinks;
 
   return (
@@ -101,11 +120,6 @@ export default function Navbar() {
               <span className="block w-7 h-1 bg-white rounded mb-1"></span>
               <span className="block w-7 h-1 bg-white rounded"></span>
             </button>
-            <div className="hidden md:flex flex-col gap-1">
-              <span className="block w-7 h-1 bg-white rounded"></span>
-              <span className="block w-7 h-1 bg-white rounded"></span>
-              <span className="block w-7 h-1 bg-white rounded"></span>
-            </div>
           </div>
 
           {/* Mobile menu */}
@@ -114,23 +128,60 @@ export default function Navbar() {
             style={{}}
           >
             <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:space-x-4 md:gap-[1.875rem] p-8 md:p-0 w-full md:w-auto h-full md:h-auto">
-            {links.map((link) => (
+              {/* Home link */}
+              <li className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
+                <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+              </li>
+              {/* Product dropdown */}
+              <li
+                className="relative w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center group"
+                ref={productRef}
+                onMouseEnter={() => setProductDropdown(true)}
+                onMouseLeave={() => setProductDropdown(false)}
+              >
+                <button
+                  type="button"
+                  className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
+                  onClick={() => setProductDropdown((v) => !v)}
+                >
+                  Product
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {/* Dropdown menu */}
+                <div
+                  className={`$${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px] bg-white shadow-lg rounded-md py-2 z-50 group-hover:block`}
+                  style={{ display: productDropdown ? 'block' : 'none' }}
+                >
+                  <a
+                    href="/aligners"
+                    className="block px-4 py-2 text-[#195B48] hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                  >
+                    Aligners
+                  </a>
+                </div>
+              </li>
+              {/* Education link */}
+              <li className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
+                <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
+              </li>
+              {/* Render the rest of the links */}
+              {links.filter(link => !['/', '/education'].includes(link.href)).map((link) => (
                 <li key={link.href} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
                   <NavLink href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</NavLink>
-            </li>
-            ))}
-            {/* Login button for mobile view */}
-            {!isLoggedIn && (
-            <li className="block md:hidden w-full mt-8">
-              <a href="/login">
-                <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
-                  Login
-                </button>
-              </a>
-            </li>
-            )}
-          </ul>
-        </div>
+                </li>
+              ))}
+              {/* Login button for mobile view */}
+              {!isLoggedIn && (
+                <li className="block md:hidden w-full mt-8">
+                  <a href="/login">
+                    <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                      Login
+                    </button>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
 
           {/* Desktop right side: Login or Profile */}
           <span className="hidden md:block" style={{ marginLeft: '30px', marginRight: '30px', color: 'white', fontSize: '24px', fontWeight: 300, userSelect: 'none' }}>|</span>

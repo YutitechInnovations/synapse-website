@@ -7,33 +7,23 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
         <Image
-          src="/images/landingPage.png"
+          src="/images/bg2.jpg"
           fill
-          className="w-full h-full object-cover object-top opacity-50"
-          alt="Landing Page"
+          className="w-full h-full object-cover object-center"
+          alt="Hero Background"
         />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-white/60" />
       </div>
       {/* Content */}
       <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 px-2 sm:px-4 md:px-8 lg:px-16">
-        <div className="max-w-2xl w-full">
-          <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-3 md:mb-6 leading-tight">
-            Bridging Technology and<br />Expertise in Orthodontics
+        <div className="max-w-3xl w-full">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
+            Designed for the<br />Smiles You Shape
           </h1>
-          <p className="font-medium text-xs sm:text-base md:text-xl mb-3 md:mb-6">
-            Synapse revolutionizes orthodontic care with advanced technology
-            solutions, connecting practitioners with innovative tools for superior patient outcomes.
+          <p className="text-base md:text-xl font-medium text-[#184C3A]">
+            At Synapse, biomechanical insights and personalized workflows come together to support your clinical precision and elevate every treatment journey. From meticulous treatment planning to diligent manufacturing, each solution is crafted for comfort, control, and optimal outcomes. Backed by the latest in 3D technology, our partnership is built around your expertise—and every smile you help create.
           </p>
-
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-6 w-full">
-            <Link href="/orthosynce">
-              <button className="btn-primary cmnbtn w-full sm:w-auto">Access OrthoSync</button>
-            </Link>
-            <Link href="/smile-analysis">
-              <button variant="outline" className="cmnbtn btn-outline w-full sm:w-auto">
-                Try Smile Analysis
-              </button>
-            </Link>
-          </div>
         </div>
       </div>
     </section>

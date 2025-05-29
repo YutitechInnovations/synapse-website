@@ -1,7 +1,6 @@
 import Aboutus from "../../components/doctorLandingPage/Aboutus.js";
 import MissionNVision from "../../components/doctorLandingPage/MissionNVision.js";
 import Services from "../../components/doctorLandingPage/Services.js";
-import Footer from "../../components/footer/Footer.js";
 import HeroSection from "../../components/doctorLandingPage/HeroSection.js";
 import Navbar from "../../components/navbar/Navbar.js";
 
@@ -18,8 +17,6 @@ export default function About() {
         <MissionNVision />
         <Aboutus />
       </main>
-
-      <Footer />
     </div>
   );
 }
