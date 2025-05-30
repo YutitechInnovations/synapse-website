@@ -153,15 +153,6 @@ const SignupForm = () => {
               Register
             </button>
           </form>
-          <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-2">
-            <p className="font-semibold text-base text-center sm:text-left">Don&apos;t have an account? </p>
-            <Link
-              href="/signup"
-              className="font-semibold text-[15px] hover:underline"
-            >
-              Register here
-            </Link>
-          </div>
         </div>
       )}
       {isSubmited && !passwordSection && (
