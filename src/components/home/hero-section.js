@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from 'next/image';
 
@@ -26,6 +28,17 @@ export default function HeroSection() {
           </p>
         </div>
       </div>
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .hero-section > div:first-child {
+            z-index: 0;
+          }
+          .hero-section > div:nth-child(2) {
+            z-index: 10;
+            position: relative;
+          }
+        }
+      `}</style>
     </section>
   );
 }

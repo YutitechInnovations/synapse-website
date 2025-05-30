@@ -109,9 +109,9 @@ export default function Navbar() {
       )}
       <div className="flex items-center w-full fixed top-0 z-50 bg-transparent px-[1.5625rem] min-w-0">
         <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
-          <div className="flex items-center flex-1 min-w-0">
+          <div className="flex items-center flex-1 min-w-0 justify-between md:justify-center">
             {/* Nav links and menu */}
-            <div className="flex items-center gap-[1.875rem] flex-1 min-w-0">
+            <div className="flex items-center gap-[1.875rem] flex-1 min-w-0 justify-center">
               <button
                 className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -127,7 +127,7 @@ export default function Navbar() {
                 className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center fixed md:static top-0 left-0 w-full h-full md:w-auto md:h-auto bg-[#F8FAF9] md:bg-transparent rounded-none md:rounded-none z-50 transition-all duration-300 flex-1 min-w-0`}
                 style={{}}
               >
-                <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:space-x-4 md:gap-[1.875rem] p-8 md:p-0 w-full md:w-auto h-full md:h-auto flex-1 min-w-0">
+                <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:gap-8 p-8 md:p-0 w-full md:w-auto h-full md:h-auto flex-1 min-w-0">
                   {/* Home link */}
                   <li className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
                     <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
@@ -149,7 +149,7 @@ export default function Navbar() {
                     </button>
                     {/* Dropdown menu */}
                     <div
-                      className={`$${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px] bg-white shadow-lg rounded-md py-2 z-50 group-hover:block`}
+                      className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px] bg-white shadow-lg rounded-md py-2 z-50 group-hover:block`}
                       style={{ display: productDropdown ? 'block' : 'none' }}
                     >
                       <a
@@ -165,30 +165,31 @@ export default function Navbar() {
                     <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
                   </li>
                   {/* Render the rest of the links */}
-                  {links.filter(link => !['/', '/education'].includes(link.href)).map((link, idx, arr) => (
+                  {links.filter(link => !['/', '/education'].includes(link.href)).map((link) => (
                     <li key={link.href} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
                       <NavLink href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</NavLink>
-                      {/* Add separator after last link (Careers) */}
-                      {idx === arr.length - 1 && !isLoggedIn && (
-                        <span className="hidden md:inline-block mx-1 align-middle text-white text-2xl font-light">|</span>
-                      )}
                     </li>
                   ))}
-                  {/* Login button for desktop view, right after nav links */}
-                  {!isLoggedIn && (
-                    <li className="hidden md:inline-block align-middle">
-                      <a href="/login">
-                        <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base">
-                          Login
-                        </button>
-                      </a>
-                    </li>
+                  {/* Vertical separator and Login button for desktop view */}
+                  { !isLoggedIn && (
+                    <>
+                      <li className="hidden md:flex items-center mx-4">
+                        <span className="block h-8 w-px bg-white opacity-40"></span>
+                      </li>
+                      <li className="hidden md:flex items-center">
+                        <a href="/login">
+                          <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                            Login
+                          </button>
+                        </a>
+                      </li>
+                    </>
                   )}
                   {/* Login button for mobile view */}
-                  {!isLoggedIn && (
+                  { !isLoggedIn && (
                     <li className="block md:hidden w-full mt-8">
-                      <a href="/login">
-                        <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px]" style={{marginTop: '8px'}}>
+                      <a href="/login" className="block w-full">
+                        <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
                           Login
                         </button>
                       </a>
@@ -197,8 +198,8 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-            {/* Logo at the far right */}
-            <div className="ml-auto flex-shrink-0">
+            {/* Logo at the far right (centered with nav) */}
+            <div className="ml-auto flex-shrink-0 flex items-center justify-center h-full">
               <Image
                 src="/images/logo.png"
                 width={120}
