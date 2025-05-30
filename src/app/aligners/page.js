@@ -25,7 +25,7 @@ export default function Aligners() {
               R<sub className="text-base align-super">x</sub>.F.O.R.C.E™
             </h1>
             <p className="text-base md:text-xl font-medium text-[#184C3A]">
-              Orthodontic treatment is most effective when it's biomechanically intelligent. That's the idea behind R<sub className="text-base align-super">x</sub>.F.O.R.C.E™ — <span className="italic">our Force Optimized Responsive Corrective Engine</span>.
+              Orthodontic treatment is most effective when it&apos;s biomechanically intelligent. That&apos;s the idea behind R<sub className="text-base align-super">x</sub>.F.O.R.C.E™ — <span className="italic">our Force Optimized Responsive Corrective Engine</span>.
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function Aligners() {
             Smart Force, Thoughtfully Applied
           </h2>
           <p className="text-lg md:text-xl text-[#195B48]">
-            R<sub className="text-base align-super">x</sub>.F.O.R.C.E™ applies the right force at the right time by adjusting material behavior and thickness stage by stage. It's a precision-driven philosophy designed to guide each tooth gently and effectively, ensuring consistency, control, and reduced need for refinements.
+            R<sub className="text-base align-super">x</sub>.F.O.R.C.E™ applies the right force at the right time by adjusting material behavior and thickness stage by stage. It&apos;s a precision-driven philosophy designed to guide each tooth gently and effectively, ensuring consistency, control, and reduced need for refinements.
           </p>
           <p className="text-lg md:text-xl text-[#195B48]">
             The result? Improved predictability and better outcomes—from straightforward alignments to complex cases.
@@ -85,11 +85,12 @@ export default function Aligners() {
                 <li><span className="font-bold">RxPro+</span> – For complex, multi-phase treatments</li>
               </ul>
             </div>
-            <div className="w-[320px] h-full flex-shrink-0">
-              <img
+            <div className="w-[320px] h-full flex-shrink-0 relative">
+              <Image
                 src="/images/rxf.png"
                 alt="Doctor with aligner"
-                className="object-cover object-center w-full h-full rounded-r-[20px]"
+                fill
+                className="object-cover object-center rounded-r-[20px]"
               />
             </div>
           </div>
