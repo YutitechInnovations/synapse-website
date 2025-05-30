@@ -112,16 +112,16 @@ export default function Navbar() {
         <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
           <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
             {/* Hamburger for mobile */}
-            <button
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              type="button"
-            >
-              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-              <span className="block w-7 h-1 bg-white rounded"></span>
-            </button>
+              <button
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+                type="button"
+              >
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded"></span>
+              </button>
             {/* Nav links and menu */}
             <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
               <ul className="flex flex-row items-center p-0 w-auto min-w-0">
@@ -160,6 +160,41 @@ export default function Navbar() {
                   <>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
                       <NavLink href="/">Home</NavLink>
+                  </li>
+                    {/* Product dropdown for not-logged-in users */}
+                  <li
+                      className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                    ref={productRef}
+                  >
+                    <button
+                      type="button"
+                      className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
+                      onClick={() => setProductDropdown((v) => !v)}
+                    >
+                      Product
+                      <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    {/* Dropdown menu */}
+                    <div
+                        className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px]`}
+                        style={{
+                          background: '#004c4494',
+                          border: '1px solid #195B48',
+                          boxShadow: '0 4px 16px rgba(0,0,0,0.10)',
+                          borderRadius: '0.5rem',
+                          padding: '0.5rem 0',
+                          zIndex: 50,
+                          display: productDropdown ? 'block' : 'none'
+                        }}
+                      >
+                        <NavLink
+                          href="/aligners"
+                          className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                          onClick={() => setTimeout(() => setProductDropdown(false), 100)}
+                      >
+                        Aligners
+                        </NavLink>
+                    </div>
                     </li>
                     {links.filter(link => link.href !== "/").map((link, idx) => (
                       <li key={link.href} className={`text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}>
@@ -170,14 +205,14 @@ export default function Navbar() {
                       <span className="block h-6 w-px bg-white opacity-40"></span>
                     </li>
                     <li className="flex items-center md:ml-[30px]">
-                      <a href="/login">
-                        <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
-                          Login
-                        </button>
-                      </a>
-                    </li>
-                  </>
-                )}
+                        <a href="/login">
+                          <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                            Login
+                          </button>
+                        </a>
+                      </li>
+                    </>
+                  )}
               </ul>
             </div>
             {/* Mobile menu and nav links */}
@@ -233,13 +268,13 @@ export default function Navbar() {
                 </li>
                 {/* Login button */}
                 <li className="flex items-center w-full">
-                  <a href="/login" className="block w-full">
-                    <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
-                      Login
-                    </button>
-                  </a>
-                </li>
-              </ul>
+                      <a href="/login" className="block w-full">
+                        <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
+                          Login
+                        </button>
+                      </a>
+                    </li>
+                </ul>
             </div>
             {/* Logo at the far right */}
             <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
