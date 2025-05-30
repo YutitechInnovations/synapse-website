@@ -49,7 +49,7 @@ export default function PostLoginHome() {
                 </svg>
               </span>
             </div>
-            <span className="text-[#004C44] text-[40px] font-extrabold leading-tight">1250 pts</span>
+            <span className="text-[#004C44] text-[32px] font-extrabold leading-tight">1250 pts</span>
           </div>
           {/* Total Earned Card */}
           <div className="flex-1 bg-white rounded-xl border border-[#004C44] p-8 flex flex-col justify-between min-w-[260px] max-w-[400px] transition-shadow hover:shadow-lg">
@@ -66,7 +66,7 @@ export default function PostLoginHome() {
                 </svg>
               </span>
             </div>
-            <span className="text-[#004C44] text-[40px] font-extrabold leading-tight">1650 pts</span>
+            <span className="text-[#004C44] text-[32px] font-extrabold leading-tight">1650 pts</span>
           </div>
           {/* Total Redeemed Card */}
           <div className="flex-1 bg-white rounded-xl border border-[#004C44] p-8 flex flex-col justify-between min-w-[260px] max-w-[400px] transition-shadow hover:shadow-lg">
@@ -82,7 +82,7 @@ export default function PostLoginHome() {
                 </svg>
               </span>
             </div>
-            <span className="text-[#004C44] text-[40px] font-extrabold leading-tight">400 pts</span>
+            <span className="text-[#004C44] text-[32px] font-extrabold leading-tight">400 pts</span>
           </div>
         </div>
       </section>
