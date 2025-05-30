@@ -24,18 +24,18 @@ const features = [
 
 export default function PreLoginFeatureSection() {
   return (
-    <section className="py-12 md:py-20 px-4 md:px-8 bg-white">
+    <section className="py-8 sm:py-12 md:py-20 px-2 sm:px-4 md:px-8 bg-white">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Where Care Meets Connection</h2>
-      <p className="text-center max-w-3xl mx-auto mb-10 text-base md:text-lg">
+      <p className="text-center max-w-3xl mx-auto mb-8 md:mb-10 text-base md:text-lg">
         Our ecosystem of engagement that brings patients, doctors and care journeys closer than ever
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
         {features.map((feature, idx) => (
-          <div key={idx} className="bg-white border border-[#004C44] rounded-2xl p-8 flex flex-col items-center text-center transition-shadow shadow-none hover:shadow-md">
-            <div className="mb-6 flex items-center justify-center">
-              <div className="bg-[#004C44] rounded-full flex items-center justify-center" style={{ width: 148, height: 60 }}>
+          <div key={idx} className="bg-white border border-[#004C44] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center transition-shadow shadow-none hover:shadow-md w-full h-full">
+            <div className="mb-6 flex items-center justify-center w-full">
+              <div className="bg-[#004C44] rounded-full flex items-center justify-center" style={{ width: 120, height: 48 }}>
                 {feature.title === 'OrthoSync™' && (
-                  <svg width="148" height="60" viewBox="0 0 148 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="120" height="48" viewBox="0 0 148 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="148" height="60" rx="30" fill="#004C44"/>
                     <rect x="0.5" y="0.5" width="147" height="59" rx="29.5" stroke="#004C44" strokeOpacity="0.5"/>
                     <path d="M29.9446 23.4099C31.3093 23.4099 32.5058 23.6973 33.5343 24.2702C34.5607 24.845 35.3565 25.6447 35.9195 26.6711C36.4826 27.6937 36.7642 28.8882 36.7642 30.2529C36.7485 31.5883 36.4533 32.7594 35.8804 33.7644C35.3056 34.7713 34.5118 35.5592 33.4951 36.1262C32.4785 36.6893 31.2936 36.9708 29.9446 36.9708C28.6151 36.9708 27.4361 36.6893 26.4097 36.1262C25.3813 35.5592 24.5816 34.7713 24.0088 33.7644C23.4398 32.7594 23.1485 31.5883 23.1328 30.2529C23.1328 28.8882 23.4163 27.6937 23.9853 26.6711C24.5581 25.6447 25.3559 24.845 26.3784 24.2702C27.4048 23.6973 28.5936 23.4099 29.9446 23.4099ZM29.9446 34.4057C31.106 34.4057 32.0327 34.0225 32.7209 33.2561C33.413 32.4857 33.761 31.4847 33.761 30.2529C33.761 28.9919 33.413 27.9654 32.7209 27.1716C32.0327 26.3739 31.106 25.9751 29.9446 25.9751C28.8028 25.9751 27.88 26.3739 27.1761 27.1716C26.4762 27.9654 26.1281 28.9919 26.1281 30.2529C26.1281 31.4847 26.4762 32.4857 27.1761 33.2561C27.88 34.0225 28.8028 34.4057 29.9446 34.4057Z" fill="white" fillOpacity="0.4"/>
@@ -58,13 +58,13 @@ export default function PreLoginFeatureSection() {
                   </svg>
                 )}
                 {feature.title === 'AlignMasters™' && (
-                  <Image src="/images/align.png" alt={feature.title} width={120} height={40} className="object-contain" />
+                  <Image src="/images/align.png" alt={feature.title} width={80} height={32} className="object-contain" />
                 )}
               </div>
             </div>
-            <h3 className="text-[#004C44] text-2xl font-bold mb-2">{feature.title}</h3>
-            <div className="text-[#004C44] text-lg font-bold mb-2">{feature.subtitle}</div>
-            <p className="text-[#004C44] text-base font-normal">{feature.description}</p>
+            <h3 className="text-[#004C44] text-xl md:text-2xl font-bold mb-2">{feature.title}</h3>
+            <div className="text-[#004C44] text-base md:text-lg font-bold mb-2">{feature.subtitle}</div>
+            <p className="text-[#004C44] text-sm md:text-base font-normal">{feature.description}</p>
           </div>
         ))}
       </div>

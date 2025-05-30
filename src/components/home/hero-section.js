@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full hero-section">
+    <section className="relative w-full hero-section min-h-[200px]">
       {/* Background Image */}
       <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
         <Image

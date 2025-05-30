@@ -101,19 +101,19 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
-      <div className="flex items-center justify-center w-full fixed top-0 z-50 bg-transparent px-[1.5625rem]">
+      <div className="flex items-center justify-center w-full fixed top-0 z-50 bg-transparent px-4 sm:px-6 md:px-8">
         <nav className={`${styles.navbar} flex items-center justify-between w-full relative`} style={isLoggedIn ? {backgroundColor: '#004C44B2', borderRadius: '1.25rem'} : {}}>
           {isLoggedIn ? (
             // POST-LOGIN NAVBAR
             <>
-              <ul className="flex items-center gap-10 flex-1 m-0 p-0 list-none">
+              <ul className="flex flex-wrap items-center gap-4 md:gap-10 flex-1 m-0 p-0 list-none text-sm md:text-base">
                 <li><NavLink href="/home" className={pathname === '/home' ? 'font-bold' : ''}>Home</NavLink></li>
                 <li><NavLink href="/rxtrack" className={pathname === '/rxtrack' ? 'font-bold' : ''}>RxTrack™</NavLink></li>
                 <li><NavLink href="/orthosync" className={pathname === '/orthosync' ? 'font-bold' : ''}>OrthoSync™</NavLink></li>
                 <li><NavLink href="/reward-program" className={pathname === '/reward-program' ? 'font-bold' : ''}>Reward Program</NavLink></li>
                 <li><NavLink href="/alignmasters" className={pathname === '/alignmasters' ? 'font-bold' : ''}>AlignMasters™</NavLink></li>
                 <li><NavLink href="/e-shop" className={pathname === '/e-shop' ? 'font-bold' : ''}>E-Shop</NavLink></li>
-                <li className="flex items-center justify-center"><span style={{display: 'inline-block', height: '32px', width: '1px', background: 'rgba(255,255,255,0.4)', margin: '0 24px'}}></span></li>
+                <li className="hidden md:flex items-center justify-center"><span style={{display: 'inline-block', height: '32px', width: '1px', background: 'rgba(255,255,255,0.4)', margin: '0 24px'}}></span></li>
                 <li className="relative"><ProfileDropdownWithSVG onLogout={logout} /></li>
               </ul>
               <div className="flex items-center ml-auto">
@@ -122,14 +122,14 @@ export default function Navbar() {
                   width={120}
                   height={45}
                   alt="Logo"
-                  className="h-[2.8125rem] object-contain"
+                  className="h-10 object-contain"
                 />
               </div>
             </>
           ) : (
             // PRE-LOGIN MINIMAL NAVBAR
             <>
-              <ul className="flex items-center gap-[1.875rem]">
+              <ul className="flex flex-wrap items-center gap-2 sm:gap-4 md:gap-8 text-sm md:text-base">
                 <li><NavLink href="/">Home</NavLink></li>
                 <li className="relative group" ref={productRef} onMouseEnter={() => setProductDropdown(true)} onMouseLeave={() => setProductDropdown(false)}>
                   <button
@@ -143,13 +143,11 @@ export default function Navbar() {
                   </button>
                   {/* Dropdown menu */}
                   <div
-                    className={`${productDropdown ? 'block' : 'hidden'} absolute left-0 top-full bg-[#004c4494] rounded-md py-2 z-50 group-hover:block shadow-lg`}
-                    style={{ minWidth: '0', width: '100%' }}
+                    className={`${productDropdown ? 'block' : 'hidden'} absolute left-0 top-full bg-[#004c4494] rounded-md py-2 z-50 group-hover:block shadow-lg min-w-[120px] w-full`}
                   >
                     <a
                       href="/aligners"
                       className="block px-4 py-2 text-white hover:bg-[#195B48] hover:text-white transition-colors rounded-md text-center"
-                      style={{ minWidth: '0', width: '100%' }}
                     >
                       Aligners
                     </a>
@@ -158,26 +156,24 @@ export default function Navbar() {
                 <li><NavLink href="/education">Education</NavLink></li>
                 <li><NavLink href="/aboutus">About Us</NavLink></li>
                 <li><NavLink href="/careers">Careers</NavLink></li>
-                {/* Divider and Login button with spacing */}
-                <li style={{marginLeft: '30px', marginRight: '30px', height: '32px', display: 'flex', alignItems: 'center'}}>
+                <li className="hidden sm:flex" style={{marginLeft: '30px', marginRight: '30px', height: '32px', alignItems: 'center'}}>
                   <span style={{display: 'inline-block', width: '1px', height: '32px', background: 'rgba(255,255,255,0.7)'}}></span>
                 </li>
-                <li style={{marginRight: '30px'}}>
+                <li className="hidden sm:block" style={{marginRight: '30px'}}>
                   <a href="/login">
-                    <button className="px-6 py-2 bg-[#003C36] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base">
+                    <button className="px-4 py-2 bg-[#003C36] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-sm md:text-base">
                       Login
                     </button>
                   </a>
                 </li>
               </ul>
-              {/* Logo only */}
               <div className="flex items-center">
                 <Image
                   src="/images/logo.png"
                   width={120}
                   height={45}
                   alt="Logo"
-                  className="h-[2.8125rem] object-contain"
+                  className="h-10 object-contain"
                 />
               </div>
             </>

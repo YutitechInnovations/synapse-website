@@ -10,7 +10,7 @@ export default function Home() {
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="flex flex-col items-center justify-center w-full">
+      <main className="flex flex-col items-center justify-center w-full px-2 sm:px-4 md:px-8 lg:px-16">
         <HeroSection />
         <ServicesOffered />
         <PreLoginFeatureSection />
