@@ -56,6 +56,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isLoggedIn, login, logout } = useMockAuth();
+  console.log('isLoggedIn:', isLoggedIn, 'mockLoggedIn:', typeof window !== 'undefined' && localStorage.getItem('mockLoggedIn'), 'pathname:', pathname);
   // Dropdown state for Product (move up)
   const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
@@ -124,60 +125,59 @@ export default function Navbar() {
             {/* Nav links and menu */}
             <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
               <ul className="flex flex-row items-center p-0 w-auto min-w-0">
-                {/* Home link */}
-                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
-                  <NavLink href="/">Home</NavLink>
-                </li>
-                {/* Product dropdown */}
-                <li
-                  className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
-                  ref={productRef}
-                >
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
-                    onClick={() => setProductDropdown((v) => !v)}
-                  >
-                    Product
-                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  {/* Dropdown menu */}
-                  <div
-                    className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px]`} style={{ background: '#004c4494', border: '1px solid #195B48', boxShadow: '0 4px 16px rgba(0,0,0,0.10)', borderRadius: '0.5rem', padding: '0.5rem 0', zIndex: 50, display: productDropdown ? 'block' : 'none' }}
-                  >
-                    <NavLink
-                      href="/aligners"
-                      className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
-                      onClick={() => setProductDropdown(false)}
-                    >
-                      Aligners
-                    </NavLink>
-                  </div>
-                </li>
-                {/* Education link */}
-                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                  <NavLink href="/education">Education</NavLink>
-                </li>
-                {/* About us link */}
-                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                  <NavLink href="/aboutus">About us</NavLink>
-                </li>
-                {/* Careers link */}
-                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                  <NavLink href="/careers">Careers</NavLink>
-                </li>
-                {/* Vertical separator */}
-                <li className="flex items-center md:ml-[30px] mx-2">
-                  <span className="block h-6 w-px bg-white opacity-40"></span>
-                </li>
-                {/* Login button */}
-                <li className="flex items-center md:ml-[30px]">
-                  <a href="/login">
-                    <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
-                      Login
-                    </button>
-                  </a>
-                </li>
+                {/* Post-login: Home, RxTrack, OrthoSync, Doctor Reward Program, AlignMasters, E-Shop, divider, user, logo */}
+                {isLoggedIn ? (
+                  <>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
+                      <NavLink href="/">Home</NavLink>
+                    </li>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                      <NavLink href="/rxtrack">RxTrack</NavLink>
+                    </li>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                      <NavLink href="/orthosync">OrthoSync</NavLink>
+                    </li>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                      <NavLink href="/reward-program">Doctor Reward Program</NavLink>
+                    </li>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                      <NavLink href="/alignmasters">AlignMasters</NavLink>
+                    </li>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                      <NavLink href="/e-shop">E-Shop</NavLink>
+                    </li>
+                    {/* Divider */}
+                    <li className="flex items-center md:ml-[30px] mx-2">
+                      <span className="block h-6 w-px bg-white opacity-40"></span>
+                    </li>
+                    {/* User profile dropdown */}
+                    <li className="flex items-center md:ml-[30px]">
+                      <ProfileDropdown onLogout={logout} />
+                    </li>
+                  </>
+                ) : (
+                  // Not logged in: minimal links and login button
+                  <>
+                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
+                      <NavLink href="/">Home</NavLink>
+                    </li>
+                    {links.filter(link => link.href !== "/").map((link, idx) => (
+                      <li key={link.href} className={`text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}>
+                        <NavLink href={link.href}>{link.label}</NavLink>
+                      </li>
+                    ))}
+                    <li className="flex items-center md:ml-[30px] mx-2">
+                      <span className="block h-6 w-px bg-white opacity-40"></span>
+                    </li>
+                    <li className="flex items-center md:ml-[30px]">
+                      <a href="/login">
+                        <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                          Login
+                        </button>
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
             {/* Mobile menu and nav links */}
@@ -208,7 +208,7 @@ export default function Navbar() {
                       <NavLink
                         href="/aligners"
                         className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
-                        onClick={() => { setIsMenuOpen(false); setProductDropdown(false); }}
+                        onClick={() => { setIsMenuOpen(false); setTimeout(() => setProductDropdown(false), 100); }}
                       >
                         Aligners
                       </NavLink>
