@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section className="relative w-full">
       {/* Background Image */}
-      <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
+      <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem] z-0">
         <Image
           src={`/images/${isHome ? "bg2.jpg" : isAbout ? "bg3.jpg" : "landingPage3.png"}`}
           fill
@@ -19,7 +19,7 @@ const HeroSection = () => {
         />
       </div>
       {/* Content */}
-      <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-32 px-2 sm:px-4 md:px-8 lg:px-16">
+      <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-32 px-2 sm:px-4 md:px-8 lg:px-16 z-10">
         <div className="max-w-xl w-full">
           <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-3 md:mb-6 leading-tight">
             {isHome

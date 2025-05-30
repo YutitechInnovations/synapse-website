@@ -109,97 +109,140 @@ export default function Navbar() {
       )}
       <div className="flex items-center w-full fixed top-0 z-50 bg-transparent px-[1.5625rem] min-w-0">
         <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
-          <div className="flex items-center flex-1 min-w-0 justify-between md:justify-center">
+          <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
+            {/* Hamburger for mobile */}
+            <button
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              type="button"
+            >
+              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+              <span className="block w-7 h-1 bg-white rounded"></span>
+            </button>
             {/* Nav links and menu */}
-            <div className="flex items-center gap-[1.875rem] flex-1 min-w-0 justify-center">
-              <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-                type="button"
-              >
-                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-                <span className="block w-7 h-1 bg-white rounded"></span>
-              </button>
-              {/* Mobile menu and nav links */}
-              <div
-                className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center fixed md:static top-0 left-0 w-full h-full md:w-auto md:h-auto bg-[#F8FAF9] md:bg-transparent rounded-none md:rounded-none z-50 transition-all duration-300 flex-1 min-w-0`}
-                style={{}}
-              >
-                <ul className="flex flex-col md:flex-row items-start justify-start pt-8 space-y-8 md:space-y-0 md:gap-8 p-8 md:p-0 w-full md:w-auto h-full md:h-auto flex-1 min-w-0">
-                  {/* Home link */}
-                  <li className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
-                    <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                  </li>
-                  {/* Product dropdown */}
-                  <li
-                    className="relative w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center group"
-                    ref={productRef}
-                    onMouseEnter={() => setProductDropdown(true)}
-                    onMouseLeave={() => setProductDropdown(false)}
+            <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
+              <ul className="flex flex-row items-center p-0 w-auto min-w-0">
+                {/* Home link */}
+                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
+                  <NavLink href="/">Home</NavLink>
+                </li>
+                {/* Product dropdown */}
+                <li
+                  className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                  ref={productRef}
+                >
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
+                    onClick={() => setProductDropdown((v) => !v)}
                   >
-                    <button
-                      type="button"
-                      className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
-                      onClick={() => setProductDropdown((v) => !v)}
+                    Product
+                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {/* Dropdown menu */}
+                  <div
+                    className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px]`} style={{ background: '#004c4494', border: '1px solid #195B48', boxShadow: '0 4px 16px rgba(0,0,0,0.10)', borderRadius: '0.5rem', padding: '0.5rem 0', zIndex: 50, display: productDropdown ? 'block' : 'none' }}
+                  >
+                    <NavLink
+                      href="/aligners"
+                      className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                      onClick={() => setProductDropdown(false)}
                     >
-                      Product
-                      <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                      Aligners
+                    </NavLink>
+                  </div>
+                </li>
+                {/* Education link */}
+                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                  <NavLink href="/education">Education</NavLink>
+                </li>
+                {/* About us link */}
+                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                  <NavLink href="/aboutus">About us</NavLink>
+                </li>
+                {/* Careers link */}
+                <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                  <NavLink href="/careers">Careers</NavLink>
+                </li>
+                {/* Vertical separator */}
+                <li className="flex items-center md:ml-[30px] mx-2">
+                  <span className="block h-6 w-px bg-white opacity-40"></span>
+                </li>
+                {/* Login button */}
+                <li className="flex items-center md:ml-[30px]">
+                  <a href="/login">
+                    <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                      Login
                     </button>
-                    {/* Dropdown menu */}
-                    <div
-                      className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px] bg-white shadow-lg rounded-md py-2 z-50 group-hover:block`}
-                      style={{ display: productDropdown ? 'block' : 'none' }}
-                    >
-                      <a
+                  </a>
+                </li>
+              </ul>
+            </div>
+            {/* Mobile menu and nav links */}
+            <div
+              className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col items-center fixed top-0 left-0 w-full h-full bg-[#F8FAF9] rounded-none z-50 transition-all duration-300 min-w-0`}
+            >
+              <ul className="flex flex-col items-start justify-start pt-8 space-y-8 p-8 w-full h-full min-w-0">
+                {/* Home link */}
+                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                  <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                </li>
+                {/* Product dropdown */}
+                <li
+                  className="relative w-full text-left font-semibold text-[18px] text-[#195B48] group"
+                  ref={productRef}
+                >
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 py-1 transition-colors focus:outline-none"
+                    onClick={() => setProductDropdown((v) => !v)}
+                  >
+                    Product
+                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {/* Dropdown menu */}
+                  {productDropdown && (
+                    <div className="block min-w-[140px]" style={{ background: '#004c4494', border: '1px solid #195B48', boxShadow: '0 4px 16px rgba(0,0,0,0.10)', borderRadius: '0.5rem', padding: '0.5rem 0', zIndex: 50 }}>
+                      <NavLink
                         href="/aligners"
-                        className="block px-4 py-2 text-[#195B48] hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                        className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
+                        onClick={() => { setIsMenuOpen(false); setProductDropdown(false); }}
                       >
                         Aligners
-                      </a>
+                      </NavLink>
                     </div>
-                  </li>
-                  {/* Education link */}
-                  <li className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
-                    <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
-                  </li>
-                  {/* Render the rest of the links */}
-                  {links.filter(link => !['/', '/education'].includes(link.href)).map((link) => (
-                    <li key={link.href} className="w-full md:w-auto text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center">
-                      <NavLink href={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</NavLink>
-                    </li>
-                  ))}
-                  {/* Vertical separator and Login button for desktop view */}
-                  { !isLoggedIn && (
-                    <>
-                      <li className="hidden md:flex items-center mx-4">
-                        <span className="block h-8 w-px bg-white opacity-40"></span>
-                      </li>
-                      <li className="hidden md:flex items-center">
-                        <a href="/login">
-                          <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
-                            Login
-                          </button>
-                        </a>
-                      </li>
-                    </>
                   )}
-                  {/* Login button for mobile view */}
-                  { !isLoggedIn && (
-                    <li className="block md:hidden w-full mt-8">
-                      <a href="/login" className="block w-full">
-                        <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
-                          Login
-                        </button>
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              </div>
+                </li>
+                {/* Education link */}
+                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                  <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
+                </li>
+                {/* About us link */}
+                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                  <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About us</NavLink>
+                </li>
+                {/* Careers link */}
+                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                  <NavLink href="/careers" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
+                </li>
+                {/* Vertical separator */}
+                <li className="flex items-center mx-2">
+                  <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
+                </li>
+                {/* Login button */}
+                <li className="flex items-center w-full">
+                  <a href="/login" className="block w-full">
+                    <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
+                      Login
+                    </button>
+                  </a>
+                </li>
+              </ul>
             </div>
-            {/* Logo at the far right (centered with nav) */}
-            <div className="ml-auto flex-shrink-0 flex items-center justify-center h-full">
+            {/* Logo at the far right */}
+            <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
               <Image
                 src="/images/logo.png"
                 width={120}
