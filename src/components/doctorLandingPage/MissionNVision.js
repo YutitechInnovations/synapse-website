@@ -18,8 +18,8 @@ let items = [
 
 const MissionNVision = () => {
   return (
-    <section className="w-full" style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}>
-      <div className="w-full flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
+    <section className="w-full px-4 md:px-8 lg:px-16">
+      <div className="w-full flex flex-col items-center justify-center py-8 md:py-12 lg:py-16">
         <ZigZagCard items={items} />
       </div>
     </section>

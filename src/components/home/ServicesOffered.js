@@ -21,7 +21,7 @@ const services = [
 
 export default function ServicesOffered() {
   return (
-    <section className="w-full bg-[#F6F6F3] py-8 md:py-14 lg:py-20 px-4 md:px-8 lg:px-16">
+    <section className="w-full bg-[#F6F6F3] py-8 md:py-14 lg:py-20 px-4 sm:px-6 md:px-[100px]">
       <div className="w-full flex flex-col gap-4 md:gap-8">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#004C44] mb-2 md:mb-4">Synapse - Services Offered</h2>
         <p className="text-sm md:text-base lg:text-lg text-[#004C44] mb-2 md:mb-4 w-full">

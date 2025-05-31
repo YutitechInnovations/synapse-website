@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const ZigZagCard = ({ items }) => {
   return (
-    <div className="w-full flex flex-col gap-8 md:gap-12 px-2 sm:px-4 md:px-8 lg:px-0">
+    <div className="card flex flex-col card-p-0 overflow-hidden card-gap-0 rounded-t-[1.25rem] w-full max-w-7xl mx-auto">
       {items?.map((item, index) => {
         const isOdd = (index + 1) % 2 !== 0;
         return (
@@ -13,7 +13,7 @@ const ZigZagCard = ({ items }) => {
               index + 1 !== items.length ? "border-b border-gray-200" : ""
             } overflow-hidden`}
           >
-            <div className="w-full py-4 md:py-8 flex flex-col gap-4 md:gap-6 justify-center items-start px-2 md:pl-12 md:pr-8">
+            <div className="w-full py-4 md:py-8 flex flex-col gap-4 md:gap-6 justify-center items-start px-4 md:px-8 lg:px-12">
               <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl text-left">
                 {item.title}
               </h2>
@@ -21,7 +21,7 @@ const ZigZagCard = ({ items }) => {
                 {item.description}
               </p>
             </div>
-            <div className="w-full md:w-1/2 lg:w-[40%] h-[200px] md:h-full flex items-center justify-center relative">
+            <div className="md:w-1/2 lg:w-[40%] h-[16rem] md:h-full flex items-center justify-center relative">
               <div className="relative w-full h-full">
                 <Image
                   src={item.image}

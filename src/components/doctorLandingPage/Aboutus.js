@@ -32,12 +32,12 @@ const Aboutus = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center">
       <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-0 text-[#184C3A] mt-[100px] mx-4 md:mx-[176px]"
+        className="text-3xl md:text-4xl font-bold text-center mb-0 text-[#184C3A] mt-[60px] max-w-4xl mx-auto px-4"
       >
         Synapse Core Team
       </h2>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-full px-2 md:max-w-6xl md:px-0 mt-[50px] mb-[100px]"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto px-2 md:px-0 mt-[32px] mb-[60px]"
       >
         {team.map((member, idx) => (
           <div key={idx} className="flex flex-col md:flex-row items-center bg-white border border-[#184C3A] rounded-2xl p-4 md:p-8 min-h-[240px] shadow-sm w-full">

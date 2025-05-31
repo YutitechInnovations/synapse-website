@@ -14,8 +14,11 @@ const LoginForm = () => {
       return;
     }
     setError("");
+    // Set mock login state
+    localStorage.setItem('mockLoggedIn', 'true');
     // Redirect or further logic here
     window.location.href = "/";
+    setTimeout(() => window.location.reload(), 100);
   };
 
   return (
