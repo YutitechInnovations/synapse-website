@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #004c4494; /* fallback for pre-login */
+  background-color: #004c4494;
   border-radius: 1.25rem;
   gap: 1.875rem;
   padding: 0.9375rem 1.875rem;
@@ -7,22 +7,6 @@
   /* margin-right: 100px; */
   color: var(--white);
   transition: all 0.3s ease;
-  /* For post-login, override background in inline style to #004C44B2 */
-  display: flex;
-  align-items: center;
-  min-height: 64px;
-}
-
-.navbar ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.navbar li {
-  display: flex;
-  align-items: center;
-  height: 100%;
 }
 
 @media (max-width: 768px) {
