@@ -20,8 +20,14 @@ function useMockAuth() {
   }, [isLoggedIn]);
   return {
     isLoggedIn,
-    login: () => setIsLoggedIn(true),
-    logout: () => setIsLoggedIn(false)
+    login: () => {
+      setIsLoggedIn(true);
+      window.location.href = "/home";
+    },
+    logout: () => {
+      setIsLoggedIn(false);
+      window.location.href = "/";
+    }
   };
 }
 
