@@ -18,14 +18,8 @@ const Connection = () => {
         <div className="card flex flex-col h-full min-h-[24rem] justify-between items-center text-center py-6 px-2 border border-[#C7D7CB] rounded-2xl bg-white">
           <div>
             <div className="mb-1 flex justify-center items-center">
-              <div className="bg-[#C7D7CB] rounded-full p-4 flex items-center justify-center">
-              <Image
-                src="/images/img6.png"
-                width={40}
-                height={40}
-                className="w-8 h-8 md:w-[31px] md:h-[31px]"
-                alt="Jaw Icon"
-              />
+              <div className="bg-[#004C44] rounded-full px-6 py-2 flex items-center justify-center" style={{minWidth: '120px', minHeight: '48px'}}>
+                <span className="text-white font-bold text-lg">OrthoSync</span>
               </div>
             </div>
             <h3 className="text-lg md:text-xl font-bold text-[#004C44]">OrthoSync™</h3>

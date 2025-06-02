@@ -8,7 +8,7 @@ export default function AdminLayout({ children }) {
       <div className="fixed left-0 top-0 h-screen z-30">
         <AdminSidebar />
       </div>
-      <main className="ml-[181px] bg-[#F8FAF9] min-h-screen p-8">
+      <main className="bg-[#F8FAF9] min-h-screen p-8 md:ml-[181px]">
         <AdminHeader />
         {children}
       </main>

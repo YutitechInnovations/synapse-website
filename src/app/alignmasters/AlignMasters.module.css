@@ -1,0 +1,270 @@
+.heroHeading {
+  margin-top: 205px;
+  font-size: 2.875rem;
+  font-weight: 800;
+  color: #184C3A;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F3F4F6;
+  border-radius: 9999px;
+  padding: 0.5rem 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.5rem 1rem;
+}
+.tab {
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  color: #184C3A;
+  border: none;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.selected {
+  background: #fff;
+  color: #184C3A;
+  box-shadow: 0 2px 8px 0 rgba(16, 24, 40, 0.10);
+}
+.shareBtn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #184C3A;
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(16, 24, 40, 0.10);
+  border: none;
+  cursor: pointer;
+  float: right;
+  padding: 0.7rem 1.2rem;
+}
+.section {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+@media (max-width: 900px) {
+  .section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+.communityHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+.communityTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #184C3A;
+  text-align: left;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: none;
+  border: 1.5px solid #B6CFC3;
+  padding: 2.5rem 2rem 2rem 2rem;
+  width: 1240px;
+  min-height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #E6E6E6;
+}
+.cardHeaderText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cardName {
+  font-weight: bold;
+  color: #184C3A;
+  font-size: 1.15rem;
+  margin-bottom: 0.1rem;
+}
+.cardRoleDate {
+  font-size: 1rem;
+  color: #6B7A7A;
+  font-weight: 500;
+}
+.cardDate {
+  font-size: 1rem;
+  color: #A0A0A0;
+  font-weight: 400;
+}
+.cardContent {
+  color: #184C3A;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 2.2rem;
+}
+.cardImage {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.cardVideo {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  display: block;
+  position: relative;
+}
+.playIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(24, 76, 58, 0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+}
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.actionLeft {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.actionRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #184C3A;
+  font-size: 1.08rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: none;
+}
+.actionBtn svg {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+@media (max-width: 1280px) {
+  .communityHeader {
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+    min-width: 0;
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .card {
+    padding: 1rem 0.3rem 1rem 0.3rem;
+    min-height: 220px;
+  }
+  .cardHeader {
+    gap: 0.7rem;
+  }
+  .cardName, .cardRoleDate, .cardDate, .cardContent {
+    font-size: 0.98rem;
+  }
+  .cardImage, .cardVideo {
+    max-width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 600px) {
+  .communityHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
+  }
+  .shareBtn {
+    align-self: flex-end;
+    width: 100%;
+  }
+  .communityTitle {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+  .cardImage, .cardVideo {
+    max-width: 100%;
+  }
+  .communityHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .shareBtn {
+    align-self: flex-end;
+  }
+}
+.tabContainer {
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+@media (max-width: 700px) {
+  .tabContainer {
+    gap: 0.5rem;
+    padding: 0.5rem 0.2rem;
+  }
+  .tab {
+    font-size: 1rem;
+    min-width: 160px;
+    padding: 0.7rem 1.2rem;
+  }
+} 

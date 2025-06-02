@@ -17,7 +17,7 @@ export default function Settings() {
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="email">Email</label>
-              <input id="email" type="email" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3C7] bg-white" placeholder="example@synapse.com" />
+              <input id="email" type="email" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="example@synapse.com" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="mobile">Mobile Number</label>

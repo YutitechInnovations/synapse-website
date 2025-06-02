@@ -1,9 +1,9 @@
 "use client";
-import Footer from "./Footer";
 import { usePathname } from "next/navigation";
+import Navbar from "./navbar/Navbar";
 
-export default function FooterWrapper() {
+export default function ConditionalNavbar() {
   const pathname = usePathname();
   if (pathname.startsWith("/admin")) return null;
-  return <Footer />;
+  return <Navbar />;
 } 

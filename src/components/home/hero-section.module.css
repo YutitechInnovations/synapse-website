@@ -1,0 +1,97 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  max-height: 44rem;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  width: 100%;
+  min-height: 300px;
+  max-height: 44rem;
+  z-index: 0;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  z-index: 1;
+}
+.content {
+  position: relative;
+  min-height: 300px;
+  max-height: 44rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  z-index: 2;
+}
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #184C3A;
+  line-height: 1.1;
+}
+.paragraph {
+  font-size: 1rem;
+  color: #184C3A;
+  font-weight: 500;
+  line-height: 1.5;
+}
+@media (min-width: 600px) {
+  .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .heading {
+    font-size: 2.5rem;
+  }
+  .paragraph {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 900px) {
+  .content {
+    padding-top: 5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  .heading {
+    font-size: 3rem;
+  }
+  .paragraph {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 900px) {
+  .content {
+    padding-top: 5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .content {
+    padding-top: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .content {
+    padding-top: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .heading {
+    font-size: 1.25rem;
+  }
+  .paragraph {
+    font-size: 0.95rem;
+  }
+} 

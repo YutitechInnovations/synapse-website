@@ -1,0 +1,107 @@
+/* Responsive styles for Home page */
+.heroSection {
+  position: relative;
+  width: 100%;
+}
+.heroContent {
+  min-height: 200px;
+  height: 40vw;
+  max-height: 44rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 640px) {
+  .heroContent {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .heroContent {
+    padding-top: 5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .heroContent {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.rewardSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0.5rem;
+}
+@media (min-width: 768px) {
+  .rewardSection {
+    padding: 4rem 0;
+  }
+}
+.rewardCards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .rewardCards {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.educationSection {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 0.5rem;
+}
+@media (min-width: 768px) {
+  .educationSection {
+    padding: 4rem 0;
+  }
+}
+.educationGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 900px) {
+  .educationGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+  }
+}
+.educationCard {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #fff;
+  transition: transform 0.2s;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.educationCard:hover {
+  transform: scale(1.02);
+}
+@media (min-width: 600px) {
+  .educationCard {
+    height: 448px;
+  }
+} 

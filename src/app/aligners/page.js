@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from './aligners.module.css';
 
 export default function Aligners() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full hero-section">
+      <section className={styles.heroSection}>
         {/* Background Image */}
         <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
           <Image
@@ -19,7 +20,7 @@ export default function Aligners() {
           <div className="absolute inset-0 bg-white/60" />
         </div>
         {/* Content */}
-        <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 px-2 sm:px-4 md:px-8 lg:px-16">
+        <div className={styles.heroContent}>
           <div className="max-w-3xl w-full">
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
               R<sub className="text-base align-super">x</sub>.F.O.R.C.E™
@@ -32,10 +33,8 @@ export default function Aligners() {
       </section>
 
       {/* Smart Force Section */}
-      <section className="w-full flex justify-center bg-[#F6F6F3]">
-        <div
-          className="w-[1082px] h-auto flex flex-col items-center text-center gap-[30px] mt-[100px] mx-[179px]"
-        >
+      <section className={styles.centerSection}>
+        <div className={styles.centerContent}>
           <h2 className="text-4xl md:text-5xl font-bold text-[#195B48]">
             Smart Force, Thoughtfully Applied
           </h2>
@@ -50,7 +49,7 @@ export default function Aligners() {
 
       {/* BioSmart Systems Section */}
       <section className="w-full flex justify-center mt-[100px] mb-[100px]">
-        <div className="w-[1082px] flex flex-col items-center">
+        <div className="w-full max-w-[1082px] flex flex-col items-center px-2 sm:px-4 md:px-8 lg:px-0">
           <h2 className="text-3xl md:text-4xl font-bold text-[#195B48] text-center mb-4">
             BioSmart™ Systems: Powered by <span className="font-bold">R<sub className="text-base align-super">x</sub>.F.O.R.C.E<sup className="text-base">™</sup></span>
           </h2>
@@ -58,23 +57,23 @@ export default function Aligners() {
             Click on the system that fits your treatment philosophy to know more
           </p>
           {/* Cards Row */}
-          <div className="flex flex-row w-full max-w-[1040px] mx-auto gap-8 mb-10">
+          <div className={styles.cardsRow}>
             <Link href="/aligners-biosmart-sm" className="flex-1">
-              <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
+              <div className={styles.card}>
                 <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ SM</div>
                 <div className="text-base font-semibold text-[#195B48] text-center">Our Shape Memory Aligner Option</div>
             </div>
             </Link>
             <Link href="/aligners-biosmart-t" className="flex-1">
-              <div className="border border-[#B6C3C7] rounded-[20px] h-[120px] flex flex-col items-center justify-center transition hover:shadow-md bg-white cursor-pointer min-w-[320px]">
+              <div className={styles.card}>
                 <div className="text-2xl font-bold text-[#195B48] mb-2 text-center">BioSmart™ T</div>
                 <div className="text-base font-semibold text-[#195B48] text-center">Our Thermoformed Aligner Option</div>
             </div>
             </Link>
           </div>
           {/* Variant Container */}
-          <div className="w-full max-w-[1040px] mx-auto h-[320px] rounded-[20px] border border-[#B6C3C7] bg-white flex flex-row items-center justify-between overflow-hidden">
-            <div className="flex-1 h-full flex flex-col justify-center pl-10 pr-6">
+          <div className={styles.variantContainer}>
+            <div className={styles.variantText}>
               <p className="text-xl text-[#195B48] mb-4">
                 And each system is available in three variants tailored<br />
                 to case complexity:
@@ -85,7 +84,7 @@ export default function Aligners() {
                 <li><span className="font-bold">RxPro+</span> – For complex, multi-phase treatments</li>
               </ul>
             </div>
-            <div className="w-[320px] h-full flex-shrink-0 relative">
+            <div className={styles.variantImage}>
               <Image
                 src="/images/rxf.png"
                 alt="Doctor with aligner"
