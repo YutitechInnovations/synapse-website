@@ -2,7 +2,7 @@
 
 import NavLink from "../navlink/NavLink.js";
 import styles from "./navbar.module.css";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from 'next/image';
 
@@ -20,20 +20,15 @@ function useMockAuth() {
   }, [isLoggedIn]);
   return {
     isLoggedIn,
-    login: () => {
-      setIsLoggedIn(true);
-      window.location.href = "/home";
-    },
-    logout: () => {
-      setIsLoggedIn(false);
-      window.location.href = "/";
-    }
+    login: () => setIsLoggedIn(true),
+    logout: () => setIsLoggedIn(false)
   };
 }
 
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
+  const router = useRouter();
   useEffect(() => {
     function handleClick(e) {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
@@ -51,7 +46,7 @@ function ProfileDropdown({ onLogout }) {
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
           <a href="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
           <a href="/settings" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
-          <button onClick={onLogout} className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+          <button onClick={() => { onLogout(); router.push('/'); window.location.reload(); }} className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
         </div>
       )}
     </div>
@@ -85,13 +80,12 @@ export default function Navbar() {
     { href: "/careers", label: "Careers" },
   ];
   const figmaLinks = [
-    { href: "/", label: "Home" },
-    { href: "/rxtrack", label: "RxTrack" },
-    { href: "/orthosync", label: "OrthoSync" },
-    { href: "/reward-program", label: "Doctor Reward Program" },
-    { href: "/alignmasters", label: "AlignMasters" },
+    { href: "/home", label: "Home" },
+    { href: "/rxtrack", label: "RxTrack™" },
+    { href: "/orthosync", label: "OrthoSync™" },
+    { href: "/reward-program", label: "Reward Program" },
+    { href: "/alignmasters", label: "AlignMasters™" },
     { href: "/e-shop", label: "E-Shop" },
-    { href: "/careers", label: "Careers" },
   ];
   const isMinimalPage = !isLoggedIn && (
     pathname === "/" ||
@@ -103,7 +97,7 @@ export default function Navbar() {
     pathname === "/aligners-biosmart-sm" ||
     pathname === "/aligners-biosmart-t"
   );
-  const links = isMinimalPage ? minimalLinks : figmaLinks;
+  const links = isLoggedIn ? figmaLinks : minimalLinks;
 
   return (
     <>
@@ -135,19 +129,19 @@ export default function Navbar() {
                 {isLoggedIn ? (
                   <>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
-                      <NavLink href="/">Home</NavLink>
+                      <NavLink href="/home">Home</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/rxtrack">RxTrack</NavLink>
+                      <NavLink href="/rxtrack">RxTrack™</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/orthosync">OrthoSync</NavLink>
+                      <NavLink href="/orthosync">OrthoSync™</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/reward-program">Doctor Reward Program</NavLink>
+                      <NavLink href="/reward-program">Reward Program</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/alignmasters">AlignMasters</NavLink>
+                      <NavLink href="/alignmasters">AlignMasters™</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
                       <NavLink href="/e-shop">E-Shop</NavLink>
@@ -174,33 +168,28 @@ export default function Navbar() {
                   >
                     <button
                       type="button"
-                      className="flex items-center gap-1 md:px-2 py-1 md:rounded-md transition-colors md:hover:bg-white/20 md:hover:text-[#195B48] focus:outline-none"
-                      onClick={() => setProductDropdown((v) => !v)}
+                        className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                        onClick={() => setProductDropdown(!productDropdown)}
                     >
                       Product
                       <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                     </button>
-                    {/* Dropdown menu */}
+                      {productDropdown && (
                     <div
-                        className={`${productDropdown ? 'block' : 'hidden'} md:absolute left-0 top-full min-w-[140px]`}
+                          className="absolute left-0 top-full mt-1 min-w-[140px] bg-white rounded-lg shadow-lg py-2 z-50"
                         style={{
-                          background: '#004c4494',
                           border: '1px solid #195B48',
-                          boxShadow: '0 4px 16px rgba(0,0,0,0.10)',
-                          borderRadius: '0.5rem',
-                          padding: '0.5rem 0',
-                          zIndex: 50,
-                          display: productDropdown ? 'block' : 'none'
                         }}
                       >
-                        <NavLink
+                          <a
                           href="/aligners"
-                          className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
-                          onClick={() => setTimeout(() => setProductDropdown(false), 100)}
+                            className="block px-4 py-2 text-black font-bold hover:bg-gray-100"
+                            onClick={() => setProductDropdown(false)}
                       >
                         Aligners
-                        </NavLink>
+                          </a>
                     </div>
+                      )}
                     </li>
                     {links.filter(link => link.href !== "/").map((link, idx) => (
                       <li key={link.href} className={`text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}>
@@ -230,29 +219,33 @@ export default function Navbar() {
                 <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
                   <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
                 </li>
-                {/* Product dropdown */}
+                {/* Product dropdown for mobile */}
                 <li
-                  className="relative w-full text-left font-semibold text-[18px] text-[#195B48] group"
+                  className="relative w-full text-left font-semibold text-[18px] text-[#195B48]"
                   ref={productRef}
                 >
                   <button
                     type="button"
-                    className="flex items-center gap-1 py-1 transition-colors focus:outline-none"
-                    onClick={() => setProductDropdown((v) => !v)}
+                    className="flex items-center gap-1 py-1 focus:outline-none"
+                    onClick={() => setProductDropdown(!productDropdown)}
                   >
                     Product
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  {/* Dropdown menu */}
                   {productDropdown && (
-                    <div className="block min-w-[140px]" style={{ background: '#004c4494', border: '1px solid #195B48', boxShadow: '0 4px 16px rgba(0,0,0,0.10)', borderRadius: '0.5rem', padding: '0.5rem 0', zIndex: 50 }}>
-                      <NavLink
+                    <div
+                      className="mt-1 min-w-[140px] bg-[#004c4494] rounded-lg shadow-lg py-2"
+                      style={{
+                        border: '1px solid #195B48',
+                      }}
+                    >
+                      <a
                         href="/aligners"
-                        className="block px-4 py-2 text-black font-bold hover:bg-[#195B48] hover:text-white transition-colors rounded-md"
-                        onClick={() => { setIsMenuOpen(false); setTimeout(() => setProductDropdown(false), 100); }}
+                        className="block px-4 py-2 text-black font-bold hover:bg-gray-100"
+                        onClick={() => setProductDropdown(false)}
                       >
                         Aligners
-                      </NavLink>
+                      </a>
                     </div>
                   )}
                 </li>

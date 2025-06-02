@@ -2,7 +2,7 @@ import ClientOnly from "../components/ClientOnly";
 import Navbar from "../components/navbar/Navbar.js";
 import HeroSection from "../components/home/hero-section.js";
 import ServicesOffered from "../components/home/ServicesOffered.js";
-import PreLoginFeatureSection from "../components/home/PreLoginFeatureSection.js";
+import ConnectionFeatureSection from '../components/home/ConnectionFeatureSection';
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center w-full">
         <HeroSection />
         <ServicesOffered />
-        <PreLoginFeatureSection />
+        <ConnectionFeatureSection isLoggedIn={false} />
       </main>
     </div>
   );

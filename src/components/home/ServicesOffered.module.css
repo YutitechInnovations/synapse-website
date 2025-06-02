@@ -1,0 +1,170 @@
+.section {
+  width: 100%;
+  background: #F6F6F3;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #004C44;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.paragraph {
+  color: #004C44;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+.paragraph:last-of-type {
+  margin-bottom: 2rem;
+}
+.circlesContainer {
+  position: relative;
+  width: 100%;
+  min-height: 335px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circles {
+  position: relative;
+  width: 335px;
+  height: 335px;
+}
+.circleBottom {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 180px;
+  height: 180px;
+}
+.circleMiddle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 135px;
+  height: 135px;
+}
+.circleTop {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: 100px;
+  height: 100px;
+}
+@media (min-width: 600px) {
+  .inner {
+    gap: 2rem;
+  }
+  .heading {
+    font-size: 2rem;
+  }
+  .paragraph {
+    font-size: 1.125rem;
+  }
+  .circles {
+    width: 446px;
+    height: 446px;
+  }
+  .circlesContainer {
+    min-height: 446px;
+  }
+  .circleBottom {
+    width: 335px;
+    height: 335px;
+  }
+  .circleMiddle {
+    width: 250px;
+    height: 250px;
+  }
+  .circleTop {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (min-width: 900px) {
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 6.25rem;
+    padding-right: 6.25rem;
+  }
+  .heading {
+    font-size: 2.5rem;
+  }
+  .paragraph {
+    font-size: 1.25rem;
+  }
+  .circles {
+    width: 595px;
+    height: 595px;
+  }
+  .circlesContainer {
+    min-height: 595px;
+  }
+  .circleBottom {
+    width: 595px;
+    height: 595px;
+  }
+  .circleMiddle {
+    width: 446px;
+    height: 446px;
+  }
+  .circleTop {
+    width: 335px;
+    height: 335px;
+  }
+}
+@media (max-width: 400px) {
+  .section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .heading {
+    font-size: 1.1rem;
+  }
+  .paragraph {
+    font-size: 0.95rem;
+  }
+  .circles {
+    width: 220px;
+    height: 220px;
+  }
+  .circlesContainer {
+    min-height: 220px;
+  }
+  .circleBottom {
+    width: 220px;
+    height: 220px;
+  }
+  .circleMiddle {
+    width: 165px;
+    height: 165px;
+  }
+  .circleTop {
+    width: 100px;
+    height: 100px;
+  }
+} 
