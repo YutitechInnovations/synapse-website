@@ -70,14 +70,25 @@ export default function Navbar() {
   // Dropdown state for Product (move up)
   const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
+  const router = useRouter();
 
   useEffect(() => {
-    function handleClick(e) {
-      if (productRef.current && !productRef.current.contains(e.target)) setProductDropdown(false);
+    function handleClickOutside(event) {
+      if (productRef.current && !productRef.current.contains(event.target)) {
+        setProductDropdown(false);
+      }
     }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
+
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    setProductDropdown(!productDropdown);
+  };
 
   // Only render after login state is known
   if (isLoggedIn === undefined) return null;
@@ -171,33 +182,45 @@ export default function Navbar() {
                       <NavLink href="/">Home</NavLink>
                   </li>
                     {/* Product dropdown for not-logged-in users */}
-                  <li
+                    <li
                       className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
-                    ref={productRef}
-                  >
-                    <button
-                      type="button"
-                        className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
-                        onClick={() => setProductDropdown(!productDropdown)}
+                      ref={productRef}
                     >
-                      Product
-                      <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                    </button>
+                      <button
+                        type="button"
+                        className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                        onClick={handleProductClick}
+                      >
+                        Product
+                        <svg 
+                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
                       {productDropdown && (
-                    <div
-                          className="absolute left-0 top-full mt-1 min-w-[140px] bg-white rounded-lg shadow-lg py-2 z-50"
-                        style={{
-                          border: '1px solid #195B48',
-                        }}
-                      >
-                          <a
-                          href="/aligners"
-                            className="block px-4 py-2 text-black font-bold hover:bg-gray-100"
-                            onClick={() => setProductDropdown(false)}
-                      >
-                        Aligners
-                          </a>
-                    </div>
+                        <div
+                          className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-lg shadow-lg py-2 z-50"
+                          style={{
+                            border: '1px solid #195B48',
+                          }}
+                        >
+                          <button
+                            type="button"
+                            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100 transition-colors duration-150 font-semibold"
+                            onMouseDown={() => {
+                              console.log('Aligners button clicked');
+                              setProductDropdown(false);
+                              router.push('/aligners');
+                            }}
+                          >
+                            Aligners
+                          </button>
+                        </div>
                       )}
                     </li>
                     {links.filter(link => link.href !== "/").map((link, idx) => (
@@ -236,10 +259,18 @@ export default function Navbar() {
                   <button
                     type="button"
                     className="flex items-center gap-1 py-1 focus:outline-none"
-                    onClick={() => setProductDropdown(!productDropdown)}
+                    onClick={handleProductClick}
                   >
                     Product
-                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                    <svg 
+                      className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </button>
                   {productDropdown && (
                     <div
@@ -248,13 +279,17 @@ export default function Navbar() {
                         border: '1px solid #195B48',
                       }}
                     >
-                      <a
-                        href="/aligners"
-                        className="block px-4 py-2 text-black font-bold hover:bg-gray-100"
-                        onClick={() => setProductDropdown(false)}
+                      <button
+                        type="button"
+                        className="block w-full text-left px-4 py-2 text-black font-bold hover:bg-gray-100"
+                        onMouseDown={() => {
+                          console.log('Aligners button clicked (mobile)');
+                          setProductDropdown(false);
+                          router.push('/aligners');
+                        }}
                       >
                         Aligners
-                      </a>
+                      </button>
                     </div>
                   )}
                 </li>
