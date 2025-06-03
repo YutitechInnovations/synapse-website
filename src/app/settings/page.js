@@ -13,27 +13,27 @@ export default function Settings() {
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="fullName">Full Name</label>
-              <input id="fullName" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="Dr. Ayushi" />
+              <input id="fullName" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="email">Email</label>
-              <input id="email" type="email" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="example@synapse.com" />
+              <input id="email" type="email" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="mobile">Mobile Number</label>
-              <input id="mobile" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="9087654321" />
+              <input id="mobile" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="practiceType">Practice Type</label>
-              <input id="practiceType" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="9087654321" />
+              <input id="practiceType" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="iosReg">iOS Registration Number</label>
-              <input id="iosReg" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="987654321" />
+              <input id="iosReg" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold text-[#184C3A]" htmlFor="practiceAddress">Practice Address</label>
-              <input id="practiceAddress" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" placeholder="987654321" />
+              <input id="practiceAddress" type="text" className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3A] bg-white" />
             </div>
             <div className="md:col-span-2 flex justify-start mt-2">
               <button type="submit" className="bg-[#08544A] text-white font-semibold rounded-lg px-8 py-3 shadow-md hover:bg-[#184C3A] transition text-base">Save Changes</button>

@@ -3,11 +3,17 @@ import styles from './AlignMasters.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import ShareExperienceModal from './ShareExperienceModal';
+import ClientOnly from "../../components/ClientOnly";
+import Navbar from "../../components/navbar/Navbar.js";
 
 export default function AlignMasters() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
+      <ClientOnly>
+        <Navbar />
+      </ClientOnly>
+      <main className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
       {/* Hero Section */}
       <section className="w-full flex flex-col items-center justify-center px-4 md:px-8 bg-[#F8FAF9]">
         <h1 className={styles.heroHeading}>AlignMaster™</h1>
@@ -133,6 +139,7 @@ export default function AlignMasters() {
           </div>
         </div>
       </section>
+      </main>
       <ShareExperienceModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );

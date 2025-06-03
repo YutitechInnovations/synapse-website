@@ -8,7 +8,10 @@ const SignupForm = () => {
     mobile: "",
     email: "",
     registrationNumber: "",
+    password: "",
+    confirmPassword: ""
   });
+  const [errors, setErrors] = useState({});
 
   const [isSubmited, setIsSubmited] = useState(false);
   const [isApproved, setIsApproved] = useState(true);
@@ -37,8 +40,69 @@ const SignupForm = () => {
     }
   }, [resetPasswordData]);
 
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!data.name.trim()) {
+      newErrors.name = "Full name is required";
+    }
+    
+    if (!data.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(data.mobile)) {
+      newErrors.mobile = "Please enter a valid 10-digit mobile number";
+    }
+    
+    if (!data.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    if (!data.registrationNumber.trim()) {
+      newErrors.registrationNumber = "Registration number is required";
+    }
+    
+    if (!data.password) {
+      newErrors.password = "Password is required";
+    } else if (data.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters long";
+    }
+    
+    if (!data.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password";
+    } else if (data.password !== data.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    // Check if user already exists
+    const users = JSON.parse(localStorage.getItem('mockUsers') || '[]');
+    if (users.find(u => u.email === data.email)) {
+      setErrors({ email: "A user with this email already exists" });
+      return;
+    }
+
+    // Add new user
+    users.push({
+      name: data.name,
+      mobile: data.mobile,
+      email: data.email,
+      registrationNumber: data.registrationNumber,
+      password: data.password
+    });
+    localStorage.setItem('mockUsers', JSON.stringify(users));
+    
     setIsSubmited(true);
   };
 
@@ -82,10 +146,10 @@ const SignupForm = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label className="frm-label" htmlFor="name">
-                Full Name
+                Full Name *
               </label>
               <input
-                className="w-full frm-input focus:outline-none"
+                className={`w-full frm-input focus:outline-none ${errors.name ? 'border-red-500' : ''}`}
                 type="text"
                 id="name"
                 placeholder="First & Last Name"
@@ -93,13 +157,14 @@ const SignupForm = () => {
                 onChange={(e) => setData({ ...data, name: e.target.value })}
                 required
               />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
             <div className="mb-6">
               <label className="frm-label" htmlFor="Mobile">
-                Mobile Number
+                Mobile Number *
               </label>
               <input
-                className="w-full frm-input focus:outline-none"
+                className={`w-full frm-input focus:outline-none ${errors.mobile ? 'border-red-500' : ''}`}
                 type="number"
                 id="Mobile"
                 value={data.mobile}
@@ -107,13 +172,14 @@ const SignupForm = () => {
                 placeholder="90876543"
                 required
               />
+              {errors.mobile && <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>}
             </div>
             <div className="mb-6">
               <label className="frm-label" htmlFor="email">
-                Email
+                Email *
               </label>
               <input
-                className="w-full frm-input focus:outline-none"
+                className={`w-full frm-input focus:outline-none ${errors.email ? 'border-red-500' : ''}`}
                 type="email"
                 id="email"
                 value={data.email}
@@ -121,14 +187,15 @@ const SignupForm = () => {
                 placeholder="example@synapse.com"
                 required
               />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
             <div className="mb-6">
               <label className="frm-label" htmlFor="registration-number">
-                iOS Registration Number
+                iOS Registration Number *
               </label>
               <input
-                className="w-full frm-input focus:outline-none"
+                className={`w-full frm-input focus:outline-none ${errors.registrationNumber ? 'border-red-500' : ''}`}
                 type="number"
                 value={data.registrationNumber}
                 onChange={(e) =>
@@ -138,11 +205,39 @@ const SignupForm = () => {
                 placeholder="543234567"
                 required
               />
-              <div className="text-right">
-                <Link href="#" className=" text-sm hover:underline">
-                  Forgot your password?
-                </Link>
-              </div>
+              {errors.registrationNumber && <p className="text-red-500 text-sm mt-1">{errors.registrationNumber}</p>}
+            </div>
+
+            <div className="mb-6">
+              <label className="frm-label" htmlFor="password">
+                Password *
+              </label>
+              <input
+                className={`w-full frm-input focus:outline-none ${errors.password ? 'border-red-500' : ''}`}
+                type="password"
+                id="password"
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
+                placeholder="Enter your password"
+                required
+              />
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+            </div>
+
+            <div className="mb-6">
+              <label className="frm-label" htmlFor="confirm-password">
+                Confirm Password *
+              </label>
+              <input
+                className={`w-full frm-input focus:outline-none ${errors.confirmPassword ? 'border-red-500' : ''}`}
+                type="password"
+                id="confirm-password"
+                value={data.confirmPassword}
+                onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+                placeholder="Confirm your password"
+                required
+              />
+              {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
             </div>
 
             <p className="text-sm text-gray-600">

@@ -1,6 +1,5 @@
 "use client";
 import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -74,7 +73,6 @@ function BlogsContent() {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

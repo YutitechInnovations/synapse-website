@@ -1,24 +1,40 @@
 "use client";
 import Link from "next/link.js";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Mock validation for demonstration
     if (!email) {
       setError("Please enter your email");
       return;
     }
+    if (!password) {
+      setError("Please enter your password");
+      return;
+    }
+
+    // Get users from localStorage
+    const users = JSON.parse(localStorage.getItem('mockUsers') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      setError("Invalid email or password");
+      return;
+    }
+
     setError("");
     // Set mock login state
     localStorage.setItem('mockLoggedIn', 'true');
-    // Redirect or further logic here
-    window.location.href = "/";
-    setTimeout(() => window.location.reload(), 100);
+    // Use router to navigate to home page
+    router.push('/home');
   };
 
   return (
@@ -43,9 +59,23 @@ const LoginForm = () => {
               onChange={e => setEmail(e.target.value)}
             />
           </div>
+          <div className="mb-6">
+            <label className="frm-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="w-full frm-input focus:outline-none"
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
           <button className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors" type="submit">
-            Continue
+            Sign In
           </button>
         </form>
         <div className="flex flex-col sm:flex-row items-center justify-between mt-2 w-full">
