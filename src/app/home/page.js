@@ -1,10 +1,16 @@
 import Image from "next/image";
 import styles from './home.module.css';
 import ConnectionFeatureSection from '../../components/home/ConnectionFeatureSection';
+import ClientOnly from "../../components/ClientOnly";
+import Navbar from "../../components/navbar/Navbar.js";
 
 export default function PostLoginHome() {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
+      <ClientOnly>
+        <Navbar />
+      </ClientOnly>
+      <main className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
       {/* Hero Section */}
       <section className={styles.heroSection}>
         {/* Background Image */}
@@ -100,7 +106,12 @@ export default function PostLoginHome() {
             {/* Blogs Card */}
             <a href="/blogs" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
-                <img src="/blogs.png" alt="Blogs" className="w-full h-full object-cover" />
+                  <Image
+                    src="/blogs.png"
+                    alt="Blogs"
+                    fill
+                    className="object-cover"
+                  />
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
                 <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">Blogs</span>
               </div>
@@ -108,7 +119,12 @@ export default function PostLoginHome() {
             {/* Materials & Data Card */}
             <a href="#" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
-                <img src="/materials&data.png" alt="Materials & Data" className="w-full h-full object-cover" />
+                  <Image
+                    src="/materials&data.png"
+                    alt="Materials & Data"
+                    fill
+                    className="object-cover"
+                  />
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
                 <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">Materials & Data</span>
               </div>
@@ -116,22 +132,33 @@ export default function PostLoginHome() {
             {/* Research Papers Card */}
             <a href="#" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
-                <img src="/researchpapers.png" alt="Research Papers" className="w-full h-full object-cover" />
+                  <Image
+                    src="/researchpapers.png"
+                    alt="Research Papers"
+                    fill
+                    className="object-cover"
+                  />
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
                 <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">Research Papers</span>
               </div>
             </a>
-            {/* Patients' FAQs Card */}
+              {/* Patients&apos; FAQs Card */}
             <a href="/faq" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
-                <img src="/faq.png" alt="Patients' FAQs" className="w-full h-full object-cover" />
+                  <Image
+                    src="/faq.png"
+                    alt="Patients' FAQs"
+                    fill
+                    className="object-cover"
+                  />
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">Patients' FAQs</span>
+                  <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">Patients&apos; FAQs</span>
               </div>
             </a>
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 } 
