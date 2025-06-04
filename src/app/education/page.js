@@ -12,7 +12,7 @@ export default function Education() {
     },
     {
       title: 'Materials & Data',
-      image: '/materials&data.png',
+      image: '/materials.png',
       link: null
     },
     {

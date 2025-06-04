@@ -17,7 +17,7 @@ const rightLinks = [
 
 const Footer = () => {
   const pathname = usePathname();
-  const showLoginButton = ["/", "/login", "/signup", "/aboutus", "/education", "/faq", "/aligners", "/aligners-biosmart-sm", "/aligners-biosmart-t"].includes(pathname);
+  const showLoginButton = ["/", "/login", "/signup", "/aboutus", "/education", "/aligners", "/aligners-biosmart-sm", "/aligners-biosmart-t"].includes(pathname);
   return (
     <footer className="w-full bg-[#08544A] pt-0">
       <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-center md:gap-12 px-4 md:px-12 py-8">

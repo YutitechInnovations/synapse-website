@@ -1,5 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { FiSearch } from "react-icons/fi";
+import { FaStar, FaChartBar } from "react-icons/fa";
 
 const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
   name: [
@@ -18,76 +20,39 @@ const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
   ][i],
   email: "smith.hskk@gmail.com",
   mobile: "+91 9876543210",
-  ios: [
-    "98765",
-    "12345",
-    "12345",
-    "09876",
-    "87665",
-    "53453",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-  ][i],
-  status: "Pending",
+  rewards: [1234, 4321, 1234, 4321, 543, 1234, 4321, 654, 1234, 5432, 123, 4567][i],
 }));
 
-function StatusDropdown({ value, onChange }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef();
-  useEffect(() => {
-    function handleClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    }
-    if (open) document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [open]);
-  const options = ["Approve", "In Progress", "Reject"];
-  return (
-    <div className="relative inline-block" ref={ref}>
-      <button
-        className="border border-[#195B48] bg-white px-6 py-2 rounded-full text-[#195B48] font-semibold flex items-center gap-2 min-w-[120px] justify-between focus:outline-none transition-colors duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44] hover:text-[#004C44]"
-        onClick={() => { console.log('Dropdown button clicked'); setOpen((v) => !v); }}
-        type="button"
-      >
-        {value} <span className="text-lg">▼</span>
-      </button>
-      {open && (
-        <div className="absolute left-0 mt-2 w-full bg-white border border-[#C7D7CB] rounded-xl shadow z-50 flex flex-col text-[#195B48] text-[15px] font-semibold overflow-hidden">
-          {options.map((opt) => (
-            <button
-              key={opt}
-              className="px-4 py-2 text-left border-b last:border-0 border-[#C7D7CB] transition-colors duration-150 hover:bg-[#E6F2EF] hover:text-[#195B48]"
-              onClick={() => {
-                onChange(opt);
-                setOpen(false);
-              }}
-              type="button"
-            >
-              {opt}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+export default function DoctorRewardProgram() {
+  const [search, setSearch] = useState("");
+  // Filter doctors based on search
+  const filteredDoctors = mockDoctors.filter(doc =>
+    doc.name.toLowerCase().includes(search.toLowerCase()) ||
+    doc.email.toLowerCase().includes(search.toLowerCase()) ||
+    doc.mobile.toLowerCase().includes(search.toLowerCase())
   );
-}
-
-export default function DoctorManagement() {
-  const [doctors, setDoctors] = useState(mockDoctors);
-  function handleStatusChange(idx, newStatus) {
-    setDoctors((prev) => prev.map((doc, i) => i === idx ? { ...doc, status: newStatus } : doc));
-  }
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
+      {/* Search Bar */}
+      <div className="flex gap-4 items-center w-full md:w-auto mb-8">
+        <div className="relative w-full md:w-[320px] h-[45px]">
+          <input
+            className="border border-[#C7D7CB] rounded-full pl-12 pr-4 h-[45px] w-full text-base focus:outline-none"
+            style={{ minWidth: '0', maxWidth: '100%' }}
+            placeholder="Search"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#195B48] text-xl" />
+        </div>
+      </div>
+      {/* Stats Cards */}
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
         <StatCard label="Total Doctors" value={125} />
         <StatCard label="Active Doctors" value={85} />
         <StatCard label="Inactive Doctors" value={40} />
       </div>
+      {/* Table */}
       <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-x-auto">
         <div style={{ maxHeight: "400px", overflowY: "auto", width: "100%" }}>
           <table className="w-full text-left">
@@ -97,26 +62,28 @@ export default function DoctorManagement() {
                 <th className="py-3 px-4">Doctor Name</th>
                 <th className="py-3 px-4">Email Id</th>
                 <th className="py-3 px-4">Mobile Number</th>
-                <th className="py-3 px-4">iOS Number</th>
+                <th className="py-3 px-4">Rewards Points</th>
                 <th className="py-3 px-4">Action</th>
               </tr>
             </thead>
             <tbody>
-              {doctors.map((doc, i) => (
+              {filteredDoctors.map((doc, i) => (
                 <tr key={i} className="border-b border-[#C7D7CB] last:border-0 text-[#195B48] text-[15px]">
                   <td className="py-3 px-4 font-medium">{String(i + 1).padStart(2, "0")}</td>
                   <td className="py-3 px-4">{doc.name}</td>
                   <td className="py-3 px-4">{doc.email}</td>
                   <td className="py-3 px-4">{doc.mobile}</td>
-                  <td className="py-3 px-4">{doc.ios}</td>
-                  <td className="py-3 px-4">
-                    <StatusDropdown value={doc.status} onChange={(val) => handleStatusChange(i, val)} />
+                  <td className="py-3 px-4">{doc.rewards}</td>
+                  <td className="py-3 px-4 flex gap-3 items-center">
+                    <button className="text-[#195B48] hover:text-yellow-500"><FaStar /></button>
+                    <button className="text-[#195B48] hover:text-[#004C44]"><FaChartBar /></button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        {/* Pagination */}
         <div className="flex justify-between items-center mt-4 px-4 pb-4">
           <div className="flex items-center gap-2">
             <select className="border border-[#C7D7CB] rounded px-2 py-1 text-sm">

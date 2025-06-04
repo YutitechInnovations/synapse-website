@@ -120,7 +120,7 @@ export default function PostLoginHome() {
             <a href="#" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
                   <Image
-                    src="/materials&data.png"
+                    src="/materials.png"
                     alt="Materials & Data"
                     fill
                     className="object-cover"

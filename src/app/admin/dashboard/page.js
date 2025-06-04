@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 import styles from './dashboard.module.css';
 
 const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
@@ -12,8 +13,18 @@ const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 export default function AdminDashboard() {
+  const router = useRouter();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isAdmin = localStorage.getItem("mockAdminLoggedIn") === "true";
+      if (!isAdmin) {
+        router.push("/admin");
+      }
+    }
+  }, [router]);
+
   return (
-    <div className={styles.dashboardContainer}>
+    <div className="w-full">
       {/* Example Stats Row */}
       <div className={styles.statsRow}>
         <StatCard label="Total Doctors" value={12} />
@@ -21,29 +32,31 @@ export default function AdminDashboard() {
         <StatCard label="Active Cases" value={23} />
       </div>
       {/* Example Responsive Doctor Table */}
-      <div className="overflow-x-auto w-full">
-        <table className={styles.doctorTable + " min-w-full"}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Mobile</th>
-              <th>IOS</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mockDoctors.map((doc, i) => (
-              <tr key={i}>
-                <td data-label="Name">{doc.name}</td>
-                <td data-label="Email">{doc.email}</td>
-                <td data-label="Mobile">{doc.mobile}</td>
-                <td data-label="IOS">{doc.ios}</td>
-                <td data-label="Status">{doc.status}</td>
+      <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-x-auto">
+        <div style={{ maxHeight: "400px", overflowY: "auto", width: "100%" }}>
+          <table className={styles.doctorTable + " min-w-full"}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>IOS</th>
+                <th>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {mockDoctors.map((doc, i) => (
+                <tr key={i}>
+                  <td data-label="Name">{doc.name}</td>
+                  <td data-label="Email">{doc.email}</td>
+                  <td data-label="Mobile">{doc.mobile}</td>
+                  <td data-label="IOS">{doc.ios}</td>
+                  <td data-label="Status">{doc.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
