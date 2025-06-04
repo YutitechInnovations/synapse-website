@@ -247,77 +247,123 @@ export default function Navbar() {
               className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col items-center fixed top-0 left-0 w-full h-full bg-[#F8FAF9] rounded-none z-50 transition-all duration-300 min-w-0`}
             >
               <ul className="flex flex-col items-start justify-start pt-8 space-y-8 p-8 w-full h-full min-w-0">
-                {/* Home link */}
-                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                  <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                </li>
-                {/* Product dropdown for mobile */}
-                <li
-                  className="relative w-full text-left font-semibold text-[18px] text-[#195B48]"
-                  ref={productRef}
-                >
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 py-1 focus:outline-none"
-                    onClick={handleProductClick}
-                  >
-                    Product
-                    <svg 
-                      className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {productDropdown && (
-                    <div
-                      className="mt-1 min-w-[140px] bg-[#004c4494] rounded-lg shadow-lg py-2"
-                      style={{
-                        border: '1px solid #195B48',
-                      }}
+                {isLoggedIn ? (
+                  <>
+                    {/* Post-login mobile menu items */}
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/home" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/rxtrack" onClick={() => setIsMenuOpen(false)}>RxTrack™</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/orthosync" onClick={() => setIsMenuOpen(false)}>OrthoSync™</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/reward-program" onClick={() => setIsMenuOpen(false)}>Reward Program</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/alignmasters" onClick={() => setIsMenuOpen(false)}>AlignMasters™</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/e-shop" onClick={() => setIsMenuOpen(false)}>E-Shop</NavLink>
+                    </li>
+                    {/* Vertical separator */}
+                    <li className="flex items-center mx-2">
+                      <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
+                    </li>
+                    {/* Profile and Logout */}
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/profile" onClick={() => setIsMenuOpen(false)}>Profile</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/settings" onClick={() => setIsMenuOpen(false)}>Settings</NavLink>
+                    </li>
+                    <li className="w-full">
+                      <button 
+                        onClick={() => {
+                          logout();
+                          setIsMenuOpen(false);
+                          window.location.href = '/';
+                        }} 
+                        className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    {/* Pre-login mobile menu items */}
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                    </li>
+                    {/* Product dropdown for mobile */}
+                    <li
+                      className="relative w-full text-left font-semibold text-[18px] text-[#195B48]"
+                      ref={productRef}
                     >
                       <button
                         type="button"
-                        className="block w-full text-left px-4 py-2 text-black font-bold hover:bg-gray-100"
-                        onMouseDown={() => {
-                          console.log('Aligners button clicked (mobile)');
-                          setProductDropdown(false);
-                          router.push('/aligners');
-                        }}
+                        className="flex items-center gap-1 py-1 focus:outline-none"
+                        onClick={handleProductClick}
                       >
-                        Aligners
+                        Product
+                        <svg 
+                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19 9l-7 7-7-7" />
+                        </svg>
                       </button>
-                    </div>
-                  )}
-                </li>
-                {/* Education link */}
-                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                  <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
-                </li>
-                {/* About us link */}
-                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                  <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About us</NavLink>
-                </li>
-                {/* Careers link */}
-                <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                  <NavLink href="/careers" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
-                </li>
-                {/* Vertical separator */}
-                <li className="flex items-center mx-2">
-                  <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
-                </li>
-                {/* Login button */}
-                <li className="flex items-center w-full">
+                      {productDropdown && (
+                        <div
+                          className="mt-1 min-w-[140px] bg-[#004c4494] rounded-lg shadow-lg py-2"
+                          style={{
+                            border: '1px solid #195B48',
+                          }}
+                        >
+                          <button
+                            type="button"
+                            className="block w-full text-left px-4 py-2 text-black font-bold hover:bg-gray-100"
+                            onMouseDown={() => {
+                              console.log('Aligners button clicked (mobile)');
+                              setProductDropdown(false);
+                              router.push('/aligners');
+                            }}
+                          >
+                            Aligners
+                          </button>
+                        </div>
+                      )}
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About us</NavLink>
+                    </li>
+                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                      <NavLink href="/careers" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
+                    </li>
+                    {/* Vertical separator */}
+                    <li className="flex items-center mx-2">
+                      <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
+                    </li>
+                    {/* Login button */}
+                    <li className="flex items-center w-full">
                       <a href="/login" className="block w-full">
                         <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
                           Login
                         </button>
                       </a>
                     </li>
-                </ul>
+                  </>
+                )}
+              </ul>
             </div>
             {/* Logo at the far right */}
             <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
