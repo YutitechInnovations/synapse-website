@@ -14,14 +14,14 @@ const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
 
 export default function AdminDashboard() {
   const router = useRouter();
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isAdmin = localStorage.getItem("mockAdminLoggedIn") === "true";
-      if (!isAdmin) {
-        router.push("/admin");
-      }
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   // if (typeof window !== "undefined") {
+  //   //   const isAdmin = localStorage.getItem("mockAdminLoggedIn") === "true";
+  //   //   if (!isAdmin) {
+  //   //     router.push("/admin");
+  //   //   }
+  //   // }
+  // }, [router]);
 
   return (
     <div className="w-full">
