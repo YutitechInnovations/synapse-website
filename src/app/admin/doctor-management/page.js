@@ -1,39 +1,8 @@
 "use client";
+import Loader from "@/components/loader";
+import { useDoctors } from "@/hooks/useDoctors";
 import { useState, useRef, useEffect } from "react";
 
-const mockDoctors = Array.from({ length: 12 }, (_, i) => ({
-  name: [
-    "Dr. John Doe",
-    "Dr. Joe Doe",
-    "Dr. Jane Doe",
-    "Dr. Jane Doe",
-    "Dr. John Doe",
-    "Dr. Joe Doe",
-    "Dr. Smith",
-    "Dr. Smith",
-    "Dr. Smith",
-    "Dr. Smith",
-    "Dr. Smith",
-    "Dr. Smith",
-  ][i],
-  email: "smith.hskk@gmail.com",
-  mobile: "+91 9876543210",
-  ios: [
-    "98765",
-    "12345",
-    "12345",
-    "09876",
-    "87665",
-    "53453",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-    "24654",
-  ][i],
-  status: "Pending",
-}));
 
 function StatusDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false);
@@ -45,7 +14,7 @@ function StatusDropdown({ value, onChange }) {
     if (open) document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, [open]);
-  const options = ["Approve", "In Progress", "Reject"];
+  const options = ["Approve", "In Progress", "Reject", "Pending"];
   return (
     <div className="relative inline-block" ref={ref}>
       <button
@@ -77,22 +46,45 @@ function StatusDropdown({ value, onChange }) {
 }
 
 export default function DoctorManagement() {
-  const [doctors, setDoctors] = useState(mockDoctors);
-  function handleStatusChange(idx, newStatus) {
-    setDoctors((prev) => prev.map((doc, i) => i === idx ? { ...doc, status: newStatus } : doc));
+  // const [doctors, setDoctors] = useState(mockDoctors);
+  const { data: doctorsDetails, isLoading, error } = useDoctors();
+  // function handleStatusChange(idx, newStatus) {
+  //   setDoctors((prev) => prev.map((doc, i) => i === idx ? { ...doc, status: newStatus } : doc));
+  // }
+
+  if (isLoading) {
+    return <Loader />;
   }
+
+  if (error) {
+    return (
+      <div className="w-full text-center text-red-500 p-4">
+        Error loading doctors: {error.message}
+      </div>
+    );
+  }
+
+  if (!doctorsDetails || !doctorsDetails.doctors) {
+    return (
+      <div className="w-full text-center text-gray-500 p-4">
+        No doctors data available
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
-        <StatCard label="Total Doctors" value={125} />
+        <StatCard label="Total Doctors" value={doctorsDetails.total_count} />
         <StatCard label="Active Doctors" value={85} />
         <StatCard label="Inactive Doctors" value={40} />
       </div>
-      <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-x-auto">
-        <div style={{ maxHeight: "400px", overflowY: "auto", width: "100%" }}>
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b border-[#C7D7CB] bg-[#F8FAF9] text-[#195B48] text-[15px] font-semibold">
+
+      <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-hidden">
+        <div className="overflow-y-auto max-h-[calc(100vh-30rem)]">
+          <table className="w-full text-left border-collapse">
+            <thead className="sticky top-0 bg-[#F8FAF9] z-10">
+              <tr className="border-b border-[#C7D7CB] text-[#195B48] text-[15px] font-semibold">
                 <th className="py-3 px-4">S. No.</th>
                 <th className="py-3 px-4">Doctor Name</th>
                 <th className="py-3 px-4">Email Id</th>
@@ -102,7 +94,7 @@ export default function DoctorManagement() {
               </tr>
             </thead>
             <tbody>
-              {doctors.map((doc, i) => (
+              {doctorsDetails.doctors.map((doc, i) => (
                 <tr key={i} className="border-b border-[#C7D7CB] last:border-0 text-[#195B48] text-[15px]">
                   <td className="py-3 px-4 font-medium">{String(i + 1).padStart(2, "0")}</td>
                   <td className="py-3 px-4">{doc.name}</td>
@@ -117,6 +109,7 @@ export default function DoctorManagement() {
             </tbody>
           </table>
         </div>
+
         <div className="flex justify-between items-center mt-4 px-4 pb-4">
           <div className="flex items-center gap-2">
             <select className="border border-[#C7D7CB] rounded px-2 py-1 text-sm">
@@ -135,6 +128,7 @@ export default function DoctorManagement() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

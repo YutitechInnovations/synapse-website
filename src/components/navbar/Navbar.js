@@ -2,30 +2,16 @@
 
 import NavLink from "../navlink/NavLink.js";
 import styles from "./navbar.module.css";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from 'next/image';
+import Cookies from "js-cookie";
+import { useAuth } from "@/hooks/useAuth";
 
-// Minimal, bulletproof mock auth hook
-function useMockAuth() {
-  const [isLoggedIn, setIsLoggedIn] = useState(undefined);
-  // Always call both effects
-  useEffect(() => {
-    setIsLoggedIn(typeof window !== 'undefined' && localStorage.getItem('mockLoggedIn') === 'true');
-  }, []);
-  useEffect(() => {
-    if (typeof window !== 'undefined' && isLoggedIn !== undefined) {
-      localStorage.setItem('mockLoggedIn', isLoggedIn ? 'true' : 'false');
-    }
-  }, [isLoggedIn]);
-  return {
-    isLoggedIn,
-    login: () => setIsLoggedIn(true),
-    logout: () => setIsLoggedIn(false)
-  };
-}
+
 
 function ProfileDropdown({ onLogout }) {
+
   const [open, setOpen] = useState(false);
   const ref = useRef();
   const router = useRouter();
@@ -47,9 +33,9 @@ function ProfileDropdown({ onLogout }) {
     <div className="relative" ref={ref}>
       <button onClick={() => setOpen((v) => !v)} className="flex items-center gap-2 focus:outline-none">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" clipRule="evenodd" d="M9.00058 8.99997C7.00528 8.99997 5.38349 7.38537 5.38349 5.39998C5.38349 3.41458 7.00528 1.79998 9.00058 1.79998C10.9959 1.79998 12.6177 3.41458 12.6177 5.39998C12.6177 7.38537 10.9959 8.99997 9.00058 8.99997ZM12.399 9.60565C13.1426 9.01352 13.7161 8.23494 14.061 7.34917C14.406 6.46339 14.5101 5.50202 14.3628 4.56293C14.0055 2.20223 12.0327 0.313179 9.65038 0.0377791C6.36358 -0.34292 3.57539 2.20408 3.57539 5.39998C3.57539 7.10097 4.36739 8.61655 5.60218 9.60565C2.56739 10.7405 0.351593 13.4055 0.00419362 17.0018C-0.0079528 17.128 0.00635723 17.2553 0.0462025 17.3756C0.0860478 17.4959 0.150555 17.6065 0.2356 17.7005C0.320644 17.7944 0.424353 17.8695 0.540099 17.9211C0.655845 17.9726 0.781081 17.9995 0.907797 18C1.12991 18.0017 1.34468 17.9206 1.51 17.7722C1.67533 17.6239 1.77929 17.4191 1.80149 17.1981C2.16419 13.1814 5.25389 10.8 9.00058 10.8C12.7473 10.8 15.837 13.1814 16.1997 17.1981C16.2219 17.4191 16.3258 17.6239 16.4912 17.7722C16.6565 17.9206 16.8713 18.0017 17.0934 18C17.6298 18 18.0474 17.5337 17.9961 17.0018C17.6496 13.4055 15.4338 10.7405 12.3981 9.60565" fill="white"/>
+          <path fillRule="evenodd" clipRule="evenodd" d="M9.00058 8.99997C7.00528 8.99997 5.38349 7.38537 5.38349 5.39998C5.38349 3.41458 7.00528 1.79998 9.00058 1.79998C10.9959 1.79998 12.6177 3.41458 12.6177 5.39998C12.6177 7.38537 10.9959 8.99997 9.00058 8.99997ZM12.399 9.60565C13.1426 9.01352 13.7161 8.23494 14.061 7.34917C14.406 6.46339 14.5101 5.50202 14.3628 4.56293C14.0055 2.20223 12.0327 0.313179 9.65038 0.0377791C6.36358 -0.34292 3.57539 2.20408 3.57539 5.39998C3.57539 7.10097 4.36739 8.61655 5.60218 9.60565C2.56739 10.7405 0.351593 13.4055 0.00419362 17.0018C-0.0079528 17.128 0.00635723 17.2553 0.0462025 17.3756C0.0860478 17.4959 0.150555 17.6065 0.2356 17.7005C0.320644 17.7944 0.424353 17.8695 0.540099 17.9211C0.655845 17.9726 0.781081 17.9995 0.907797 18C1.12991 18.0017 1.34468 17.9206 1.51 17.7722C1.67533 17.6239 1.77929 17.4191 1.80149 17.1981C2.16419 13.1814 5.25389 10.8 9.00058 10.8C12.7473 10.8 15.837 13.1814 16.1997 17.1981C16.2219 17.4191 16.3258 17.6239 16.4912 17.7722C16.6565 17.9206 16.8713 18.0017 17.0934 18C17.6298 18 18.0474 17.5337 17.9961 17.0018C17.6496 13.4055 15.4338 10.7405 12.3981 9.60565" fill="white" />
         </svg>
-        <svg width="20" height="20" fill="white" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4 4.5-4" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round"/></svg>
+        <svg width="20" height="20" fill="white" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4 4.5-4" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" /></svg>
       </button>
       {open && (
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
@@ -63,10 +49,8 @@ function ProfileDropdown({ onLogout }) {
 }
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const user = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isLoggedIn, login, logout } = useMockAuth();
-  console.log('isLoggedIn:', isLoggedIn, 'mockLoggedIn:', typeof window !== 'undefined' && localStorage.getItem('mockLoggedIn'), 'pathname:', pathname);
   // Dropdown state for Product (move up)
   const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
@@ -91,7 +75,6 @@ export default function Navbar() {
   };
 
   // Only render after login state is known
-  if (isLoggedIn === undefined) return null;
 
   const minimalLinks = [
     { href: "/", label: "Home" },
@@ -107,17 +90,14 @@ export default function Navbar() {
     { href: "/alignmasters", label: "AlignMasters™" },
     { href: "/e-shop", label: "E-Shop" },
   ];
-  const isMinimalPage = !isLoggedIn && (
-    pathname === "/" ||
-    pathname === "/login" ||
-    pathname === "/signup" ||
-    pathname === "/aboutus" ||
-    pathname === "/education" ||
-    pathname === "/aligners" ||
-    pathname === "/aligners-biosmart-sm" ||
-    pathname === "/aligners-biosmart-t"
-  );
-  const links = isLoggedIn ? figmaLinks : minimalLinks;
+
+  const links = user ? figmaLinks : minimalLinks;
+
+  const handleLogout = () => {
+    Cookies.remove("user"); // remove cookie
+    localStorage.clear(); // optional: remove token/local items
+    window.location.href = '/';
+  };
 
   return (
     <>
@@ -132,21 +112,21 @@ export default function Navbar() {
         <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
           <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
             {/* Hamburger for mobile */}
-              <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-                type="button"
-              >
-                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-                <span className="block w-7 h-1 bg-white rounded"></span>
-              </button>
+            <button
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              type="button"
+            >
+              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+              <span className="block w-7 h-1 bg-white rounded"></span>
+            </button>
             {/* Nav links and menu */}
             <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
               <ul className="flex flex-row items-center p-0 w-auto min-w-0">
                 {/* Post-login: Home, RxTrack, OrthoSync, Doctor Reward Program, AlignMasters, E-Shop, divider, user, logo */}
-                {isLoggedIn ? (
+                {user ? (
                   <>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
                       <NavLink href="/home">Home</NavLink>
@@ -172,7 +152,7 @@ export default function Navbar() {
                     </li>
                     {/* User profile dropdown */}
                     <li className="flex items-center md:ml-[30px]">
-                      <ProfileDropdown onLogout={logout} />
+                      <ProfileDropdown onLogout={handleLogout} />
                     </li>
                   </>
                 ) : (
@@ -180,7 +160,7 @@ export default function Navbar() {
                   <>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
                       <NavLink href="/">Home</NavLink>
-                  </li>
+                    </li>
                     {/* Product dropdown for not-logged-in users */}
                     <li
                       className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
@@ -192,11 +172,11 @@ export default function Navbar() {
                         onClick={handleProductClick}
                       >
                         Product
-                        <svg 
-                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
+                        <svg
+                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
                         >
                           <path d="M19 9l-7 7-7-7" />
@@ -232,14 +212,14 @@ export default function Navbar() {
                       <span className="block h-6 w-px bg-white opacity-40"></span>
                     </li>
                     <li className="flex items-center md:ml-[30px]">
-                        <a href="/login">
-                          <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
-                            Login
-                          </button>
-                        </a>
-                      </li>
-                    </>
-                  )}
+                      <a href="/login">
+                        <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                          Login
+                        </button>
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
             {/* Mobile menu and nav links */}
@@ -247,7 +227,7 @@ export default function Navbar() {
               className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col items-center fixed top-0 left-0 w-full h-full bg-[#F8FAF9] rounded-none z-50 transition-all duration-300 min-w-0`}
             >
               <ul className="flex flex-col items-start justify-start pt-8 space-y-8 p-8 w-full h-full min-w-0">
-                {isLoggedIn ? (
+                {user ? (
                   <>
                     {/* Post-login mobile menu items */}
                     <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
@@ -280,12 +260,11 @@ export default function Navbar() {
                       <NavLink href="/settings" onClick={() => setIsMenuOpen(false)}>Settings</NavLink>
                     </li>
                     <li className="w-full">
-                      <button 
+                      <button
                         onClick={() => {
-                          logout();
+                          handleLogout();
                           setIsMenuOpen(false);
-                          window.location.href = '/';
-                        }} 
+                        }}
                         className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90"
                       >
                         Logout
@@ -309,11 +288,11 @@ export default function Navbar() {
                         onClick={handleProductClick}
                       >
                         Product
-                        <svg 
-                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
+                        <svg
+                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
                         >
                           <path d="M19 9l-7 7-7-7" />
