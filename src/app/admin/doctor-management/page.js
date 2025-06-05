@@ -53,10 +53,25 @@ export default function DoctorManagement() {
   // }
 
   if (isLoading) {
-    return (
-      <Loader />
-    )
+    return <Loader />;
   }
+
+  if (error) {
+    return (
+      <div className="w-full text-center text-red-500 p-4">
+        Error loading doctors: {error.message}
+      </div>
+    );
+  }
+
+  if (!doctorsDetails || !doctorsDetails.doctors) {
+    return (
+      <div className="w-full text-center text-gray-500 p-4">
+        No doctors data available
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">

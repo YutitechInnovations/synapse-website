@@ -15,54 +15,37 @@ const isViewOnlyRoute = (path) =>
     );
 
 const isAdminRoutes = (path) =>
-    ADMIN_ROUTES.some((route) => path === route);
+    path.startsWith('/admin');
 
 export default async function middleware(req) {
     const path = req.nextUrl.pathname;
+
+    // Allow access to admin login page
+    if (path === '/admin') {
+        return NextResponse.next();
+    }
 
     const cookieHeader = req.headers.get("cookie") || "";
     const cookies = Object.fromEntries(
         cookieHeader.split("; ").map((cookie) => cookie.split("="))
     );
 
+    const adminId = cookies["adminId"];
+    const token = cookies["token"];
+    const isLoggedIn = cookies["isLoggedInYN"];
+
+    // For admin routes, check admin authentication
+    if (isAdminRoutes(path)) {
+        if (!adminId || !token || isLoggedIn !== 'true') {
+            return NextResponse.redirect(new URL("/admin", req.nextUrl));
+        }
+        return NextResponse.next();
+    }
+
+    // For non-admin routes, check user authentication
     const userCookie = cookies["user"];
-    const adminCookie = cookies["adminId"];
-
-    let userData = null;
-    let adminId = null;
-
-    if (userCookie) {
-        try {
-            userData = JSON.parse(decodeURIComponent(userCookie));
-        } catch (error) {
-            console.error("Failed to parse user cookie:", error.message);
-        }
-    }
-
-    if (adminCookie) {
-        try {
-            adminId = (decodeURIComponent(adminCookie));
-        } catch (error) {
-            console.error("Failed to parse admin cookie:", error.message);
-        }
-    }
-
-    const isAuthenticated = !!userData;
-
-    // ✅ Redirect unauthenticated users trying to access private routes
-    if (!isAuthenticated && !isPublicRoute(path) && !isAdminRoutes(path)) {
+    if (!userCookie && !isPublicRoute(path)) {
         return NextResponse.redirect(new URL("/login", req.nextUrl));
-    }
-
-    // ✅ Redirect unauthenticated admin to admin login
-    if (!adminId && isAdminRoutes(path)) {
-        return NextResponse.redirect(new URL("/admin", req.nextUrl));
-    }
-
-    // ✅ Redirect users who are both logged in as admin & user
-    // to admin dashboard only when they're trying to access non-admin pages
-    if (isAuthenticated && adminId && path === '/admin') {
-        return NextResponse.redirect(new URL("/admin/dashboard", req.nextUrl));
     }
 
     return NextResponse.next();

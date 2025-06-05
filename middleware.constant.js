@@ -17,7 +17,7 @@ export const ROLE = {
     OWNER: 1,
 };
 
-export const ADMIN_ROUTES = ["/admin/dashboard", "admin/doctor-management", 'admin/reward-program'];
+export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
 
 export const USER_ROUTES = [
     "/reward-program",

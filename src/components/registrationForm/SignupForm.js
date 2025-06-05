@@ -1,11 +1,13 @@
 "use client";
 import { registerDoctor } from "@/services/auth";
 import Link from "next/link.js";
+import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Loader from "../loader";
 
 const SignupForm = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     name: "",
     mobile: "",
@@ -59,7 +61,7 @@ const SignupForm = () => {
     if (!data.registrationNumber.trim()) errors.registrationNumber = "Registration number is required";
 
     if (!data.password) errors.password = "Password is required";
-    else if (data.password.length < 6) errors.password = "Password must be at least 6 characters long";
+    else if (data.password.length < 8) errors.password = "Password must be at least 8 characters long";
 
     if (!data.confirmPassword) errors.confirmPassword = "Please confirm your password";
     else if (data.password !== data.confirmPassword) errors.confirmPassword = "Passwords do not match";
@@ -91,7 +93,8 @@ const SignupForm = () => {
 
       // If no failure, handle success
       toast.success(result.message || "Registration successful! Please login.");
-      window.location.href = "/login";
+      setIsSubmited(true);
+      router.push("/thank-you");
 
     } catch (error) {
       console.log(error)

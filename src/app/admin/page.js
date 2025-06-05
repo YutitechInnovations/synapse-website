@@ -35,21 +35,27 @@ export default function AdminLogin() {
 
     try {
       // Call API
-      const response = await adminLogin({ username: email, password });
+      const response = await adminLogin({ email, password });
+      console.log('Admin login response:', response); // Debug log
 
-      // Clear old cookies before authentication
-      Cookies.remove("user");
-      Cookies.remove("token");
+      if (response?.status === "success") {
+        // Set cookies directly
+        Cookies.set("adminId", response.admin_id);
+        Cookies.set("token", response.token);
+        Cookies.set("user", JSON.stringify(response));
+        Cookies.set("isLoggedInYN", "true");
 
-      // Authenticate user (set cookie/localStorage)
-      await authenticate(response, () => {
+        // Show success message
         toast.success(response.message || "Login successful!");
-        router.push("/admin/dashboard");
-      });
+
+        // Force a hard reload to the dashboard
+        window.location.href = "/admin/dashboard";
+      } else {
+        throw new Error(response?.message || "Login failed");
+      }
     } catch (err) {
       console.error("Admin login error:", err);
       toast.error(err?.message || "Login failed");
-    } finally {
       setLoading(false);
     }
   };

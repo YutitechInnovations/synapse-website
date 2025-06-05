@@ -2,7 +2,7 @@ import instance from "@/network/index";
 
 export const doctorLogin = async (payload) => {
     try {
-        const res = await instance.post("sso/doctor/login", payload);
+        const res = await instance.post("user/user_login", payload);
         const data = res.data;
 
         if (data.status !== "success") {
@@ -17,7 +17,7 @@ export const doctorLogin = async (payload) => {
 
 export const adminLogin = async (payload) => {
     try {
-        const res = await instance.post("/sso/admin/login", payload);
+        const res = await instance.post("admin/admin_login", payload);
         const data = res.data;
 
         if (data.status !== "success") {
@@ -44,7 +44,7 @@ export const registerDoctor = async (data) => {
     };
 
     try {
-        const response = await instance.post(`sso/doctor/register`, payload);
+        const response = await instance.post(`user/user_register`, payload);
         return response.data; // return the API response data
     } catch (error) {
         // throw error to be caught by caller

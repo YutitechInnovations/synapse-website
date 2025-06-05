@@ -73,19 +73,39 @@ export const removeLocalStorage = (key) => {
 
 // authenticate user by passing data to cookie and localstorage during signin
 export const authenticate = async (response, next) => {
-    // Store user data in cookie and localStorage
-    if (response?.admin_id) {
-        setCookie("adminId", response?.admin_id)
-    }
-    setCookie("user", JSON.stringify(response));
-    setCookie("token", response?.token)
+    try {
+        // Store user data in cookie and localStorage
+        if (response?.admin_id) {
+            // Clear existing cookies first
+            removeCookie("user");
+            removeCookie("token");
+            removeCookie("adminId");
+            removeCookie("isLoggedInYN");
+            
+            // Set new cookies
+            setCookie("adminId", response.admin_id);
+            setCookie("token", response.token);
+            setCookie("user", JSON.stringify(response));
+            setCookie("isLoggedInYN", "true");
+            
+            // Set in localStorage as well
+            setLocalStorage("user", response);
+            setLocalStorage("isAdmin", true);
+        } else {
+            setCookie("user", JSON.stringify(response));
+            setCookie("token", response.token);
+            setLocalStorage("user", response);
+        }
 
-
-    // Check if next() exists and is a function before calling it
-    if (next && typeof next === "function") {
-        await next(); // Trigger the next step (e.g., redirect)
-    } else {
-        console.log("No callback provided or invalid.");
+        // Check if next() exists and is a function before calling it
+        if (next && typeof next === "function") {
+            await next(); // Trigger the next step (e.g., redirect)
+        } else {
+            console.log("No callback provided or invalid.");
+        }
+    } catch (error) {
+        console.error("Authentication error:", error);
+        throw error;
     }
 };
 
