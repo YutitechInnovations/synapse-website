@@ -74,7 +74,12 @@ export const removeLocalStorage = (key) => {
 // authenticate user by passing data to cookie and localstorage during signin
 export const authenticate = async (response, next) => {
     // Store user data in cookie and localStorage
+    if (response?.admin_id) {
+        setCookie("adminId", response?.admin_id)
+    }
     setCookie("user", JSON.stringify(response));
+    setCookie("token", response?.token)
+
 
     // Check if next() exists and is a function before calling it
     if (next && typeof next === "function") {

@@ -1,19 +1,35 @@
 import instance from "@/network/index";
 
-export const login = async (payload) => {
+export const doctorLogin = async (payload) => {
     try {
         const res = await instance.post("sso/doctor/login", payload);
-        const [data, status] = res.data;
+        const data = res.data;
 
-        if (status !== 200 || data.status === "failed") {
+        if (data.status !== "success") {
             throw new Error(data.message || "Login failed");
         }
 
-        return data; // Contains doctor_id, token, etc.
+        return data; // { message, status, doctor_id, email, full_name, token }
     } catch (error) {
-        throw error.response?.data || error.message || "Login failed";;
+        throw error.response?.data || new Error("Login failed");
     }
 };
+
+export const adminLogin = async (payload) => {
+    try {
+        const res = await instance.post("/sso/admin/login", payload);
+        const data = res.data;
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Login failed");
+        }
+
+        return data; // { message, status, doctor_id, email, full_name, token }
+    } catch (error) {
+        throw error.response?.data || new Error("Login failed");
+    }
+};
+
 
 
 export const registerDoctor = async (data) => {

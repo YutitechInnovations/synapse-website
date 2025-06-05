@@ -1,6 +1,15 @@
 // middleware.constants.js
 
-export const PUBLIC_ROUTES = ["/login", "/", "/education", "/faq", "/aboutus", "/blogs", "/signup"];
+export const PUBLIC_ROUTES = [
+    "/login",
+    "/",
+    "/education",
+    "/faq",
+    "/aboutus",
+    "/blogs",
+    "/signup",
+    "/admin"
+];
 export const VIEW_ONLY_ROUTES = [];
 
 export const ROLE = {
@@ -8,6 +17,11 @@ export const ROLE = {
     OWNER: 1,
 };
 
-export const RESTRICTED_FOR_USER = [
-    "/admin/dashboard"
+export const ADMIN_ROUTES = ["/admin/dashboard", "admin/doctor-management", 'admin/reward-program'];
+
+export const USER_ROUTES = [
+    "/reward-program",
+    "/alignmasters",
+    "/orthosync",
+    "/rxtrack",
 ];

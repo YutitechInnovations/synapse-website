@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
-import { login } from "@/services/auth";
+import { doctorLogin } from "@/services/auth";
 import { authenticate } from "@/network/helper";
 import Loader from "../loader";
 
@@ -34,7 +34,7 @@ const LoginForm = () => {
 
     try {
       setLoading(true)
-      const response = await login({ email, password });
+      const response = await doctorLogin({ email, password });
 
       // Call authenticate and pass a next callback
       await authenticate(response, () => {
