@@ -78,7 +78,6 @@ export default function DoctorManagement() {
   useEffect(() => {
     const handler = (e) => {
       setFilterString({ ...filterString, query: e.detail.value });
-      console.log(e.detail,'>>>>>>>>>>>>>>>>>>>>')
       // You can now use this in useEffect or fetch logic
     };
 
@@ -212,7 +211,7 @@ export default function DoctorManagement() {
                             offset: (pageNumber - 1) * filterString.limit + 1,
                           })
                         }
-                        className={`px-3 py-2 rounded ${filterString.offset ===
+                        className={`px-3 py-2 cursor-pointer rounded ${filterString.offset ===
                           (pageNumber - 1) * filterString.limit + 1
                           ? "bg-[#195B48] text-white"
                           : "text-[#195B48]"
