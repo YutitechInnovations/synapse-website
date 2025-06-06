@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from 'next/image';
 import Cookies from "js-cookie";
 import { useAuth } from "@/hooks/useAuth";
+import { getOrthoSyncUrl } from "@/services/auth.js";
 
 
 
@@ -99,6 +100,22 @@ export default function Navbar() {
     window.location.href = '/';
   };
 
+  const handleOrthoSync = async () => {
+    try {
+      const response = await getOrthoSyncUrl()
+      const url = response?.data?.orthosync_url || response?.url; // adjust based on your API response
+
+      if (url) {
+        window.open(url, "_blank"); // opens in a new tab
+      } else {
+        console.error("URL not found in response");
+      }
+    } catch (err) {
+      console.error("Failed to fetch OrthoSync URL:", err);
+    }
+  };
+
+
   return (
     <>
       {/* Overlay for mobile menu */}
@@ -135,7 +152,7 @@ export default function Navbar() {
                       <NavLink href="/rxtrack">RxTrack™</NavLink>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/orthosync">OrthoSync™</NavLink>
+                      <div onClick={handleOrthoSync} className="cursor-pointer"  >OrthoSync™</div>
                     </li>
                     <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
                       <NavLink href="/reward-program">Reward Program</NavLink>
@@ -237,7 +254,7 @@ export default function Navbar() {
                       <NavLink href="/rxtrack" onClick={() => setIsMenuOpen(false)}>RxTrack™</NavLink>
                     </li>
                     <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/orthosync" onClick={() => setIsMenuOpen(false)}>OrthoSync™</NavLink>
+                      <div onClick={handleOrthoSync} className="cursor-pointer" >OrthoSync™</div>
                     </li>
                     <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
                       <NavLink href="/reward-program" onClick={() => setIsMenuOpen(false)}>Reward Program</NavLink>

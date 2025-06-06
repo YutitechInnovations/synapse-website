@@ -38,7 +38,7 @@ export const createTestimonial = async (testimonialData) => {
 
 
 // ✅ Add Comment to Testimonial
-export const addCommentToTestimonial = async ({ testimonialId, comment }) => {
+export const addCommentToTestimonial = async (testimonialId, comment) => {
     try {
         const res = await instance.post(`/testimonials/add_comment_to_testimonial`, {
             testimonial_id: testimonialId,
@@ -68,8 +68,7 @@ export const getTestimonialCommentsById = async (testimonialId) => {
         const res = await instance.get(`/testimonials/get_testimonial_comments_by_id?testimonial_id=${testimonialId}`);
         return res.data;
     } catch (error) {
-        const message =
-            error?.response?.data?.message || error?.message || "Failed to fetch testimonial comments";
-        throw new Error(message);
+        console.log(error)
+
     }
 };

@@ -15,7 +15,7 @@ const navItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: Dashboard },
   { label: 'Doctor Management', href: '/admin/doctor-management', icon: DoctorManagement },
   { label: 'Doctor Reward Program', href: '/admin/reward-program', icon: DoctorManagementIcon },
-  { label: 'Community Management', href: '/admin/community', icon: CommunityManagement },
+  { label: 'Community Management', href: '/admin/community-management', icon: CommunityManagement },
   { label: 'E-shop Inventory', href: '/admin/eshop', icon: EShopInventory },
   {
     label: 'Order History', icon: OrderHistory, href: '/admin/orders'

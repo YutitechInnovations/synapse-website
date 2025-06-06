@@ -6,7 +6,7 @@ const pageTitles = {
   "/admin/dashboard": "Dashboard",
   "/admin/doctor-management": "Doctor Management",
   "/admin/reward-program": "Doctor Reward Program",
-  "/admin/community": "Community Management",
+  "/admin/community-management": "Community Management",
   "/admin/eshop": "E-shop Inventory",
   "/admin/orders": "Order History",
 };
