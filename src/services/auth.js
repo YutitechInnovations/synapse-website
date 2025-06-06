@@ -1,11 +1,16 @@
+import { getCookie } from "@/network/helper";
 import instance from "@/network/index";
 import Cookies from "js-cookie";
 
 export const doctorLogin = async (payload) => {
     try {
-        console.log("Attempting login with payload:", { ...payload, password: "***" });
-        const res = await instance.post("user/user_login".replace(/^\/+/, ''), payload);
-        console.log("Login response:", res);
+        if (getCookie("adminId")) {
+            adminLogout();
+        }
+        const res = await instance.post(
+            "user/user_login".replace(/^\/+/, ""),
+            payload
+        );
         const data = res.data;
 
         if (!data) {
@@ -32,15 +37,19 @@ export const doctorLogin = async (payload) => {
         console.error("Login error details:", {
             message: error.message,
             response: error.response,
-            request: error.request
+            request: error.request,
         });
-        const errorMessage = error.response?.data?.message || error.message || "Login failed";
+        const errorMessage =
+            error.response?.data?.message || error.message || "Login failed";
         throw new Error(errorMessage);
     }
 };
 
 export const adminLogin = async (payload) => {
     try {
+        if (getCookie("access_token")) {
+            adminLogout();
+        }
         const res = await instance.post("admin/admin_login", payload);
         const data = res.data;
 
@@ -61,7 +70,8 @@ export const adminLogin = async (payload) => {
         return data; // { message, status, doctor_id, email, full_name, token }
     } catch (error) {
         console.error("Login error:", error);
-        const errorMessage = error.response?.data?.message || error.message || "Login failed";
+        const errorMessage =
+            error.response?.data?.message || error.message || "Login failed";
         throw new Error(errorMessage);
     }
 };
@@ -88,17 +98,17 @@ export const registerDoctor = async (data) => {
 
 export const adminLogout = async () => {
     try {
-        const response = await instance.get('/admin/logout');
+        const response = await instance.get("/admin/logout");
         return response.data; // return the API response data
     } catch (error) {
-        throw error.response?.data || error.message || "Registration failed";
+        console.log(error)
     }
-}
+};
 export const userLogout = async () => {
     try {
-        const response = await instance.get('/user/logout');
+        const response = await instance.get("/user/logout");
         return response.data; // return the API response data
     } catch (error) {
-        throw error.response?.data || error.message || "Registration failed";
+        console.log(error)
     }
-}
+};

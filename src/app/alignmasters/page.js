@@ -6,12 +6,25 @@ import ShareExperienceModal from './ShareExperienceModal';
 import ClientOnly from "../../components/ClientOnly";
 import Navbar from "../../components/navbar/Navbar.js";
 import { useTestimonials } from '@/hooks/useTestimonials';
+import Loader from '@/components/loader';
+import { likeTestimonial } from '@/services/alignMasters';
 
 export default function AlignMasters() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const { data, isLoading } = useTestimonials('');
-  
+
+  // const handleLike = async (testimonialId) => {
+  //   try {
+  //     const response = await likeTestimonial(testimonialId);
+  //     console.log("Liked successfully:", response);
+  //     // Optionally update UI state (e.g., refetch, increment like count, etc.)
+  //   } catch (error) {
+  //     console.error("Error liking testimonial:", error.message);
+  //   }
+  // };
+
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
       <ClientOnly>
@@ -38,8 +51,55 @@ export default function AlignMasters() {
           </div>
           {/* Testimonial Cards */}
           <div className="flex flex-col gap-0">
+            {/* {isLoading && <Loader />} */}
+
+            {data?.data.map((items) => {
+              return (
+                <div key={items?.testimonial_id} className={styles.card}>
+                  <div className={styles.cardHeader}>
+                    <Image src={items?.avatar || "/images/doc.jpg"} alt="Dr Harmeet Kour" width={56} height={56} className={styles.avatar} />
+                    <div className={styles.cardHeaderText}>
+                      <span className={styles.cardName}>{items?.author_name || "Dr Harmeet Kour"}</span>
+                      <span className={styles.cardRoleDate}> {items?.position || "Manager, Clinical & Education "} &bull; <span className={styles.cardDate}>{items?.created_at &&
+                        new Date(items.created_at).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}</span></span>
+                    </div>
+                  </div>
+                  <div className={styles.cardContent}>
+                    {items?.testimonial_text}
+                  </div>
+                  {items?.files.map((items) => {
+                    return (
+                      <Image key={items?.file_url} src={items?.file_url} alt="Testimonial" width={420} height={120} className={styles.cardImage} />
+                    )
+                  })}
+
+                  <div className={styles.actionRow}>
+                    <div className={styles.actionLeft}>
+                      <button onClick={() => handleLike(items?.testimonial_id)} className={styles.actionBtn}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#184C3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 22h10a4 4 0 0 0 4-4v-5a4 4 0 0 0-4-4H5.34l1.13-5.63A2 2 0 0 0 4.5 2H4a2 2 0 0 0-2 2v12a4 4 0 0 0 4 4h1v2a2 2 0 0 0 2 2z" /></svg>
+                        Like
+                      </button>
+                      <button className={styles.actionBtn}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#184C3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                        Comment
+                      </button>
+                    </div>
+                    <div className={styles.actionRight}>
+                      <button className={styles.actionBtn}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#184C3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
+                        Share
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
             {/* Card 1 */}
-            <div className={styles.card}>
+            {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Dr. Ayushi" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -68,9 +128,9 @@ export default function AlignMasters() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Card 2 */}
-            <div className={styles.card}>
+            {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Dr Harmeet Kour" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -100,9 +160,9 @@ export default function AlignMasters() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Card 3 (Video) */}
-            <div className={styles.card}>
+            {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Sujit Hota" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -140,7 +200,7 @@ export default function AlignMasters() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
 
           </div>
         </section>

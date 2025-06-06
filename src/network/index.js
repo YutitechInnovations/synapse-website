@@ -13,8 +13,6 @@ const instance = axios.create({
     validateStatus: (status) => status >= 200 && status < 400,
 });
 
-// Log the base URL for debugging
-console.log("API Base URL:", process.env.NEXT_PUBLIC_COMMON_BASE_URL?.replace(/\/$/, ''));
 
 // Request interceptor: Attach token from localStorage or Cookies
 instance.interceptors.request.use(
@@ -24,14 +22,7 @@ instance.interceptors.request.use(
             config.url = config.url.replace(/^\/+/, '');
         }
 
-        // Log the request configuration
-        console.log("Making request to:", config.url);
-        console.log("Full URL:", `${config.baseURL}/${config.url}`);
-        console.log("Request config:", {
-            method: config.method,
-            headers: config.headers,
-            data: config.data
-        });
+
 
         // Priority 1: Get token from localStorage
         const token = localStorage.getItem("token") || Cookies.get("access_token");

@@ -88,6 +88,8 @@ export default function DoctorManagement() {
     };
   }, []);
 
+  console.log(doctorsDetails)
+
   if (isLoading || isPending) {
     return <Loader />;
   }
