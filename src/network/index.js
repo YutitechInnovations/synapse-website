@@ -5,10 +5,10 @@ import { handleToast, logout } from "./helper";
 // Create an Axios instance
 const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_COMMON_BASE_URL,
-//     headers: {
-//         "X-Requested-With": "XMLHttpRequest",
-//     },
-//     withCredentials: true,
+    headers: {
+        "X-Requested-With": "XMLHttpRequest",
+    },
+    withCredentials: true,
     validateStatus: (status) => status >= 200 && status < 400,
 });
 
@@ -16,7 +16,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         // Priority 1: Get token from localStorage
-        const token = localStorage.getItem("token") || Cookies.get("token");
+        const token = localStorage.getItem("token") || Cookies.get("access_token");
 
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;

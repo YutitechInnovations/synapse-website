@@ -51,3 +51,20 @@ export const registerDoctor = async (data) => {
         throw error.response?.data || error.message || "Registration failed";
     }
 };
+
+export const adminLogout = async () => {
+    try {
+        const response = await instance.get('/admin/logout');
+        return response.data; // return the API response data
+    } catch (error) {
+        throw error.response?.data || error.message || "Registration failed";
+    }
+}
+export const userLogout = async () => {
+    try {
+        const response = await instance.get('/user/logout');
+        return response.data; // return the API response data
+    } catch (error) {
+        throw error.response?.data || error.message || "Registration failed";
+    }
+}
