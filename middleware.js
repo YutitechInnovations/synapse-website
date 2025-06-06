@@ -30,21 +30,32 @@ export default async function middleware(req) {
         cookieHeader.split("; ").map((cookie) => cookie.split("="))
     );
 
-    const adminId = cookies["adminId"];
+    const userCookieRaw = cookies["user"];
     const token = cookies["token"];
     const isLoggedIn = cookies["isLoggedInYN"];
 
-    // For admin routes, check admin authentication
+    let userData = null;
+
+    try {
+        // Some cookies may be URI encoded; decode before parsing
+        userData = userCookieRaw ? JSON.parse(decodeURIComponent(userCookieRaw)) : null;
+    } catch (e) {
+        // Invalid user cookie
+        userData = null;
+    }
+
+    // For admin routes, check if logged-in user is an admin
     if (isAdminRoutes(path)) {
-        if (!adminId || !token || isLoggedIn !== 'true') {
+        const isAdmin = userData?.data.role === 'admin';
+        console.log(userData)
+        if (!isAdmin || !token || isLoggedIn !== 'true') {
             return NextResponse.redirect(new URL("/admin", req.nextUrl));
         }
         return NextResponse.next();
     }
 
-    // For non-admin routes, check user authentication
-    const userCookie = cookies["user"];
-    if (!userCookie && !isPublicRoute(path)) {
+    // For general routes, block if no user cookie and it's not public
+    if (!userCookieRaw && !isPublicRoute(path)) {
         return NextResponse.redirect(new URL("/login", req.nextUrl));
     }
 
