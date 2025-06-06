@@ -4,17 +4,35 @@ import { handleToast, logout } from "./helper";
 
 // Create an Axios instance
 const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_COMMON_BASE_URL,
+    baseURL: process.env.NEXT_PUBLIC_COMMON_BASE_URL?.replace(/\/$/, ''), // Remove trailing slash if present
     headers: {
         "X-Requested-With": "XMLHttpRequest",
+        "Content-Type": "application/json",
     },
-    withCredentials: true,
+    withCredentials: false, // Changed to false since we're handling credentials manually
     validateStatus: (status) => status >= 200 && status < 400,
 });
+
+// Log the base URL for debugging
+console.log("API Base URL:", process.env.NEXT_PUBLIC_COMMON_BASE_URL?.replace(/\/$/, ''));
 
 // Request interceptor: Attach token from localStorage or Cookies
 instance.interceptors.request.use(
     (config) => {
+        // Ensure URL doesn't have double slashes
+        if (config.url) {
+            config.url = config.url.replace(/^\/+/, '');
+        }
+
+        // Log the request configuration
+        console.log("Making request to:", config.url);
+        console.log("Full URL:", `${config.baseURL}/${config.url}`);
+        console.log("Request config:", {
+            method: config.method,
+            headers: config.headers,
+            data: config.data
+        });
+
         // Priority 1: Get token from localStorage
         const token = localStorage.getItem("token") || Cookies.get("access_token");
 
@@ -33,29 +51,61 @@ instance.interceptors.request.use(
 // Flag to prevent multiple logouts
 let isLoggingOut = false;
 
+// Response interceptor
 instance.interceptors.response.use(
-    (response) => response,
+    (response) => {
+        // Log successful response
+        console.log("Response received:", {
+            status: response.status,
+            data: response.data
+        });
+        // Handle successful responses
+        if (response.data) {
+            // If there's a token in the response, store it
+            if (response.data.token) {
+                localStorage.setItem("token", response.data.token);
+                Cookies.set("access_token", response.data.token, { expires: 7 });
+            }
+            return response;
+        }
+        return response;
+    },
     async (error) => {
+        // Log detailed error information
+        console.error("Response error:", {
+            message: error.message,
+            response: error.response,
+            request: error.request,
+            config: error.config
+        });
+
         if (error.response) {
             const { data, status } = error.response;
             let errorMessage = "An unknown error occurred";
 
+            // Handle authentication errors
             if ((status === 401 || status === 403) && !isLoggingOut) {
                 isLoggingOut = true;
-
                 try {
-                    instance.post("/logout");
+                    await instance.post("/logout");
                 } catch (logoutError) {
                     console.error("Logout request failed:", logoutError);
                 }
-
                 await logout();
-                window.location.reload();
+                window.location.href = "/login"; // Redirect to login page
                 return Promise.reject(error);
             }
 
-            if (status === 404) return error?.response;
+            // Handle 404 errors
+            if (status === 404) {
+                errorMessage = "Resource not found";
+                handleToast({
+                    err: { response: { data: { message: errorMessage } } },
+                });
+                return Promise.reject(error);
+            }
 
+            // Handle validation errors
             if (data?.errors) {
                 if (Array.isArray(data.errors)) {
                     errorMessage = data.errors.join(", ");
@@ -65,18 +115,22 @@ instance.interceptors.response.use(
                 }
             } else if (data?.message) {
                 errorMessage = data.message;
-            } else {
-                errorMessage = "Something went wrong.";
             }
 
             handleToast({
                 err: { response: { data: { message: errorMessage } } },
             });
-
-            return Promise.reject(error);
-        } else {
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.error("No response received from server. Request details:", error.request);
             handleToast({
-                err: { response: { data: { message: error?.message } } },
+                err: { response: { data: { message: "No response from server. Please check your connection." } } },
+            });
+        } else {
+            // Something happened in setting up the request
+            console.error("Request setup failed:", error.message);
+            handleToast({
+                err: { response: { data: { message: error.message || "Request setup failed" } } },
             });
         }
 

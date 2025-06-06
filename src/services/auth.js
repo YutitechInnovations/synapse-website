@@ -1,17 +1,41 @@
 import instance from "@/network/index";
+import Cookies from "js-cookie";
 
 export const doctorLogin = async (payload) => {
     try {
-        const res = await instance.post("user/user_login", payload);
+        console.log("Attempting login with payload:", { ...payload, password: "***" });
+        const res = await instance.post("user/user_login".replace(/^\/+/, ''), payload);
+        console.log("Login response:", res);
         const data = res.data;
 
+        if (!data) {
+            console.error("No data received in response");
+            throw new Error("No response data received");
+        }
+
         if (data.status !== "success") {
+            console.error("Login failed with status:", data.status);
             throw new Error(data.message || "Login failed");
+        }
+
+        // Store token in both localStorage and cookies for redundancy
+        if (data.token) {
+            console.log("Storing token");
+            localStorage.setItem("token", data.token);
+            Cookies.set("access_token", data.token, { expires: 7 }); // Expires in 7 days
+        } else {
+            console.warn("No token received in response");
         }
 
         return data; // { message, status, doctor_id, email, full_name, token }
     } catch (error) {
-        throw error.response?.data || new Error("Login failed");
+        console.error("Login error details:", {
+            message: error.message,
+            response: error.response,
+            request: error.request
+        });
+        const errorMessage = error.response?.data?.message || error.message || "Login failed";
+        throw new Error(errorMessage);
     }
 };
 
@@ -20,17 +44,27 @@ export const adminLogin = async (payload) => {
         const res = await instance.post("admin/admin_login", payload);
         const data = res.data;
 
+        if (!data) {
+            throw new Error("No response data received");
+        }
+
         if (data.status !== "success") {
             throw new Error(data.message || "Login failed");
         }
 
+        // Store token in both localStorage and cookies for redundancy
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+            Cookies.set("access_token", data.token, { expires: 7 }); // Expires in 7 days
+        }
+
         return data; // { message, status, doctor_id, email, full_name, token }
     } catch (error) {
-        throw error.response?.data || new Error("Login failed");
+        console.error("Login error:", error);
+        const errorMessage = error.response?.data?.message || error.message || "Login failed";
+        throw new Error(errorMessage);
     }
 };
-
-
 
 export const registerDoctor = async (data) => {
     // Prepare payload matching your API body structure
