@@ -6,6 +6,8 @@ import ShareExperienceModal from "./ShareExperienceModal";
 import ClientOnly from "../../components/ClientOnly";
 import Navbar from "../../components/navbar/Navbar.js";
 import {
+  useMutateComment,
+  useMutateTestimonial,
   useTestimonials,
   useTestimonialsComments,
 } from "@/hooks/useTestimonials";
@@ -16,6 +18,7 @@ import {
 } from "@/services/alignMasters";
 import ModalWithComments from "@/components/commentsModal";
 import TestimonialCard from "@/components/testimonialCard";
+import toast from "react-hot-toast";
 
 export default function AlignMasters() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,6 +26,8 @@ export default function AlignMasters() {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
 
   const { data, isLoading } = useTestimonials("");
+
+  const { mutate: mutateComments } = useMutateComment()
   const { data: commentsDetails } =
     useTestimonialsComments(selectedTestimonial);
 
@@ -38,17 +43,33 @@ export default function AlignMasters() {
 
   const handleComments = async (comment) => {
     try {
-      const response = await addCommentToTestimonial(
-        selectedTestimonial,
-        comment
-      );
+      handleSubmit(comment, 'comment')
       console.log("comment added successfully:", response);
     } catch (error) {
       console.error("Error liking testimonial:", error.message);
     }
   };
 
-  console.log(data, ">>>>>>>>>>>>>>");
+  const handleSubmit = (data, type) => {
+    if (type === 'comment') {
+      mutateComments(
+        {
+          testimonialId: data.testimonialId,
+          comment: data.comment,
+        },
+        {
+          onSuccess: (res) => {
+            console.log("Comment submitted:", res);
+            toast.success("Comment added successfully!");
+          },
+          onError: (err) => {
+            console.error("Error submitting comment:", err);
+            toast.warning("Failed to submit comment.");
+          },
+        }
+      );
+    }
+  };
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">

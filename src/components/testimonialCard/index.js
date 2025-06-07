@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { updateTestimonialStatus } from "@/services/alignMasters";
+import toast from "react-hot-toast";
+import Loader from "../loader";
 
-const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin, onAction }) => {
+const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin }) => {
+
+    const [loading, setLoading] = useState(false)
+
+
+
+    const handleApprove = async (id, status) => {
+        try {
+            setLoading(true)
+            const resp = await updateTestimonialStatus(id, status);
+            console.log("Status updated:", resp);
+            toast.success('Status updated')
+            // Optionally update UI or show success message here
+        } catch (error) {
+            console.error("Error updating status:", error.message);
+            toast.error('Error updating status')
+            // Show error message to user
+        }
+        finally {
+            setLoading(false)
+        }
+    };
+
     return (
         <>
+
             <div key={item?.testimonial_id} className={styles.card}>
                 <div className={styles.cardHeader}>
                     <Image
@@ -158,7 +184,8 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin, onActi
                 <div className={`m-2 flex items-center justify-end gap-12`}>
                     <div className={styles.actionLeft}>
                         <button
-                            onClick={() => onAction(item?.testimonial_id, 'approve')}
+                            disabled={loading}
+                            onClick={() => handleApprove(item?.testimonial_id, 'approve')}
                             style={{
                                 backgroundColor: "#195B48",
                                 color: "white",
@@ -173,7 +200,8 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin, onActi
                         </button>
 
                         <button
-                            onClick={() => onAction(item?.testimonial_id, 'reject')}
+                            disabled={loading}
+                            onClick={() => handleApprove(item?.testimonial_id, 'reject')}
                             style={{
                                 backgroundColor: "#195B48",
                                 color: "white",

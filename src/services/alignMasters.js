@@ -37,6 +37,17 @@ export const likeTestimonial = async (testimonialId) => {
     }
 };
 
+export const getPresignedUrl = async (fileName) => {
+    try {
+        const res = await instance.post(`/testimonials/get_presigned_url`, { file_name: fileName });
+        return res.data; // usually includes the URL and key
+    } catch (error) {
+        const message =
+            error?.response?.data?.message || error?.message || "Failed to get presigned URL";
+        throw new Error(message);
+    }
+};
+
 // ✅ Create a Testimonial
 export const createTestimonial = async (testimonialData) => {
     try {
@@ -48,6 +59,7 @@ export const createTestimonial = async (testimonialData) => {
         throw new Error(message);
     }
 };
+
 
 
 // ✅ Add Comment to Testimonial
@@ -64,17 +76,22 @@ export const addCommentToTestimonial = async (testimonialId, comment) => {
         throw new Error(message);
     }
 };
-
-export const getPresignedUrl = async (fileName) => {
+// ✅ Update Testimonial Status
+export const updateTestimonialStatus = async (testimonialId, status) => {
     try {
-        const res = await instance.post(`/testimonials/get_presigned_url`, { file_name: fileName });
-        return res.data; // usually includes the URL and key
+        const res = await instance.post(`/testimonials/update_testimonial_status`, {
+            testimonial_id: testimonialId,
+            status, // should be "approved" or "rejected"
+        });
+        return res.data;
     } catch (error) {
         const message =
-            error?.response?.data?.message || error?.message || "Failed to get presigned URL";
+            error?.response?.data?.message || error?.message || "Failed to update testimonial status";
         throw new Error(message);
     }
 };
+
+
 
 export const getTestimonialCommentsById = async (testimonialId) => {
     try {
