@@ -4,8 +4,9 @@ import Loader from "@/components/loader";
 import TestimonialCard from "@/components/testimonialCard";
 import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";
 import { useState, useRef, useEffect } from "react";
-import styles from '../../alignmasters/AlignMasters.module.css'
+import styles from "../../alignmasters/AlignMasters.module.css";
 import Modal from "@/components/modal";
+import { useDoctorsTestimonials } from "@/hooks/useTestimonials";
 
 function StatusDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false);
@@ -59,7 +60,8 @@ export default function DoctorManagement() {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [queryString, setQueryString] = useState("?limit=10&offset=0");
-  const { data: doctorsDetails, isLoading, error } = useDoctors(queryString);
+  const [selectedTestimonial, setSelectedTestimonial] = useState();
+  const { data: testimonials, isLoading, error } = useDoctorsTestimonials();
   const { mutate: handleStatusChange, isPending } =
     useHandleDoctorStatus(queryString);
 
@@ -76,7 +78,6 @@ export default function DoctorManagement() {
 
     const queryString = `?${params.toString()}`;
     setQueryString(queryString);
-    console.log(filterString, queryString)
   }, [filterString]);
 
   useEffect(() => {
@@ -92,7 +93,7 @@ export default function DoctorManagement() {
     };
   }, []);
 
-  console.log(doctorsDetails)
+  console.log(testimonials, "testimonials");
 
   if (isLoading || isPending) {
     return <Loader />;
@@ -106,7 +107,7 @@ export default function DoctorManagement() {
     );
   }
 
-  if (!doctorsDetails || !doctorsDetails.data) {
+  if (!testimonials || !testimonials.data) {
     return (
       <div className="w-full text-center text-gray-500 p-4">
         No doctors data available
@@ -117,20 +118,25 @@ export default function DoctorManagement() {
   return (
     <div className="w-full">
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <TestimonialCard isAdmin styles={styles} item={{}} onAction={()=>setIsModalOpen(false)} />
+        <TestimonialCard
+          isAdmin
+          styles={styles}
+          item={selectedTestimonial}
+          onAction={() => setIsModalOpen(false)}
+        />
       </Modal>
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
         <StatCard
           label="Total Testimonial"
-          value={doctorsDetails.stats?.total_users}
+          value={testimonials.stats?.total_users}
         />
         <StatCard
           label="Active Testimonial"
-          value={doctorsDetails.stats?.active_users}
+          value={testimonials.stats?.active_users}
         />
         <StatCard
           label="Inactive Testimonial"
-          value={doctorsDetails.stats?.inactive_users}
+          value={testimonials.stats?.inactive_users}
         />
       </div>
       <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-hidden">
@@ -147,7 +153,7 @@ export default function DoctorManagement() {
               </tr>
             </thead>
             <tbody>
-              {doctorsDetails.data.map((doc, i) => (
+              {testimonials.data.map((testimonial, i) => (
                 <tr
                   key={i}
                   className="border-b border-[#C7D7CB] last:border-0 text-[#195B48] text-[15px]"
@@ -155,20 +161,26 @@ export default function DoctorManagement() {
                   <td className="py-3 px-4 font-medium">
                     {String(i + 1).padStart(2, "0")}
                   </td>
-                  <td className="py-3 px-4">{doc.full_name}</td>
-                  <td className="py-3 px-4">{doc.email}</td>
-                  <td className="py-3 px-4">{doc.mobile_number}</td>
-                  <td onClick={() => setIsModalOpen(true)} className="py-3 underline cursor-pointer px-4">
-
-                    {doc.ios_number}
-
-
+                  <td className="py-3 px-4">{testimonial.full_name}</td>
+                  <td className="py-3 px-4">{testimonial.email}</td>
+                  <td className="py-3 px-4">{testimonial.mobile_number}</td>
+                  <td
+                    onClick={() => {
+                      setSelectedTestimonial(testimonial);
+                      setIsModalOpen(true);
+                    }}
+                    className="py-3 underline cursor-pointer px-4"
+                  >
+                    view
                   </td>
                   <td className="py-3 px-4">
                     <StatusDropdown
-                      value={doc.status}
+                      value={testimonial.status}
                       onChange={(val) =>
-                        handleStatusChange({ userId: doc.user_id, status: val })
+                        handleStatusChange({
+                          userId: testimonial.user_id,
+                          status: val,
+                        })
                       }
                     />
                   </td>
@@ -179,7 +191,7 @@ export default function DoctorManagement() {
         </div>
 
         <div className="flex justify-between items-center mt-4 px-4 pb-4">
-          {doctorsDetails?.stats?.total_users > 10 && (
+          {testimonials?.stats?.total_users > 10 && (
             <>
               <div className="flex items-center gap-2">
                 <select
@@ -201,9 +213,9 @@ export default function DoctorManagement() {
                   Showing {filterString.offset} to{" "}
                   {Math.min(
                     filterString.offset + filterString.limit - 1,
-                    doctorsDetails.stats.total_users
+                    testimonials.stats.total_users
                   )}{" "}
-                  of {doctorsDetails.stats.total_users} records
+                  of {testimonials.stats.total_users} records
                 </span>
               </div>
 
@@ -211,7 +223,7 @@ export default function DoctorManagement() {
                 {Array.from(
                   {
                     length: Math.ceil(
-                      doctorsDetails.stats.total_users / filterString.limit
+                      testimonials.stats.total_users / filterString.limit
                     ),
                   },
                   (_, index) => {

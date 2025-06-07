@@ -1,5 +1,5 @@
 // hooks/useTestimonials.js
-import { fetchTestimonials, getTestimonialCommentsById } from "@/services/alignMasters";
+import { fetchTestimonials, fetchTestimonialsForVerification, getTestimonialCommentsById } from "@/services/alignMasters";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTestimonials = (queryString) => {
@@ -19,5 +19,14 @@ export const useTestimonialsComments = (testimonial_id) => {
         staleTime: 20 * 60 * 1000, // 20 minutes
         cacheTime: 20 * 60 * 1000,
         enabled: !!testimonial_id
+    });
+};
+
+export const useDoctorsTestimonials = () => {
+    return useQuery({
+        queryKey: ["doctors testimonials"],
+        queryFn: () => fetchTestimonialsForVerification(),
+        staleTime: 20 * 60 * 1000, // 20 minutes
+        cacheTime: 20 * 60 * 1000,
     });
 };

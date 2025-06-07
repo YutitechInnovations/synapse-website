@@ -83,7 +83,7 @@ export default function AlignMasters() {
             </button>
           </div>
           {/* Testimonial Cards */}
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-8 mb-6">
             {/* {isLoading && <Loader />} */}
 
             {data?.data.map((items) => {

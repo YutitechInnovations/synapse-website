@@ -12,6 +12,19 @@ export const fetchTestimonials = async (queryString) => {
     }
 };
 
+// ✅ Fetch Testimonials for verification
+export const fetchTestimonialsForVerification = async () => {
+    try {
+        const res = await instance.get(`/admin/get_testimonials`);
+        return res.data;
+    } catch (error) {
+        const message =
+            error?.response?.data?.message || error?.message || "Failed to fetch testimonials";
+        throw new Error(message);
+    }
+};
+
+
 // ✅ Like a Testimonial
 export const likeTestimonial = async (testimonialId) => {
     try {
