@@ -41,26 +41,20 @@ export default function AlignMasters() {
     }
   };
 
-  const handleComments = async (comment) => {
-    try {
-      handleSubmit(comment, 'comment')
-      console.log("comment added successfully:", response);
-    } catch (error) {
-      console.error("Error liking testimonial:", error.message);
-    }
-  };
+
 
   const handleSubmit = (data, type) => {
     if (type === 'comment') {
       mutateComments(
         {
-          testimonialId: data.testimonialId,
-          comment: data.comment,
+          testimonialId: selectedTestimonial,
+          comment: data,
         },
         {
           onSuccess: (res) => {
             console.log("Comment submitted:", res);
             toast.success("Comment added successfully!");
+            setCommentModalOpen(false);
           },
           onError: (err) => {
             console.error("Error submitting comment:", err);
@@ -70,6 +64,7 @@ export default function AlignMasters() {
       );
     }
   };
+
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
@@ -105,7 +100,7 @@ export default function AlignMasters() {
           </div>
           {/* Testimonial Cards */}
           <div className="flex flex-col gap-8 mb-6">
-            {/* {isLoading && <Loader />} */}
+            {isLoading && <Loader />}
 
             {data?.data.map((items) => {
               return (
@@ -229,7 +224,7 @@ export default function AlignMasters() {
               key={"comment modal"}
               onClose={() => setCommentModalOpen(false)}
               comments={commentsDetails}
-              onPostComment={(cmt) => handleComments(cmt)}
+              onPostComment={(cmt) => handleSubmit(cmt, 'comment')}
             />
           </div>
         </section>

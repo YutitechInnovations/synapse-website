@@ -47,7 +47,7 @@ export const useMutateComment = () => {
         onSuccess: (_, { testimonialId }) => {
             // Invalidate only the comments of that testimonial
             queryClient.invalidateQueries({
-                queryKey: ["testimonial-comments", testimonialId],
+                queryKey: ["testimonialsComments", testimonialId],
             });
         },
         onError: (error) => {
