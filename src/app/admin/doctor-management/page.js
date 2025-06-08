@@ -78,7 +78,6 @@ export default function DoctorManagement() {
   useEffect(() => {
     const handler = (e) => {
       setFilterString({ ...filterString, query: e.detail.value });
-      // You can now use this in useEffect or fetch logic
     };
 
     window.addEventListener("Doctor Management", handler);
@@ -88,7 +87,6 @@ export default function DoctorManagement() {
     };
   }, []);
 
-  console.log(doctorsDetails)
 
   if (isLoading || isPending) {
     return <Loader />;

@@ -13,9 +13,9 @@ export const fetchTestimonials = async (queryString) => {
 };
 
 // ✅ Fetch Testimonials for verification
-export const fetchTestimonialsForVerification = async () => {
+export const fetchTestimonialsForVerification = async (queryString) => {
     try {
-        const res = await instance.get(`/admin/get_testimonials`);
+        const res = await instance.get(`/admin/get_testimonials${queryString}`);
         return res.data;
     } catch (error) {
         const message =

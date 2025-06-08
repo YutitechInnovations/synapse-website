@@ -61,7 +61,7 @@ export default function DoctorManagement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [queryString, setQueryString] = useState("?limit=10&offset=0");
   const [selectedTestimonial, setSelectedTestimonial] = useState();
-  const { data: testimonials, isLoading, error } = useDoctorsTestimonials();
+  const { data: testimonials, isLoading, error } = useDoctorsTestimonials(queryString);
   const { mutate: handleStatusChange, isPending } =
     useHandleDoctorStatus(queryString);
 
@@ -83,17 +83,13 @@ export default function DoctorManagement() {
   useEffect(() => {
     const handler = (e) => {
       setFilterString({ ...filterString, query: e.detail.value });
-      // You can now use this in useEffect or fetch logic
     };
-
-    window.addEventListener("Doctor Management", handler);
+    window.addEventListener("Community Management", handler);
 
     return () => {
-      window.removeEventListener("Doctor Management", handler);
+      window.removeEventListener("Community Management", handler);
     };
   }, []);
-
-  console.log(testimonials, "testimonials");
 
   if (isLoading || isPending) {
     return <Loader />;
@@ -102,7 +98,7 @@ export default function DoctorManagement() {
   if (error) {
     return (
       <div className="w-full text-center text-red-500 p-4">
-        Error loading doctors: {error.message}
+        Error loading testimonial: {error.message}
       </div>
     );
   }
@@ -110,7 +106,7 @@ export default function DoctorManagement() {
   if (!testimonials || !testimonials.data) {
     return (
       <div className="w-full text-center text-gray-500 p-4">
-        No doctors data available
+        No testimonial data available
       </div>
     );
   }
@@ -128,15 +124,15 @@ export default function DoctorManagement() {
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
         <StatCard
           label="Total Testimonial"
-          value={testimonials.stats?.total_users}
+          value={testimonials.stats?.total_testimonials}
         />
         <StatCard
           label="Active Testimonial"
-          value={testimonials.stats?.active_users}
+          value={testimonials.stats?.approved_testimonials}
         />
         <StatCard
           label="Inactive Testimonial"
-          value={testimonials.stats?.inactive_users}
+          value={testimonials.stats?.pending_testimonials}
         />
       </div>
       <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-hidden">
@@ -148,7 +144,7 @@ export default function DoctorManagement() {
                 <th className="py-3 px-4">Doctor Name</th>
                 <th className="py-3 px-4">Email Id</th>
                 <th className="py-3 px-4">Mobile Number</th>
-                <th className="py-3 px-4">Details</th>
+             
                 <th className="py-3 px-4">Action</th>
               </tr>
             </thead>
@@ -173,17 +169,7 @@ export default function DoctorManagement() {
                   >
                     view
                   </td>
-                  <td className="py-3 px-4">
-                    <StatusDropdown
-                      value={testimonial.status}
-                      onChange={(val) =>
-                        handleStatusChange({
-                          userId: testimonial.user_id,
-                          status: val,
-                        })
-                      }
-                    />
-                  </td>
+         
                 </tr>
               ))}
             </tbody>
@@ -191,7 +177,7 @@ export default function DoctorManagement() {
         </div>
 
         <div className="flex justify-between items-center mt-4 px-4 pb-4">
-          {testimonials?.stats?.total_users > 10 && (
+          {testimonials?.stats?.total_testimonials > 10 && (
             <>
               <div className="flex items-center gap-2">
                 <select
@@ -213,9 +199,9 @@ export default function DoctorManagement() {
                   Showing {filterString.offset} to{" "}
                   {Math.min(
                     filterString.offset + filterString.limit - 1,
-                    testimonials.stats.total_users
+                    testimonials.stats.total_testimonials
                   )}{" "}
-                  of {testimonials.stats.total_users} records
+                  of {testimonials.stats.total_testimonials} records
                 </span>
               </div>
 
@@ -223,7 +209,7 @@ export default function DoctorManagement() {
                 {Array.from(
                   {
                     length: Math.ceil(
-                      testimonials.stats.total_users / filterString.limit
+                      testimonials.stats.total_testimonials / filterString.limit
                     ),
                   },
                   (_, index) => {

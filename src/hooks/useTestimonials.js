@@ -28,10 +28,10 @@ export const useTestimonialsComments = (testimonial_id) => {
     });
 };
 
-export const useDoctorsTestimonials = () => {
+export const useDoctorsTestimonials = (queryString) => {
     return useQuery({
-        queryKey: ["doctors testimonials"],
-        queryFn: () => fetchTestimonialsForVerification(),
+        queryKey: ["doctors testimonials", queryString],
+        queryFn: () => fetchTestimonialsForVerification(queryString),
         staleTime: 20 * 60 * 1000, // 20 minutes
         cacheTime: 20 * 60 * 1000,
     });

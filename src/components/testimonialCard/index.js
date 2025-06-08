@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { updateTestimonialStatus } from "@/services/alignMasters";
 import toast from "react-hot-toast";
-import Loader from "../loader";
 
-const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin }) => {
+const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin, onAction }) => {
 
     const [loading, setLoading] = useState(false)
 
@@ -16,6 +15,7 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin }) => {
             const resp = await updateTestimonialStatus(id, status);
             console.log("Status updated:", resp);
             toast.success('Status updated')
+            onAction()
             // Optionally update UI or show success message here
         } catch (error) {
             console.error("Error updating status:", error.message);
@@ -185,7 +185,7 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin }) => {
                     <div className={styles.actionLeft}>
                         <button
                             disabled={loading}
-                            onClick={() => handleApprove(item?.testimonial_id, 'approve')}
+                            onClick={() => handleApprove(item?.testimonial_id, 'approved')}
                             style={{
                                 backgroundColor: "#195B48",
                                 color: "white",
@@ -201,7 +201,7 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin }) => {
 
                         <button
                             disabled={loading}
-                            onClick={() => handleApprove(item?.testimonial_id, 'reject')}
+                            onClick={() => handleApprove(item?.testimonial_id, 'rejected')}
                             style={{
                                 backgroundColor: "#195B48",
                                 color: "white",

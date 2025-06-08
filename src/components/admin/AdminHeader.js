@@ -21,7 +21,6 @@ export default function AdminHeader() {
   // Emit event on searchTerm change (debounced)
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
-
     debounceRef.current = setTimeout(() => {
       window.dispatchEvent(
         new CustomEvent(title, {
@@ -30,7 +29,7 @@ export default function AdminHeader() {
           },
         })
       );
-    }, 500); // debounce: 300ms
+    }, 300); // debounce: 300ms
 
     return () => clearTimeout(debounceRef.current);
   }, [searchTerm, title]);
@@ -49,16 +48,19 @@ export default function AdminHeader() {
           />
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#195B48] text-xl" />
         </div>
-        <button
-          className="bg-[#195B48] text-white rounded-[10px] font-semibold shadow hover:bg-[#004C44] transition flex items-center gap-[6px] w-full md:w-[138px] h-[45px] px-5 py-3 md:py-0 md:px-5 mt-2 md:mt-0"
-          style={{
-            borderRadius: "10px",
-            opacity: 0.9923,
-            fontSize: "15px",
-          }}
-        >
-          Add Doctors
-        </button>
+        {title === 'Doctor Management' && (
+          <button
+            className="bg-[#195B48] text-white rounded-[10px] font-semibold shadow hover:bg-[#004C44] transition flex items-center gap-[6px] w-full md:w-[138px] h-[45px] px-5 py-3 md:py-0 md:px-5 mt-2 md:mt-0"
+            style={{
+              borderRadius: "10px",
+              opacity: 0.9923,
+              fontSize: "15px",
+            }}
+          >
+            Add Doctors
+          </button>
+        )}
+
       </div>
     </div>
   );
