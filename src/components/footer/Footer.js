@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Logo from '../../assets/logo.png'
 
 const leftLinks = [
   { label: "OrthoSync™", href: "/orthosync" },
@@ -23,7 +24,7 @@ const Footer = () => {
       <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-center md:gap-12 px-4 md:px-12 py-8">
         {/* Left: Logo and tagline */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left mb-6 md:mb-0 w-full md:w-1/3 md:max-w-xs">
-          <Image src="/images/logo.png" alt="Synapse Logo" width={160} height={40} className="mb-4 mx-auto md:mx-0" />
+          <Image src={Logo} alt="Synapse Logo" width={160} height={40} className="mb-4 mx-auto md:mx-0" />
           <p className="text-white text-lg mb-4 mx-auto md:mx-0 break-words truncate whitespace-normal">Bridging technology and expertise.</p>
           {showLoginButton && (
             <a href="/login" className="w-full flex justify-center md:justify-start">
