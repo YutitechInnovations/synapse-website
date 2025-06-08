@@ -10,6 +10,7 @@ import OrderHistory from '../svg/orderHistory';
 import Logout from '../svg/logout';
 import DoctorManagementIcon from '../svg/doctorManagementIcon';
 import { adminLogout } from '@/services/auth';
+import { logout } from '@/network/helper';
 
 const navItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: Dashboard },
@@ -68,7 +69,7 @@ export default function AdminSidebar() {
           );
         })}
         <Link
-          onClick={() => adminLogout()}
+          onClick={() => { adminLogout(); logout() }}
           href={'/admin'}
           className={`flex flex-col items-center justify-center transition text-white  shadow font-semibold hover:bg-[#004C44] `}
           style={{
