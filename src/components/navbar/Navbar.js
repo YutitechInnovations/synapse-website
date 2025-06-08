@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Cookies from "js-cookie";
 import { useAuth } from "@/hooks/useAuth";
 import { getOrthoSyncUrl } from "@/services/auth.js";
+import Logo from '../../assets/logo.png'
 
 
 
@@ -125,254 +126,258 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
-      <div className="flex items-center w-full fixed top-0 z-50 bg-transparent px-[1.5625rem] min-w-0">
-        <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
-          <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
-            {/* Hamburger for mobile */}
-            <button
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              type="button"
-            >
-              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-              <span className="block w-7 h-1 bg-white rounded mb-1"></span>
-              <span className="block w-7 h-1 bg-white rounded"></span>
-            </button>
-            {/* Nav links and menu */}
-            <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
-              <ul className="flex flex-row items-center p-0 w-auto min-w-0">
-                {/* Post-login: Home, RxTrack, OrthoSync, Doctor Reward Program, AlignMasters, E-Shop, divider, user, logo */}
-                {user ? (
-                  <>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
-                      <NavLink href="/home">Home</NavLink>
-                    </li>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/rxtrack">RxTrack™</NavLink>
-                    </li>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <div onClick={handleOrthoSync} className="cursor-pointer"  >OrthoSync™</div>
-                    </li>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/reward-program">Reward Program</NavLink>
-                    </li>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/alignmasters">AlignMasters™</NavLink>
-                    </li>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
-                      <NavLink href="/e-shop">E-Shop</NavLink>
-                    </li>
-                    {/* Divider */}
-                    <li className="flex items-center md:ml-[30px] mx-2">
-                      <span className="block h-6 w-px bg-white opacity-40"></span>
-                    </li>
-                    {/* User profile dropdown */}
-                    <li className="flex items-center md:ml-[30px]">
-                      <ProfileDropdown onLogout={handleLogout} />
-                    </li>
-                  </>
-                ) : (
-                  // Not logged in: minimal links and login button
-                  <>
-                    <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
-                      <NavLink href="/">Home</NavLink>
-                    </li>
-                    {/* Product dropdown for not-logged-in users */}
-                    <li
-                      className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
-                      ref={productRef}
-                    >
-                      <button
-                        type="button"
-                        className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
-                        onClick={handleProductClick}
-                      >
-                        Product
-                        <svg
-                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {productDropdown && (
-                        <div
-                          className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-lg shadow-lg py-2 z-50"
-                          style={{
-                            border: '1px solid #195B48',
-                          }}
-                        >
-                          <button
-                            type="button"
-                            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100 transition-colors duration-150 font-semibold"
-                            onMouseDown={() => {
-                              console.log('Aligners button clicked');
-                              setProductDropdown(false);
-                              router.push('/aligners');
-                            }}
-                          >
-                            Aligners
-                          </button>
-                        </div>
-                      )}
-                    </li>
-                    {links.filter(link => link.href !== "/").map((link, idx) => (
-                      <li key={link.href} className={`text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}>
-                        <NavLink href={link.href}>{link.label}</NavLink>
+      <div className="fixed top-0 z-50 w-full bg-transparent px-[1.5625rem]">
+        <div className="flex items-center justify-center container mx-auto min-w-0">
+
+          <nav className={`${styles.navbar} flex items-center w-full relative min-w-0`}>
+            <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
+              {/* Hamburger for mobile */}
+              <button
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+                type="button"
+              >
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded"></span>
+              </button>
+              {/* Nav links and menu */}
+              <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
+                <ul className="flex flex-row items-center p-0 w-auto min-w-0">
+                  {/* Post-login: Home, RxTrack, OrthoSync, Doctor Reward Program, AlignMasters, E-Shop, divider, user, logo */}
+                  {user ? (
+                    <>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
+                        <NavLink href="/home">Home</NavLink>
                       </li>
-                    ))}
-                    <li className="flex items-center md:ml-[30px] mx-2">
-                      <span className="block h-6 w-px bg-white opacity-40"></span>
-                    </li>
-                    <li className="flex items-center md:ml-[30px]">
-                      <a href="/login">
-                        <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
-                          Login
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                        <NavLink href="/rxtrack">RxTrack™</NavLink>
+                      </li>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                        <div onClick={handleOrthoSync} className="cursor-pointer"  >OrthoSync™</div>
+                      </li>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                        <NavLink href="/reward-program">Reward Program</NavLink>
+                      </li>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                        <NavLink href="/alignmasters">AlignMasters™</NavLink>
+                      </li>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]">
+                        <NavLink href="/e-shop">E-Shop</NavLink>
+                      </li>
+                      {/* Divider */}
+                      <li className="flex items-center md:ml-[30px] mx-2">
+                        <span className="block h-6 w-px bg-white opacity-40"></span>
+                      </li>
+                      {/* User profile dropdown */}
+                      <li className="flex items-center md:ml-[30px]">
+                        <ProfileDropdown onLogout={handleLogout} />
+                      </li>
+                    </>
+                  ) : (
+                    // Not logged in: minimal links and login button
+                    <>
+                      <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
+                        <NavLink href="/">Home</NavLink>
+                      </li>
+                      {/* Product dropdown for not-logged-in users */}
+                      <li
+                        className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                        ref={productRef}
+                      >
+                        <button
+                          type="button"
+                          className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                          onClick={handleProductClick}
+                        >
+                          Product
+                          <svg
+                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 9l-7 7-7-7" />
+                          </svg>
                         </button>
-                      </a>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-            {/* Mobile menu and nav links */}
-            <div
-              className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col items-center fixed top-0 left-0 w-full h-full bg-[#F8FAF9] rounded-none z-50 transition-all duration-300 min-w-0`}
-            >
-              <ul className="flex flex-col items-start justify-start pt-8 space-y-8 p-8 w-full h-full min-w-0">
-                {user ? (
-                  <>
-                    {/* Post-login mobile menu items */}
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/home" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/rxtrack" onClick={() => setIsMenuOpen(false)}>RxTrack™</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <div onClick={handleOrthoSync} className="cursor-pointer" >OrthoSync™</div>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/reward-program" onClick={() => setIsMenuOpen(false)}>Reward Program</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/alignmasters" onClick={() => setIsMenuOpen(false)}>AlignMasters™</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/e-shop" onClick={() => setIsMenuOpen(false)}>E-Shop</NavLink>
-                    </li>
-                    {/* Vertical separator */}
-                    <li className="flex items-center mx-2">
-                      <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
-                    </li>
-                    {/* Profile and Logout */}
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/profile" onClick={() => setIsMenuOpen(false)}>Profile</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/settings" onClick={() => setIsMenuOpen(false)}>Settings</NavLink>
-                    </li>
-                    <li className="w-full">
-                      <button
-                        onClick={() => {
-                          handleLogout();
-                          setIsMenuOpen(false);
-                        }}
-                        className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90"
-                      >
-                        Logout
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    {/* Pre-login mobile menu items */}
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
-                    </li>
-                    {/* Product dropdown for mobile */}
-                    <li
-                      className="relative w-full text-left font-semibold text-[18px] text-[#195B48]"
-                      ref={productRef}
-                    >
-                      <button
-                        type="button"
-                        className="flex items-center gap-1 py-1 focus:outline-none"
-                        onClick={handleProductClick}
-                      >
-                        Product
-                        <svg
-                          className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {productDropdown && (
-                        <div
-                          className="mt-1 min-w-[140px] bg-[#004c4494] rounded-lg shadow-lg py-2"
-                          style={{
-                            border: '1px solid #195B48',
-                          }}
-                        >
-                          <button
-                            type="button"
-                            className="block w-full text-left px-4 py-2 text-black font-bold hover:bg-gray-100"
-                            onMouseDown={() => {
-                              console.log('Aligners button clicked (mobile)');
-                              setProductDropdown(false);
-                              router.push('/aligners');
+                        {productDropdown && (
+                          <div
+                            className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-lg shadow-lg py-2 z-50"
+                            style={{
+                              border: '1px solid #195B48',
                             }}
                           >
-                            Aligners
+                            <button
+                              type="button"
+                              className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100 transition-colors duration-150 font-semibold"
+                              onMouseDown={() => {
+                                console.log('Aligners button clicked');
+                                setProductDropdown(false);
+                                router.push('/aligners');
+                              }}
+                            >
+                              Aligners
+                            </button>
+                          </div>
+                        )}
+                      </li>
+                      {links.filter(link => link.href !== "/").map((link, idx) => (
+                        <li key={link.href} className={`text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}>
+                          <NavLink href={link.href}>{link.label}</NavLink>
+                        </li>
+                      ))}
+                      <li className="flex items-center md:ml-[30px] mx-2">
+                        <span className="block h-6 w-px bg-white opacity-40"></span>
+                      </li>
+                      <li className="flex items-center md:ml-[30px]">
+                        <a href="/login">
+                          <button className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2">
+                            Login
                           </button>
-                        </div>
-                      )}
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About us</NavLink>
-                    </li>
-                    <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                      <NavLink href="/careers" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
-                    </li>
-                    {/* Vertical separator */}
-                    <li className="flex items-center mx-2">
-                      <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
-                    </li>
-                    {/* Login button */}
-                    <li className="flex items-center w-full">
-                      <a href="/login" className="block w-full">
-                        <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
-                          Login
+                        </a>
+                      </li>
+                    </>
+                  )}
+                </ul>
+              </div>
+              {/* Mobile menu and nav links */}
+              <div
+                className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col items-center fixed top-0 left-0 w-full h-full bg-[#F8FAF9] rounded-none z-50 transition-all duration-300 min-w-0`}
+              >
+                <ul className="flex flex-col items-start justify-start pt-8 space-y-8 p-8 w-full h-full min-w-0">
+                  {user ? (
+                    <>
+                      {/* Post-login mobile menu items */}
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/home" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/rxtrack" onClick={() => setIsMenuOpen(false)}>RxTrack™</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <div onClick={handleOrthoSync} className="cursor-pointer" >OrthoSync™</div>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/reward-program" onClick={() => setIsMenuOpen(false)}>Reward Program</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/alignmasters" onClick={() => setIsMenuOpen(false)}>AlignMasters™</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/e-shop" onClick={() => setIsMenuOpen(false)}>E-Shop</NavLink>
+                      </li>
+                      {/* Vertical separator */}
+                      <li className="flex items-center mx-2">
+                        <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
+                      </li>
+                      {/* Profile and Logout */}
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/profile" onClick={() => setIsMenuOpen(false)}>Profile</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/settings" onClick={() => setIsMenuOpen(false)}>Settings</NavLink>
+                      </li>
+                      <li className="w-full">
+                        <button
+                          onClick={() => {
+                            handleLogout();
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90"
+                        >
+                          Logout
                         </button>
-                      </a>
-                    </li>
-                  </>
-                )}
-              </ul>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      {/* Pre-login mobile menu items */}
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+                      </li>
+                      {/* Product dropdown for mobile */}
+                      <li
+                        className="relative w-full text-left font-semibold text-[18px] text-[#195B48]"
+                        ref={productRef}
+                      >
+                        <button
+                          type="button"
+                          className="flex items-center gap-1 py-1 focus:outline-none"
+                          onClick={handleProductClick}
+                        >
+                          Product
+                          <svg
+                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {productDropdown && (
+                          <div
+                            className="mt-1 min-w-[140px] bg-[#004c4494] rounded-lg shadow-lg py-2"
+                            style={{
+                              border: '1px solid #195B48',
+                            }}
+                          >
+                            <button
+                              type="button"
+                              className="block w-full text-left px-4 py-2 text-black font-bold hover:bg-gray-100"
+                              onMouseDown={() => {
+                                console.log('Aligners button clicked (mobile)');
+                                setProductDropdown(false);
+                                router.push('/aligners');
+                              }}
+                            >
+                              Aligners
+                            </button>
+                          </div>
+                        )}
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/education" onClick={() => setIsMenuOpen(false)}>Education</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About us</NavLink>
+                      </li>
+                      <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
+                        <NavLink href="/careers" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
+                      </li>
+                      {/* Vertical separator */}
+                      <li className="flex items-center mx-2">
+                        <span className="block h-6 w-px bg-[#195B48] opacity-40"></span>
+                      </li>
+                      {/* Login button */}
+                      <li className="flex items-center w-full">
+                        <a href="/login" className="block w-full">
+                          <button className="w-full py-3 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-[18px] hover:bg-[#195B48]/90">
+                            Login
+                          </button>
+                        </a>
+                      </li>
+                    </>
+                  )}
+                </ul>
+              </div>
+              {/* Logo at the far right */}
+              <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
+                <Image
+                  src={Logo}
+                  width={120}
+                  height={45}
+                  alt="Logo"
+                  className="h-[2.8125rem] object-contain"
+                />
+              </div>
             </div>
-            {/* Logo at the far right */}
-            <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
-              <Image
-                src="/images/logo.png"
-                width={120}
-                height={45}
-                alt="Logo"
-                className="h-[2.8125rem] object-contain"
-              />
-            </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
+
       </div>
       {/* Add top padding to main content for mobile so it's not hidden behind navbar */}
       <style jsx global>{`

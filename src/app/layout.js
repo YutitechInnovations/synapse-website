@@ -34,10 +34,8 @@ export default function RootLayout({ children }) {
         <Toaster />
         <ConditionalNavbar />
         <QueryClientProvider client={queryClient}>
-
           <main>{children}</main>
         </QueryClientProvider>
-
         <ConditionalFooter />
       </body>
     </html>

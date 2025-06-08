@@ -8,7 +8,8 @@ export const PUBLIC_ROUTES = [
     "/aboutus",
     "/blogs",
     "/signup",
-    "/admin"
+    "/admin",
+    "/aligners"
 ];
 export const VIEW_ONLY_ROUTES = [];
 
@@ -24,4 +25,5 @@ export const USER_ROUTES = [
     "/alignmasters",
     "/orthosync",
     "/rxtrack",
+
 ];

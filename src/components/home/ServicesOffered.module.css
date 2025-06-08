@@ -9,7 +9,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 90vh;
 }
+
 .inner {
   width: 100%;
   display: flex;
@@ -17,23 +19,27 @@
   align-items: center;
   gap: 1rem;
 }
+
 .heading {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #004C44;
   margin-bottom: 0.5rem;
   text-align: center;
+  line-height: 100%;
 }
-.paragraph {
+
+.paragraph_styles {
   color: #004C44;
   text-align: center;
-  margin-bottom: 0.5rem;
   width: 100%;
-  font-size: 1rem;
+  font-weight: 400;
 }
-.paragraph:last-of-type {
+
+.paragraph_styles:last-of-type {
   margin-bottom: 2rem;
 }
+
 .circlesContainer {
   position: relative;
   width: 100%;
@@ -42,11 +48,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .circles {
   position: relative;
   width: 335px;
   height: 335px;
 }
+
 .circleBottom {
   position: absolute;
   left: 50%;
@@ -56,6 +64,7 @@
   width: 180px;
   height: 180px;
 }
+
 .circleMiddle {
   position: absolute;
   left: 50%;
@@ -65,6 +74,7 @@
   width: 135px;
   height: 135px;
 }
+
 .circleTop {
   position: absolute;
   left: 50%;
@@ -74,97 +84,236 @@
   width: 100px;
   height: 100px;
 }
+
 @media (min-width: 600px) {
   .inner {
     gap: 2rem;
   }
+
   .heading {
     font-size: 2rem;
   }
-  .paragraph {
-    font-size: 1.125rem;
-  }
+
+
+
   .circles {
     width: 446px;
     height: 446px;
   }
+
   .circlesContainer {
     min-height: 446px;
   }
+
   .circleBottom {
     width: 335px;
     height: 335px;
   }
+
   .circleMiddle {
     width: 250px;
     height: 250px;
   }
+
   .circleTop {
     width: 180px;
     height: 180px;
   }
 }
+
 @media (min-width: 900px) {
   .section {
     padding-top: 5rem;
     padding-bottom: 5rem;
     padding-left: 6.25rem;
     padding-right: 6.25rem;
+
   }
+
   .heading {
     font-size: 2.5rem;
   }
-  .paragraph {
-    font-size: 1.25rem;
-  }
+
+
+
   .circles {
     width: 595px;
     height: 595px;
   }
+
   .circlesContainer {
     min-height: 595px;
   }
+
   .circleBottom {
     width: 595px;
     height: 595px;
   }
+
   .circleMiddle {
     width: 446px;
     height: 446px;
   }
+
   .circleTop {
     width: 335px;
     height: 335px;
   }
 }
+
 @media (max-width: 400px) {
   .section {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+
   }
+
   .heading {
     font-size: 1.1rem;
   }
-  .paragraph {
-    font-size: 0.95rem;
-  }
+
+
   .circles {
     width: 220px;
     height: 220px;
   }
+
   .circlesContainer {
     min-height: 220px;
   }
+
   .circleBottom {
     width: 220px;
     height: 220px;
   }
+
   .circleMiddle {
     width: 165px;
     height: 165px;
   }
+
   .circleTop {
     width: 100px;
     height: 100px;
   }
-} 
+}
+
+
+.first_circle,
+.second_circle,
+.third_circle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10%;
+  z-index: 1;
+}
+
+/* Default (Mobile) */
+.first_circle {
+  background-color: #004D44;
+  width: 12rem;
+  height: 12rem;
+  z-index: 3;
+}
+
+.second_circle {
+  background-color: #004D44B2;
+  width: 18rem;
+  height: 18rem;
+  z-index: 2;
+}
+
+.third_circle {
+  background-color: #004D44B2;
+  width: 24rem;
+  height: 24rem;
+  z-index: 1;
+}
+
+.first_circle span,
+.second_circle span,
+.third_circle span {
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  z-index: 10;
+}
+
+/* Tablet (min-width: 640px) */
+@media (min-width: 640px) {
+  .first_circle {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  .second_circle {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .third_circle {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .first_circle span,
+  .second_circle span,
+  .third_circle span {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .first_circle {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .second_circle {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .third_circle {
+    width: 40rem;
+    height: 40rem;
+  }
+
+  .first_circle span,
+  .second_circle span,
+  .third_circle span {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large Desktop (min-width: 1536px) */
+@media (min-width: 1536px) {
+  .first_circle {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .second_circle {
+    width: 25rem;
+    height: 25rem;
+  }
+
+  .third_circle {
+    width: 35rem;
+    height: 35rem;
+  }
+
+  .first_circle span,
+  .second_circle span,
+  .third_circle span {
+    font-size: 1.2rem;
+  }
+}
