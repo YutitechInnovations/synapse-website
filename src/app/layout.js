@@ -1,6 +1,4 @@
 "use client"
-
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConditionalNavbar from "../components/ConditionalNavbar";
 import ConditionalFooter from "../components/ConditionalFooter";
@@ -9,27 +7,32 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import { Poppins, Sora } from 'next/font/google';
+
+const poppins = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const sora = Sora({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
 });
-
 
 
 export default function RootLayout({ children }) {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <html lang="en">
+    <html lang="en" className={`${poppins.variable} ${sora.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased [overflow-anchor:none]`}
+        className={`antialiased [overflow-anchor:none]`}
       >
         <Toaster />
         <ConditionalNavbar />

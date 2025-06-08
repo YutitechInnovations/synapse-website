@@ -12,13 +12,13 @@
   --primary: #004c44;
   --primary-lights: #004c4494;
   --foreground: #171717;
-  --Poppin: Poppins, sans-serif;
-  --Sora: Sora, sans-serif;
   --white: #ffffff;
   --border-color: rgba(0, 76, 68, 0.5);
   --border-color-light: #7fdfc9;
   --primary-color: #4a148c;
   --primary-dark: #12005e;
+   --font-poppins: 'Poppins', sans-serif;
+  --font-sora: 'Sora', sans-serif;
 }
 
 @theme inline {
@@ -39,7 +39,7 @@
 body {
   background: var(--background);
   color: var(--text-primary);
-  font-family: var(--Poppin);
+  font-family: var(--font-poppins);
   font-style: normal;
 }
 .btn-primary {
