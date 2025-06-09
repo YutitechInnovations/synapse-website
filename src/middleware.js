@@ -1,47 +1,67 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import {
+    PUBLIC_ROUTES,
+    VIEW_ONLY_ROUTES,
+    ROLE,
+    ADMIN_ROUTES,
+} from "./middleware.constant";
 
-// List of protected routes that require authentication
-const protectedRoutes = [
-  '/home',
-  '/rxtrack',
-  '/orthosync',
-  '/reward-program',
-  '/alignmasters',
-  '/e-shop',
-  '/profile',
-  '/settings'
-];
+const isPublicRoute = (path) =>
+    PUBLIC_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
 
-export function middleware(request) {
-  const isLoggedIn = request.cookies.get('mockLoggedIn')?.value === 'true';
-  const { pathname } = request.nextUrl;
+const isViewOnlyRoute = (path) =>
+    VIEW_ONLY_ROUTES.some(
+        (route) => path === route || path.startsWith(`${route}/`)
+    );
 
-  // Check if the route is protected
-  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+const isAdminRoutes = (path) =>
+    path.startsWith('/admin');
 
-  // If it's a protected route and user is not logged in, redirect to login
-  if (isProtectedRoute && !isLoggedIn) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
+export default async function middleware(req) {
+    const path = req.nextUrl.pathname;
 
-  // If user is logged in and tries to access login/signup pages, redirect to home
-  if (isLoggedIn && (pathname === '/login' || pathname === '/signup')) {
-    return NextResponse.redirect(new URL('/home', request.url));
-  }
+    // Allow access to admin login page
+    if (path === '/admin') {
+        return NextResponse.next();
+    }
 
-  return NextResponse.next();
+    const cookieHeader = req.headers.get("cookie") || "";
+    const cookies = Object.fromEntries(
+        cookieHeader.split("; ").map((cookie) => cookie.split("="))
+    );
+
+    const userCookieRaw = cookies["user"];
+    const token = cookies["token"];
+    const isLoggedIn = cookies["isLoggedInYN"];
+
+    let userData = null;
+
+    try {
+        // Some cookies may be URI encoded; decode before parsing
+        userData = userCookieRaw ? JSON.parse(decodeURIComponent(userCookieRaw)) : null;
+    } catch (e) {
+        // Invalid user cookie
+        userData = null;
+    }
+
+    // For admin routes, check if logged-in user is an admin
+    if (isAdminRoutes(path)) {
+        const isAdmin = userData?.data.role === 'admin';
+        console.log(userData)
+        if (!isAdmin || !token || isLoggedIn !== 'true') {
+            return NextResponse.redirect(new URL("/admin", req.nextUrl));
+        }
+        return NextResponse.next();
+    }
+
+    // For general routes, block if no user cookie and it's not public
+    if (!userCookieRaw && !isPublicRoute(path)) {
+        return NextResponse.redirect(new URL("/login", req.nextUrl));
+    }
+
+    return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|public).*)',
-  ],
-}; 
+    matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+};
