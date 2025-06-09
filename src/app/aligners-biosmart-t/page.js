@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import Navbar from '../../components/navbar/Navbar';
+import styles from './styles.module.css';
+import LayersImage from '../../assets/layers.png';
+import PatientImage from '../../assets/patient.jpg'
 
 export default function BioSmartT() {
   return (
@@ -7,21 +10,10 @@ export default function BioSmartT() {
       <Navbar />
       <div className="bg-[#F6F6F3] min-h-screen w-full">
         {/* Hero Section */}
-        <section className="relative w-full hero-section">
-          {/* Background Image */}
-          <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-            <Image
-              src="/images/biot.jpg"
-              fill
-              className="w-full h-full object-cover object-center"
-              alt="BioSmart T Hero Background"
-              priority
-            />
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/60" />
-          </div>
+        <section className={`${styles.heroSection}               `}>
+
           {/* Content */}
-          <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="relative min-h-[200px] container mx-auto h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 ">
             <div className="max-w-3xl w-full">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
                 BioSmart™ T
@@ -34,18 +26,18 @@ export default function BioSmartT() {
         </section>
 
         {/* Main Content Sections (Figma style) */}
-        <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16">
-          <div className="w-full max-w-[976px] px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: '100%' }}>
-            <p className="text-[#195B48] text-center w-full">
+        <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16 ">
+          <div className="w-full container px-12 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: '100%' }}>
+            <p className="text-[#195B48] text-left w-full px-12">
               BioSmart™ T brings together advanced material science and precision modeling for aligners that are anything but old-school. This is tried-and-true—reimagined for today&apos;s practice.
             </p>
           </div>
         </section>
 
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white">
-          <div className="max-w-5xl w-full mt-8 md:mt-16 mb-8 md:mb-16 flex flex-col gap-12 md:gap-24">
+          <div className="max-w-6xl w-full mt-8 md:mt-16 mb-8 md:mb-16 flex flex-col gap-12 md:gap-24">
             {/* Models That Keep Up */}
-            <div className="max-w-[900px] mx-auto px-4 md:pl-12 mb-8 md:mb-16">
+            <div className="container mx-auto  mb-8 md:mb-12">
               <h2 className="text-2xl md:text-[28px] font-bold text-[#004C44] mb-4 leading-tight text-left">Models That Keep Up.</h2>
               <p className="text-base md:text-lg text-[#195B48] text-left">Faster printing. Smoother finishes. Cleaner thermoforming. Our modeling process accelerates delivery without compromising accuracy.</p>
             </div>
@@ -58,9 +50,9 @@ export default function BioSmartT() {
               </div>
               <div className="flex-1 flex justify-center md:justify-end items-center">
                 <div className="relative w-full max-w-[500px] h-[456px] md:ml-[63px]">
-                  <Image 
-                    src="/images/layers.png" 
-                    alt="Layered Structure" 
+                  <Image
+                    src={LayersImage}
+                    alt="Layered Structure"
                     fill
                     className="object-contain rounded-[16px]"
                   />
@@ -69,31 +61,31 @@ export default function BioSmartT() {
             </div>
 
             {/* Force That Lasts. Comfort That Stays. */}
-            <div className="max-w-[900px] mx-auto px-4 md:pl-12 mb-8 md:mb-16">
+            <div className="container mx-auto  mb-8 md:mb-6">
               <h2 className="text-2xl md:text-[28px] font-bold text-[#004C44] mb-4 leading-tight text-left">Force That Lasts. Comfort That Stays.</h2>
               <p className="text-base md:text-lg text-[#195B48] text-left">Sustained force levels lead to better tracking, while low initial pressure enhances patient comfort and compliance—especially in longer wear intervals.</p>
             </div>
 
             {/* Patient-Friendly, Clinician-Ready */}
-            <div className="w-full max-w-[1240px] rounded-[20px] bg-white flex flex-col md:flex-row justify-between items-center mx-auto px-4 md:px-0 py-8 md:py-[100px]">
-              <div className="flex-1 flex flex-col justify-center px-4 md:pl-12 md:pr-8 mb-8 md:mb-0">
+            <div className="w-full container mx-auto rounded-[20px] bg-white flex flex-col md:flex-row justify-between items-center py-8 md:py-[10px]">
+              <div className="flex-1 flex flex-col justify-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#004C44] mb-6 leading-tight">Patient-Friendly,<br />Clinician-Ready.</h2>
                 <p className="text-lg md:text-xl text-[#195B48]">Built for flexibility and strength, these aligners handle complex movements with confidence—while offering a break-resistant, attachment-compatible surface clinicians trust.</p>
               </div>
               <div className="flex-1 h-full flex items-center justify-center md:justify-end">
                 <div className="relative w-full max-w-[625px] h-[456px]">
-                  <Image 
-                    src="/images/patient.jpg" 
-                    alt="Patient Friendly" 
+                  <Image
+                    src={PatientImage}
+                    alt="Patient Friendly"
                     fill
-                    className="object-cover rounded-[20px]"
+                    className="object-cover  rounded-[20px]"
                   />
                 </div>
               </div>
             </div>
 
             {/* Consistency You Can Feel */}
-            <div className="max-w-[900px] mx-auto px-4 md:pl-12 mb-8 md:mb-16">
+            <div className="container mx-auto px-4 mb-8 md:mb-16">
               <h2 className="text-2xl md:text-[28px] font-bold text-[#004C44] mb-4 leading-tight text-left">Consistency You Can Feel.</h2>
               <p className="text-base md:text-lg text-[#195B48] text-left">From high-precision models to stable force zones, BioSmart™ T ensures predictability and control—at every stage of treatment.</p>
             </div>
@@ -102,20 +94,20 @@ export default function BioSmartT() {
 
         {/* Table Section */}
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-[#F6F6F3] py-8 md:py-16 pb-[150px]">
-          <div className="max-w-[1169px] w-full mx-auto">
+          <div className="max-w-7xl w-full mx-auto">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#195B48] mb-4 leading-tight">Thermoformed Aligners.<br />Classic. Reinforced. Reliable.</h2>
             <p className="mb-8 text-[#195B48] text-base md:text-lg">Please choose your desired Tier of BioSmart™ T based on your case specifications as per the below table.</p>
             <div className="overflow-x-auto">
               <table className="min-w-full w-full border border-[#B6C3C7] rounded-[10px] overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
                 <thead>
-                  <tr>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white first:rounded-tl-[10px] last:rounded-tr-[10px]">Tier</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white">RxLite</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white">RxPro</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7] bg-white last:rounded-tr-[10px]">RxPro+</th>
+                  <tr className='text-center'>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7]  first:rounded-tl-[10px] last:rounded-tr-[10px]">Tier</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxLite</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxPro</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7]  last:rounded-tr-[10px]">RxPro+</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white">
+                <tbody className=" text-center">
                   <tr>
                     <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Crowding/Spacing</td>
                     <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">≤ 2–3 mm</td>

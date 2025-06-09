@@ -1,5 +1,9 @@
 import Image from 'next/image';
 import Navbar from '../../components/navbar/Navbar';
+import styles from './styles.module.css';
+import ResinImage from '../../assets/resin.png';
+import SmpImage from '../../assets/smp.png';
+import NbcpImage from '../../assets/nbcp.png'
 
 export default function BioSmartSM() {
   return (
@@ -7,21 +11,10 @@ export default function BioSmartSM() {
       <Navbar />
       <div className="bg-[#F6F6F3] min-h-screen w-full">
         {/* Hero Section */}
-        <section className="relative w-full hero-section">
-          {/* Background Image */}
-          <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
-            <Image
-              src="/images/biosm.jpg"
-              fill
-              className="w-full h-full object-cover object-center"
-              alt="BioSmart SM Hero Background"
-              priority
-            />
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/60" />
-          </div>
+        <section className={`${styles.heroSection}               `}>
+
           {/* Content */}
-          <div className="relative min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="relative container mx-auto min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 ">
             <div className="max-w-3xl w-full">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
                 BioSmart™ SM
@@ -35,18 +28,18 @@ export default function BioSmartSM() {
 
         {/* Main Content Sections (Figma style) */}
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16">
-          <div className="w-full max-w-[976px] px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: '100%' }}>
-            <p className="text-[#195B48] text-center w-full">
+          <div className="w-full max-w-[1200px]  px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', }}>
+            <p className="text-[#195B48] text-left w-full">
               Forget the old rules. With Bio… Shape Memory Aligners by Synapse, you&apos;re not just upgrading materials—you&apos;re upgrading possibilities. Designed for precision, built for consistency, and aligned with sustainability, this is innovation at its most responsive.
             </p>
           </div>
         </section>
 
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white">
-          <div className="max-w-5xl w-full mt-8 md:mt-16 mb-8 md:mb-16 flex flex-col gap-12 md:gap-24">
+          <div className="max-w-7xl mx-auto mt-8 md:mt-16 mb-8 md:mb-16 flex flex-col gap-12 md:gap-24">
             {/* No Resin Models */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 px-4 md:px-0">
-              <div className="flex-1 flex justify-center md:justify-end">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+              <div className="w-[50%]">
                 <div className="max-w-md">
                   <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">No Resin Models.<br />Just Pure Precision.</h2>
                   <p className="text-base md:text-lg text-[#195B48]">Our digital process ensures each aligner mirrors the occlusal surface with accuracy—without the need for physical resin models.</p>
@@ -54,9 +47,9 @@ export default function BioSmartSM() {
               </div>
               <div className="flex-1 flex justify-center md:justify-start items-center">
                 <div className="relative w-full max-w-[600.91px] h-[284px] md:mt-[70px] md:ml-[12.04px]">
-                  <Image 
-                    src="/images/resin.png" 
-                    alt="Resin Precision" 
+                  <Image
+                    src={ResinImage}
+                    alt="Resin Precision"
                     fill
                     className="object-contain"
                   />
@@ -65,7 +58,7 @@ export default function BioSmartSM() {
             </div>
 
             {/* Force Where It Matters Most */}
-            <div className="w-full max-w-[900px] mx-auto px-4 md:px-0 mb-8 md:mb-16">
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-0 mb-8 md:mb-16">
               <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight text-left">
                 Force Where It Matters Most.
               </h2>
@@ -81,12 +74,12 @@ export default function BioSmartSM() {
                 <p className="text-base md:text-lg text-[#195B48]">Our shape memory polymer maintains steady force over time—longer, more consistent, more controlled. That sustained force plays a key role in reducing unnecessary refinements and improving treatment rhythm.</p>
               </div>
               <div className="flex-1 flex justify-center items-center">
-                <div className="relative w-full max-w-[320px] h-[320px]">
-                  <Image 
-                    src="/images/smp.png" 
-                    alt="Shape Memory Polymer" 
+                <div className=" relative w-full max-w-[320px] h-[320px]">
+                  <Image
+                    src={SmpImage}
+                    alt="Shape Memory Polymer"
                     fill
-                    className="object-contain"
+                    className="object-contain aspect-video"
                   />
                 </div>
               </div>
@@ -100,11 +93,11 @@ export default function BioSmartSM() {
               </div>
               <div className="flex-1 flex justify-center">
                 <div className="relative w-full max-w-[320px] h-[320px]">
-                  <Image 
-                    src="/images/nbcp.png" 
-                    alt="Curing Chart" 
+                  <Image
+                    src={NbcpImage}
+                    alt="Curing Chart"
                     fill
-                    className="object-contain"
+                    className="object-contain aspect-video"
                   />
                 </div>
               </div>
@@ -137,15 +130,15 @@ export default function BioSmartSM() {
             <p className="mb-8 text-[#195B48] text-base md:text-lg">Please choose your desired Tier of BioSmart™ SM based on your case specifications as per the below table.</p>
             <div className="overflow-x-auto">
               <table className="min-w-full w-full border border-[#B6C3C7] rounded-[10px] overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
+                <thead className='text-center'>
                   <tr>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white first:rounded-tl-[10px] last:rounded-tr-[10px]">Tier</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white">RxLite</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] bg-white">RxPro</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7] bg-white last:rounded-tr-[10px]">RxPro+</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7]  first:rounded-tl-[10px] last:rounded-tr-[10px]">Tier</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxLite</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxPro</th>
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7]  last:rounded-tr-[10px]">RxPro+</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white">
+                <tbody className=" text-center">
                   <tr>
                     <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Crowding/Spacing</td>
                     <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">≤ 2–3 mm</td>

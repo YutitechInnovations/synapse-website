@@ -9,7 +9,9 @@ export const PUBLIC_ROUTES = [
     "/blogs",
     "/signup",
     "/admin",
-    "/aligners"
+    "/aligners",
+    "/aligners-biosmart-sm",
+    "/aligners-biosmart-t"
 ];
 export const VIEW_ONLY_ROUTES = [];
 
