@@ -43,7 +43,6 @@ export default function AdminLogin() {
         Cookies.set("adminId", response.admin_id);
         Cookies.set("token", response.token);
         Cookies.set("user", JSON.stringify(response));
-        Cookies.set("isLoggedInYN", "true");
 
         // Show success message
         toast.success(response.message || "Login successful!");

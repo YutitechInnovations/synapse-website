@@ -27,5 +27,4 @@ export const USER_ROUTES = [
     "/alignmasters",
     "/orthosync",
     "/rxtrack",
-
 ];

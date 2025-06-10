@@ -80,13 +80,11 @@ export const authenticate = async (response, next) => {
             removeCookie("user");
             removeCookie("token");
             removeCookie("adminId");
-            removeCookie("isLoggedInYN");
             
             // Set new cookies
             setCookie("adminId", response.admin_id);
             setCookie("token", response.token);
             setCookie("user", JSON.stringify(response));
-            setCookie("isLoggedInYN", "true");
             
             // Set in localStorage as well
             setLocalStorage("user", response);
@@ -94,7 +92,6 @@ export const authenticate = async (response, next) => {
         } else {
             setCookie("user", JSON.stringify(response));
             setCookie("token", response.token);
-            setCookie("isLoggedInYN", "true");
             setLocalStorage("user", response);
         }
 
@@ -110,18 +107,17 @@ export const authenticate = async (response, next) => {
     }
 };
 
-// access user info from localstorage
+
 export const isAuth = () => {
-    if (typeof window !== "undefined") {
-        const cookieChecked = getCookie("user");
-        const isLoggedInYN = getCookie("isLoggedInYN");
-        if (cookieChecked && isLoggedInYN === "true") {
-            return true;
-        } else {
-            logout();
-            return false;
-        }
+  if (typeof window !== "undefined") {
+    const userCookie = getCookie("user");
+    if (userCookie) {
+      return true;
+    } else {
+      logout();
+      return false;
     }
+  }
 };
 
 export const logout = async () => {
