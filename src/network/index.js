@@ -3,8 +3,10 @@ import Cookies from "js-cookie"; // Ensure you have js-cookie installed
 import { handleToast, logout } from "./helper";
 
 // Create an Axios instance
+const baseURL = process.env.NEXT_PUBLIC_COMMON_BASE_URL?.replace(/\/$/, '');
+
 const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_COMMON_BASE_URL?.replace(/\/$/, ''), // Remove trailing slash if present
+    baseURL: baseURL, // Remove trailing slash if present
     headers: {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",

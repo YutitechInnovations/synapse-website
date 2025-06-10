@@ -94,6 +94,7 @@ export const authenticate = async (response, next) => {
         } else {
             setCookie("user", JSON.stringify(response));
             setCookie("token", response.token);
+            setCookie("isLoggedInYN", "true");
             setLocalStorage("user", response);
         }
 
