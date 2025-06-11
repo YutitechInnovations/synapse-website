@@ -36,7 +36,7 @@ export default function AdminLogin() {
     try {
       // Call API
       const response = await adminLogin({ email, password });
-      console.log('Admin login response:', response); // Debug log
+      console.log("Admin login response:", response); // Debug log
 
       if (response?.status === "success") {
         // Set cookies directly

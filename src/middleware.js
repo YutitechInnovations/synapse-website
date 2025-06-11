@@ -6,21 +6,15 @@ const isPublicRoute = (path) =>
 
 export default function middleware(req) {
   const path = req.nextUrl.pathname;
-  console.log(`[MIDDLEWARE] Checking path: ${path}`);
-
   const cookieHeader = req.headers.get("cookie") || "";
   const cookies = Object.fromEntries(
     cookieHeader.split("; ").map((c) => c.split("="))
   );
 
   const token = cookies["access_token"];
-  console.log("[MIDDLEWARE] access_token:", token ? "present" : "missing");
-
   if (!token && !isPublicRoute(path)) {
-    console.warn("[MIDDLEWARE] Redirecting unauthenticated user to /login");
     return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
-
   return NextResponse.next();
 }
 
