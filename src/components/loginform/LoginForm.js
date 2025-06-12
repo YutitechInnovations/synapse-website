@@ -39,7 +39,7 @@ const LoginForm = () => {
       // Call authenticate and pass a next callback
       await authenticate(response, () => {
         toast.success(response.message || "Login successful!");
-        router.push("/home");
+        router.push("/");
       });
     } catch (err) {
       // Toast already handled inside login()
