@@ -49,43 +49,22 @@ export default function Aligners() {
       </section>
 
       {/* BioSmart Systems Section */}
-      <section className="w-full flex justify-center mt-[100px]  bg-white py-12">
-        <div className="w-full max-w-[1082px] flex flex-col px-2 sm:px-4 md:px-8 lg:px-0">
-          <h2 className="text-3xl md:text-4xl font-[600] text-[#195B48] text-left mb-4">
-            BioSmart™ Systems: Powered by{" "}
-            <span className="font-[600]">
-              R<sub className="text-base align-super">x</sub>.F.O.R.C.E
-              <sup className="text-base">™</sup>
-            </span>
-          </h2>
-          <p className="text-lg text-[#195B48] mt-5 font-[400] mb-10">
-            Click on the system that fits your treatment philosophy to know more
-          </p>
-          {/* Cards Row */}
-          <div className={styles.cardsRow}>
-            <Link href="/aligners-biosmart-sm" className="flex-1">
-              <div className={styles.card}>
-                <div className="text-[1.4rem] font-[600] text-[#195B48] mb-4 text-center">
-                  BioSmart™ SM
-                </div>
-                <div className="text-[.9rem] font-semibold text-[#195B48] text-center">
-                  Our Shape Memory Aligner Option
-                </div>
-              </div>
-            </Link>
-            <Link href="/aligners-biosmart-t" className="flex-1">
-              <div className={styles.card}>
-                <div className="text-[1.4rem] font-[600] text-[#195B48] mb-4 text-center">
-                  BioSmart™ T
-                </div>
-                <div className="text-[.9rem] font-semibold text-[#195B48] text-center">
-                  Our Thermoformed Aligner Option
-                </div>
-              </div>
-            </Link>
-          </div>
-          {/* Variant Container */}
-          <div className={styles.variantContainer}>
+      <section className="w-full bg-white my-14">
+        <div>
+          <div className="w-full flex justify-center items-center text-center flex-col px-2 sm:px-4 md:px-8 lg:px-0">
+            <h2 className="text-3xl md:text-4xl font-[600] text-[#195B48] text-left mb-4">
+              BioSmart™ Systems: Powered by{" "}
+              <span className="font-[600]">
+                R<sub className="text-base align-super">x</sub>.F.O.R.C.E
+                <sup className="text-base">™</sup>
+              </span>
+            </h2>
+            <p className="text-lg text-[#195B48] mt-3 font-[400] mb-10">
+              Our aligner systems are available in two options depending on your
+              treatment philosophy – click on each of the systems to know more.
+            </p>
+            {/* Variant Container */}
+            {/* <div className={styles.variantContainer}>
             <div className={styles.variantText}>
               <p className="text-lg text-[#195B48] mb-4">
                 And each system is available in three variants tailored
@@ -115,6 +94,29 @@ export default function Aligners() {
                 className="object-cover object-center md:rounded-r-[20px]"
               />
             </div>
+          </div> */}
+          </div>
+          <div className={styles.cardsRow}>
+            <Link href="/aligners-biosmart-sm" className="flex-1">
+              <div className={styles.card}>
+                <div className="text-[1.4rem] font-[600] text-[#195B48] mb-4 text-center">
+                  BioSmart™ SM
+                </div>
+                <div className="text-[.9rem] font-semibold text-[#195B48] text-center">
+                  Our Shape Memory Aligner Option
+                </div>
+              </div>
+            </Link>
+            <Link href="/aligners-biosmart-t" className="flex-1">
+              <div className={styles.card}>
+                <div className="text-[1.4rem] font-[600] text-[#195B48] mb-4 text-center">
+                  BioSmart™ T
+                </div>
+                <div className="text-[.9rem] font-semibold text-[#195B48] text-center">
+                  Our Thermoformed Aligner Option
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

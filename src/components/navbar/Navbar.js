@@ -121,7 +121,6 @@ export default function Navbar() {
 
   const publicNav = [
     { href: "/", label: "Home" },
-    { href: "/aligners", label: "Aligners", isProduct: true },
     { href: "/education", label: "Education" },
     { href: "/aboutus", label: "About us" },
     { href: "/careers", label: "Careers" },
@@ -220,12 +219,12 @@ export default function Navbar() {
                       </li>
                       {/* Product dropdown for not-logged-in users */}
                       <li
-                        className="relative text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                        className="relative text-left font-semibold text-[18px] md:text-base text-white md:text-white md:font-normal md:text-center md:ml-[30px]"
                         ref={productRef}
                       >
                         <button
                           type="button"
-                          className="flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                          className="text-white flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
                           onClick={handleProductClick}
                         >
                           Product
@@ -243,14 +242,14 @@ export default function Navbar() {
                         </button>
                         {productDropdown && (
                           <div
-                            className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-lg shadow-lg py-2 z-50"
+                            className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-[20px] shadow-lg py-2 z-50"
                             style={{
-                              border: "1px solid #195B48",
+                              border: "1px solid ",
                             }}
                           >
                             <button
                               type="button"
-                              className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100 transition-colors duration-150 font-semibold"
+                              className="block w-full text-left px-4 py-2 text-[#004C44]  transition-colors duration-150 font-semibold"
                               onMouseDown={() => {
                                 console.log("Aligners button clicked");
                                 setProductDropdown(false);
