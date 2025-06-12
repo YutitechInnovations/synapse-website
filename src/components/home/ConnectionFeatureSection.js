@@ -30,11 +30,15 @@ const features = [
   },
 ];
 
-export default function ConnectionFeatureSection({ isLoggedIn }) {
+export default function ConnectionFeatureSection({ isLoggedIn, onOrthoSyncClick }) {
   const router = useRouter();
   const handleCardClick = (link) => {
     if (isLoggedIn) {
-      router.push(link);
+      if (link === '/orthosync' && onOrthoSyncClick) {
+        onOrthoSyncClick();
+      } else {
+        router.push(link);
+      }
     }
   };
 

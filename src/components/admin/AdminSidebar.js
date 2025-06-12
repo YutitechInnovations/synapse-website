@@ -71,7 +71,7 @@ export default function AdminSidebar() {
         <Link
           onClick={() => { adminLogout(); logout() }}
           href={'/admin'}
-          className={`flex flex-col items-center justify-center transition text-white  shadow font-semibold hover:bg-[#004C44] `}
+          className={`flex flex-col items-center justify-center transition text-white hover:bg-[#004C44] `}
           style={{
             width: '149px',
             height: '74px',

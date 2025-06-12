@@ -1,8 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import styles from './home.module.css';
 import ConnectionFeatureSection from '../../components/home/ConnectionFeatureSection';
 import ClientOnly from "../../components/ClientOnly";
 import Navbar from "../../components/navbar/Navbar.js";
+import { getOrthoSyncUrl } from "@/services/auth.js";
+
+const handleOrthoSync = async () => {
+  try {
+    const response = await getOrthoSyncUrl();
+    const url = response?.data?.orthosync_url || response?.url;
+
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      console.error("URL not found in response");
+    }
+  } catch (err) {
+    console.error("Failed to fetch OrthoSync URL:", err);
+  }
+};
 
 export default function PostLoginHome() {
   return (
@@ -110,7 +128,7 @@ export default function PostLoginHome() {
       </section>
 
       {/* Where Care Meets Connection Section */}
-      <ConnectionFeatureSection isLoggedIn={true} />
+      <ConnectionFeatureSection isLoggedIn={true} onOrthoSyncClick={handleOrthoSync} />
 
       {/* Education Section */}
       <section className={styles.educationSection}>
