@@ -130,6 +130,11 @@ const LoginForm = () => {
               )}
             </div>
           </div>
+          <div className="w-full text-right mb-2">
+            <Link href="/forgot-password" className="text-[#195B48] hover:underline text-sm">
+              Forgot Password?
+            </Link>
+          </div>
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
           <button
             className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors"
