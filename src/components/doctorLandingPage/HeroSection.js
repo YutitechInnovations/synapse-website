@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
       {/* Content */}
-      <div className="  container mx-auto relative  min-h-[200px]   h-[45vw] md:h-[45vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-32 px-2 sm:px-4 md:px-8 lg:px-16 z-10">
+      <div className="   container relative  min-h-[200px]   h-[45vw] md:h-[45vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-32 px-[6rem] sm:px[6rem] md:px-[6rem] lg:px-[6rem] z-10">
         <div className="max-w-xl w-full">
           <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-3 md:mb-6 leading-tight">
             About Us
