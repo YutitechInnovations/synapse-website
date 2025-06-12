@@ -29,7 +29,7 @@ export default function BioSmartSM() {
                 BioSmart™ SM{" "}
               </h1>
               <p className="text-base md:text-xl font-medium text-[#184C3A]">
-                The Future of Aligners is Here—And It’s Smart Memory.{" "}
+                The Future of Aligners is Here—And It's Smart Memory.{" "}
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function BioSmartSM() {
           >
             <p className="text-[#004C44] text-left w-full ">
               With BioSmart™ SM (Smart Memory) aligners, you're not just
-              upgrading materials—you’re advancing toward what is biologically
+              upgrading materials—you're advancing toward what is biologically
               and physiologically achievable. Engineered for precision and
               efficiency, BioSmart™ SM applies RxF.O.R.C.E™ to deliver
               consistent, accurate forces through smart material behaviour and
@@ -138,8 +138,8 @@ export default function BioSmartSM() {
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
           <div className="max-w-[1270px] w-full px-4 text-[#004C44]">
             <p className="text-xl md:text-2xl italic leading-snug mb-6 font-[600]">
-              “The innovative advantage of the new aligner material is the
-              continuous power transmission thanks to its memory effect.”
+              "The innovative advantage of the new aligner material is the
+              continuous power transmission thanks to its memory effect."
             </p>
             <p className="text-sm md:text-base text-[#004C44] font-[400]">
               – Dr. Björn Ludwig, Assistant Professor, University of
@@ -160,7 +160,40 @@ export default function BioSmartSM() {
               options, giving you control to manage each case in line with your
               clinical preferences.
             </p>
-            <div className="overflow-x-auto"></div>
+            <div className="flex flex-col items-center -ml-[2px]">
+              <div className="relative">
+                <img 
+                  src="/images/frame34.png"
+                  alt="BioSmart SM Flow"
+                  className="w-[1169px] h-auto"
+                  style={{ height: '390px', objectFit: 'contain' }}
+                />
+                <p 
+                  className="absolute text-[#195B48]"
+                  style={{ 
+                    width: '415px',
+                    height: '24px',
+                    top: '405px',
+                    left: '-0.5px'
+                  }}
+                >
+                  -Mid-Course correction is quarterly across all plans
+                </p>
+              </div>
+              <div className="relative w-full mt-4 mb-[150px]">
+                <img 
+                  src="/images/power.png"
+                  alt="Power Icon"
+                  className="absolute"
+                  style={{ 
+                    width: '134px',
+                    height: '116px',
+                    left: '1068px',
+                    right: '137px'
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </section>
       </div>
