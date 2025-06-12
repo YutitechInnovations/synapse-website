@@ -12,7 +12,8 @@ export const PUBLIC_ROUTES = [
     "/aligners",
     "/aligners-biosmart-sm",
     "/aligners-biosmart-t",
-    "/forgot-password"
+    "/forgot-password",
+    "/admin-forgot-password",
 ];
 export const VIEW_ONLY_ROUTES = [];
 

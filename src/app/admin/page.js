@@ -6,6 +6,7 @@ import { authenticate } from "@/network/helper";
 import toast from "react-hot-toast";
 import Loader from "@/components/loader";
 import Cookies from "js-cookie";
+import Link from "next/link";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -103,6 +104,11 @@ export default function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div className="w-full text-right mb-2">
+            <Link href="/admin-forgot-password" className="text-[#195B48] hover:underline text-sm">
+              Forgot Admin Password?
+            </Link>
           </div>
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
           <button
