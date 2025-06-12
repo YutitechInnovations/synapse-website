@@ -8,7 +8,7 @@ export default function ForgotPasswordPage() {
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="flex items-center justify-center pt-40 pb-[100px] px-4">
+      <main className="flex items-center justify-center pt-60 pb-[100px] px-4">
         <ForgotPasswordForm />
       </main>
     </div>
