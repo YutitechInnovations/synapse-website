@@ -18,17 +18,40 @@ const rightLinks = [
 
 const Footer = () => {
   const pathname = usePathname();
-  const showLoginButton = ["/", "/login", "/signup", "/aboutus", "/education", "/aligners", "/aligners-biosmart-sm", "/aligners-biosmart-t"].includes(pathname);
+  const showLoginButton = [
+    "/",
+    "/careers",
+    "/signup",
+    "/aboutus",
+    "/education",
+    "/aligners",
+    "/aligners-biosmart-sm",
+    "/aligners-biosmart-t",
+    "/faq",
+    "/e-shop",
+    "/login",
+  ].includes(pathname);
   return (
-    <footer className="w-full bg-[#08544A] pt-0">
-      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-center md:gap-12 px-4 md:px-12 py-8">
+    <footer className="w-full bg-[#004C44]">
+      <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-center md:items-center md:gap-12 px-4 md:px-12 py-8">
         {/* Left: Logo and tagline */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left mb-6 md:mb-0 w-full md:w-1/3 md:max-w-xs">
-          <Image src={Logo} alt="Synapse Logo" width={160} height={40} className="mb-4 mx-auto md:mx-0" />
-          <p className="text-white text-lg mb-4 mx-auto md:mx-0 break-words truncate whitespace-normal">Bridging technology and expertise.</p>
+          <Image
+            src={Logo}
+            alt="Synapse Logo"
+            width={160}
+            height={40}
+            className="mb-4 mx-auto md:mx-0"
+          />
+          <p className="text-white text-lg mb-4 mx-auto md:mx-0 break-words truncate whitespace-normal">
+            Bridging technology and expertise.
+          </p>
           {showLoginButton && (
-            <a href="/login" className="w-full flex justify-center md:justify-start">
-              <button className="bg-white text-[#08544A] font-semibold rounded-lg px-8 py-3 shadow-md hover:bg-gray-100 transition cursor-pointer text-lg w-full md:w-auto">
+            <a
+              href="/login"
+              className="w-full flex justify-center md:justify-start"
+            >
+              <button className="bg-white text-[#08544A] font-semibold rounded-lg px-16 py-2 shadow-md hover:bg-gray-100 transition cursor-pointer text-lg">
                 Login
               </button>
             </a>
@@ -39,7 +62,7 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
           <div className="flex flex-col md:flex-row gap-2 md:gap-16 w-full md:w-auto items-center md:items-start">
             <ul className="space-y-2 text-base font-normal">
-              {leftLinks.map(link => (
+              {leftLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -51,7 +74,7 @@ const Footer = () => {
               ))}
             </ul>
             <ul className="space-y-2 text-base font-normal">
-              {rightLinks.map(link => (
+              {rightLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -70,17 +93,35 @@ const Footer = () => {
           <div>
             <p className="text-white text-base mb-1">+1 (555) 123-4567</p>
             <p className="text-white text-base mb-1">contact@synapse.com</p>
-            <p className="text-white text-base">123 Technology Drive,<br />Suite 400 San<br />Francisco, CA 94107</p>
+            <p className="text-white text-base">
+              123 Technology Drive,
+              <br />
+              Suite 400 San
+              <br />
+              Francisco, CA 94107
+            </p>
           </div>
         </div>
       </div>
       {/* Bottom Bar */}
       <div className="w-full bg-white mt-0 py-4">
-        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-12">
-          <p className="text-[#08544A] text-sm text-center md:text-left mb-2 md:mb-0">© 2025 Synapse. All rights reserved.</p>
+        <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-12">
+          <p className="text-[#08544A] text-sm text-center md:text-left mb-2 md:mb-0">
+            © 2025 Synapse. All rights reserved.
+          </p>
           <div className="flex space-x-6 mt-0 md:mt-0">
-            <a href="/privacy-policy" className="text-[#08544A] text-sm hover:underline">Privacy Policy</a>
-            <a href="/terms-of-service" className="text-[#08544A] text-sm hover:underline">Terms of Service</a>
+            <a
+              href="/privacy-policy"
+              className="text-[#08544A] text-sm hover:underline"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-of-service"
+              className="text-[#08544A] text-sm hover:underline"
+            >
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>
