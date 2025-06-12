@@ -23,7 +23,7 @@ const ForgotPasswordForm = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("https://synapsehealthtech.in/api/user/forgot_password", {
+      const response = await fetch("http://52.66.161.173:8002/user/forgot_password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
