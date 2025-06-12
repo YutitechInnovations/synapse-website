@@ -35,8 +35,6 @@ export default function ConnectionFeatureSection({ isLoggedIn }) {
   const handleCardClick = (link) => {
     if (isLoggedIn) {
       router.push(link);
-    } else {
-      router.push('/login');
     }
   };
 
@@ -44,7 +42,7 @@ export default function ConnectionFeatureSection({ isLoggedIn }) {
     <section className={styles.section}>
       <h2 className={styles.heading}>Where Care Meets Connection</h2>
       <p className={styles.subheading}>
-        Our ecosystem of engagement that brings patients, doctors and care journeys closer than ever
+        Our ecosystem of engagement that brings patients, doctors and care journeys closer than ever.
       </p>
       <div className={styles.grid}>
         {features.map((feature, idx) => (

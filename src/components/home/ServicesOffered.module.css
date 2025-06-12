@@ -1,319 +1,334 @@
 .section {
-  width: 100%;
-  background: #F6F6F3;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-}
-
-.inner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.heading {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #004C44;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  line-height: 100%;
-}
-
-.paragraph_styles {
-  color: #004C44;
-  text-align: center;
-  width: 100%;
-  font-weight: 400;
-}
-
-.paragraph_styles:last-of-type {
-  margin-bottom: 2rem;
-}
-
-.circlesContainer {
-  position: relative;
-  width: 100%;
-  min-height: 335px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circles {
-  position: relative;
-  width: 335px;
-  height: 335px;
-}
-
-.circleBottom {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  z-index: 10;
-  width: 180px;
-  height: 180px;
-}
-
-.circleMiddle {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  z-index: 20;
-  width: 135px;
-  height: 135px;
-}
-
-.circleTop {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  z-index: 30;
-  width: 100px;
-  height: 100px;
-}
-
-@media (min-width: 600px) {
-  .inner {
-    gap: 2rem;
+    width: 100%;
+    background: #F6F6F3;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
   }
-
+  
+  .inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .heading {
     font-size: 2rem;
+    font-weight: 600;
+    color: #004C44;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    line-height: 100%;
   }
-
-
-
-  .circles {
-    width: 446px;
-    height: 446px;
+  
+  .paragraph_styles {
+    color: #004C44;
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-size: medium;
   }
-
+  
+  .paragraph_styles:last-of-type {
+    margin-bottom: 2rem;
+  }
+  
   .circlesContainer {
-    min-height: 446px;
-  }
-
-  .circleBottom {
-    width: 335px;
-    height: 335px;
-  }
-
-  .circleMiddle {
-    width: 250px;
-    height: 250px;
-  }
-
-  .circleTop {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-@media (min-width: 900px) {
-  .section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
-
-  }
-
-  .heading {
-    font-size: 2.5rem;
-  }
-
-
-
-  .circles {
-    width: 595px;
-    height: 595px;
-  }
-
-  .circlesContainer {
+    position: relative;
+    width: 100%;
     min-height: 595px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5rem; 
   }
-
-  .circleBottom {
-    width: 595px;
-    height: 595px;
-  }
-
-  .circleMiddle {
-    width: 446px;
-    height: 446px;
-  }
-
-  .circleTop {
+  
+  .circles {
+    position: relative;
     width: 335px;
     height: 335px;
   }
-}
-
-@media (max-width: 400px) {
-  .section {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
+  
+  .first_circle,
+  .second_circle,
+  .third_circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10%;
+    z-index: 1;
+    cursor: pointer;
   }
-
-  .heading {
+  
+  .first_circle {
+    background-color: #004D44;
+    width: 12rem;
+    height: 12rem;
+    z-index: 3;
+  }
+  
+  .second_circle {
+    background-color: #004D44B2;
+    width: 18rem;
+    height: 18rem;
+    z-index: 2;
+  }
+  
+  .third_circle {
+    background-color: #004D44B2;
+    width: 24rem;
+    height: 24rem;
+    z-index: 1;
+  }
+  
+  .first_circle span,
+  .second_circle span,
+  .third_circle span {
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 10;
+  }
+  
+  .descriptionCard {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #004C44;
+    border-radius: 0.75rem;
+    padding: 1.5rem 2rem;
+    min-width: 650px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    color: #004C44;
     font-size: 1.1rem;
+    line-height: 1.75rem;
+    text-align: left;
+    white-space: pre-line;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Custom positioning */
+  .cardPlanning {
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .cardFabrication {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  
+  .cardIntegrated {
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .bulletList {
+    padding-left: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+    list-style-type: disc;
+    color: #004C44;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .footnote {
+    font-size: 0.8rem;
+    color: #004C44;
+    opacity: 0.8;
+    margin-top: 0.5rem;
   }
 
-
-  .circles {
-    width: 220px;
-    height: 220px;
+  
+  .dot {
+    width: 22px;
+    height: 22px;
+    background-color: #E0FFFC;
+    border: 2px solid #004C44;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  /* Position dots ABOVE the label for each circle */
+  .first_circle .dot {
+    top: 50%; 
+  }
+  
+  .second_circle .dot {
+    top: 72%;
+  }
+  
+  .third_circle .dot {
+    top: 79%;
   }
 
-  .circlesContainer {
-    min-height: 220px;
+  /* Responsive: Tablet */
+  @media (min-width: 600px) {
+    .inner {
+      gap: 1rem;
+    }
+  
+    .heading {
+      font-size: 2rem;
+    }
+  
+    .circles {
+      width: 446px;
+      height: 446px;
+    }
+  
+    .circlesContainer {
+      min-height: 446px;
+    }
+  
+    .first_circle {
+      width: 13rem;
+      height: 13rem;
+    }
+  
+    .second_circle {
+      width: 20rem;
+      height: 20rem;
+    }
+  
+    .third_circle {
+      width: 30rem;
+      height: 30rem;
+    }
+  
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 1.2rem;
+    }
   }
-
-  .circleBottom {
-    width: 220px;
-    height: 220px;
+  
+  /* Responsive: Desktop */
+  @media (min-width: 1024px) {
+    .heading {
+      font-size: 2.5rem;
+    }
+  
+    .section {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      padding-left: 6.25rem;
+      padding-right: 6.25rem;
+    }
+  
+    .circles {
+      width: 595px;
+      height: 595px;
+    }
+  
+    .circlesContainer {
+      min-height: 595px;
+    }
+  
+    .first_circle {
+      width: 20rem;
+      height: 20rem;
+    }
+  
+    .second_circle {
+      width: 30rem;
+      height: 30rem;
+    }
+  
+    .third_circle {
+      width: 40rem;
+      height: 40rem;
+    }
+  
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 1.4rem;
+    }
   }
-
-  .circleMiddle {
-    width: 165px;
-    height: 165px;
+  
+  /* Responsive: Large Desktop */
+  @media (min-width: 1536px) {
+    .first_circle {
+      width: 15rem;
+      height: 15rem;
+    }
+  
+    .second_circle {
+      width: 25rem;
+      height: 25rem;
+    }
+  
+    .third_circle {
+      width: 35rem;
+      height: 35rem;
+    }
+  
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 1.2rem;
+    }
   }
-
-  .circleTop {
-    width: 100px;
-    height: 100px;
+  
+  /* Responsive: Mobile Small */
+  @media (max-width: 400px) {
+    .section {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  
+    .heading {
+      font-size: 1.1rem;
+    }
+  
+    .circles {
+      width: 220px;
+      height: 220px;
+    }
+  
+    .circlesContainer {
+      min-height: 220px;
+    }
+  
+    .first_circle {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .second_circle {
+      width: 165px;
+      height: 165px;
+    }
+  
+    .third_circle {
+      width: 220px;
+      height: 220px;
+    }
   }
-}
-
-
-.first_circle,
-.second_circle,
-.third_circle {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 10%;
-  z-index: 1;
-}
-
-/* Default (Mobile) */
-.first_circle {
-  background-color: #004D44;
-  width: 12rem;
-  height: 12rem;
-  z-index: 3;
-}
-
-.second_circle {
-  background-color: #004D44B2;
-  width: 18rem;
-  height: 18rem;
-  z-index: 2;
-}
-
-.third_circle {
-  background-color: #004D44B2;
-  width: 24rem;
-  height: 24rem;
-  z-index: 1;
-}
-
-.first_circle span,
-.second_circle span,
-.third_circle span {
-  color: #fff;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1rem;
-  z-index: 10;
-}
-
-/* Tablet (min-width: 640px) */
-@media (min-width: 640px) {
-  .first_circle {
-    width: 13rem;
-    height: 13rem;
-  }
-
-  .second_circle {
-    width: 20rem;
-    height: 20rem;
-  }
-
-  .third_circle {
-    width: 30rem;
-    height: 30rem;
-  }
-
-  .first_circle span,
-  .second_circle span,
-  .third_circle span {
-    font-size: 1.2rem;
-  }
-}
-
-/* Desktop (min-width: 1024px) */
-@media (min-width: 1024px) {
-  .first_circle {
-    width: 20rem;
-    height: 20rem;
-  }
-
-  .second_circle {
-    width: 30rem;
-    height: 30rem;
-  }
-
-  .third_circle {
-    width: 40rem;
-    height: 40rem;
-  }
-
-  .first_circle span,
-  .second_circle span,
-  .third_circle span {
-    font-size: 1.4rem;
-  }
-}
-
-/* Large Desktop (min-width: 1536px) */
-@media (min-width: 1536px) {
-  .first_circle {
-    width: 15rem;
-    height: 15rem;
-  }
-
-  .second_circle {
-    width: 25rem;
-    height: 25rem;
-  }
-
-  .third_circle {
-    width: 35rem;
-    height: 35rem;
-  }
-
-  .first_circle span,
-  .second_circle span,
-  .third_circle span {
-    font-size: 1.2rem;
-  }
-}
+  
