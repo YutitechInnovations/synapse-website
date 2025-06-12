@@ -18,11 +18,11 @@ import Navbar from "../../components/navbar/Navbar.js";
 
 export default function LoginPage() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
+    <div className="grid w-full">
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="flex items-center justify-center pt-43 pb-43 px-4">
+      <main className="flex items-center justify-center pt-40 pb-[100px] px-4">
         <LoginForm />
       </main>
     </div>

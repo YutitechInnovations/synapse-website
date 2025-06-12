@@ -53,13 +53,13 @@ const LoginForm = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       {loading && <Loader />}
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48] mt-8 mb-2">
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48]">
         Enter your Email Id
       </h1>
-      <p className="text-base md:text-lg font-normal text-center text-[#195B48] mb-8">
+      <p className="text-base md:text-lg font-normal text-center text-[#195B48] mb-6">
         Access your Synapse dashboard and tools
       </p>
-      <div className="w-full max-w-md bg-white border border-[#195B48]/30 rounded-xl p-8 md:p-10 flex flex-col items-center shadow-sm">
+      <div className="w-full max-w-md bg-white border border-[#195B48]/30 rounded-xl p-6 md:p-6 flex flex-col items-center shadow-sm">
         <h2 className="text-xl md:text-2xl font-semibold text-[#195B48] mb-1 w-full text-left">
           Enter your Email Id
         </h2>
@@ -67,7 +67,7 @@ const LoginForm = () => {
           Enter your credentials to access your account
         </p>
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="mb-6">
+          <div className="mb-1">
             <label className="frm-label" htmlFor="email">
               Email
             </label>
@@ -81,7 +81,7 @@ const LoginForm = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="mb-6  ">
+          <div>
             <label className="frm-label" htmlFor="password">
               Password
             </label>
@@ -130,8 +130,11 @@ const LoginForm = () => {
               )}
             </div>
           </div>
-          <div className="w-full text-right mb-2">
-            <Link href="/forgot-password" className="text-[#195B48] hover:underline text-sm">
+          <div className="w-full text-right mb-1">
+            <Link
+              href="/forgot-password"
+              className="text-[#195B48] hover:underline text-sm"
+            >
               Forgot Password?
             </Link>
           </div>
@@ -143,13 +146,13 @@ const LoginForm = () => {
             Sign In
           </button>
         </form>
-        <div className="flex flex-col sm:flex-row items-center justify-between mt-2 w-full">
-          <p className="font-semibold text-base text-[#195B48] text-center sm:text-left mb-2 sm:mb-0">
+        <div className="flex flex-col sm:flex-row items-center justify-between mt-1 w-full">
+          <p className="font-semibold text-[15px] text-[#195B48] text-center sm:text-left mb-2 sm:mb-0">
             Don&apos;t have an account?
           </p>
           <Link
             href="/signup"
-            className="font-semibold text-base text-[#195B48] hover:underline"
+            className="font-semibold text-[15px] text-[#195B48] hover:underline"
           >
             Register here
           </Link>
