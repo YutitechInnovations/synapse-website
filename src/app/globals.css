@@ -100,13 +100,13 @@ body {
   padding: 0 !important;
 }
 .navbar {
-  background-color: #004b4482;
-  border-radius: 1.25rem;
-  gap: 1.875rem;
-  padding: 0.9375rem 1.875rem;
-  margin-top: 1.875rem;
-  color: var(--white);
-}
+    background-color:#004C4475; 
+    border-radius: 1.25rem;
+    gap: 1.875rem;
+    padding: 0.9375rem 1.875rem;
+    margin-top: 1.875rem;
+    color: var(--white);
+  }
 
 .frm-input {
   background-color: var(--white);

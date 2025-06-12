@@ -214,7 +214,7 @@ export default function Navbar() {
                     // Not logged in: minimal links and login button
                     <>
                       <li className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-0">
-                        <NavLink href="/">Home</NavLink>
+                        <NavLink href="/home">Home</NavLink>
                       </li>
                       {/* Product dropdown for not-logged-in users */}
                       <li
@@ -375,7 +375,7 @@ export default function Navbar() {
                     <>
                       {/* Pre-login mobile menu items */}
                       <li className="w-full text-left font-semibold text-[18px] text-[#195B48]">
-                        <NavLink href="/" onClick={() => setIsMenuOpen(false)}>
+                        <NavLink href="/home" onClick={() => setIsMenuOpen(false)}>
                           Home
                         </NavLink>
                       </li>
