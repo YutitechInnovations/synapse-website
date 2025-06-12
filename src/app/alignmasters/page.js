@@ -22,48 +22,48 @@ import toast from "react-hot-toast";
 
 export default function AlignMasters() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [commentModalOpen, setCommentModalOpen] = useState(false);
-  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+//   const [commentModalOpen, setCommentModalOpen] = useState(false);
+//   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
 
-  const { data, isLoading } = useTestimonials("");
+//   const { data, isLoading } = useTestimonials("");
 
-  const { mutate: mutateComments } = useMutateComment()
-  const { data: commentsDetails } =
-    useTestimonialsComments(selectedTestimonial);
+//   const { mutate: mutateComments } = useMutateComment()
+//   const { data: commentsDetails } =
+//     useTestimonialsComments(selectedTestimonial);
 
-  const handleLike = async (testimonialId) => {
-    try {
-      const response = await likeTestimonial(testimonialId);
-      console.log("Liked successfully:", response);
-      // Optionally update UI state (e.g., refetch, increment like count, etc.)
-    } catch (error) {
-      console.error("Error liking testimonial:", error.message);
-    }
-  };
+//   const handleLike = async (testimonialId) => {
+//     try {
+//       const response = await likeTestimonial(testimonialId);
+//       console.log("Liked successfully:", response);
+//       // Optionally update UI state (e.g., refetch, increment like count, etc.)
+//     } catch (error) {
+//       console.error("Error liking testimonial:", error.message);
+//     }
+//   };
 
 
 
-  const handleSubmit = (data, type) => {
-    if (type === 'comment') {
-      mutateComments(
-        {
-          testimonialId: selectedTestimonial,
-          comment: data,
-        },
-        {
-          onSuccess: (res) => {
-            console.log("Comment submitted:", res);
-            toast.success("Comment added successfully!");
-            setCommentModalOpen(false);
-          },
-          onError: (err) => {
-            console.error("Error submitting comment:", err);
-            toast.warning("Failed to submit comment.");
-          },
-        }
-      );
-    }
-  };
+//   const handleSubmit = (data, type) => {
+//     if (type === 'comment') {
+//       mutateComments(
+//         {
+//           testimonialId: selectedTestimonial,
+//           comment: data,
+//         },
+//         {
+//           onSuccess: (res) => {
+//             console.log("Comment submitted:", res);
+//             toast.success("Comment added successfully!");
+//             setCommentModalOpen(false);
+//           },
+//           onError: (err) => {
+//             console.error("Error submitting comment:", err);
+//             toast.warning("Failed to submit comment.");
+//           },
+//         }
+//       );
+//     }
+//   };
 
 
   return (
@@ -71,15 +71,34 @@ export default function AlignMasters() {
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
-        {/* Hero Section */}
+        <main className="w-full max-w-7xl mx-auto px-4">
+            <section className="w-full flex flex-col items-center justify-center px-4 md:px-8">
+              <h1 className={styles.heroHeading}>AlignMaster™</h1>
+              <p className="text-base md:text-xl text-[#184C3A] mb-10 text-center max-w-2xl font-medium">
+                Connect with fellow orthodontic professionals, share
+                experiences, and learn from case studies in our global
+                community.
+              </p>
+              <div className={styles.tabContainer}>
+                <button className={`${styles.tab} ${styles.selected}`}>
+                  Testimonials and Experiences
+                </button>
+                <button className={styles.tab}>Case Studies</button>
+              </div>
+            </section>
+          <div className="w-full bg-white border border-[#195B48] rounded-xl py-16 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#195B48]">
+              Coming Soon!
+            </h3>
+          </div>
+        </main>
+      {/* <main className="w-full min-h-screen flex flex-col bg-[#F8FAF9]">
         <section className="w-full flex flex-col items-center justify-center px-4 md:px-8 bg-[#F8FAF9]">
           <h1 className={styles.heroHeading}>AlignMaster™</h1>
           <p className="text-base md:text-xl text-[#184C3A] mb-10 text-center max-w-2xl font-medium">
             Connect with fellow orthodontic professionals, share experiences,
             and learn from case studies in our global community.
           </p>
-          {/* Tabs in pill-shaped container */}
           <div className={styles.tabContainer}>
             <button className={`${styles.tab} ${styles.selected}`}>
               Testimonials and Experiences
@@ -87,7 +106,6 @@ export default function AlignMasters() {
             <button className={styles.tab}>Case Studies</button>
           </div>
         </section>
-        {/* Community Testimonials Section */}
         <section className={styles.section}>
           <div className={styles.communityHeader}>
             <h2 className={styles.communityTitle}>Community Testimonials</h2>
@@ -98,7 +116,6 @@ export default function AlignMasters() {
               + Share your Experience
             </button>
           </div>
-          {/* Testimonial Cards */}
           <div className="flex flex-col gap-8 mb-6">
             {isLoading && <Loader />}
 
@@ -117,7 +134,7 @@ export default function AlignMasters() {
               );
             })}
             {/* Card 1 */}
-            {/* <div className={styles.card}>
+      {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Dr. Ayushi" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -147,8 +164,8 @@ export default function AlignMasters() {
                 </div>
               </div>
             </div> */}
-            {/* Card 2 */}
-            {/* <div className={styles.card}>
+      {/* Card 2 */}
+      {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Dr Harmeet Kour" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -179,8 +196,8 @@ export default function AlignMasters() {
                 </div>
               </div>
             </div> */}
-            {/* Card 3 (Video) */}
-            {/* <div className={styles.card}>
+      {/* Card 3 (Video) */}
+      {/* <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <Image src="/images/doc.jpg" alt="Sujit Hota" width={56} height={56} className={styles.avatar} />
                 <div className={styles.cardHeaderText}>
@@ -218,17 +235,17 @@ export default function AlignMasters() {
                   </button>
                 </div>
               </div>
-            </div> */}
+            </div> 
             <ModalWithComments
               isOpen={commentModalOpen}
               key={"comment modal"}
               onClose={() => setCommentModalOpen(false)}
               comments={commentsDetails}
-              onPostComment={(cmt) => handleSubmit(cmt, 'comment')}
+              onPostComment={(cmt) => handleSubmit(cmt, "comment")}
             />
           </div>
         </section>
-      </main>
+      </main> */}
       <ShareExperienceModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
