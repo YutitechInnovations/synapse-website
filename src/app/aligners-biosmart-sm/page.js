@@ -1,10 +1,21 @@
-import Image from 'next/image';
-import Navbar from '../../components/navbar/Navbar';
-import styles from './styles.module.css';
-import ResinImage from '../../assets/resin.png';
-import SmpImage from '../../assets/smp.png';
-import NbcpImage from '../../assets/nbcp.png'
+import Image from "next/image";
+import Navbar from "../../components/navbar/Navbar";
+import styles from "./styles.module.css";
 
+export const biosmartSMBenefits = [
+  {
+    title: "Strong Structure. Safer Outcomes.",
+    desc: "Nitrogen curing achieves near 100% polymerization, while next-gen resin enhances durability and is certified for biocompatibility.",
+  },
+  {
+    title: "Clarity Maintained. Precision Preserved.",
+    desc: "Uncompromised BioSmart™ SM workflows enhance aligner transparency, making them discreet and aesthetically pleasing.",
+  },
+  {
+    title: "Minimal Add-Ons. Maximum Control.",
+    desc: "Fewer attachments and integrated features support simplified workflows and clinical control.",
+  },
+];
 export default function BioSmartSM() {
   return (
     <>
@@ -12,169 +23,147 @@ export default function BioSmartSM() {
       <div className="bg-[#F6F6F3] min-h-screen w-full">
         {/* Hero Section */}
         <section className={`${styles.heroSection}               `}>
-
-          {/* Content */}
-          <div className="relative container mx-auto min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col items-start justify-center pt-8 md:pt-20 ">
-            <div className="max-w-3xl w-full">
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
-                BioSmart™ SM
+          <div className="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-4">
+            <div className="min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col justify-center pt-8 md:pt-20">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-[#004C44] leading-tight">
+                BioSmart™ SM{" "}
               </h1>
               <p className="text-base md:text-xl font-medium text-[#184C3A]">
-                Shape Memory. But Not Traditional.
+                The Future of Aligners is Here—And It’s Smart Memory.{" "}
               </p>
             </div>
           </div>
         </section>
 
-        {/* Main Content Sections (Figma style) */}
-        <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-8 md:py-16">
-          <div className="w-full max-w-[1200px]  px-4 md:px-0 flex items-center justify-center mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: 'clamp(16px, 2vw, 20px)', }}>
-            <p className="text-[#195B48] text-left w-full">
-              Forget the old rules. With Bio… Shape Memory Aligners by Synapse, you&apos;re not just upgrading materials—you&apos;re upgrading possibilities. Designed for precision, built for consistency, and aligned with sustainability, this is innovation at its most responsive.
+        <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20 ">
+          <div
+            className="w-full container px-4 flex items-center justify-center"
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 400,
+              fontSize: "20px",
+              lineHeight: "100%",
+            }}
+          >
+            <p className="text-[#004C44] text-left w-full ">
+              With BioSmart™ SM (Smart Memory) aligners, you're not just
+              upgrading materials—you’re advancing toward what is biologically
+              and physiologically achievable. Engineered for precision and
+              efficiency, BioSmart™ SM applies RxF.O.R.C.E™ to deliver
+              consistent, accurate forces through smart material behaviour and
+              digital control. This supports faster tooth movement, reduced
+              treatment times, and streamlined clinical workflows.
             </p>
           </div>
         </section>
 
-        <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white">
-          <div className="max-w-7xl mx-auto mt-8 md:mt-16 mb-8 md:mb-16 flex flex-col gap-12 md:gap-24">
-            {/* No Resin Models */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-              <div className="w-[50%]">
-                <div className="max-w-md">
-                  <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">No Resin Models.<br />Just Pure Precision.</h2>
-                  <p className="text-base md:text-lg text-[#195B48]">Our digital process ensures each aligner mirrors the occlusal surface with accuracy—without the need for physical resin models.</p>
+        <section className="w-full bg-white flex justify-center py-16 px-4">
+          <div className="max-w-[1240px] w-full flex flex-col gap-20">
+            <div className="flex flex-col md:flex-row items-start gap-12">
+              {/* Text Content */}
+              <div className="flex-1 flex flex-col gap-8">
+                <div>
+                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
+                    Contour-Aligned. <br className="hidden md:block" />
+                    Accuracy Assured.
+                  </h3>
+                  <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                    Direct-printing captures occlusal anatomy and surface detail
+                    with high fidelity for precise fit.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
+                    Tailored Thickness. <br className="hidden md:block" />
+                    Targeted Pressure.
+                  </h3>
+                  <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                    Digitally customized thickness, pressure points and
+                    trimlines deliver targeted pressure and enhanced
+                    biomechanical outcomes.
+                  </p>
                 </div>
               </div>
-              <div className="flex-1 flex justify-center md:justify-start items-center">
-                <div className="relative w-full max-w-[600.91px] h-[284px] md:mt-[70px] md:ml-[12.04px]">
-                  <Image
-                    src={ResinImage}
-                    alt="Resin Precision"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* Force Where It Matters Most */}
-            <div className="w-full max-w-7xl mx-auto px-4 md:px-0 mb-8 md:mb-16">
-              <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight text-left">
-                Force Where It Matters Most.
-              </h2>
-              <p className="text-base md:text-lg text-[#195B48] text-left">
-                Using our R.FORCE™ philosophy, we digitally adjust shape and thickness for targeted orthodontic pressure, helping reduce the need for attachments.
-              </p>
-            </div>
-
-            {/* Memory That Moves With You */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 px-4 md:px-0 my-8">
-              <div className="flex-1 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">Memory That Moves<br />With You.</h2>
-                <p className="text-base md:text-lg text-[#195B48]">Our shape memory polymer maintains steady force over time—longer, more consistent, more controlled. That sustained force plays a key role in reducing unnecessary refinements and improving treatment rhythm.</p>
-              </div>
-              <div className="flex-1 flex justify-center items-center">
-                <div className=" relative w-full max-w-[320px] h-[320px]">
-                  <Image
-                    src={SmpImage}
-                    alt="Shape Memory Polymer"
-                    fill
-                    className="object-contain aspect-video"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Cured in Confidence */}
-            <div className="flex flex-col md:flex-row items-center gap-8 px-4 md:px-0">
+              {/* Shared Image */}
               <div className="flex-1">
-                <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">Cured in Confidence.</h2>
-                <p className="text-base md:text-lg text-[#195B48]">Our nitrogen-based curing process minimizes oxygen interference, delivering clarity and long-term durability.</p>
+                <Image
+                  src="/images/combined-thickness.png" // Replace with your actual combined image
+                  alt="Contour and Thickness"
+                  width={500}
+                  height={300}
+                  className="object-contain mx-auto"
+                />
               </div>
-              <div className="flex-1 flex justify-center">
-                <div className="relative w-full max-w-[320px] h-[320px]">
-                  <Image
-                    src={NbcpImage}
-                    alt="Curing Chart"
-                    fill
-                    className="object-contain aspect-video"
-                  />
+            </div>
+
+            {/* Row 3 */}
+            <div className="flex flex-col md:flex-row items-start gap-12">
+              <div className="flex-1">
+                <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-8">
+                  Steady Force. <br className="hidden md:block" />
+                  Reliable Results.
+                </h3>
+                <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                  Smart memory aligner maintains consistent force for efficient
+                  translatory movement and rotation.
+                </p>
+              </div>
+              <div className="flex-1">
+                <Image
+                  src="/images/steady-force.png" // replace with actual import
+                  alt="Steady Force"
+                  width={400}
+                  height={300}
+                  className="object-contain mx-auto"
+                />
+              </div>
+            </div>
+
+            {/* Row 4 – Bullet style group */}
+            <div className="flex flex-col gap-8">
+              {biosmartSMBenefits.map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-8">
+                    {item.title}
+                  </h3>
+                  <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                    {item.desc}
+                  </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Stronger Bonds, Lower Risk */}
-            <div className="flex flex-col md:flex-row items-center gap-8 px-4 md:px-0">
-              <div className="flex-1">
-                <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">Stronger Bonds, Lower Risk.</h2>
-                <p className="text-base md:text-lg text-[#195B48]">High cross-linking density reduces residue and virtually eliminates exfoliation.</p>
-              </div>
-              <div className="flex-1" />
-            </div>
-
-            {/* Green is the New Clear */}
-            <div className="flex flex-col md:flex-row items-center gap-8 px-4 md:px-0">
-              <div className="flex-1">
-                <h2 className="text-2xl md:text-[28px] font-bold text-[#195B48] mb-2 leading-tight">Green is the New Clear.</h2>
-                <p className="text-base md:text-lg text-[#195B48]">No resin models means less process waste—better for your workflow and better for the planet. Your eco-conscious patients will appreciate it, too.</p>
-              </div>
-              <div className="flex-1" />
+              ))}
             </div>
           </div>
         </section>
-
+        <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
+          <div className="max-w-[1270px] w-full px-4 text-[#004C44]">
+            <p className="text-xl md:text-2xl italic leading-snug mb-6 font-[600]">
+              “The innovative advantage of the new aligner material is the
+              continuous power transmission thanks to its memory effect.”
+            </p>
+            <p className="text-sm md:text-base text-[#004C44] font-[400]">
+              – Dr. Björn Ludwig, Assistant Professor, University of
+              Homburg/Saar, Department of Orthodontics
+            </p>
+          </div>
+        </section>
         {/* Table Section */}
-        <section className="w-full flex flex-col items-center px-4 md:px-0 bg-[#F6F6F3] py-8 md:py-16 pb-[150px]">
-          <div className="max-w-[1169px] w-full mx-auto">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#195B48] mb-4 leading-tight">Shape Memory Aligners.<br />Smart. Seamless. Seriously Capable.</h2>
-            <p className="mb-8 text-[#195B48] text-base md:text-lg">Please choose your desired Tier of BioSmart™ SM based on your case specifications as per the below table.</p>
-            <div className="overflow-x-auto">
-              <table className="min-w-full w-full border border-[#B6C3C7] rounded-[10px] overflow-hidden" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead className='text-center'>
-                  <tr>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7]  first:rounded-tl-[10px] last:rounded-tr-[10px]">Tier</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxLite</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">RxPro</th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7]  last:rounded-tr-[10px]">RxPro+</th>
-                  </tr>
-                </thead>
-                <tbody className=" text-center">
-                  <tr>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Crowding/Spacing</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">≤ 2–3 mm</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">3–5 mm</td>
-                    <td className="border-t border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">&gt; 5 mm</td>
-                  </tr>
-                  <tr>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Tooth Rotations</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Minor (&lt; 20°)</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Moderate rotations</td>
-                    <td className="border-t border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Severe rotations, tipping, intrusion/ extrusion</td>
-                  </tr>
-                  <tr>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Bite Issues</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Minimal/None</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Mild overbite/overjet, minor midline shifts</td>
-                    <td className="border-t border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Complex bite (Class III/III, deep/open bite), extractions likely</td>
-                  </tr>
-                  <tr>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base">Treatment Needs</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Basic aligners only; no attachments or IPR</td>
-                    <td className="border-t border-r border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Attachments, IPR; possible elastics</td>
-                    <td className="border-t border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">Attachments, elastics, auxiliaries; possibly not suitable for aligners alone</td>
-                  </tr>
-                  <tr>
-                    <td className="border-t border-r border-b border-[#B6C3C7] px-4 py-3 font-semibold text-[#195B48] text-base rounded-bl-[10px]">Estimated Duration</td>
-                    <td className="border-t border-r border-b border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">4–6 months</td>
-                    <td className="border-t border-r border-b border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base">8–12 months</td>
-                    <td className="border-t border-b border-[#B6C3C7] px-4 py-3 text-[#195B48] text-base rounded-br-[10px]">12–24 months</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <section className="w-full flex flex-col items-center px-4 md:px-0 bg-[white] py-8 md:py-16 pb-[150px]">
+          <div className="max-w-[1240px]  w-full">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-[600] text-[#195B48] mb-4 leading-tight">
+              BioSmart ™ SM Smart Memory Aligners. 
+              <br />
+              Precision-Built. Future-Ready{" "}
+            </h2>
+            <p className="mb-8 text-[#195B48] text-base md:text-lg">
+              The BioSmart™ SM Smart Memory Aligner System offers four treatment
+              options, giving you control to manage each case in line with your
+              clinical preferences.
+            </p>
+            <div className="overflow-x-auto"></div>
           </div>
         </section>
       </div>
     </>
   );
-} 
+}
