@@ -1,43 +1,48 @@
-'use client';
+"use client";
 
-import Navbar from '@/components/navbar/Navbar';
-import Image from 'next/image';
-import BlogsImage from '../../assets/blogs.png';
-import MaterialsImage from '../../assets/materials.png';
-import ResearchImage from '../../assets/researchpapers.png';
-import FaqImage from '../../assets/faq.png'
+import Navbar from "@/components/navbar/Navbar";
+import Image from "next/image";
+import BlogsImage from "../../assets/blogs.png";
+import MaterialsImage from "../../assets/materials.png";
+import ResearchImage from "../../assets/researchpapers.png";
+import FaqImage from "../../assets/faq.png";
 
 export default function Education() {
   const insightCards = [
     {
-      title: 'Blogs',
+      title: "Blogs",
       image: BlogsImage,
-      link: '/blogs'
+      link: "/blogs",
     },
     {
-      title: 'Materials & Data',
+      title: "Materials & Data",
       image: MaterialsImage,
-      link: null
+      link: null,
     },
     {
-      title: 'Research Papers',
+      title: "Research Papers",
       image: ResearchImage,
-      link: null
+      link: null,
     },
     {
       title: "Patients' FAQs",
       image: FaqImage,
-      link: "/faq"
-    }
+      link: "/faq",
+    },
   ];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAF9]">
       <Navbar />
-      <main className="flex-grow w-full pt-[100px]">
-        <div className="max-w-[1240px] mx-auto px-4 md:px-8 lg:px-0 py-16" style={{ background: '#F6F6F3', borderRadius: '20px' }}>
-          <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left">Education</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[50px] gap-y-[32px] justify-items-center">
+      <main className="flex-grow w-full pt-[100px] mb-[7rem]">
+        <div
+          className="w-full px-[6rem]"
+          style={{ background: "#F6F6F3", borderRadius: "20px" }}
+        >
+          <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left">
+            Education
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[50px] gap-y-[32px] ">
             {insightCards.map((card, index) => (
               <a
                 key={index}
@@ -65,4 +70,4 @@ export default function Education() {
       </main>
     </div>
   );
-} 
+}

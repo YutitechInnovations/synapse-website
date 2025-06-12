@@ -159,7 +159,7 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
-      <div className="fixed top-0 z-50 w-full bg-transparent px-[1.5625rem]">
+      <div className="fixed top-0 z-50 w-full bg-transparent px-[6rem]">
         <div className="flex items-center justify-center container mx-auto min-w-0">
           <nav
             className={`${styles.navbar} flex items-center w-full relative min-w-0`}
@@ -400,9 +400,7 @@ export default function Navbar() {
                             stroke="currentColor"
                             strokeWidth="2"
                             viewBox="0 0 24 24"
-                          >
-                            <path d="M19 9l-7 7-7-7" />
-                          </svg>
+                          ></svg>
                         </button>
                         {productDropdown && (
                           <div
