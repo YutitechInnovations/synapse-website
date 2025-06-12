@@ -29,7 +29,7 @@ export default function BioSmartSM() {
                 BioSmart™ SM{" "}
               </h1>
               <p className="text-base md:text-xl font-medium text-[#184C3A]">
-                The Future of Aligners is Here—And It's Smart Memory.{" "}
+                The Future of Aligners is Here—And It&apos;s Smart Memory.{" "}
               </p>
             </div>
           </div>
@@ -46,8 +46,8 @@ export default function BioSmartSM() {
             }}
           >
             <p className="text-[#004C44] text-left w-full ">
-              With BioSmart™ SM (Smart Memory) aligners, you're not just
-              upgrading materials—you're advancing toward what is biologically
+              With BioSmart™ SM (Smart Memory) aligners, you&apos;re not just
+              upgrading materials—you&apos;re advancing toward what is biologically
               and physiologically achievable. Engineered for precision and
               efficiency, BioSmart™ SM applies RxF.O.R.C.E™ to deliver
               consistent, accurate forces through smart material behaviour and
@@ -138,8 +138,8 @@ export default function BioSmartSM() {
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
           <div className="max-w-[1270px] w-full px-4 text-[#004C44]">
             <p className="text-xl md:text-2xl italic leading-snug mb-6 font-[600]">
-              "The innovative advantage of the new aligner material is the
-              continuous power transmission thanks to its memory effect."
+              &quot;The innovative advantage of the new aligner material is the
+              continuous power transmission thanks to its memory effect.&quot;
             </p>
             <p className="text-sm md:text-base text-[#004C44] font-[400]">
               – Dr. Björn Ludwig, Assistant Professor, University of
@@ -162,9 +162,11 @@ export default function BioSmartSM() {
             </p>
             <div className="flex flex-col items-center -ml-[2px]">
               <div className="relative">
-                <img 
+                <Image 
                   src="/images/frame34.png"
                   alt="BioSmart SM Flow"
+                  width={1169}
+                  height={390}
                   className="w-[1169px] h-auto"
                   style={{ height: '390px', objectFit: 'contain' }}
                 />
@@ -181,9 +183,11 @@ export default function BioSmartSM() {
                 </p>
               </div>
               <div className="relative w-full mt-4 mb-[150px]">
-                <img 
+                <Image 
                   src="/images/power.png"
                   alt="Power Icon"
+                  width={134}
+                  height={116}
                   className="absolute"
                   style={{ 
                     width: '134px',

@@ -27,7 +27,6 @@ const Footer = () => {
     "/aligners",
     "/aligners-biosmart-sm",
     "/aligners-biosmart-t",
-    "/faq",
     "/e-shop",
     "/login",
   ].includes(pathname);

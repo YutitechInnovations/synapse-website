@@ -23,7 +23,7 @@ const AdminForgotPasswordForm = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://52.66.161.173:8002/admin/admin_forgot_password", {
+      const response = await fetch(" https://synapsehealthtech.in/api/admin/admin_forgot_password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const AdminForgotPasswordForm = () => {
           Reset Admin Password
         </h2>
         <p className="text-base font-normal text-[#195B48] mb-6 w-full text-left">
-          We'll send you an email with instructions to set your admin password
+          We&apos;ll send you an email with instructions to set your admin password
         </p>
         
         <form onSubmit={handleSubmit} className="w-full">

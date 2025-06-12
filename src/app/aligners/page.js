@@ -119,9 +119,11 @@ export default function Aligners() {
             </Link>
           </div>
           <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0 mb-[100px]">
-            <img 
+            <Image 
               src="/images/image37.png" 
               alt="Aligners Overview"
+              width={1240}
+              height={606}
               className="w-full h-auto rounded-[20px] max-w-[1240px] object-cover"
               style={{ height: 'auto', maxHeight: '606px' }}
             />

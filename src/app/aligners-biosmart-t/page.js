@@ -1,5 +1,6 @@
 import Navbar from '../../components/navbar/Navbar';
 import styles from './styles.module.css';
+import Image from 'next/image';
 
 
 export const biosmartTBenefits = [
@@ -197,9 +198,11 @@ export default function BioSmartT() {
             </p>
             <div className="flex flex-col items-center -ml-[2px]">
               <div className="relative">
-                <img 
+                <Image 
                   src="/images/frame34.png"
                   alt="BioSmart SM Flow"
+                  width={1169}
+                  height={390}
                   className="w-[1169px] h-auto"
                   style={{ height: '390px', objectFit: 'contain' }}
                 />
