@@ -67,7 +67,6 @@ body {
   color: var(--primary-lights);
 }
 .cmnbtn:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
 }
 .card {
@@ -130,23 +129,31 @@ body {
 }
 
 .faq-hero {
-  background-image: url(/bg.png);
-  background-repeat: no-repeat;         
-  background-size: cover;              
-  background-position: center;         
-  width: 100%;
-  height: 29.5625rem;
-  background-color: #CACACA;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  text-align: center;
-  margin: 0 auto;
-  position: relative;
-  opacity: 0.8;
-}
+    position: relative;
+    width: 100%;
+    height: 36rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    text-align: center;
+    margin: 0 auto;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .faq-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(/faq.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7; /* 👈 adjust as needed */
+    z-index: -1;
+  }
 
 .faq-header {
   width: 100%;
@@ -179,6 +186,7 @@ body {
   color:#004C44;
   margin: 0;
   padding: 0;
+  
 }
 
 .faq-header p {
@@ -210,7 +218,6 @@ body {
 
 .faq-search::placeholder {
   color: #004C44;
-  opacity: 0.7;
   width: 3.625rem;
   height: 1.5rem;
 }
@@ -227,7 +234,6 @@ body {
 
 .card2 {
   background: #FFFFFF;
-  border: 1px solid rgba(0, 76, 68, 0.1);
   margin-bottom: 50px;
   border-radius: 20px;
   overflow: hidden;
