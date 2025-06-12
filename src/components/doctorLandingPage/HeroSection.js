@@ -11,10 +11,9 @@ const HeroSection = () => {
             About Us
           </h1>
           <p className="font-medium w-[80%] text-justify text-xs sm:text-base md:text-xl mb-3 md:mb-6">
-            Our workflow has been designed to support your orthodontic expertise
-            with dependable high-quality solutions ranging from aligners to
-            advanced lab services, all crafted with the latest in 3D
-            manufacturing and with precision and care.
+            Driven by a passionate team with deep industry experience, we aim to
+            empower dental practices and transform patient journeys through
+            innovation and care.
           </p>
         </div>
       </div>
