@@ -17,12 +17,10 @@ export default function Education() {
     {
       title: "Materials & Data",
       image: MaterialsImage,
-      link: null,
     },
     {
       title: "Research Papers",
       image: ResearchImage,
-      link: null,
     },
     {
       title: "Patients' FAQs",
@@ -46,7 +44,7 @@ export default function Education() {
             {insightCards.map((card, index) => (
               <a
                 key={index}
-                href="/login"
+                {...(card.link && { href: card.link })}
                 className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
               >
                 <Image

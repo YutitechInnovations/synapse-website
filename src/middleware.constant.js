@@ -8,6 +8,7 @@ export const PUBLIC_ROUTES = [
     "/aboutus",
     "/blogs",
     "/signup",
+    "/careers",
     "/admin",
     "/aligners",
     "/aligners-biosmart-sm",
