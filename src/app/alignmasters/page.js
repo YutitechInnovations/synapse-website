@@ -79,12 +79,6 @@ export default function AlignMasters() {
                 experiences, and learn from case studies in our global
                 community.
               </p>
-              <div className={styles.tabContainer}>
-                <button className={`${styles.tab} ${styles.selected}`}>
-                  Testimonials and Experiences
-                </button>
-                <button className={styles.tab}>Case Studies</button>
-              </div>
             </section>
           <div className="w-full bg-white border border-[#195B48] rounded-xl py-16 text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-[#195B48]">
