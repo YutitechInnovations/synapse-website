@@ -118,7 +118,7 @@ export default function Aligners() {
               </div>
             </Link>
           </div>
-          <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0">
+          <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0 mb-[100px]">
             <img 
               src="/images/image37.png" 
               alt="Aligners Overview"
