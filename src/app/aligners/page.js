@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./aligners.module.css";
 import DoctorAligner from "../../assets/rxf.png";
+import Navbar from "../../components/navbar/Navbar";
 
 export default function Aligners() {
   return (
     <>
-      {/* Hero Section */}
+      <Navbar />
       <section className={`${styles.heroSection} mt-12 md:mt-0 `}>
         {/* Content */}
         <div className={`container w-full ${styles.heroContent} `}>
