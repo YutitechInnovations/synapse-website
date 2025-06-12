@@ -25,13 +25,27 @@ export default function PostLoginHome() {
           <div className="absolute inset-0 bg-white/60" />
         </div>
         {/* Content */}
-        <div className={styles.heroContent}>
-          <div className="max-w-3xl w-full">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-[#184C3A]">
-              Welcome to a New Kind of Dental Partnership
+        <div className={`container ${styles.heroContent}`} style={{ marginLeft: '20px' }}>
+          <div className="max-w-5xl w-full">
+            <h1 className="text-2xl sm:text-[2.25rem] md:text-[2.875rem] lg:text-[2.875rem] font-semibold mb-6 leading-tight text-[#004C44]">
+              Designed for the
+              <br />
+              Smiles You Shape
             </h1>
-            <p className="text-base md:text-xl font-medium text-[#184C3A]">
-              Our workflow has been designed to support your orthodontic expertise with dependable high-quality solutions ranging from aligners to advanced lab services, all crafted with the latest in 3D manufacturing and with precision and care.
+            <p className="text-base md:text-[1.25rem] lg:text-[1.25rem] font-medium text-justify text-[#004C44]">
+              At Synapse, biomechanical insights and personalized workflows
+              <br />
+              come together to support your clinical precision and elevate
+              <br />
+              every treatment journey.
+              <br />
+              From meticulous treatment planning to diligent manufacturing,
+              <br />
+              each solution is crafted for comfort, control, and optimal
+              <br />
+              outcomes. Backed by the latest in 3D technology, our partnership
+              <br />
+              is built around your expertise—and every smile you help create.
             </p>
           </div>
         </div>
