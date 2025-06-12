@@ -38,13 +38,13 @@ const Footer = () => {
           <Image
             src={Logo}
             alt="Synapse Logo"
-            width={160}
+            width={140}
             height={40}
             className="mb-4 mx-auto md:mx-0"
           />
-          <p className="text-white text-lg mb-4 mx-auto md:mx-0 break-words truncate whitespace-normal">
+          {/* <p className="text-white text-lg mb-4 mx-auto md:mx-0 break-words truncate whitespace-normal">
             Bridging technology and expertise.
-          </p>
+          </p> */}
           {showLoginButton && (
             <a
               href="/login"
@@ -90,14 +90,17 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-end text-center md:text-right w-full md:w-1/3">
           <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
           <div>
-            <p className="text-white text-base mb-1">+1 (555) 123-4567</p>
-            <p className="text-white text-base mb-1">contact@synapse.com</p>
+            <p className="text-white text-base mb-1">Toll Free Number: 1800 202 3282</p>
+            <p className="text-white text-base mb-1">Email ID: support@synapsehealthtech.in</p>
             <p className="text-white text-base">
-              123 Technology Drive,
+            Corporate Office Address: No.10, Flex,
               <br />
-              Suite 400 San
+              CoWorks, 2nd Floor, 71, 15th Cross Road,
               <br />
-              Francisco, CA 94107
+              Sarakki Industrial Layout, J P Nagar 3rd
+              <br />
+              phase, Bangalore – 560078
+              <br />
             </p>
           </div>
         </div>

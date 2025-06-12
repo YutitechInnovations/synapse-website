@@ -24,9 +24,9 @@ export default function Footer() {
           {/* Brand Section */}
           <div>
             <h2 className="text-[#4A148C] font-semibold text-lg mb-4">SYNAPSE</h2>
-            <p className="text-sm text-[#4A148C]/70">
+            {/*<p className="text-sm text-[#4A148C]/70">
               Bringing technology and expertise in orthodontic solutions.
-            </p>
+            </p>*/}
           </div>
 
           {/* Quick Links */}
@@ -65,14 +65,19 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-[#4A148C] font-medium mb-4">Contact Us</h3>
+            <h3 className="text-[#4A148C] font-medium mb-2">Contact Us</h3>
             <ul className="space-y-2">
-              <li className="text-sm text-[#4A148C]/70">+1 (555) 123-4567</li>
-              <li className="text-sm text-[#4A148C]/70">contact@synapse.com</li>
+              <li className="text-sm text-[#4A148C]/70">Toll Free Number: 1800 202 3282</li>
+              <li className="text-sm text-[#4A148C]/70">Email ID: support@synapsehealthtech.in</li>
               <li className="text-sm text-[#4A148C]/70">
-                123 Technology Drive,<br />
-                Suite 400 San<br />
-                Francisco, CA 94107
+               Corporate Office Address: No.10, Flex,
+              <br />
+              CoWorks, 2nd Floor, 71, 15th Cross Road,
+              <br />
+              Sarakki Industrial Layout, J P Nagar 3rd
+              <br />
+              phase, Bangalore – 560078
+              <br />
               </li>
             </ul>
           </div>
