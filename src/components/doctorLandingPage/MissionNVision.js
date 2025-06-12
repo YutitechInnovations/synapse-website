@@ -1,7 +1,7 @@
 import React from "react";
 import ZigZagCard from "../cards/ZigZagCard.js";
-import VisionImage from '../../assets/vision.png';
-import MissionImage from '../../assets/mission.png'
+import VisionImage from '../../assets/vision1.png';
+import MissionImage from '../../assets/mission1.png'
 
 let items = [
   {

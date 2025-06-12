@@ -87,7 +87,7 @@ export default function BioSmartT() {
               options, giving you control to manage each case in line with your
               clinical preferences.
             </p>
-            <div className="overflow-x-auto">
+            {/*<div className="overflow-x-auto">
               <table
                 className="min-w-full w-full border border-[#B6C3C7] rounded-[10px] overflow-hidden"
                 style={{ borderCollapse: "separate", borderSpacing: 0 }}
@@ -103,7 +103,7 @@ export default function BioSmartT() {
                     <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">
                       RxPro
                     </th>
-                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-[#B6C3C7]  last:rounded-tr-[10px]">
+                    <th className="px-4 py-3 font-bold text-[#004C44] text-base md:text-lg border-b border-r border-[#B6C3C7] ">
                       RxPro+
                     </th>
                   </tr>
@@ -182,9 +182,45 @@ export default function BioSmartT() {
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table>*/}
+               <section className="w-full flex flex-col items-center px-4 md:px-0 py-8 md:py-16 pb-[150px]">
+          <div className="max-w-[1240px]  w-full">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-[600] text-[#195B48] mb-4 leading-tight">
+              BioSmart ™ SM Smart Memory Aligners. 
+              <br />
+              Precision-Built. Future-Ready{" "}
+            </h2>
+            <p className="mb-8 text-[#195B48] text-base md:text-lg">
+              The BioSmart™ SM Smart Memory Aligner System offers four treatment
+              options, giving you control to manage each case in line with your
+              clinical preferences.
+            </p>
+            <div className="flex flex-col items-center -ml-[2px]">
+              <div className="relative">
+                <img 
+                  src="/images/frame34.png"
+                  alt="BioSmart SM Flow"
+                  className="w-[1169px] h-auto"
+                  style={{ height: '390px', objectFit: 'contain' }}
+                />
+                <p 
+                  className="absolute text-[#195B48]"
+                  style={{ 
+                    width: '415px',
+                    height: '24px',
+                    top: '405px',
+                    left: '-0.5px'
+                  }}
+                >
+                  -Mid-Course correction is quarterly across all plans
+                </p>
+              </div>
+              
             </div>
           </div>
+        </section>
+            </div>
+          
         </section>
       </div>
     </>
