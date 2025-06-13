@@ -2,7 +2,7 @@
 
 export default function Privacy() {
   return (
-    <div className="min-h-screen bg-[#F8FAF9] flex flex-col items-center py-12 px-4">
+    <div className="min-h-screen bg-[#F8FAF9] flex flex-col items-center py-12 px-4 pt-[100px]">
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow p-8">
         <h1 className="text-3xl font-bold text-[#184C3A] mb-4">Synapse HealthTech - Privacy Policy and Terms of Use</h1>
         <h2 className="text-xl font-semibold text-[#184C3A] mb-2">Privacy Policy</h2>

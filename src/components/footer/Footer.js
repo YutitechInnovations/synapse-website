@@ -126,7 +126,7 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6">
             <a
-              href="/privacy-policy"
+              href="/privacy"
               className="text-[#08544A] text-sm hover:underline"
             >
               Privacy Policy
