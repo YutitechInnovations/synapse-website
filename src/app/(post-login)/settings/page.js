@@ -98,8 +98,7 @@ export default function Settings() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAF9]">
       <Navbar />
-      <main className="flex flex-col items-center justify-center flex-1 w-full mt-12 px-2 sm:px-4 md:px-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#184C3A] mb-6 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#184C3A] mb-6 text-center mt-10 md:mt-36">
           Settings
         </h1>
         <div className="w-full max-w-4xl bg-white border border-[#184C3A] rounded-2xl p-6 mx-auto">
@@ -203,7 +202,6 @@ export default function Settings() {
             </div>
           </form>
         </div>
-      </main>
     </div>
   );
 }
