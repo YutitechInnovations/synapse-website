@@ -81,6 +81,7 @@ export const registerDoctor = async (data) => {
     country_code: "+91", // static or from input if you want
     ios_number: data.registrationNumber || "", // assuming this corresponds to registrationNumber field
     password: data.password,
+    metainfo: data.metainfo || {},
   };
 
   try {
