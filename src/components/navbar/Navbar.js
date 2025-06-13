@@ -123,7 +123,19 @@ export default function Navbar() {
     <>
       {isMenuOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col text-[#004C44] p-6">
-          <div className="flex flex-col gap-6 mt-20 text-lg font-semibold">
+          {/* Close Button */}
+          <div className="flex justify-end">
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="text-3xl font-bold text-[#004C44]"
+              aria-label="Close menu"
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="flex flex-col items-start gap-6 mt-8 text-lg font-normal text-left">
             {isLoggedIn ? (
               <>
                 <button
@@ -174,19 +186,13 @@ export default function Navbar() {
                 >
                   E-Shop
                 </button>
-                <button
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  Profile
-                </button>
+                <button onClick={() => setIsMenuOpen(false)}>Profile</button>
                 <button
                   onClick={() => {
                     handleLogout();
                     setIsMenuOpen(false);
                   }}
-                  className="text-red-300"
+                  className="text-red-400"
                 >
                   Logout
                 </button>
@@ -234,11 +240,11 @@ export default function Navbar() {
                   Aligners
                 </button>
                 <button
+                  className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
                   onClick={() => {
                     router.push("/login");
                     setIsMenuOpen(false);
                   }}
-                  className="bg-[#004C44] text-white font-bold py-3 px-2 rounded-lg shadow-md"
                 >
                   Sign Up / Sign In
                 </button>
@@ -248,7 +254,12 @@ export default function Navbar() {
         </div>
       )}
 
-      <div className="fixed top-0 z-50 w-full bg-transparent px-[6rem]">
+      <div
+        className={`fixed top-0 z-50 w-full bg-transparent px-[6rem] ${
+          isMenuOpen ? "hidden md:block" : ""
+        }`}
+      >
+        {" "}
         <div className="flex items-center justify-center container mx-auto min-w-0">
           <nav
             className={`${styles.navbar} flex items-center w-full relative min-w-0`}
