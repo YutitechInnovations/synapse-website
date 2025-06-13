@@ -2,6 +2,7 @@
 
 export const PUBLIC_ROUTES = [
     "/login",
+    "/privacy",
     "/welcome",
     "/education",
     "/faq",
