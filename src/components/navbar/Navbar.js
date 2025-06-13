@@ -23,7 +23,7 @@ function ProfileDropdown({ onLogout }) {
     onLogout();
     window.location.href = "/welcome";
   };
-
+    
   return (
     <div className="relative" ref={ref}>
       <button
@@ -68,8 +68,8 @@ function ProfileDropdown({ onLogout }) {
 }
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [productDropdown, setProductDropdown] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
   const router = useRouter();
   const isLoggedIn =
@@ -119,6 +119,19 @@ export default function Navbar() {
     </button>
   );
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+    
   return (
     <>
       {isMenuOpen && (
@@ -186,13 +199,27 @@ export default function Navbar() {
                 >
                   E-Shop
                 </button>
-                <button onClick={() => setIsMenuOpen(false)}>Profile</button>
                 <button
+                  onClick={() => {
+                    router.push("/settings");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Settings
+                </button>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Profile
+                </button>
+                <button
+                  className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
                   onClick={() => {
                     handleLogout();
                     setIsMenuOpen(false);
                   }}
-                  className="text-red-400"
                 >
                   Logout
                 </button>
@@ -255,7 +282,7 @@ export default function Navbar() {
       )}
 
       <div
-        className={`fixed top-0 z-50 w-full bg-transparent px-[6rem] ${
+        className={`fixed top-0 z-50 w-full bg-transparent ${
           isMenuOpen ? "hidden md:block" : ""
         }`}
       >
@@ -322,7 +349,7 @@ export default function Navbar() {
                           </svg>
                         </button>
                         {productDropdown && (
-                          <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
+                          <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
                             <button
                               type="button"
                               className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold"
