@@ -1,6 +1,6 @@
-import ClientOnly from "../../components/ClientOnly";
-import Navbar from "../../components/navbar/Navbar.js";
-import SignupForm from "../../components/registrationForm/SignupForm.js";
+import ClientOnly from "../../../components/ClientOnly";
+import Navbar from "../../../components/navbar/Navbar.js";
+import SignupForm from "../../../components/registrationForm/SignupForm.js";
 
 export default function Signup() {
   return (

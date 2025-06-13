@@ -4,7 +4,7 @@ import Loader from "@/components/loader";
 import TestimonialCard from "@/components/testimonialCard";
 import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";
 import { useState, useRef, useEffect } from "react";
-import styles from '../../../../(post-login)/alignmasters/AlignMasters.module.css';
+import styles from '../../../(post-login)/alignmasters/AlignMasters.module.css';
 import Modal from "@/components/modal";
 import { useDoctorsTestimonials } from "@/hooks/useTestimonials";
 
