@@ -1,21 +1,63 @@
-/* Responsive styles for Home page */
 .heroSection {
-  position: relative;
-  width: 100%;
-}
-.heroContent {
-  min-height: 200px;
-  height: 40vw;
-  max-height: 44rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  position: relative;
-  z-index: 2;
-}
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background-image:
+      linear-gradient(270deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.9) 88.99%),
+      url('/images/home-hero-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  @media (max-width: 767px) {
+    .heroSection {
+      height: 60vh;
+    }
+  }
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .bg {
+    position: absolute;
+    width: 100%;
+    min-height: 300px;
+    max-height: 44rem;
+    z-index: 0;
+  }
+
+  .heroOverlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #184C3A;
+    line-height: 1.1;
+  }
+  
+  .paragraph {
+    font-size: 1rem;
+    color: #184C3A;
+    font-weight: 500;
+    line-height: 1.5;
+  }
 @media (min-width: 640px) {
   .heroContent {
     padding-left: 1rem;
