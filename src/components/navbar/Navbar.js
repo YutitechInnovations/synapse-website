@@ -70,14 +70,40 @@ export default function Navbar() {
   const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    typeof window !== "undefined" &&
+      localStorage.getItem("isLoggedIn") === "true"
+  );  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
     setHasMounted(true);
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === "isLoggedIn") {
+        setIsLoggedIn(event.newValue === "true");
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Also detect programmatic login change in the same tab
+    const interval = setInterval(() => {
+      const value = localStorage.getItem("isLoggedIn") === "true";
+      setIsLoggedIn((prev) => {
+        if (prev !== value) return value;
+        return prev;
+      });
+    }, 500); // Checks every half second — lightweight for login state
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      clearInterval(interval);
+    };
+  }, []);
+  
   useEffect(() => {
     function handleClickOutside(event) {
       if (productRef.current && !productRef.current.contains(event.target)) {
