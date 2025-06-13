@@ -33,8 +33,11 @@ export const doctorLogin = async (payload) => {
   } catch (error) {
     console.error("Login error details:", {
       message: error.message,
-      response: error.response,
-      request: error.request,
+      status:
+        error.response?.status ||
+        "No status (possibly a network or CORS error)",
+      data: error.response?.data || "No response data",
+      request: error.request || "No request object",
     });
     const errorMessage =
       error.response?.data?.message || error.message || "Login failed";
@@ -126,11 +129,13 @@ export const editUserDetails = async (userData) => {
     console.log('API Response:', response); // Log the response
     return response.data;
   } catch (error) {
-    console.error('Edit user details error:', {
+    console.error("Edit user details error:", {
       message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-      config: error.config
+      status:
+        error.response?.status || "No response status (network or CORS issue)",
+      data: error.response?.data || "No response data",
+      config: error.config,
+      request: error.request || "No request object",
     });
     
     // Handle different types of errors
