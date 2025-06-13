@@ -41,7 +41,7 @@ export default function Education() {
               <a
                 key={index}
                 {...(card.link && { href: card.link })}
-                className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
+                className="group relative w-full max-w-[800px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white mx-auto mb-8 sm:w-[90vw] sm:max-w-[400px]"
               >
                 <Image
                   src={card.image}
