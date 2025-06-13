@@ -1,7 +1,18 @@
+import Image from 'next/image';
+
 const FaqSection = () => {
   return (
     <section className="relative w-full">
       <div className="faq-hero">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/faq-hero-bg.png"
+            alt="FAQ Background"
+            fill
+            className="object-cover opacity-50"
+            priority
+          />
+        </div>
         <div className="faq-header">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             Frequently Asked Questions
