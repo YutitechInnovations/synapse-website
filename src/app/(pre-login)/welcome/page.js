@@ -16,8 +16,8 @@ export default function Welcome() {
         <Navbar />
       </ClientOnly>
       <main className="flex flex-col items-center justify-center w-full">
-        <section className={`${styles.heroSection} `}>
-          {/* Content */}
+        {/* Desktop / Tablet view (md and up) */}
+        <section className={`${styles.heroSection} hidden md:block`}>
           <div className={`container ${styles.heroContent}`}>
             <div className="max-w-5xl w-full">
               <h1 className="text-2xl sm:text-[2.25rem] md:text-[2.875rem] lg:text-[2.875rem] font-semibold mb-6 leading-tight text-[#004C44]">
@@ -42,7 +42,23 @@ export default function Welcome() {
               </p>
             </div>
           </div>
-        </section>{" "}
+        </section>
+        {/* Mobile view (sm and below) */}
+        <section className={`${styles.heroSection} block md:hidden px-4 py-10`}>
+          <div className="max-w-lg mx-auto text-left">
+            <h1 className="text-2xl font-bold mb-4 text-[#004C44]">
+              Designed for the Smiles You Shape
+            </h1>
+            <p className="text-base font-medium text-[#004C44] leading-relaxed">
+              At Synapse, biomechanical insights and personalized workflows come
+              together to support your clinical precision and elevate every
+              treatment journey. From treatment planning to manufacturing, each
+              solution is crafted for comfort and control. Backed by the latest
+              in 3D technology, our partnership is built around your
+              expertise—and every smile you help create.
+            </p>
+          </div>
+        </section>
         <ServicesOffered />
         <ConnectionFeatureSection isLoggedIn={false} />
       </main>
