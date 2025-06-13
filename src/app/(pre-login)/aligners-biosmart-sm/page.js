@@ -88,7 +88,7 @@ export default function BioSmartSM() {
               {/* Shared Image */}
               <div className="flex-1">
                 <Image
-                  src="/images/combined-thickness.png" // Replace with your actual combined image
+                  src="/images/bio-smart-sm-1.png" // Replace with your actual combined image
                   alt="Contour and Thickness"
                   width={500}
                   height={300}
@@ -111,7 +111,7 @@ export default function BioSmartSM() {
               </div>
               <div className="flex-1">
                 <Image
-                  src="/images/steady-force.png" // replace with actual import
+                  src="/images/bio-smart-sm-2.png" // replace with actual import
                   alt="Steady Force"
                   width={400}
                   height={300}
@@ -163,7 +163,7 @@ export default function BioSmartSM() {
             <div className="flex flex-col items-center -ml-[2px]">
               <div className="relative">
                 <Image 
-                  src="/images/frame34.png"
+                  src="/images/bio-smart-table.png"
                   alt="BioSmart SM Flow"
                   width={1169}
                   height={390}

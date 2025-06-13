@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from './ConnectionFeatureSection.module.css';
 import RxTrackLogo from '../svg/rxTrack';
-import AlignMasterLogo from '../../assets/align.png'
 
 const features = [
   {
@@ -66,7 +65,7 @@ export default function ConnectionFeatureSection({ isLoggedIn, onOrthoSyncClick 
                 <RxTrackLogo />
               )}
               {feature.title === 'AlignMasters™' && (
-                <Image src={AlignMasterLogo} alt={feature.title} width={120} height={40} className="object-contain" />
+                <Image src={"/images/align.png"} alt={feature.title} width={120} height={40} className="object-contain" />
               )}
             </div>
             <h3 className={styles.cardTitle}>{feature.title}</h3>

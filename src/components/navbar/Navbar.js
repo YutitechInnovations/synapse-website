@@ -6,7 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { getOrthoSyncUrl } from "@/services/auth.js";
-import Logo from "../../assets/logo.png";
 
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
@@ -354,7 +353,7 @@ export default function Navbar() {
               </div>
               <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
                 <Image
-                  src={Logo}
+                  src="/images/logo.png"
                   width={120}
                   height={45}
                   alt="Logo"

@@ -50,7 +50,8 @@ export default function PreLoginFeatureSection() {
                   </svg>
                 )}
                 {feature.title === 'AlignMasters™' && (
-                  <Image src="/images/align.png" alt={feature.title} width={120} height={40} className="object-contain" />
+                  <Image src="/images/align-master
+                  .png" alt={feature.title} width={120} height={40} className="object-contain" />
                 )}
               </div>
             </div>

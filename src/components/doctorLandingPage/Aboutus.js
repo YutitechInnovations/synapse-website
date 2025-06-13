@@ -1,35 +1,30 @@
 import React from "react";
 import Image from "next/image";
-import SujithImage from '../../assets/sujit.png';
-import PrabhakarImage from '../../assets/prabhakar.png';
-import HarmeetImage from '../../assets/harmeet.png';
-import AyushiImage from '../../assets/ayushi.png'
-
 
 const team = [
   {
     name: "Sujit Hota",
     title: "CEO & Co-Founder",
     description: "IIM C Alum (>25 years of dental industry experience)",
-    image: SujithImage,
+    image: "/images/sujit.png",
   },
   {
     name: "Prabakar KP",
     title: "COO & Co-Founder",
     description: "IIML Alum (>15 years of dental + software experience)",
-    image: PrabhakarImage,
+    image: "/images/prabhakar.png", 
   },
   {
     name: "Dr Harmeet Kaur",
     title: "Manager, Clinical & Education",
     description: "Orthodontist (>8 years of experience)",
-    image: HarmeetImage,
+    image: "/Images/harmeet.png", 
   },
   {
     name: "Dr Ayushi",
     title: "Customer Success Manager",
     description: "Orthodontist (>3 years of experience)",
-    image: AyushiImage,
+    image: "/Images/ayushi.png",
   },
 ];
 

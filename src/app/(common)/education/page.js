@@ -2,29 +2,25 @@
 
 import Navbar from "@/components/navbar/Navbar";
 import Image from "next/image";
-import BlogsImage from "../../../assets/blogs.png";
-import MaterialsImage from "../../../assets/materials.png";
-import ResearchImage from "../../../assets/researchpapers.png";
-import FaqImage from "../../../assets/faq.png";
 
 export default function Education() {
   const insightCards = [
     {
       title: "Blogs",
-      image: BlogsImage,
+      image: "/images/education-blogs.png",
       link: "/blogs",
     },
     {
       title: "Materials & Data",
-      image: MaterialsImage,
+      image: "/images/education-material.png",
     },
     {
       title: "Research Papers",
-      image: ResearchImage,
+      image: "/images/education-research.png",
     },
     {
       title: "Patients' FAQs",
-      image: FaqImage,
+      image: "/images/education-faq.png",
       link: "/faq",
     },
   ];

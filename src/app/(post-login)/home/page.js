@@ -34,7 +34,7 @@ export default function PostLoginHome() {
         {/* Background Image */}
         <div className="absolute w-full min-h-[200px] h-[40vw] max-h-[44rem]">
           <Image
-            src="/images/bg2.jpg"
+            src="/images/home-hero-bg.jpg"
             fill
             className="w-full h-full object-cover object-center"
             alt="Hero Background"

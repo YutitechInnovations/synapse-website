@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import Logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
 
 const leftLinks = [
@@ -45,7 +44,7 @@ const Footer = () => {
         {/* Left: Logo and Login */}
         <div className="flex flex-col w-full md:w-1/3">
           <Image
-            src={Logo}
+            src="/images/logo.png"
             alt="Synapse Logo"
             width={200}
             height={40}

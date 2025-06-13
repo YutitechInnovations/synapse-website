@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./aligners.module.css";
-import DoctorAligner from "../../../assets/rxf.png";
 import Navbar from "../../../components/navbar/Navbar";
 
 export default function Aligners() {
@@ -121,7 +120,7 @@ export default function Aligners() {
           </div>
           <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0 mb-[100px]">
             <Image 
-              src="/images/image37.png" 
+              src="/images/aligners-img.png" 
               alt="Aligners Overview"
               width={1240}
               height={606}
