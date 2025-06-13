@@ -23,7 +23,7 @@ function ProfileDropdown({ onLogout }) {
     onLogout();
     window.location.href = "/welcome";
   };
-    
+
   return (
     <div className="relative" ref={ref}>
       <button
@@ -44,9 +44,7 @@ function ProfileDropdown({ onLogout }) {
       </button>
       {open && (
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
-          <button
-            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
-          >
+          <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
             Profile
           </button>
           <button
@@ -68,13 +66,17 @@ function ProfileDropdown({ onLogout }) {
 }
 
 export default function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [productDropdown, setProductDropdown] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
   const router = useRouter();
-  const isLoggedIn =
-    typeof window !== "undefined" &&
-    localStorage.getItem("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -131,7 +133,9 @@ export default function Navbar() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-    
+
+  if (!hasMounted) return null;
+
   return (
     <>
       {isMenuOpen && (

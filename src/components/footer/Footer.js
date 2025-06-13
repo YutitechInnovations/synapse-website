@@ -20,11 +20,15 @@ const Footer = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
   }, []);
 
+    if (!hasMounted) return null;
+    
   const homeLink = { label: "Home", href: isLoggedIn ? "/home" : "/welcome" };
   const rightLinks = [homeLink, ...rightLinksStatic];
 
