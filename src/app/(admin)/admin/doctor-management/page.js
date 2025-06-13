@@ -152,7 +152,7 @@ export default function DoctorManagement() {
                   <td className="py-3 px-4">{doc.ios_number}</td>
                   <td className="py-3 px-4">
                     <StatusDropdown
-                      value={doc.status}
+                      value={doc.status.charAt(0).toUpperCase() + doc.status.slice(1)}
                       onChange={(val) =>
                         handleStatusChange({ userId: doc.user_id, status: val })
                       }
