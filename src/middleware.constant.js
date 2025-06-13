@@ -2,7 +2,7 @@
 
 export const PUBLIC_ROUTES = [
     "/login",
-    "/",
+    "/welcome",
     "/education",
     "/faq",
     "/aboutus",
@@ -30,4 +30,5 @@ export const USER_ROUTES = [
     "/alignmasters",
     "/orthosync",
     "/rxtrack",
+    "/home"
 ];
