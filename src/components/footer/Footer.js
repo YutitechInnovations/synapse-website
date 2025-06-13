@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import Logo from '../../assets/logo.png'
+import { usePathname, useRouter } from "next/navigation";
+import Logo from "../../assets/logo.png";
+import { useEffect, useState } from "react";
 
 const leftLinks = [
   { label: "OrthoSync™", href: "/orthosync" },
@@ -9,8 +10,8 @@ const leftLinks = [
   { label: "AlignMasters™", href: "/alignmasters" },
   { label: "E-Shop", href: "/e-shop" },
 ];
-const rightLinks = [
-  { label: "Home", href: "/" },
+
+const rightLinksStatic = [
   { label: "Education", href: "/education" },
   { label: "FAQs", href: "/faq" },
   { label: "Careers", href: "/careers" },
@@ -18,18 +19,26 @@ const rightLinks = [
 
 const Footer = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+  }, []);
+
+  const homeLink = { label: "Home", href: isLoggedIn ? "/home" : "/welcome" };
+  const rightLinks = [homeLink, ...rightLinksStatic];
+
   const showLoginButton = [
-    "/",
-    "/careers",
+    "/welcome",
     "/signup",
     "/aboutus",
-    "/education",
     "/aligners",
     "/aligners-biosmart-sm",
     "/aligners-biosmart-t",
-    "/e-shop",
     "/login",
   ].includes(pathname);
+
   return (
     <footer className="w-full bg-[#004C44]">
       <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-start px-4 md:px-12 py-10 gap-8">

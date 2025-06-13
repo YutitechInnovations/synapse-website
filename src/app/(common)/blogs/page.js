@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../../components/navbar/Navbar";
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -38,7 +38,8 @@ function BlogsContent() {
   const currentTab = TABS.find((tab) => tab.key === activeTab);
 
     return (
-      <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full bg-[#F8FAF9]">
+        <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full bg-[#F8FAF9]">
+            <Navbar />
         <main className="w-full max-w-7xl mx-auto px-4 py-8 md:py-40">
           <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-10 gap-4 md:gap-0">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#195B48]">

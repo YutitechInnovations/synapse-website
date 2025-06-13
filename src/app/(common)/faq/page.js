@@ -1,6 +1,5 @@
 import FaqSection from "@/components/FAQ/FaqSection.js";
-import Navbar from "../../components/navbar/Navbar.js";
-import Head from 'next/head';
+import Navbar from "../../../components/navbar/Navbar.js";
 
 export default function FAQ() {
   return (

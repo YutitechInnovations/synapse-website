@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./navbar.module.css";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
@@ -46,7 +46,6 @@ function ProfileDropdown({ onLogout }) {
       {open && (
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
           <button
-            onClick={() => router.push("/profile")}
             className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Profile
@@ -74,12 +73,9 @@ export default function Navbar() {
   const [productDropdown, setProductDropdown] = useState(false);
   const productRef = useRef();
   const router = useRouter();
-  const pathname = usePathname();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
-  }, []);
+  const isLoggedIn =
+    typeof window !== "undefined" &&
+    localStorage.getItem("isLoggedIn") === "true";
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -87,19 +83,19 @@ export default function Navbar() {
         setProductDropdown(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleProductClick = () => {
+    setProductDropdown(!productDropdown);
+  };
 
   const handleOrthoSync = async () => {
     try {
       const response = await getOrthoSyncUrl();
       const url = response?.data?.orthosync_url || response?.url;
       if (url) window.open(url, "_blank");
-      else console.error("URL not found in response");
     } catch (err) {
       console.error("Failed to fetch OrthoSync URL:", err);
     }
@@ -113,94 +109,301 @@ export default function Navbar() {
   };
 
   const navButton = (label, href) => (
-    <div
-      onClick={() => router.push(href)}
-      className={`cursor-pointer px-3 py-2 font-medium text-white hover:font-semibold transition duration-150 ${
-        pathname === href ? "font-semibold" : ""
-      }`}
+    <button
+      onClick={() => {
+        setIsMenuOpen(false);
+        router.push(href);
+      }}
+      className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
     >
       {label}
-    </div>
+    </button>
   );
 
   return (
-    <div className="fixed top-0 z-50 w-full bg-[#06201B] px-[6rem] py-4 rounded-b-3xl">
-      <div className="flex items-center justify-between container mx-auto">
-        <div className="flex items-center gap-8">
-          {isLoggedIn ? (
-            <>
-              {navButton("Home", "/home")}
-              {navButton("RxTrack™", "/rxtrack")}
-              <div
-                onClick={handleOrthoSync}
-                className="cursor-pointer px-3 py-2 font-medium text-white hover:font-semibold transition duration-150"
-              >
-                OrthoSync™
-              </div>
-              {navButton("Reward Program", "/reward-program")}
-              {navButton("AlignMasters™", "/alignmasters")}
-              {navButton("E-Shop", "/e-shop")}
-              <div className="h-6 w-px bg-white opacity-40 mx-4" />
-              <ProfileDropdown onLogout={handleLogout} />
-            </>
-          ) : (
-            <>
-              {navButton("Home", "/welcome")}
-              <div className="relative" ref={productRef}>
+    <>
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-[#004C44] z-50 flex flex-col text-white p-6">
+          <div className="flex justify-end mb-4">
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="text-3xl font-bold"
+            >
+              ×
+            </button>
+          </div>
+          <div className="flex flex-col gap-6 mt-4 text-lg font-semibold">
+            {isLoggedIn ? (
+              <>
                 <button
-                  type="button"
-                  onClick={() => setProductDropdown(!productDropdown)}
-                  className="text-white flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                  onClick={() => {
+                    router.push("/home");
+                    setIsMenuOpen(false);
+                  }}
                 >
-                  Product
-                  <svg
-                    className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-                      productDropdown ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M19 9l-7 7-7-7" />
-                  </svg>
+                  Home
                 </button>
-                {productDropdown && (
-                  <div className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-[20px] shadow-lg py-2 z-50 border border-gray-300">
-                    <button
-                      type="button"
-                      className="block w-full text-left px-4 py-2 text-[#004C44] font-semibold"
-                      onMouseDown={() => {
-                        setProductDropdown(false);
-                        router.push("/aligners");
-                      }}
-                    >
-                      Aligners
-                    </button>
-                  </div>
-                )}
-              </div>
-              {navButton("Education", "/education")}
-              {navButton("About us", "/aboutus")}
-              {navButton("Careers", "/careers")}
-              <div className="h-6 w-px bg-white opacity-40 mx-4" />
-              <button
-                onClick={() => router.push("/login")}
-                className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base"
-              >
-                Login
-              </button>
-            </>
-          )}
+                <button
+                  onClick={() => {
+                    router.push("/education");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Education
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/rxtrack");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  RxTrack™
+                </button>
+                <button
+                  onClick={() => {
+                    handleOrthoSync();
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  OrthoSync™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/reward-program");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Doctor Reward Program
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/alignmasters");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  AlignMasters™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/e-shop");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  E-Shop
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/aboutus");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  About Us
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/careers");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Careers
+                </button>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Profile
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/settings");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Settings
+                </button>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-red-300"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    router.push("/welcome");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/education");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Education
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/aboutus");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  About Us
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/careers");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Careers
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/aligners");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Aligners
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
+                  className="bg-white text-[#004C44] font-bold py-2 px-4 rounded-xl shadow-md"
+                >
+                  Sign Up / Sign In
+                </button>
+              </>
+            )}
+          </div>
         </div>
-        <Image
-          src={Logo}
-          width={120}
-          height={45}
-          alt="Logo"
-          className="h-[2.8125rem] object-contain"
-        />
+      )}
+
+      <div className="fixed top-0 z-50 w-full bg-transparent px-[6rem]">
+        <div className="flex items-center justify-center container mx-auto min-w-0">
+          <nav
+            className={`${styles.navbar} flex items-center w-full relative min-w-0`}
+          >
+            <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
+              <button
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+                type="button"
+              >
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded mb-1"></span>
+                <span className="block w-7 h-1 bg-white rounded"></span>
+              </button>
+              <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
+                <ul className="flex flex-row items-center p-0 w-auto min-w-0">
+                  {isLoggedIn ? (
+                    <>
+                      <li>{navButton("Home", "/home")}</li>
+                      <li>{navButton("RxTrack™", "/rxtrack")}</li>
+                      <li>
+                        <button
+                          onClick={handleOrthoSync}
+                          className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                        >
+                          OrthoSync™
+                        </button>
+                      </li>
+                      <li>{navButton("Reward Program", "/reward-program")}</li>
+                      <li>{navButton("AlignMasters™", "/alignmasters")}</li>
+                      <li>{navButton("E-Shop", "/e-shop")}</li>
+                      <li className="flex items-center md:ml-[30px] mx-2">
+                        <span className="block h-6 w-px bg-white opacity-40"></span>
+                      </li>
+                      <li className="flex items-center md:ml-[30px]">
+                        <ProfileDropdown onLogout={handleLogout} />
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>{navButton("Home", "/welcome")}</li>
+                      <li ref={productRef}>
+                        <button
+                          type="button"
+                          onClick={handleProductClick}
+                          className="text-white flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
+                        >
+                          Product
+                          <svg
+                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                              productDropdown ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {productDropdown && (
+                          <div className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
+                            <button
+                              type="button"
+                              className="block w-full text-left px-4 py-2 text-[#004C44] font-semibold"
+                              onMouseDown={() => {
+                                setProductDropdown(false);
+                                router.push("/aligners");
+                              }}
+                            >
+                              Aligners
+                            </button>
+                          </div>
+                        )}
+                      </li>
+                      <li>{navButton("Education", "/education")}</li>
+                      <li>{navButton("About us", "/aboutus")}</li>
+                      <li>{navButton("Careers", "/careers")}</li>
+                      <li className="flex items-center md:ml-[30px] mx-2">
+                        <span className="block h-6 w-px bg-white opacity-40"></span>
+                      </li>
+                      <li className="flex items-center md:ml-[30px]">
+                        <button
+                          onClick={() => router.push("/login")}
+                          className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2"
+                        >
+                          Login
+                        </button>
+                      </li>
+                    </>
+                  )}
+                </ul>
+              </div>
+              <div className="flex-shrink-0 flex items-center justify-end h-full ml-auto">
+                <Image
+                  src={Logo}
+                  width={120}
+                  height={45}
+                  alt="Logo"
+                  className="h-[2.8125rem] object-contain"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
-    </div>
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          main {
+            padding-top: 4.5rem !important;
+          }
+        }
+      `}</style>
+    </>
   );
 }
