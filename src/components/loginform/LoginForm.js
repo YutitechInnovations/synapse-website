@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
@@ -19,7 +19,6 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Frontend validation
     if (!email.trim()) {
       setFormError("Please enter your email");
       return;
@@ -36,20 +35,18 @@ const LoginForm = () => {
       setLoading(true);
       const response = await doctorLogin({ email, password });
 
-      // Call authenticate and pass a next callback
       await authenticate(response, () => {
         toast.success(response.message || "Login successful!");
-        router.push("/home");
+        router.replace("/home");
       });
     } catch (err) {
-      // Toast already handled inside login()
       console.error("Login error", err);
       setLoading(false);
     } finally {
       setLoading(false);
     }
   };
-
+    
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       {loading && <Loader />}

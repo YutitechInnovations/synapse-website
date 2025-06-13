@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import "./globals.css";
 import ConditionalNavbar from "../components/ConditionalNavbar";
 import ConditionalFooter from "../components/ConditionalFooter";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import { AuthProvider } from "@/context/AuthContext";
 
 
 import { Poppins, Sora } from 'next/font/google';
@@ -37,7 +38,10 @@ export default function RootLayout({ children }) {
         <Toaster />
         <ConditionalNavbar />
         <QueryClientProvider client={queryClient}>
-          <main>{children}</main>
+          <AuthProvider>
+            {" "}
+            <main>{children}</main>
+          </AuthProvider>
         </QueryClientProvider>
         <ConditionalFooter />
       </body>

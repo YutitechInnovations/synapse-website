@@ -83,6 +83,9 @@ export const authenticate = async (response, next) => {
     setLocalStorage("isAdmin", !!response?.admin_id);
     setLocalStorage("isLoggedIn", true);
 
+    // Trigger storage listeners manually
+    window.dispatchEvent(new Event("storage"));
+
     if (next && typeof next === "function") {
       await next();
     } else {

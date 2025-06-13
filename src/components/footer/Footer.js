@@ -25,9 +25,20 @@ const Footer = () => {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    const updateLoginStatus = () => {
+      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    };
+
     setHasMounted(true);
-    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    updateLoginStatus();
+
+    window.addEventListener("storage", updateLoginStatus);
+
+    return () => {
+      window.removeEventListener("storage", updateLoginStatus);
+    };
   }, []);
+  
 
     if (!hasMounted) return null;
     
