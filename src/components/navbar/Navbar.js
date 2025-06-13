@@ -145,14 +145,6 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/education");
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  Education
-                </button>
-                <button
-                  onClick={() => {
                     router.push("/rxtrack");
                     setIsMenuOpen(false);
                   }}
@@ -193,34 +185,10 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/aboutus");
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  About Us
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/careers");
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  Careers
-                </button>
-                <button
-                  onClick={() => {
                     setIsMenuOpen(false);
                   }}
                 >
                   Profile
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/settings");
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  Settings
                 </button>
                 <button
                   onClick={() => {
@@ -332,7 +300,7 @@ export default function Navbar() {
                   ) : (
                     <>
                       <li>{navButton("Home", "/welcome")}</li>
-                      <li ref={productRef}>
+                      <li ref={productRef} className="md:ml-[30px] relative">
                         <button
                           type="button"
                           onClick={handleProductClick}
@@ -352,7 +320,7 @@ export default function Navbar() {
                           </svg>
                         </button>
                         {productDropdown && (
-                          <div className="absolute left-0 top-full mt-1 min-w-[200px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
+                          <div className="absolute left-0 top-full mt-1 min-w-[190px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
                             <button
                               type="button"
                               className="block w-full text-left px-4 py-2 text-[#004C44] font-semibold"

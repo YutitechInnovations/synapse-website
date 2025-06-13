@@ -1,6 +1,6 @@
 import ClientOnly from "../../../components/ClientOnly";
-import Navbar from "../../components/navbar/Navbar.js";
-import ForgotPasswordForm from "../../components/forgotPassword/ForgotPasswordForm.js";
+import Navbar from "../../../components/navbar/Navbar.js";
+import ForgotPasswordForm from "../../../components/forgotPassword/ForgotPasswordForm.js";
 
 export default function ForgotPasswordPage() {
   return (
