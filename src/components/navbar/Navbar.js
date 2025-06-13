@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import { getOrthoSyncUrl } from "@/services/auth.js";
 import toast from "react-hot-toast";
 
-
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
@@ -75,7 +74,8 @@ export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     typeof window !== "undefined" &&
       localStorage.getItem("isLoggedIn") === "true"
-  );  const [hasMounted, setHasMounted] = useState(false);
+  );
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
@@ -88,9 +88,6 @@ export default function Navbar() {
         setIsLoggedIn(event.newValue === "true");
       }
     };
-
-    window.addEventListener("storage", handleStorageChange);
-
     // Also detect programmatic login change in the same tab
     const interval = setInterval(() => {
       const value = localStorage.getItem("isLoggedIn") === "true";
@@ -105,7 +102,7 @@ export default function Navbar() {
       clearInterval(interval);
     };
   }, []);
-  
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (productRef.current && !productRef.current.contains(event.target)) {
@@ -119,7 +116,7 @@ export default function Navbar() {
   const handleProductClick = () => {
     setProductDropdown(!productDropdown);
   };
-    
+
   const handleOrthoSync = async () => {
     try {
       const response = await getOrthoSyncUrl();

@@ -1,5 +1,13 @@
-import { redirect } from "next/navigation";
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RootRedirect() {
-  redirect("/welcome");
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/welcome");
+  }, []);
+
+  return null;
 }
