@@ -1,5 +1,7 @@
 "use client";
 
+import Navbar from "@/components/navbar/Navbar";
+
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-[#F8FAF9] flex flex-col items-center py-12 px-4 pt-[100px]">
@@ -69,4 +71,4 @@ export default function Privacy() {
       </div>
     </div>
   );
-} 
+}

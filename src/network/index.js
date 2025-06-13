@@ -56,12 +56,17 @@ instance.interceptors.response.use(
   },
   async (error) => {
     // Log detailed error information
-    console.error("Response error:", {
-      message: error.message,
-      response: error.response,
-      request: error.request,
-      config: error.config,
-    });
+    if (process.env.NODE_ENV !== "production") {
+      console.error("Response error:", {
+          message: error.message || "Something went wrong",
+        status:
+          error.response?.status ||
+          "No status (possibly network or CORS error)",
+        data: error.response?.data || "No response data",
+        request: error.request || "No request object",
+        config: error.config,
+      });
+    }
 
     if (error.response) {
       const { data, status } = error.response;

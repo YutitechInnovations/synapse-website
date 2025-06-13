@@ -7,6 +7,9 @@ import styles from "./hero-section.module.css"
 export const metadata = {
   title: "Synapse",
   description: "Synapse - Your Orthodontic Connection",
+  icons: {
+    icon: "/tabIcon.png",
+  },
 };
 
 export default function Welcome() {
