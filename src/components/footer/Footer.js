@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { getOrthoSyncUrl } from "@/services/auth.js";
 
 const leftLinks = [
   { label: "OrthoSync™", href: "/orthosync" },
@@ -42,6 +44,29 @@ const Footer = () => {
     "/login",
   ].includes(pathname);
 
+  const handleOrthoSync = async () => {
+    try {
+      const response = await getOrthoSyncUrl();
+      const { status, message, data } = response?.data || {};
+
+      if (status === "failed") {
+        toast.error(message || "Something went wrong. Please try again.");
+        return;
+      }
+
+      const url = data?.orthosync_url || response?.url;
+
+      if (url) {
+        window.open(url, "_blank");
+      } else {
+        toast.error("OrthoSync URL not available.");
+      }
+    } catch (err) {
+      const errorMessage =
+        err?.response?.data?.message || err?.message || "Something went wrong";
+    }
+  };
+    
   return (
     <footer className="w-full bg-[#004C44]">
       <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-start px-4 md:px-12 py-10 gap-8">
@@ -70,12 +95,21 @@ const Footer = () => {
             <ul className="space-y-2 text-base font-normal">
               {leftLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href === "/orthosync" ? (
+                    <button
+                      onClick={handleOrthoSync}
+                      className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

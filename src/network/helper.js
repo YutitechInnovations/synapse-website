@@ -149,22 +149,28 @@ export const getBaseUrl = (caseType) => {
  */
 export const handleToast = ({ res, err, next }) => {
   if (res) {
-    // Handle success
+    // Success
     toast.success(res.message || "Operation successful!");
-
-    // Execute next function if provided
     if (next) next();
-  } else if (err) {
-    // Handle validation errors
-    if (err.response?.status === 422) {
-      const validationErrors = err.response.data.errors || {};
-      const errorMessages = Object.values(validationErrors).flat();
-      errorMessages.forEach((message) => toast.error(message));
+    return;
+  }
+
+  if (err) {
+    const status = err?.response?.status;
+    const data = err?.response?.data;
+
+    // Validation errors
+    if (status === 422 && data?.errors) {
+      const validationErrors = Object.values(data.errors).flat();
+      validationErrors.forEach((message) => toast.error(message));
+    } else if (data?.message) {
+      toast.error(data.message);
+    } else if (err.message) {
+      // Network error, timeout, or unexpected error
+      toast.error(err.message);
     } else {
-      // Handle other errors
-      toast.error(
-        err.response?.data?.message || "Something went wrong. Please try again."
-      );
+      toast.error("Something went wrong. Please try again.");
     }
   }
 };
+
