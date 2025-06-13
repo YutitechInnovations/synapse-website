@@ -163,13 +163,7 @@ const Footer = () => {
               href="/privacy"
               className="text-[#08544A] text-sm hover:underline"
             >
-              Privacy Policy
-            </a>
-            <a
-              href="/terms-of-service"
-              className="text-[#08544A] text-sm hover:underline"
-            >
-              Terms of Service
+              Terms of Service & Privacy Policy
             </a>
           </div>
         </div>
