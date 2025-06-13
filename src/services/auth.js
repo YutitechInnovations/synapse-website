@@ -118,3 +118,32 @@ export const getOrthoSyncUrl = async () => {
     console.error("Failed to fetch OrthoSync URL:", error);
   }
 };
+
+export const editUserDetails = async (userData) => {
+  try {
+    console.log('Sending user data:', userData); // Log the request payload
+    const response = await instance.put("/user/edit_user_details", userData);
+    console.log('API Response:', response); // Log the response
+    return response.data;
+  } catch (error) {
+    console.error('Edit user details error:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      config: error.config
+    });
+    
+    // Handle different types of errors
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      throw new Error(error.response.data?.message || 'Failed to update user details');
+    } else if (error.request) {
+      // The request was made but no response was received
+      throw new Error('No response received from server. Please check your connection.');
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      throw new Error(error.message || 'Failed to update user details');
+    }
+  }
+};
