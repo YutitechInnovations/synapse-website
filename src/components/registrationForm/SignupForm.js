@@ -216,8 +216,14 @@ const SignupForm = () => {
                 }`}
                 type="text"
                 id="Mobile"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={data.mobile}
-                onChange={(e) => setData({ ...data, mobile: e.target.value })}
+                onChange={(e) => {
+                  // Only allow numbers
+                  const value = e.target.value.replace(/\D/g, "");
+                  setData({ ...data, mobile: value });
+                }}
                 placeholder="9xxxxxxxxx0"
                 required
               />
