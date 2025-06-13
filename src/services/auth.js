@@ -115,7 +115,7 @@ export const getOrthoSyncUrl = async () => {
     const response = await instance.get("/user/get_orthosync_url");
     return response.data;
   } catch (error) {
-    console.error("Failed to fetch OrthoSync URL:", error);
+    throw error;
   }
 };
 

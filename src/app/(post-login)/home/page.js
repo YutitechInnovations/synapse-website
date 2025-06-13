@@ -6,19 +6,30 @@ import ConnectionFeatureSection from "../../../components/home/ConnectionFeature
 import ClientOnly from "../../../components/ClientOnly";
 import Navbar from "../../../components/navbar/Navbar.js";
 import { getOrthoSyncUrl } from "@/services/auth.js";
+import toast from "react-hot-toast";
+
 
 const handleOrthoSync = async () => {
   try {
     const response = await getOrthoSyncUrl();
-    const url = response?.data?.orthosync_url || response?.url;
+    const { status, message, data } = response?.data || {};
+
+    if (status === "failed") {
+      toast.error(message || "Something went wrong. Please try again.");
+      return;
+    }
+
+    const url = data?.orthosync_url || response?.url;
 
     if (url) {
       window.open(url, "_blank");
     } else {
-      console.error("URL not found in response");
+      toast.error("OrthoSync URL not available.");
     }
   } catch (err) {
-    console.error("Failed to fetch OrthoSync URL:", err);
+    const errorMessage =
+      err?.response?.data?.message || err?.message || "Something went wrong";
+
   }
 };
 

@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { getOrthoSyncUrl } from "@/services/auth.js";
+import toast from "react-hot-toast";
+
 
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
@@ -117,14 +119,29 @@ export default function Navbar() {
   const handleProductClick = () => {
     setProductDropdown(!productDropdown);
   };
-
+    
   const handleOrthoSync = async () => {
     try {
       const response = await getOrthoSyncUrl();
       const url = response?.data?.orthosync_url || response?.url;
-      if (url) window.open(url, "_blank");
+      const status = response?.data?.status;
+      const message = response?.data?.message;
+
+      if (url) {
+        window.open(url, "_blank");
+        console.log(url, "url");
+        console.log(response, "response");
+      } else {
+        if (status === "failed") {
+          toast.error(message || "Unable to open OrthoSync. Please try again.");
+        } else {
+          toast.error("OrthoSync URL not available.");
+        }
+      }
     } catch (err) {
-      console.error("Failed to fetch OrthoSync URL:", err);
+      console.log(err);
+      const errorMessage =
+        err?.response?.data?.message || err?.message || "Something went wrong";
     }
   };
 

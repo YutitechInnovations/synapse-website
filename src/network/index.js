@@ -68,7 +68,7 @@ instance.interceptors.response.use(
       let errorMessage = "An unknown error occurred";
 
       // Handle authentication errors
-      if ((status === 401 || status === 403) && !isLoggingOut) {
+      if ((status === 401) && !isLoggingOut) {
         isLoggingOut = true;
         try {
           await instance.post("/logout");
