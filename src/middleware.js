@@ -13,7 +13,7 @@ export default function middleware(req) {
 
   const token = cookies["access_token"];
   if (!token && !isPublicRoute(path)) {
-    return NextResponse.redirect(new URL("/login", req.nextUrl));
+    return NextResponse.redirect(new URL("/welcome", req.nextUrl));
   }
   return NextResponse.next();
 }
