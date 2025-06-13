@@ -94,7 +94,7 @@ const SignupForm = () => {
       // If no failure, handle success
       toast.success(result.message || "Registration successful! Please login.");
       setIsSubmited(true);
-      router.push("/thank-you");
+      router.push("/login");
 
     } catch (error) {
       console.log(error)
