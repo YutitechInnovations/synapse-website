@@ -7,7 +7,7 @@ export default function Privacy() {
         <h1 className="text-3xl font-bold text-[#184C3A] mb-4">Synapse HealthTech - Privacy Policy and Terms of Use</h1>
         <h2 className="text-xl font-semibold text-[#184C3A] mb-2">Privacy Policy</h2>
         <p className="text-sm text-gray-500 mb-4">Effective Date: June 4, 2025</p>
-        <p className="mb-4">Synapse HealthTech Private Limited ("we", "us", or "our") operates the website <a href="https://www.synapsehealthtech.in" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">www.synapsehealthtech.in</a>, a secure digital platform for orthodontists and dental professionals to plan, track, and manage aligner treatments and other dental services.</p>
+        <p className="mb-4">Synapse HealthTech Private Limited (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the website <a href="https://www.synapsehealthtech.in" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">www.synapsehealthtech.in</a>, a secure digital platform for orthodontists and dental professionals to plan, track, and manage aligner treatments and other dental services.</p>
         <ol className="list-decimal pl-6 mb-4 space-y-2">
           <li>
             <strong>Information We Collect</strong>
