@@ -15,7 +15,6 @@ export default function Welcome() {
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="flex flex-col items-center justify-center w-full">
         {/* Desktop / Tablet view (md and up) */}
         <section className={`${styles.heroSection} hidden md:block`}>
           <div className={`container ${styles.heroContent}`}>
@@ -61,7 +60,6 @@ export default function Welcome() {
         </section>
         <ServicesOffered />
         <ConnectionFeatureSection isLoggedIn={false} />
-      </main>
     </div>
   );
 }
