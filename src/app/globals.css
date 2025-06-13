@@ -147,7 +147,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('/images/faqbg.png');
+    background-image: url('/images/faq-hero-bg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
