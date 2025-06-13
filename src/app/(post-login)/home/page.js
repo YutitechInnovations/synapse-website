@@ -139,7 +139,7 @@ export default function PostLoginHome() {
             <a href="/blogs" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
                   <Image
-                    src="/blogs.png"
+                    src="/images/education-blogs.png"
                     alt="Blogs"
                     fill
                     className="object-cover"
@@ -152,7 +152,7 @@ export default function PostLoginHome() {
             <a href="#" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
                   <Image
-                    src="/materials.png"
+                    src="/images/education-material.png"
                     alt="Materials & Data"
                     fill
                     className="object-cover"
@@ -165,7 +165,7 @@ export default function PostLoginHome() {
             <a href="#" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
                   <Image
-                    src="/researchpapers.png"
+                    src="/images/education-research.png"
                     alt="Research Papers"
                     fill
                     className="object-cover"
@@ -178,7 +178,7 @@ export default function PostLoginHome() {
             <a href="/faq" className={styles.educationCard + " group block transition-transform hover:scale-[1.02]"}>
               <div className="relative w-full h-full">
                   <Image
-                    src="/faq.png"
+                    src="/images/education-faq.png"
                     alt="Patients' FAQs"
                     fill
                     className="object-cover"
