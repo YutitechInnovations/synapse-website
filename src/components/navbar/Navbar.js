@@ -122,16 +122,8 @@ export default function Navbar() {
   return (
     <>
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#004C44] z-50 flex flex-col text-white p-6">
-          <div className="flex justify-end mb-4">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-bold"
-            >
-              ×
-            </button>
-          </div>
-          <div className="flex flex-col gap-6 mt-4 text-lg font-semibold">
+        <div className="fixed inset-0 bg-white z-50 flex flex-col text-[#004C44] p-6">
+          <div className="flex flex-col gap-6 mt-20 text-lg font-semibold">
             {isLoggedIn ? (
               <>
                 <button
@@ -246,7 +238,7 @@ export default function Navbar() {
                     router.push("/login");
                     setIsMenuOpen(false);
                   }}
-                  className="bg-white text-[#004C44] font-bold py-2 px-4 rounded-xl shadow-md"
+                  className="bg-[#004C44] text-white font-bold py-3 px-2 rounded-lg shadow-md"
                 >
                   Sign Up / Sign In
                 </button>
@@ -319,10 +311,10 @@ export default function Navbar() {
                           </svg>
                         </button>
                         {productDropdown && (
-                          <div className="absolute left-0 top-full mt-1 min-w-[190px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
+                          <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-[20px] shadow-lg py-2 z-50 border">
                             <button
                               type="button"
-                              className="block w-full text-left px-4 py-2 text-[#004C44] font-semibold"
+                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold"
                               onMouseDown={() => {
                                 setProductDropdown(false);
                                 router.push("/aligners");
