@@ -19,7 +19,8 @@ const RegistrationSubmitted = () => {
           Thank You! Registration request has been submitted
         </p>
         <p className="text-[#184C3A] text-[16px]">
-          You're all set! You can access the website while your information is being reviewed by the admin.
+          You&apos;re all set! You can access the website while your information
+          is being reviewed by the admin.
         </p>
       </div>
     </div>
