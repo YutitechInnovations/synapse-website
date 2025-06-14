@@ -1,5 +1,5 @@
 import ClientOnly from "../../../components/ClientOnly";
-import Navbar from "../../../components/navbar/Navbar.js";
+import Navbar from "../../../components/Navbar/Navbar.js";
 import ServicesOffered from "../../../components/ServicesOffered/ServicesOffered.js";
 import ConnectionFeatureSection from "../../../components/ConnectionFeatureSection/ConnectionFeatureSection";
 import styles from "./hero-section.module.css";

@@ -1,4 +1,4 @@
-import Navbar from "../../../components/navbar/Navbar.js";
+import Navbar from "../../../components/Navbar/Navbar.js";
 import Image from "next/image";
 
 export default function FAQ() {

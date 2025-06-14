@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ShareExperienceModal from "./ShareExperienceModal";
 import ClientOnly from "../../../components/ClientOnly";
-import Navbar from "../../../components/navbar/Navbar.js";
+import Navbar from "../../../components/Navbar/Navbar.js";
 import {
   useMutateComment,
   useMutateTestimonial,
@@ -17,7 +17,7 @@ import {
   likeTestimonial,
 } from "@/services/alignMasters";
 import ModalWithComments from "@/components/commentsModal";
-import TestimonialCard from "@/components/testimonialCard";
+// import TestimonialCard from "@/components/testimonialCard";
 import toast from "react-hot-toast";
 
 export default function AlignMasters() {

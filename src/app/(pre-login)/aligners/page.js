@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./aligners.module.css";
-import Navbar from "../../../components/navbar/Navbar";
+import Navbar from "../../../components/Navbar/Navbar";
 
 export default function Aligners() {
   return (
@@ -119,13 +119,13 @@ export default function Aligners() {
             </Link>
           </div>
           <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0 mb-[100px]">
-            <Image 
-              src="/images/aligners-img.png" 
+            <Image
+              src="/images/aligners-img.png"
               alt="Aligners Overview"
               width={1240}
               height={606}
               className="w-full h-auto rounded-[20px] max-w-[1240px] object-cover"
-              style={{ height: 'auto', maxHeight: '606px' }}
+              style={{ height: "auto", maxHeight: "606px" }}
             />
           </div>
         </div>
