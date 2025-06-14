@@ -1,8 +1,8 @@
 import ClientOnly from "../../../components/ClientOnly";
 import Navbar from "../../../components/navbar/Navbar.js";
-import ServicesOffered from "../../../components/home/ServicesOffered.js";
-import ConnectionFeatureSection from "../../../components/home/ConnectionFeatureSection";
-import styles from "./hero-section.module.css"
+import ServicesOffered from "../../../components/ServicesOffered/ServicesOffered.js";
+import ConnectionFeatureSection from "../../../components/ConnectionFeatureSection/ConnectionFeatureSection";
+import styles from "./hero-section.module.css";
 
 export const metadata = {
   title: "Synapse",
