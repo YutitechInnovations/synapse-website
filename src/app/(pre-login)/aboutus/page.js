@@ -20,13 +20,13 @@ const team = [
     name: "Dr Harmeet Kaur",
     title: "Manager, Clinical & Education",
     description: "Orthodontist (>8 years of experience)",
-    image: "/Images/harmeet.png",
+    image: "/images/harmeet.png",
   },
   {
     name: "Dr Ayushi",
     title: "Customer Success Manager",
     description: "Orthodontist (>3 years of experience)",
-    image: "/Images/ayushi.png",
+    image: "/images/ayushi.png",
   },
 ];
   
