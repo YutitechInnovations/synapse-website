@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import ClientOnly from "../../../components/ClientOnly";
 import Navbar from "../../../components/navbar/Navbar";
-import Loader from "../../../components/loader";
+import Loader from "../../../components/Loader/Loader";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();

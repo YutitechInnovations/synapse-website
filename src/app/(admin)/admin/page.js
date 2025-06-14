@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { adminLogin } from "@/services/auth";
 import { authenticate } from "@/network/helper";
 import toast from "react-hot-toast";
-import Loader from "@/components/loader";
+import Loader from "@/components/Loader/Loader";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
@@ -43,10 +43,10 @@ export default function AdminLogin() {
         Cookies.set("user", JSON.stringify(response));
         toast.success(response.message || "Login successful!");
         router.replace("/admin/doctor-management");
-    } 
+      }
     } catch (err) {
       console.error("Admin login error:", err);
-      toast.error( "Email or Password Incorrect");
+      toast.error("Email or Password Incorrect");
       setLoading(false);
     }
   };

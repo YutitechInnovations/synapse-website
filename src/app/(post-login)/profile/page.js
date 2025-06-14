@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar/Navbar";
 import { editUserDetails } from "@/services/auth";
 import toast from "react-hot-toast";
-import Loader from "@/components/loader";
+import Loader from "@/components/Loader/Loader";
 
 export default function Profile() {
   const [originalData, setOriginalData] = useState(null);

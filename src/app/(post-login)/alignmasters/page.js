@@ -11,7 +11,7 @@ import {
   useTestimonials,
   useTestimonialsComments,
 } from "@/hooks/useTestimonials";
-import Loader from "@/components/loader";
+import Loader from "@/components/Loader/Loader";
 import {
   addCommentToTestimonial,
   likeTestimonial,
