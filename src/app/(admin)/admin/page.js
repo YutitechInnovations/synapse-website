@@ -42,8 +42,8 @@ export default function AdminLogin() {
         Cookies.set("token", response.token);
         Cookies.set("user", JSON.stringify(response));
         toast.success(response.message || "Login successful!");
-        window.location.href = "/admin/dashboard";
-      } 
+        router.replace("/admin/doctor-management");
+    } 
     } catch (err) {
       console.error("Admin login error:", err);
       toast.error( "Email or Password Incorrect");

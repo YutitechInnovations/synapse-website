@@ -135,7 +135,7 @@ export default function DoctorManagement() {
         onSuccess: () => {
           setTimeout(() => {
             refetch();
-          }, 1000); 
+          }, 1000);
         },
       }
     );
@@ -144,6 +144,20 @@ export default function DoctorManagement() {
   const totalCount = doctorsDetails?.stats?.total_users || 0;
   const currentPage = filterString.offset / filterString.limit + 1;
   const totalPages = Math.ceil(totalCount / filterString.limit);
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      history.pushState(null, "", window.location.href);
+    };
+
+    // Push an initial state so back button has something to go back to
+    history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <div className="w-full">

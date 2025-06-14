@@ -1,5 +1,31 @@
 import { NextResponse } from "next/server";
-import { PUBLIC_ROUTES } from "./middleware.constant";
+
+export const PUBLIC_ROUTES = [
+    "/login",
+    "/privacy",
+    "/welcome",
+    "/education",
+    "/faq",
+    "/aboutus",
+    "/blogs",
+    "/signup",
+    "/careers",
+    "/admin",
+    "/aligners",
+    "/aligners-biosmart-sm",
+    "/aligners-biosmart-t",
+    "/forgot-password",
+    "/admin-forgot-password",
+];
+export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
+
+export const USER_ROUTES = [
+    "/reward-program",
+    "/alignmasters",
+    "/orthosync",
+    "/rxtrack",
+    "/home"
+];
 
 const isPublicRoute = (path) =>
   PUBLIC_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
