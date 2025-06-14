@@ -17,7 +17,6 @@ export const useHandleDoctorStatus = (queryString) => {
 
     const mutation = useMutation({
         mutationFn: async ({ userId, status }) => {
-            console.log("🔍 Status received in mutation:", status, userId);
             if (status === "approve") {
                 return await approveDoctors(userId);
             } else if (status === "reject") {
@@ -31,7 +30,6 @@ export const useHandleDoctorStatus = (queryString) => {
 
             // Update cached data in place
             queryClient.setQueryData(["doctors", queryString], (oldData) => {
-                console.log(oldData, 'old data')
                 if (!oldData) return oldData;
 
                 return {

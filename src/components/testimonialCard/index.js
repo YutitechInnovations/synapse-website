@@ -13,7 +13,6 @@ const TestimonialCard = ({ item, onLike, onComment, styles = {}, isAdmin, onActi
         try {
             setLoading(true)
             const resp = await updateTestimonialStatus(id, status);
-            console.log("Status updated:", resp);
             toast.success('Status updated')
             onAction()
             // Optionally update UI or show success message here

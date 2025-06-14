@@ -128,8 +128,6 @@ export default function Navbar() {
 
       if (url) {
         window.open(url, "_blank");
-        console.log(url, "url");
-        console.log(response, "response");
       } else {
         if (status === "failed") {
           toast.error(message || "Unable to open OrthoSync. Please try again.");

@@ -90,9 +90,7 @@ export default function Profile() {
         practice_address: formData.practiceAddress.trim(),
       };
 
-      console.log("Submitting payload:", payload);
       const response = await editUserDetails(payload);
-      console.log("Received response:", response);
 
       if (response.status === "success") {
         const stored = localStorage.getItem("loggedUser");

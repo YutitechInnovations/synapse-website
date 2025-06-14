@@ -24,7 +24,6 @@ function StatusDropdown({ value, onChange }) {
       <button
         className="border border-[#195B48] bg-white px-6 py-2 rounded-full text-[#195B48] font-semibold flex items-center gap-2 min-w-[120px] justify-between focus:outline-none transition-colors duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44] hover:text-[#004C44]"
         onClick={() => {
-          console.log("Dropdown button clicked");
           setOpen((v) => !v);
         }}
         type="button"

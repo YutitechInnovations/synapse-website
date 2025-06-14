@@ -124,9 +124,7 @@ export const getOrthoSyncUrl = async () => {
 
 export const editUserDetails = async (userData) => {
   try {
-    console.log('Sending user data:', userData); // Log the request payload
     const response = await instance.put("/user/edit_user_details", userData);
-    console.log('API Response:', response); // Log the response
     return response.data;
   } catch (error) {
     console.error("Edit user details error:", {

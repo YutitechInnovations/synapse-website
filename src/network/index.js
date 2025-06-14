@@ -39,11 +39,6 @@ let isLoggingOut = false;
 
 instance.interceptors.response.use(
   (response) => {
-    // Log successful response
-    console.log("Response received:", {
-      status: response.status,
-      data: response.data,
-    });
     // Handle successful responses
     if (response.data) {
       // If there's a token in the response, store it

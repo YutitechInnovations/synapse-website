@@ -107,7 +107,7 @@ export default function DoctorManagement() {
   const debouncedQuery = useDebouncedValue(filterString.query, 400);
   const [queryString, setQueryString] = useState("?limit=10&offset=0");
 
-  const { data: doctorsDetails, isLoading } = useDoctors(queryString);
+  const { data: doctorsDetails, isLoading, refetch } = useDoctors(queryString);
   const { mutate: handleStatusChangeAPI } = useHandleDoctorStatus(queryString);
   const [localDoctors, setLocalDoctors] = useState([]);
 
@@ -129,11 +129,15 @@ export default function DoctorManagement() {
   }, [doctorsDetails]);
 
   const handleStatusChange = ({ userId, status }) => {
-    console.log("Sending mutation:", { userId, status });
-    handleStatusChangeAPI({ userId, status });
-
-    setLocalDoctors((prev) =>
-      prev.map((doc) => (doc.user_id === userId ? { ...doc, status } : doc))
+    handleStatusChangeAPI(
+      { userId, status },
+      {
+        onSuccess: () => {
+          setTimeout(() => {
+            refetch();
+          }, 1000); 
+        },
+      }
     );
   };
 
@@ -143,7 +147,7 @@ export default function DoctorManagement() {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 md:gap-0">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4 md:gap-0">
         <h1 className="text-[2rem] font-bold text-[#004C44] leading-tight">
           Doctor Management
         </h1>
@@ -164,7 +168,7 @@ export default function DoctorManagement() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
+      <div className="flex flex-col md:flex-row gap-6 mb-2 flex-wrap">
         <StatCard label="Total Doctors" value={totalCount} />
         <StatCard
           label="Active Doctors"
@@ -177,7 +181,8 @@ export default function DoctorManagement() {
       </div>
 
       <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-hidden">
-        <div className="overflow-y-auto max-h-[calc(100vh-25rem)]">
+        <div className="overflow-y-auto max-h-[calc(100vh-25rem)] min-h-[430px]">
+          {" "}
           <table className="w-full text-left border-collapse">
             <thead className="sticky top-0 bg-[#F8FAF9] z-10">
               <tr className="border-b border-[#C7D7CB] text-[#195B48] text-[15px] font-semibold">
@@ -194,7 +199,7 @@ export default function DoctorManagement() {
                 localDoctors.map((doc, i) => (
                   <tr
                     key={doc.user_id}
-                    className="border-b border-[#C7D7CB] last:border-0 text-[#195B48] text-[15px]"
+                    className="border-b border-[#C7D7CB] text-[#195B48] text-[15px]"
                   >
                     <td className="py-3 px-4 font-medium">
                       {String(filterString.offset + i + 1).padStart(2, "0")}

@@ -75,7 +75,6 @@ export default function ShareExperienceModal({ open, onClose }) {
             setTestimonialText("");
             setSelectedFiles([]);
             onClose();
-            console.log("Testimonial submitted:", res);
             toast.success("Thank you for sharing your experience!");
           },
           onError: (err) => {

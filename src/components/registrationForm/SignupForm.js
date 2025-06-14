@@ -113,14 +113,12 @@ const SignupForm = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      console.log(validationErrors);
       return; // Stop submission if errors
     }
     const payload = {
       ...data,
       metainfo: authInformation,
     };
-    console.log("Payload:", payload);
     try {
       setLoading(true);
 
