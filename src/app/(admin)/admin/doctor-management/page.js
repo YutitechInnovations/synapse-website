@@ -19,16 +19,26 @@ function useDebouncedValue(value, delay) {
 
   return debouncedValue;
 }
-  
 
 function StatusDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
-  const options = [
-    { label: "Pending", value: "pending" },
-    { label: "Approved", value: "approved" },
-    { label: "Rejected", value: "reject" },
-  ];
+
+  const getOptions = () => {
+    if (value === "pending") {
+      return [
+        { label: "Approve", value: "approve" },
+        { label: "Reject", value: "reject" },
+      ];
+    } else if (value === "approved") {
+      return [{ label: "Reject", value: "reject" }];
+    } else if (value === "rejected") {
+      return [{ label: "Approve", value: "approve" }];
+    }
+    return [];
+  };
+
+  const options = getOptions();
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -41,17 +51,21 @@ function StatusDropdown({ value, onChange }) {
   return (
     <div className="relative inline-block" ref={ref}>
       <button
-        className="w-[200px] h-[45px] border border-[#195B48] rounded-full bg-white text-[#195B48] font-semibold px-4 flex items-center justify-between gap-2 focus:outline-none transition duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44]"
+        className="min-w-[200px] h-[40px] border border-[#195B48] rounded-full bg-white text-[#195B48] font-semibold px-4 py-2 flex items-center justify-between gap-2 focus:outline-none transition duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44]"
         onClick={() => setOpen((v) => !v)}
         type="button"
       >
         <span className="truncate">
-          {options.find((opt) => opt.value === value)?.label || value}
+          {{
+            pending: "Pending",
+            approve: "Approved",
+            reject: "Rejected",
+          }[value] || value.charAt(0).toUpperCase() + value.slice(1)}
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -59,13 +73,12 @@ function StatusDropdown({ value, onChange }) {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 9l6 6l6 -6" />
+          <path d="M6 9l6 6 6-6" />
         </svg>
       </button>
 
       {open && (
-        <div className="absolute left-0 mt-2 w-[160px] bg-white border border-[#C7D7CB] rounded-xl shadow z-50 text-[#195B48] text-[15px] font-semibold overflow-hidden">
+        <div className="absolute left-0 mt-2 w-full bg-white border border-[#C7D7CB] rounded-xl shadow z-50 text-[#195B48] text-[15px] font-semibold overflow-hidden">
           {options.map((opt) => (
             <button
               key={opt.value}
@@ -192,14 +205,11 @@ export default function DoctorManagement() {
                     <td className="py-3 px-4">{doc.ios_number}</td>
                     <td className="py-3 px-4">
                       <StatusDropdown
-                        value={
-                          doc.status.charAt(0).toUpperCase() +
-                          doc.status.slice(1)
-                        }
+                        value={doc.status}
                         onChange={(val) =>
                           handleStatusChange({
                             userId: doc.user_id,
-                            status: val.toLowerCase(),
+                            status: val,
                           })
                         }
                       />

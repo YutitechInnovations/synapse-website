@@ -18,9 +18,9 @@ export const useHandleDoctorStatus = (queryString) => {
     const mutation = useMutation({
         mutationFn: async ({ userId, status }) => {
             console.log("🔍 Status received in mutation:", status, userId);
-            if (status === "Approve") {
+            if (status === "approve") {
                 return await approveDoctors(userId);
-            } else if (status === "Reject") {
+            } else if (status === "reject") {
                 return await rejectDoctors(userId);
             } else {
                 throw new Error("Unknown status");
