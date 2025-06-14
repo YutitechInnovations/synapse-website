@@ -45,15 +45,17 @@ function ProfileDropdown({ onLogout }) {
       </button>
       {open && (
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
-          <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
+          <button
+            onClick={() => router.push("/profile")}
+            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+          >
             Profile
           </button>
-          <button
-            onClick={() => router.push("/settings")}
+          {/* <button
             className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Settings
-          </button>
+          </button> */}
           <button
             onClick={handleLogout}
             className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
@@ -243,16 +245,17 @@ export default function Navbar() {
                 >
                   E-Shop
                 </button>
-                <button
+                {/* <button
                   onClick={() => {
-                    router.push("/settings");
+                    router.push("/profile");
                     setIsMenuOpen(false);
                   }}
                 >
                   Settings
-                </button>
+                </button> */}
                 <button
                   onClick={() => {
+                    router.push("/profile");
                     setIsMenuOpen(false);
                   }}
                 >

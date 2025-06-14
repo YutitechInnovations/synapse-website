@@ -1,6 +1,5 @@
 "use client";
 import "./globals.css";
-import ConditionalNavbar from "../components/ConditionalNavbar";
 import ConditionalFooter from "../components/ConditionalFooter";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -36,7 +35,6 @@ export default function RootLayout({ children }) {
         className={`antialiased [overflow-anchor:none]`}
       >
         <Toaster />
-        <ConditionalNavbar />
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             {" "}
