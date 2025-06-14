@@ -2,12 +2,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
-import { mockDoctorList } from "@/constant/mockDoctorManagement";
+import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";
+
+function useDebouncedValue(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+  
 
 function StatusDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
-  const options = ["Pending", "Approved", "Rejected"];
+  const options = [
+    { label: "Pending", value: "pending" },
+    { label: "Approved", value: "approved" },
+    { label: "Rejected", value: "reject" },
+  ];
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -20,11 +41,13 @@ function StatusDropdown({ value, onChange }) {
   return (
     <div className="relative inline-block" ref={ref}>
       <button
-        className="w-[200px] min-w-[200px] max-w-[200px] h-[45px] border border-[#195B48] rounded-full bg-white text-[#195B48] font-semibold px-4 flex items-center justify-between gap-2 focus:outline-none transition duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44]"
+        className="w-[200px] h-[45px] border border-[#195B48] rounded-full bg-white text-[#195B48] font-semibold px-4 flex items-center justify-between gap-2 focus:outline-none transition duration-150 hover:bg-[#E6F2EF] hover:border-[#004C44]"
         onClick={() => setOpen((v) => !v)}
         type="button"
       >
-        <span className="truncate">{value}</span>
+        <span className="truncate">
+          {options.find((opt) => opt.value === value)?.label || value}
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -45,15 +68,15 @@ function StatusDropdown({ value, onChange }) {
         <div className="absolute left-0 mt-2 w-[160px] bg-white border border-[#C7D7CB] rounded-xl shadow z-50 text-[#195B48] text-[15px] font-semibold overflow-hidden">
           {options.map((opt) => (
             <button
-              key={opt}
+              key={opt.value}
               className="w-full px-4 py-2 text-left border-b last:border-0 border-[#C7D7CB] transition-colors duration-150 hover:bg-[#E6F2EF]"
               onClick={() => {
-                onChange(opt);
+                onChange(opt.value);
                 setOpen(false);
               }}
               type="button"
             >
-              {opt}
+              {opt.label}
             </button>
           ))}
         </div>
@@ -65,44 +88,48 @@ function StatusDropdown({ value, onChange }) {
 export default function DoctorManagement() {
   const [filterString, setFilterString] = useState({
     limit: 10,
-    offset: 1,
+    offset: 0,
     query: "",
   });
+  const debouncedQuery = useDebouncedValue(filterString.query, 400);
+  const [queryString, setQueryString] = useState("?limit=10&offset=0");
 
-  const [filteredData, setFilteredData] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
+  const { data: doctorsDetails, isLoading } = useDoctors(queryString);
+  const { mutate: handleStatusChangeAPI } = useHandleDoctorStatus(queryString);
+  const [localDoctors, setLocalDoctors] = useState([]);
 
   useEffect(() => {
-    const start = (filterString.offset - 1) * filterString.limit;
-    const end = start + filterString.limit;
+    const params = new URLSearchParams();
+    params.append("limit", filterString.limit);
+    params.append("offset", filterString.offset);
+    if (debouncedQuery.trim() !== "") {
+      params.append("query", debouncedQuery.trim());
+      params.append("searchBy", "name_email");
+    }
+    setQueryString(`?${params.toString()}`);
+  }, [filterString.limit, filterString.offset, debouncedQuery]);
 
-    const filtered = mockDoctorList.filter((doc) => {
-      const q = filterString.query.toLowerCase();
-      return (
-        doc.full_name.toLowerCase().includes(q) ||
-        doc.email.toLowerCase().includes(q) ||
-        doc.mobile_number.toLowerCase().includes(q)
-      );
-    });
-
-    setTotalCount(filtered.length);
-    setFilteredData(filtered.slice(start, end));
-  }, [filterString]);
+  useEffect(() => {
+    if (doctorsDetails?.data) {
+      setLocalDoctors(doctorsDetails.data);
+    }
+  }, [doctorsDetails]);
 
   const handleStatusChange = ({ userId, status }) => {
-    setFilteredData((prev) =>
-      prev.map((doc) =>
-        doc.user_id === userId ? { ...doc, status: status.toLowerCase() } : doc
-      )
-    );
+    console.log("Sending mutation:", { userId, status });
+    handleStatusChangeAPI({ userId, status });
 
-    console.log(`User ${userId} status changed to ${status}`);
+    setLocalDoctors((prev) =>
+      prev.map((doc) => (doc.user_id === userId ? { ...doc, status } : doc))
+    );
   };
-  
+
+  const totalCount = doctorsDetails?.stats?.total_users || 0;
+  const currentPage = filterString.offset / filterString.limit + 1;
+  const totalPages = Math.ceil(totalCount / filterString.limit);
 
   return (
     <div className="w-full">
-      {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 md:gap-0">
         <h1 className="text-[2rem] font-bold text-[#004C44] leading-tight">
           Doctor Management
@@ -115,22 +142,27 @@ export default function DoctorManagement() {
               setFilterString({
                 ...filterString,
                 query: e.target.value,
-                offset: 1,
+                offset: 0,
               })
             }
+            value={filterString.query}
           />
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#195B48] text-xl" />
         </div>
       </div>
 
-      {/* Stats */}
       <div className="flex flex-col md:flex-row gap-6 mb-8 flex-wrap">
         <StatCard label="Total Doctors" value={totalCount} />
-        <StatCard label="Active Doctors" value={42} />
-        <StatCard label="Inactive Doctors" value={17} />
+        <StatCard
+          label="Active Doctors"
+          value={doctorsDetails?.stats?.active_users}
+        />
+        <StatCard
+          label="Inactive Doctors"
+          value={doctorsDetails?.stats?.inactive_users}
+        />
       </div>
 
-      {/* Table */}
       <div className="bg-white rounded-[12px] border border-[#C7D7CB] p-0 overflow-hidden">
         <div className="overflow-y-auto max-h-[calc(100vh-25rem)]">
           <table className="w-full text-left border-collapse">
@@ -145,16 +177,14 @@ export default function DoctorManagement() {
               </tr>
             </thead>
             <tbody>
-              {filteredData.length > 0 ? (
-                filteredData.map((doc, i) => (
+              {localDoctors.length > 0 ? (
+                localDoctors.map((doc, i) => (
                   <tr
                     key={doc.user_id}
                     className="border-b border-[#C7D7CB] last:border-0 text-[#195B48] text-[15px]"
                   >
                     <td className="py-3 px-4 font-medium">
-                      {String(
-                        (filterString.offset - 1) * filterString.limit + i + 1
-                      ).padStart(2, "0")}
+                      {String(filterString.offset + i + 1).padStart(2, "0")}
                     </td>
                     <td className="py-3 px-4">{doc.full_name}</td>
                     <td className="py-3 px-4">{doc.email}</td>
@@ -166,13 +196,12 @@ export default function DoctorManagement() {
                           doc.status.charAt(0).toUpperCase() +
                           doc.status.slice(1)
                         }
-                        onChange={(val) => {
-                          const normalized = val.toLowerCase();
+                        onChange={(val) =>
                           handleStatusChange({
                             userId: doc.user_id,
-                            status: normalized,
-                          });
-                        }}
+                            status: val.toLowerCase(),
+                          })
+                        }
                       />
                     </td>
                   </tr>
@@ -188,16 +217,14 @@ export default function DoctorManagement() {
           </table>
         </div>
 
-        {/* Pagination */}
         <div className="flex justify-between items-center mt-4 px-4 pb-4">
-          {/* Page size selector */}
           <div className="flex items-center gap-2">
             <select
               onChange={(e) =>
                 setFilterString({
                   ...filterString,
                   limit: parseInt(e.target.value),
-                  offset: 1,
+                  offset: 0,
                 })
               }
               className="border border-[#C7D7CB] rounded px-2 py-1 text-sm"
@@ -210,21 +237,19 @@ export default function DoctorManagement() {
               ))}
             </select>
             <span className="text-sm text-[#195B48]">
-              Showing {(filterString.offset - 1) * filterString.limit + 1} to{" "}
-              {Math.min(filterString.offset * filterString.limit, totalCount)}{" "}
+              Showing {filterString.offset + 1} to{" "}
+              {Math.min(filterString.offset + filterString.limit, totalCount)}{" "}
               of {totalCount} records
             </span>
           </div>
 
-          {/* Pagination */}
           <div className="flex items-center gap-1 text-[#195B48]">
-            {/* Prev button */}
             <button
               onClick={() =>
-                filterString.offset > 1 &&
+                filterString.offset >= filterString.limit &&
                 setFilterString({
                   ...filterString,
-                  offset: filterString.offset - 1,
+                  offset: filterString.offset - filterString.limit,
                 })
               }
               className="px-3 py-2"
@@ -232,21 +257,20 @@ export default function DoctorManagement() {
               &lt;
             </button>
 
-            {/* Dynamic pagination numbers */}
             {(() => {
-              const totalPages = Math.ceil(totalCount / filterString.limit);
-              const current = filterString.offset;
               const visiblePages = [];
-
               const addPage = (page) => {
                 visiblePages.push(
                   <button
                     key={page}
                     onClick={() =>
-                      setFilterString({ ...filterString, offset: page })
+                      setFilterString({
+                        ...filterString,
+                        offset: (page - 1) * filterString.limit,
+                      })
                     }
                     className={`px-3 py-1 rounded-md ${
-                      current === page
+                      currentPage === page
                         ? "bg-[#195B48] text-white"
                         : "border-transparent hover:border-[#195B48]"
                     }`}
@@ -259,10 +283,8 @@ export default function DoctorManagement() {
               if (totalPages <= 7) {
                 for (let i = 1; i <= totalPages; i++) addPage(i);
               } else {
-                const first = 1;
-                const last = totalPages;
-                const showLeftDots = current > 4;
-                const showRightDots = current < totalPages - 3;
+                const showLeftDots = currentPage > 4;
+                const showRightDots = currentPage < totalPages - 3;
 
                 if (!showLeftDots && showRightDots) {
                   for (let i = 1; i <= 5; i++) addPage(i);
@@ -275,26 +297,23 @@ export default function DoctorManagement() {
                 } else {
                   addPage(1);
                   visiblePages.push(<span key="dots-left">...</span>);
-                  for (let i = current - 1; i <= current + 1; i++) addPage(i);
+                  for (let i = currentPage - 1; i <= currentPage + 1; i++)
+                    addPage(i);
                   visiblePages.push(<span key="dots-right">...</span>);
                   addPage(totalPages);
                 }
               }
-
               return visiblePages;
             })()}
 
-            {/* Next button */}
             <button
-              onClick={() => {
-                const totalPages = Math.ceil(totalCount / filterString.limit);
-                if (filterString.offset < totalPages) {
-                  setFilterString({
-                    ...filterString,
-                    offset: filterString.offset + 1,
-                  });
-                }
-              }}
+              onClick={() =>
+                currentPage < totalPages &&
+                setFilterString({
+                  ...filterString,
+                  offset: filterString.offset + filterString.limit,
+                })
+              }
               className="px-3 py-2"
             >
               &gt;
