@@ -7,6 +7,7 @@ import ClientOnly from "../../../components/ClientOnly";
 import Navbar from "../../../components/navbar/Navbar.js";
 import { getOrthoSyncUrl } from "@/services/auth.js";
 import toast from "react-hot-toast";
+import React, { useEffect } from "react";
 
 const handleOrthoSync = async () => {
   try {
@@ -32,6 +33,19 @@ const handleOrthoSync = async () => {
 };
 
 export default function PostLoginHome() {
+  useEffect(() => {
+    const preventBack = () => {
+      history.pushState(null, "", location.href);
+    };
+
+    window.addEventListener("popstate", preventBack);
+    history.pushState(null, "", location.href);
+
+    return () => {
+      window.removeEventListener("popstate", preventBack);
+    };
+  }, []);
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
       <ClientOnly>
