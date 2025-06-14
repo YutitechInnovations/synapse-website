@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Welcome() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full mb-10">
       <ClientOnly>
         <Navbar />
       </ClientOnly>

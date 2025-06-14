@@ -58,21 +58,23 @@ const Footer = () => {
   const handleOrthoSync = async () => {
     try {
       const response = await getOrthoSyncUrl();
-      const { status, message, data } = response?.data || {};
-
-      if (status === "failed") {
-        toast.error(message || "Something went wrong. Please try again.");
-        return;
-      }
-
-      const url = data?.orthosync_url || response?.url;
+      const url = response?.data?.orthosync_url || response?.url;
+      const status = response?.data?.status;
+      const message = response?.data?.message;
 
       if (url) {
         window.open(url, "_blank");
+        console.log(url, "url");
+        console.log(response, "response");
       } else {
-        toast.error("OrthoSync URL not available.");
+        if (status === "failed") {
+          toast.error(message || "Unable to open OrthoSync. Please try again.");
+        } else {
+          toast.error("OrthoSync URL not available.");
+        }
       }
     } catch (err) {
+      console.log(err);
       const errorMessage =
         err?.response?.data?.message || err?.message || "Something went wrong";
     }
