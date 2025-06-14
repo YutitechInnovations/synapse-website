@@ -3,9 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./ConnectionFeatureSection.module.css";
-import RxTrackLogo from "../svg/rxTrack";
 import { getOrthoSyncUrl } from "@/services/auth.js";
-
+import { RxTrackIcon } from "@/theme/icons";
 
 const features = [
   {
@@ -36,7 +35,7 @@ export default function ConnectionFeatureSection({
   onOrthoSyncClick,
 }) {
   const router = useRouter();
- const handleOrthoSync = async () => {
+  const handleOrthoSync = async () => {
     try {
       const response = await getOrthoSyncUrl();
       const url = response?.data?.orthosync_url || response?.url;
@@ -95,7 +94,7 @@ export default function ConnectionFeatureSection({
               )}
               {feature.title === "RₓTrack™" && (
                 <div className={styles.pillInner}>
-                  <RxTrackLogo className={styles.pillLogo} />
+                  <RxTrackIcon className={styles.pillLogo} />
                 </div>
               )}
               {feature.title === "AlignMasters™" && (

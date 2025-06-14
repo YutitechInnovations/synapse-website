@@ -90,7 +90,7 @@ export default function AdminLogin() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-2">
             <label className="frm-label" htmlFor="password">
               Password
             </label>
@@ -106,7 +106,7 @@ export default function AdminLogin() {
           </div>
           <div className="w-full text-right mb-2">
             <Link href="/admin-forgot-password" className="text-[#195B48] hover:underline text-sm">
-              Forgot Admin Password?
+              Forgot Password?
             </Link>
           </div>
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
