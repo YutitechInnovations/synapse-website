@@ -1,7 +1,5 @@
 "use client";
 
-import RewardStats from "@/components/RewardStats";
-import RewardHistory from "@/components/RewardHistory";
 import Navbar from "@/components/Navbar/Navbar";
 
 export default function RewardProgram() {
