@@ -1,20 +1,21 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 
 export default function AdminDashboard() {
-  useEffect(() => {
-    const preventBack = () => {
-      history.pushState(null, "", location.href);
-    };
 
-    window.addEventListener("popstate", preventBack);
-    history.pushState(null, "", location.href);
+    useEffect(() => {
+      const handlePopState = (event) => {
+        history.pushState(null, "", window.location.href);
+      };
 
-    return () => {
-      window.removeEventListener("popstate", preventBack);
-    };
-  }, []);
+      history.pushState(null, "", window.location.href);
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }, []);
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-[#F8FAF9]">

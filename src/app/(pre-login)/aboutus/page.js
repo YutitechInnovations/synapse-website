@@ -1,4 +1,4 @@
-import Navbar from "../../../components/navbar/Navbar.js";
+import Navbar from "../../../components/Navbar/Navbar.js";
 import styles from "./aboutus.module.css";
 import React from "react";
 import Image from "next/image";
@@ -29,7 +29,7 @@ const team = [
     image: "/images/ayushi.png",
   },
 ];
-  
+
 let items = [
   {
     title: "Vision Statement",
@@ -43,7 +43,7 @@ let items = [
       "Our purpose is to empower dental professionals with evidence-based, personalized solutions that streamline clinical workflows, support continuous learning, and enhance patient outcomes through every stage of care.",
     image: "/images/aboutus-mission.png",
   },
-]; 
+];
 
 const ZigZagCard = ({ items }) => {
   return (
@@ -53,8 +53,11 @@ const ZigZagCard = ({ items }) => {
         return (
           <div
             key={index}
-            className={`w-full flex flex-col ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'} justify-end h-auto md:min-h-[16rem] md:h-[22rem] ${index + 1 !== items.length ? "border-b border-[#004C4480]" : ""
-              } overflow-hidden`}
+            className={`w-full flex flex-col ${
+              isOdd ? "md:flex-row" : "md:flex-row-reverse"
+            } justify-end h-auto md:min-h-[16rem] md:h-[22rem] ${
+              index + 1 !== items.length ? "border-b border-[#004C4480]" : ""
+            } overflow-hidden`}
           >
             <div className="w-full flex flex-col gap-4 md:gap-6 justify-center items-start px-4 md:px-8 lg:px-10">
               <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl text-left">
@@ -69,7 +72,7 @@ const ZigZagCard = ({ items }) => {
                 <Image
                   src={item.image}
                   fill
-                  style={{ objectFit: 'cover', }}
+                  style={{ objectFit: "cover" }}
                   alt={item.title}
                 />
               </div>

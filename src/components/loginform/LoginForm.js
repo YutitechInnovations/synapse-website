@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { doctorLogin } from "@/services/auth";
 import { authenticate } from "@/network/helper";
-import Loader from "../loader";
+import Loader from "../Loader/Loader";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -46,7 +46,7 @@ const LoginForm = () => {
       setLoading(false);
     }
   };
-    
+
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       {loading && <Loader />}

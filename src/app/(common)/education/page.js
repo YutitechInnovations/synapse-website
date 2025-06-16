@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Image from "next/image";
 
 export default function Education() {

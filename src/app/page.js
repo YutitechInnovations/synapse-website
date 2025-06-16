@@ -1,13 +1,25 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+"use client";
 
-export default function Page() {
-  const cookieStore = cookies();
-  const token = cookieStore.get("access_token");
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-  if (token?.value) {
-    redirect("/home");
-  } else {
-    redirect("/welcome");
-  }
+export default function EntryRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const accessToken = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("access_token="))
+      ?.split("=")[1];
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    if (accessToken && isLoggedIn) {
+      router.replace("/home");
+    } else {
+      router.replace("/welcome");
+    }
+  }, [router]);
+
+  return null;
 }

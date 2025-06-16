@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./home.module.css";
 import ConnectionFeatureSection from "../../../components/ConnectionFeatureSection/ConnectionFeatureSection";
 import ClientOnly from "../../../components/ClientOnly";
-import Navbar from "../../../components/navbar/Navbar.js";
+import Navbar from "../../../components/Navbar/Navbar.js";
 import { getOrthoSyncUrl } from "@/services/auth.js";
 import toast from "react-hot-toast";
 import React, { useEffect } from "react";

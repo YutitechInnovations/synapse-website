@@ -1,24 +1,24 @@
 "use client";
 import styles from "./AlignMasters.module.css";
-import Image from "next/image";
+// import Image from "next/image";
 import { useState } from "react";
 import ShareExperienceModal from "./ShareExperienceModal";
 import ClientOnly from "../../../components/ClientOnly";
-import Navbar from "../../../components/navbar/Navbar.js";
-import {
-  useMutateComment,
-  useMutateTestimonial,
-  useTestimonials,
-  useTestimonialsComments,
-} from "@/hooks/useTestimonials";
-import Loader from "@/components/loader";
-import {
-  addCommentToTestimonial,
-  likeTestimonial,
-} from "@/services/alignMasters";
-import ModalWithComments from "@/components/commentsModal";
-import TestimonialCard from "@/components/testimonialCard";
-import toast from "react-hot-toast";
+import Navbar from "../../../components/Navbar/Navbar.js";
+// import {
+//   useMutateComment,
+//   useMutateTestimonial,
+//   useTestimonials,
+//   useTestimonialsComments,
+// } from "@/hooks/useTestimonials";
+// import Loader from "@/components/Loader/Loader";
+// import {
+//   addCommentToTestimonial,
+//   likeTestimonial,
+// } from "@/services/alignMasters";
+// import ModalWithComments from "@/components/commentsModal";
+// import TestimonialCard from "@/components/testimonialCard";
+// import toast from "react-hot-toast";
 
 export default function AlignMasters() {
   const [modalOpen, setModalOpen] = useState(false);
