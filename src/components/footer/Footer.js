@@ -167,7 +167,7 @@ const Footer = () => {
       <div className="w-full bg-white py-4">
         <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-12">
           <p className="text-[#08544A] text-sm text-center md:text-left mb-2 md:mb-0">
-            © 2025 Synapse. All rights reserved.
+            © {new Date().getFullYear()} Synapse. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a
