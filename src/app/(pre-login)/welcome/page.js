@@ -8,7 +8,7 @@ export const metadata = {
   title: "Synapse",
   description: "Synapse - Your Orthodontic Connection",
   icons: {
-    icon: "/tabIcon.png",
+    icon: "/favicon.png",
   },
 };
 

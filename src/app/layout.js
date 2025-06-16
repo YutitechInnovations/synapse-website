@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${poppins.variable} ${sora.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body
         className={`antialiased [overflow-anchor:none]`}
