@@ -206,7 +206,7 @@ export default function PostLoginHome() {
               href="/blogs"
               className={
                 styles.educationCard +
-                " group block transition-transform hover:scale-[1.02]"
+                " group block transition-transform hover:scale-[1.02] cursor-pointer"
               }
             >
               <div className="relative w-full h-full">
@@ -214,20 +214,25 @@ export default function PostLoginHome() {
                   src="/images/education-blogs.png"
                   alt="Blogs"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">
-                  Blogs
-                </span>
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
+                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
+                    Blogs
+                  </span>
+                  <p className="text-[#004C44] text-sm md:text-base">
+                    Articles from our team to spark thought and conversation in oral care.
+                  </p>
+                </div>
               </div>
             </a>
             {/* Materials & Data Card */}
             <a
-              href="#"
+              href="/materials"
               className={
                 styles.educationCard +
-                " group block transition-transform hover:scale-[1.02]"
+                " group block transition-transform hover:scale-[1.02] cursor-pointer"
               }
             >
               <div className="relative w-full h-full">
@@ -235,20 +240,25 @@ export default function PostLoginHome() {
                   src="/images/education-material.png"
                   alt="Materials & Data"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">
-                  Materials & Data
-                </span>
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
+                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
+                    Materials & Data
+                  </span>
+                  <p className="text-[#004C44] text-sm md:text-base">
+                    Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.
+                  </p>
+                </div>
               </div>
             </a>
             {/* Research Papers Card */}
             <a
-              href="#"
+              href="/research"
               className={
                 styles.educationCard +
-                " group block transition-transform hover:scale-[1.02]"
+                " group block transition-transform hover:scale-[1.02] cursor-pointer"
               }
             >
               <div className="relative w-full h-full">
@@ -256,20 +266,25 @@ export default function PostLoginHome() {
                   src="/images/education-research.png"
                   alt="Research Papers"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">
-                  Research Papers
-                </span>
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
+                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
+                    Research Papers
+                  </span>
+                  <p className="text-[#004C44] text-sm md:text-base">
+                    Summaries and access to relevant scientific literature that inform and validate clinical practices.
+                  </p>
+                </div>
               </div>
             </a>
-            {/* Patients&apos; FAQs Card */}
+            {/* Patients' FAQs Card */}
             <a
               href="/faq"
               className={
                 styles.educationCard +
-                " group block transition-transform hover:scale-[1.02]"
+                " group block transition-transform hover:scale-[1.02] cursor-pointer"
               }
             >
               <div className="relative w-full h-full">
@@ -277,12 +292,17 @@ export default function PostLoginHome() {
                   src="/images/education-faq.png"
                   alt="Patients' FAQs"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-                <span className="absolute bottom-8 left-8 z-20 text-[28px] font-bold text-[#004C44]">
-                  Patients&apos; FAQs
-                </span>
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
+                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
+                    Patients' FAQs
+                  </span>
+                  <p className="text-[#004C44] text-sm md:text-base">
+                    Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.
+                  </p>
+                </div>
               </div>
             </a>
           </div>

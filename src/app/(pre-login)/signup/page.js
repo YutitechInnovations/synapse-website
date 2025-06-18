@@ -416,7 +416,7 @@ const SignupForm = () => {
               Policy. We&apos;ll occasionally send you account related emails.
             </p>
 
-            <button className="btn-primary cmnbtn w-full" type="submit">
+            <button className="btn-primary cmnbtn w-full cursor-pointer" type="submit">
               Register
             </button>
           </form>
@@ -494,7 +494,7 @@ const SignupForm = () => {
             </div>
 
             <button
-              className="btn-primary cmnbtn w-full"
+              className="btn-primary cmnbtn w-full cursor-pointer"
               type="submit"
               disabled={disablePassword}
             >

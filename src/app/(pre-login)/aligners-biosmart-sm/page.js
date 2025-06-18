@@ -145,48 +145,76 @@ export default function BioSmartSM() {
           </div>
         </section>
 
-        {/* Table Section */}
-        <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white py-8 md:py-16 pb-[150px]">
-          <div className="max-w-[1240px] w-full">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-[600] text-[#195B48] mb-4 leading-tight">
-              BioSmart ™ SM Smart Memory Aligners. <br /> Precision-Built.
-              Future-Ready
-            </h2>
-            <p className="mb-8 text-[#195B48] text-base md:text-lg">
-              The BioSmart™ SM Smart Memory Aligner System offers four treatment
-              options, giving you control to manage each case in line with your
-              clinical preferences.
-            </p>
-            <div className="flex flex-col items-center overflow-x-auto w-full">
-              <div className="relative">
-                <Image
-                  src="/images/bio-smart-table.png"
-                  alt="BioSmart SM Flow"
-                  width={1169}
-                  height={390}
-                  className="min-w-[700px] w-full h-auto object-contain"
-                />
-                <p
-                  className="absolute text-[#195B48] text-sm"
-                  style={{
-                    width: "415px",
-                    top: "405px",
-                    left: "0px",
-                  }}
-                >
-                  -Mid-Course correction is quarterly across all plans
+        {/* Treatment Plan Table Section */}
+        <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white py-8 md:py-16">
+          <div className="w-full max-w-[1169px] relative mb-[100px]" style={{ minWidth: '0', minHeight: '0' }}>
+            <div className="overflow-x-auto">
+              {/* Table Heading and Subheading (Figma accurate) */}
+              <div className="w-full max-w-[1169px] mx-auto mb-8 pt-8 px-8">
+                <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
+                  BioSmart™ SM Smart Memory Aligners.<br />
+                  Precision-Built. Future-Ready
+                </h2>
+                <p className="text-[#195B48] text-[20px] font-normal leading-relaxed max-w-3xl mb-6">
+                  The BioSmart™ SM Smart Memory Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences.
                 </p>
               </div>
-              <div className="relative w-full mt-4 mb-[150px]">
-                <Image
-                  src="/images/power.png"
-                  alt="Power Icon"
-                  width={134}
-                  height={116}
-                  className="absolute left-[calc(100%-150px)]"
-                />
+              <table className="min-w-full text-center border-separate border-spacing-y-4 px-8">
+                <thead>
+                  <tr>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold text-left  rounded-tl-xl">Treatment Plan</th>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold">Steps</th>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold">Months</th>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold">Retainers</th>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold  rounded-tr-xl">Refinement</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="bg-[#aafff3]">
+                    <td className="py-4 px-4 font-semibold text-left">RₓLinte</td>
+                    <td className="py-4 px-4">Up to 12</td>
+                    <td className="py-4 px-4">6</td>
+                    <td className="py-4 px-4">1</td>
+                    <td className="py-4 px-4">0</td>
+                  </tr>
+                  <tr className="bg-[#1ec9a8] text-white">
+                    <td className="py-4 px-4 font-semibold text-left">RₓPro</td>
+                    <td className="py-4 px-4">Up to 24</td>
+                    <td className="py-4 px-4">12</td>
+                    <td className="py-4 px-4">1</td>
+                    <td className="py-4 px-4">1</td>
+                  </tr>
+                  <tr className="bg-[#009e87] text-white">
+                    <td className="py-4 px-4 font-semibold text-left">RₓPro+</td>
+                    <td className="py-4 px-4">Up to 48</td>
+                    <td className="py-4 px-4">24</td>
+                    <td className="py-4 px-4">2</td>
+                    <td className="py-4 px-4">2</td>
+                  </tr>
+                  <tr className="bg-[#003c36] text-white">
+                    <td className="py-4 px-4 font-semibold text-left">RₓMax</td>
+                    <td className="py-4 px-4">Comprehensive</td>
+                    <td className="py-4 px-4">36</td>
+                    <td className="py-4 px-4">3</td>
+                    <td className="py-4 px-4">3</td>
+                  </tr>
+                </tbody>
+              </table>
+              {/* Bottom left note text (not absolute, sits above image) */}
+              <div className="pl-8 pt-4">
+                <span className="text-[#195B48] text-sm italic">
+                  -Mid-Course correction is quarterly across all plans
+                </span>
               </div>
             </div>
+            {/* Power Icon absolutely positioned just below the card, bottom right */}
+            <Image
+              src="/images/power.png"
+              alt="Power Icon"
+              width={134}
+              height={116}
+              className="absolute right-0 -bottom-14 z-10"
+            />
           </div>
         </section>
       </div>

@@ -88,6 +88,17 @@
     height: 28px;
     width: auto;
   }
+
+  /* Specific styling for AlignMasters pill */
+  .card:nth-child(3) .pill {
+    background: #000;
+    border: 1px solid #000;
+  }
+
+  .card:nth-child(3) .pillImage {
+    filter: brightness(0) invert(1); /* This will make the image white */
+  }
+
 .cardTitle {
   font-size: 1.5rem;
   font-weight: 600;

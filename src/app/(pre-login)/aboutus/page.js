@@ -7,38 +7,38 @@ const team = [
   {
     name: "Sujit Hota",
     title: "CEO & Co-Founder",
-    description: "IIM C Alum (>25 years of dental industry experience)",
+    description: "IIM C Alum",
     image: "/images/sujit.png",
   },
   {
     name: "Prabakar KP",
     title: "COO & Co-Founder",
-    description: "IIML Alum (>15 years of dental + software experience)",
+    description: "IIML Alum ",
     image: "/images/prabhakar.png",
   },
   {
     name: "Dr Harmeet Kaur",
     title: "Manager, Clinical & Education",
-    description: "Orthodontist (>8 years of experience)",
+    description: "MDS (Orthodontics)",
     image: "/images/harmeet.png",
   },
   {
-    name: "Dr Ayushi",
+    name: "Dr Ayushi Roy Chowdhury",
     title: "Customer Success Manager",
-    description: "Orthodontist (>3 years of experience)",
+    description: "MDS (Orthodontics)",
     image: "/images/ayushi.png",
   },
 ];
 
 let items = [
   {
-    title: "Vision Statement",
+    title: "Vision",
     description:
       "To elevate clinical practices through personalized care solutions that enhance every patient journey.",
     image: "/images/aboutus-vision.png",
   },
   {
-    title: "Mission Statement",
+    title: "Mission",
     description:
       "Our purpose is to empower dental professionals with evidence-based, personalized solutions that streamline clinical workflows, support continuous learning, and enhance patient outcomes through every stage of care.",
     image: "/images/aboutus-mission.png",
@@ -95,9 +95,7 @@ export default function About() {
               About Us
             </h1>
             <p className="font-medium w-[80%] text-justify text-xs sm:text-base md:text-xl mb-3 md:mb-6">
-              Driven by a passionate team with deep industry experience, we aim
-              to empower dental practices and transform patient journeys through
-              innovation and care.
+              We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.
             </p>
           </div>
         </div>

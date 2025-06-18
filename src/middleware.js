@@ -16,6 +16,8 @@ export const PUBLIC_ROUTES = [
     "/aligners-biosmart-t",
     "/forgot-password",
     "/admin-forgot-password",
+    "/materials",
+    "/research",
 ];
 export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
 

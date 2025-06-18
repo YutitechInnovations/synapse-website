@@ -155,7 +155,7 @@ export default function Navbar() {
         setIsMenuOpen(false);
         router.push(href);
       }}
-      className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+      className={`${styles.navItem} text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]`}
     >
       {label}
     </button>
@@ -312,7 +312,7 @@ export default function Navbar() {
                   Aligners
                 </button>
                 <button
-                  className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
+                  className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md cursor-pointer"
                   onClick={() => {
                     router.push("/login");
                     setIsMenuOpen(false);
@@ -409,7 +409,7 @@ export default function Navbar() {
                         )}
                       </li>
                       <li>{navButton("Education", "/education")}</li>
-                      <li>{navButton("About us", "/aboutus")}</li>
+                      <li>{navButton("About Us", "/aboutus")}</li>
                       <li>{navButton("Careers", "/careers")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>
@@ -417,7 +417,7 @@ export default function Navbar() {
                       <li className="flex items-center md:ml-[30px]">
                         <button
                           onClick={() => router.push("/login")}
-                          className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2"
+                          className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md cursor-pointer text-base ml-2"
                         >
                           Login
                         </button>

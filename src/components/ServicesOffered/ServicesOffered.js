@@ -5,13 +5,13 @@ import styles from "./ServicesOffered.module.css";
 
 const ServiceCircle = () => {
   const [active, setActive] = useState(null);
-  const containerRef = useRef(null);
+  const circlesRef = useRef(null);
 
   const descriptions = {
     planning: {
       title: "Aligner Treatment Planning",
       text: `Every great aligner outcome begins with a precise plan.\n
-With our proprietary RxF.O.R.C.E™ philosophy, we engineer treatment plans that deliver the right force at the right time—leveraging material behaviour and thickness control to gently and accurately guide each tooth. Whether you choose smart memory or thermoformed aligners, every stage is personalized for predictable, patient-friendly movement.`,
+With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans that deliver the right force at the right time—leveraging material behaviour and thickness control to gently and accurately guide each tooth. Whether you choose smart memory or thermoformed aligners, every stage is personalized for predictable, patient-friendly movement.`,
     },
     fabrication: {
       title: "Plan Fabrication",
@@ -36,10 +36,10 @@ With our proprietary RxF.O.R.C.E™ philosophy, we engineer treatment plans that
   // Close on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
+      // Check if the click is within any of the circles
+      const isClickInCircle = event.target.closest(`.${styles.first_circle}, .${styles.second_circle}, .${styles.third_circle}`);
+      
+      if (!isClickInCircle) {
         setActive(null);
       }
     };
@@ -62,18 +62,16 @@ With our proprietary RxF.O.R.C.E™ philosophy, we engineer treatment plans that
           can feel free to reach out to us for more details!
         </p>
         <p className={styles.paragraph_styles}>
-          Click on the dots to know more.
+          <b>Click on the dots to know more.</b>
         </p>
 
-        <div className={styles.circlesContainer} ref={containerRef}>
+        <div className={styles.circlesContainer} ref={circlesRef}>
           <div className={styles.circles}>
-            <div className={styles.third_circle}>
-              <div
-                className={styles.dot}
-                onClick={() =>
-                  setActive(active === "integrated" ? null : "integrated")
-                }
-              />
+            <div 
+              className={styles.third_circle}
+              onClick={() => setActive(active === "integrated" ? null : "integrated")}
+            >
+              <div className={styles.dot} />
               <span>Integrated Align 360</span>
               {active === "integrated" && (
                 <div
@@ -96,13 +94,11 @@ With our proprietary RxF.O.R.C.E™ philosophy, we engineer treatment plans that
               )}
             </div>
 
-            <div className={styles.second_circle}>
-              <div
-                className={styles.dot}
-                onClick={() =>
-                  setActive(active === "fabrication" ? null : "fabrication")
-                }
-              />
+            <div 
+              className={styles.second_circle}
+              onClick={() => setActive(active === "fabrication" ? null : "fabrication")}
+            >
+              <div className={styles.dot} />
               <span>Plan Fabrication</span>
               {active === "fabrication" && (
                 <div
@@ -113,13 +109,11 @@ With our proprietary RxF.O.R.C.E™ philosophy, we engineer treatment plans that
               )}
             </div>
 
-            <div className={styles.first_circle}>
-              <div
-                className={styles.dot}
-                onClick={() =>
-                  setActive(active === "planning" ? null : "planning")
-                }
-              />
+            <div 
+              className={styles.first_circle}
+              onClick={() => setActive(active === "planning" ? null : "planning")}
+            >
+              <div className={styles.dot} />
               <span>
                 {" "}
                 Aligner Treatment

@@ -12,15 +12,13 @@ export default function Aligners() {
         <div className={`container w-full ${styles.heroContent} `}>
           <div className="max-w-3xl w-full">
             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-[600] mb-6 leading-tight text-[#184C3A]">
-              R<sub className="text-base font-[600] align-super">x</sub>
-              .F.O.R.C.E™
+              RₓF.O.R.C.E™
             </h1>
             <p className=" text-[1rem] md:text-xl font-[400] text-[#184C3A]">
               Orthodontic treatment is most effective when it&apos;s
-              biomechanically intelligent. That&apos;s the idea behind R
-              <sub className="text-base align-super">x</sub>.F.O.R.C.E™ —{" "}
+              biomechanically intelligent. That&apos;s the idea behind RₓF.O.R.C.E™— our{" "}
               <span className="italic">
-                our Force Optimized Responsive Corrective Engine
+                Force Optimized Responsive Corrective Engine
               </span>
               .
             </p>
@@ -35,7 +33,7 @@ export default function Aligners() {
             Smart Force, Thoughtfully Applied
           </h2>
           <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
-            R<sub className="text-base align-super">x</sub>.F.O.R.C.E™ applies
+          RₓF.O.R.C.E™ applies
             the right force at the right time by adjusting material behavior and
             thickness stage by stage. It&apos;s a precision-driven philosophy
             designed to guide each tooth gently and effectively, ensuring
@@ -53,11 +51,8 @@ export default function Aligners() {
         <div>
           <div className="w-full flex justify-center items-center text-center flex-col px-2 sm:px-4 md:px-8 lg:px-0">
             <h2 className="text-3xl md:text-4xl font-[600] text-[#195B48] text-left mb-4">
-              BioSmart™ Systems: Powered by{" "}
-              <span className="font-[600]">
-                R<sub className="text-base align-super">x</sub>.F.O.R.C.E
-                <sup className="text-base">™</sup>
-              </span>
+              BioSmart™ Systems: Powered by RₓF.O.R.C.E™
+              
             </h2>
             <p className="text-lg text-[#195B48] mt-3 font-[400] mb-10">
               Our aligner systems are available in two options depending on your

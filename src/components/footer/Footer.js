@@ -7,7 +7,7 @@ import { getOrthoSyncUrl } from "@/services/auth.js";
 
 const leftLinks = [
   { label: "OrthoSync™", href: "/orthosync" },
-  { label: "RxTrack™", href: "/rxtrack" },
+  { label: "RₓTrack™", href: "/rxtrack" },
   { label: "AlignMasters™", href: "/alignmasters" },
   { label: "E-Shop", href: "/e-shop" },
 ];
@@ -144,20 +144,20 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
           <div className="text-white text-base leading-relaxed space-y-1">
             <p>
-              <span className="font-semibold">Toll Free Number:</span> 1800 202
+              <span className="font-semibold border-b border-white pb-0.5">Toll Free Number:</span> 1800 202
               3282
             </p>
             <p>
-              <span className="font-semibold">Email ID:</span>{" "}
+              <span className="font-semibold border-b border-white pb-0.5">Email ID:</span>{" "}
               support@synapsehealthtech.in
             </p>
             <p>
-              <span className="font-semibold">Corporate Office Address:</span>{" "}
+              <span className="font-semibold border-b border-white pb-0.5">Corporate Office Address:</span>{" "}
               No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,
               <br />
               Sarakki Industrial Layout, J P Nagar 3rd phase,
               <br />
-              Bangalore – 560078
+              Bangalore – 560078,Karnataka 
             </p>
           </div>
         </div>

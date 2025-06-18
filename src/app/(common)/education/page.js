@@ -7,19 +7,25 @@ export default function Education() {
   const insightCards = [
     {
       title: "Blogs",
+      description: "Articles from our team to spark thought and conversation in oral care.",
       image: "/images/education-blogs.png",
       link: "/blogs",
     },
     {
       title: "Materials & Data",
+      description: "Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.",
       image: "/images/education-material.png",
+      link: "/materials",
     },
     {
       title: "Research Papers",
+      description: "Summaries and access to relevant scientific literature that inform and validate clinical practices.",
       image: "/images/education-research.png",
+      link: "/research",
     },
     {
       title: "Patients' FAQs",
+      description: "Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.",
       image: "/images/education-faq.png",
       link: "/faq",
     },
@@ -39,8 +45,10 @@ export default function Education() {
           {insightCards.map((card, index) => (
             <a
               key={index}
-              {...(card.link && { href: card.link })}
-              className="group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white"
+              href={card.link}
+              className={
+                "group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white cursor-pointer transition-transform hover:scale-[1.02]"
+              }
             >
               <Image
                 src={card.image}
@@ -50,11 +58,14 @@ export default function Education() {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
               {/* Gradient overlay for text visibility */}
-              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
-              <div className="absolute bottom-8 left-8 z-20">
-                <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none">
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+              <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
+                <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none mb-2">
                   {card.title}
                 </h3>
+                <p className="text-[#004C44] text-sm md:text-base">
+                  {card.description}
+                </p>
               </div>
             </a>
           ))}

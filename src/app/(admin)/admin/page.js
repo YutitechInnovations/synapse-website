@@ -147,7 +147,7 @@ export default function AdminLogin() {
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
 
           <button
-            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors"
+            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors cursor-pointer"
             type="submit"
           >
             Sign In

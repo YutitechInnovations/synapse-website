@@ -12,6 +12,22 @@
   justify-content: space-between;
 }
 
+/* Add cursor pointer for all navigation items */
+.navbar :global(button),
+.navbar :global(a) {
+  cursor: pointer !important;
+}
+
+/* Target navigation items */
+.navbar :global(ul li button),
+.navbar :global(ul li a) {
+  cursor: pointer !important;
+}
+
+.navItem {
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
   .navbar {
     padding: 0.75rem 1.5rem;
@@ -32,7 +48,6 @@
   .navbar {
     padding: 0.625rem 1rem;
     margin-top: 1rem;
-
     width: 100%;
     gap: 0.75rem;
   }

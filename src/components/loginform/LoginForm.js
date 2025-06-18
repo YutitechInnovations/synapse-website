@@ -130,14 +130,14 @@ const LoginForm = () => {
           <div className="w-full text-right mb-1">
             <Link
               href="/forgot-password"
-              className="text-[#195B48] hover:underline text-sm"
+              className="text-[#195B48] hover:underline text-sm cursor-pointer"
             >
               Forgot Password?
             </Link>
           </div>
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
           <button
-            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors"
+            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors cursor-pointer"
             type="submit"
           >
             Sign In
