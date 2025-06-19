@@ -279,7 +279,7 @@ export default function PostLoginHome() {
                 </div>
               </div>
             </a>
-            {/* Patients' FAQs Card */}
+            {/* Patients&apos; FAQs Card */}
             <a
               href="/faq"
               className={
@@ -290,14 +290,14 @@ export default function PostLoginHome() {
               <div className="relative w-full h-full">
                 <Image
                   src="/images/education-faq.png"
-                  alt="Patients' FAQs"
+                  alt="Patients&apos; FAQs"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
                 <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
                   <span className="block text-[28px] font-bold text-[#004C44] mb-2">
-                    Patients' FAQs
+                    Patients&apos; FAQs
                   </span>
                   <p className="text-[#004C44] text-sm md:text-base">
                     Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.

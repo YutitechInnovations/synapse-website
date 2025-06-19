@@ -26,7 +26,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
       ],
       bullets: [
         "OrthoSync™ streamlines treatment management at your fingertips.",
-        "RxTrack™ ensures real-time patient compliance and motivation.",
+        "RₓTrack™ ensures real-time patient compliance and motivation.",
         "Our Personal Branding services* puts your identity front and center—boosting visibility, building trust, and helping your practice grow.",
       ],
       footnote: "* Basis pre-defined criteria for selection",

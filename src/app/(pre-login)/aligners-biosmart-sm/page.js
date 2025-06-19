@@ -171,7 +171,7 @@ export default function BioSmartSM() {
                 </thead>
                 <tbody>
                   <tr className="bg-[#aafff3]">
-                    <td className="py-4 px-4 font-semibold text-left">RₓLinte</td>
+                    <td className="py-4 px-4 font-semibold text-left">RₓLite</td>
                     <td className="py-4 px-4">Up to 12</td>
                     <td className="py-4 px-4">6</td>
                     <td className="py-4 px-4">1</td>

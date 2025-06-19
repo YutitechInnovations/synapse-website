@@ -96,7 +96,7 @@ export default function BioSmartT() {
                 </thead>
                 <tbody>
                   <tr className="bg-[#aafff3]">
-                    <td className="py-4 px-4 font-semibold text-left">RₓLinte</td>
+                    <td className="py-4 px-4 font-semibold text-left">RₓLite</td>
                     <td className="py-4 px-4">Up to 12</td>
                     <td className="py-4 px-4">6</td>
                     <td className="py-4 px-4">1</td>
@@ -133,13 +133,7 @@ export default function BioSmartT() {
               </div>
             </div>
             {/* Power Icon absolutely positioned just below the card, bottom right */}
-            <Image
-              src="/images/power.png"
-              alt="Power Icon"
-              width={134}
-              height={116}
-              className="absolute right-0 -bottom-14 z-10"
-            />
+            
           </div>
         </section>
       </div>

@@ -91,10 +91,10 @@
       padding-top: 3rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-    }
-  
-    .heroContent {
       min-height: 50vh;
+    }
+    .heroSection {
+      height: 45vh;
     }
   }
   

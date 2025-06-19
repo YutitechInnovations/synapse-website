@@ -94,13 +94,13 @@ export default function About() {
       <Navbar />
       <section className={styles.heroSection}>
         <div className="px-4 sm:px-6 md:px-12 lg:px-24">
-          <div className="max-w-xl w-full">
+          <div className="max-w-3xl w-full">
             <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-3 md:mb-6 leading-tight">
               About Us
             </h1>
-            <p className={`font-medium w-[80%] text-justify text-xs sm:text-base md:text-xl mb-3 md:mb-6 ${styles.heroSectionText}`}>
-              We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.
-            </p>
+            <p className={`font-medium w-full text-left text-xs sm:text-base md:text-xl mb-3 md:mb-6 ${styles.heroSectionText}`}>
+              We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.<br/>
+              Together with clinicians, we strive to make oral care more thoughtful, precise, and human — always keeping the patient&apos;s well-being at the heart of everything we do.</p>
           </div>
         </div>
       </section>{" "}
