@@ -89,7 +89,13 @@ export default function ConnectionFeatureSection({
             <div className={styles.pill}>
               {feature.title === "OrthoSync™" && (
                 <div className={styles.pillInner}>
-                  <span className={styles.pillText}>OrthoSync</span>
+                  <Image
+                    src="/images/orthosync.png"
+                    alt={feature.title}
+                    width={120}
+                    height={40}
+                    className={styles.pillImage}
+                  />
                 </div>
               )}
               {feature.title === "RₓTrack™" && (

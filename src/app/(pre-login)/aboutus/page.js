@@ -8,24 +8,28 @@ const team = [
     name: "Sujit Hota",
     title: "CEO & Co-Founder",
     description: "IIM C Alum",
+    experience: "(>25 years of dental industry experience)",
     image: "/images/sujit.png",
   },
   {
     name: "Prabakar KP",
     title: "COO & Co-Founder",
     description: "IIML Alum ",
+    experience: "(>15 years of dental industry + software experience)",
     image: "/images/prabhakar.png",
   },
   {
     name: "Dr Harmeet Kaur",
     title: "Manager, Clinical & Education",
     description: "MDS (Orthodontics)",
+    experience: "(> 8 years of experience)",
     image: "/images/harmeet.png",
   },
   {
     name: "Dr Ayushi Roy Chowdhury",
     title: "Customer Success Manager",
     description: "MDS (Orthodontics)",
+    experience: "(> 3 years of experience)",
     image: "/images/ayushi.png",
   },
 ];
@@ -94,7 +98,7 @@ export default function About() {
             <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-[2.875rem] font-semibold mb-3 md:mb-6 leading-tight">
               About Us
             </h1>
-            <p className="font-medium w-[80%] text-justify text-xs sm:text-base md:text-xl mb-3 md:mb-6">
+            <p className={`font-medium w-[80%] text-justify text-xs sm:text-base md:text-xl mb-3 md:mb-6 ${styles.heroSectionText}`}>
               We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.
             </p>
           </div>
@@ -133,6 +137,8 @@ export default function About() {
                 </div>
                 <div className="text-[#184C3A] text-base font-[400]">
                   {member.description}
+                  <br />
+                  <span>{member.experience}</span>
                 </div>
               </div>
             </div>
