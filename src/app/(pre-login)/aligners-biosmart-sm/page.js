@@ -147,15 +147,15 @@ export default function BioSmartSM() {
 
         {/* Treatment Plan Table Section */}
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white py-8 md:py-16">
-          <div className="w-full max-w-[1169px] relative mb-[100px]" style={{ minWidth: '0', minHeight: '0' }}>
+          <div className="w-full max-w-[1240px] mx-auto relative mb-[100px]" style={{ minWidth: '0', minHeight: '0' }}>
             <div className="overflow-x-auto">
               {/* Table Heading and Subheading (Figma accurate) */}
-              <div className="w-full max-w-[1169px] mx-auto mb-8 pt-8 px-8">
+              <div className="w-full max-w-[1240px] mx-auto mb-8 pt-8 px-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                   BioSmart™ SM Smart Memory Aligners.<br />
                   Precision-Built. Future-Ready
                 </h2>
-                <p className="text-[#195B48] text-[20px] font-normal leading-relaxed max-w-3xl mb-6">
+                <p className="text-[#195B48] text-[20px] font-normal leading-relaxed text-left mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   The BioSmart™ SM Smart Memory Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function BioSmartSM() {
               {/* Bottom left note text (not absolute, sits above image) */}
               <div className="pl-8 pt-4">
                 <span className="text-[#195B48] text-sm italic">
-                  -Mid-Course correction is quarterly across all plans
+                  *Mid-Course correction is quarterly across all plans
                 </span>
               </div>
             </div>
