@@ -35,7 +35,6 @@
   align-items: center;
   text-align: center;
   transition: box-shadow 0.2s;
-  cursor: pointer;
 }
 
 .card:hover {

@@ -38,10 +38,9 @@ const Footer = () => {
       window.removeEventListener("storage", updateLoginStatus);
     };
   }, []);
-  
 
-    if (!hasMounted) return null;
-    
+  if (!hasMounted) return null;
+
   const homeLink = { label: "Home", href: isLoggedIn ? "/home" : "/welcome" };
   const rightLinks = [homeLink, ...rightLinksStatic];
 
@@ -77,7 +76,7 @@ const Footer = () => {
         err?.response?.data?.message || err?.message || "Something went wrong";
     }
   };
-    
+
   return (
     <footer className="w-full bg-[#004C44]">
       <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-start px-4 md:px-12 py-10 gap-8">
@@ -107,15 +106,24 @@ const Footer = () => {
               {leftLinks.map((link) => (
                 <li key={link.href}>
                   {link.href === "/orthosync" ? (
-                    <button
-                      onClick={handleOrthoSync}
-                      className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
-                    >
-                      {link.label}
-                    </button>
+                    isLoggedIn ? (
+                      <button
+                        onClick={handleOrthoSync}
+                        className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <a
+                        href="/login"
+                        className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                      >
+                        {link.label}
+                      </a>
+                    )
                   ) : (
                     <a
-                      href={link.href}
+                      href={isLoggedIn ? link.href : "/login"}
                       className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
                     >
                       {link.label}
@@ -144,20 +152,26 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
           <div className="text-white text-base leading-relaxed space-y-1">
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">Toll Free Number:</span> 1800 202
-              3282
+              <span className="font-semibold border-b border-white pb-0.5">
+                Toll Free Number:
+              </span>{" "}
+              1800 202 3282
             </p>
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">Email ID:</span>{" "}
+              <span className="font-semibold border-b border-white pb-0.5">
+                Email ID:
+              </span>{" "}
               support@synapsehealthtech.in
             </p>
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">Corporate Office Address:</span>{" "}
+              <span className="font-semibold border-b border-white pb-0.5">
+                Corporate Office Address:
+              </span>{" "}
               No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,
               <br />
               Sarakki Industrial Layout, J P Nagar 3rd phase,
               <br />
-              Bangalore – 560078,Karnataka 
+              Bangalore – 560078,Karnataka
             </p>
           </div>
         </div>
