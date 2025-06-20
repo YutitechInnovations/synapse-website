@@ -1,7 +1,7 @@
-("use client");
+"use client";
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import styles from "./ConnectionFeatureSection.module.css";
 import { getOrthoSyncUrl } from "@/services/auth.js";
 import { RxTrackIcon } from "@/theme/icons";
