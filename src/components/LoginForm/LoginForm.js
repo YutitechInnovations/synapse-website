@@ -20,12 +20,12 @@ const LoginForm = () => {
     e.preventDefault();
 
     if (!email.trim()) {
-      setFormError("Please enter your email");
+      setFormError("Please enter your email.");
       return;
     }
 
     if (!password.trim()) {
-      setFormError("Please enter your password");
+      setFormError("Please enter your password.");
       return;
     }
 
