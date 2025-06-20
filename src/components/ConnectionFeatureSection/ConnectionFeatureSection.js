@@ -1,4 +1,4 @@
-"use client";
+("use client");
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -64,6 +64,12 @@ export default function ConnectionFeatureSection({
       } else {
         router.push(link);
       }
+    } else {
+      router.push("/login");
+      localStorage.setItem(
+        "redirectUrl",
+        link === "/orthosync" ? "/orthosync" : link
+      );
     }
   };
 

@@ -1,13 +1,34 @@
-"use client";
+("use client");
 import Link from "next/link.js";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
-import { doctorLogin } from "@/services/auth";
+import { doctorLogin, getOrthoSyncUrl } from "@/services/auth";
 import { authenticate } from "@/network/helper";
 import Loader from "../Loader/Loader";
+const handleOrthoSync = async () => {
+  try {
+    const response = await getOrthoSyncUrl();
+    const url = response?.data?.orthosync_url || response?.url;
+    const status = response?.data?.status;
+    const message = response?.data?.message;
 
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      if (status === "failed") {
+        toast.error(message || "Unable to open OrthoSync. Please try again.");
+      } else {
+        toast.error("OrthoSync URL not available.");
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    const errorMessage =
+      err?.response?.data?.message || err?.message || "Something went wrong";
+  }
+};
 const LoginForm = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -34,14 +55,18 @@ const LoginForm = () => {
     try {
       setLoading(true);
       const response = await doctorLogin({ email, password });
-
       await authenticate(response, () => {
         toast.success(response.message || "Login successful!");
-        router.replace("/home");
+        let url = localStorage.getItem("redirectUrl");
+
+        if (url === "/orthosync") {
+          handleOrthoSync();
+          localStorage.removeItem("redirectUrl");
+          router.replace("/home");
+        } else url ? router.replace(url) : router.replace("/home");
       });
     } catch (err) {
       console.error("Login error", err);
-      setLoading(false);
     } finally {
       setLoading(false);
     }
