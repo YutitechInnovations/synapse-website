@@ -1,5 +1,5 @@
 import ClientOnly from "../../../components/ClientOnly";
-import LoginForm from "../../../components/loginform/LoginForm.js";
+import LoginForm from "../../../components/LoginForm/LoginForm.js";
 import Navbar from "../../../components/Navbar/Navbar.js";
 
 export default function LoginPage() {
