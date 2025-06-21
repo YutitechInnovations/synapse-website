@@ -334,23 +334,42 @@
   
   @media (max-width: 600px) {
     .descriptionCard {
-      min-width: 90%;
-      width: 90%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 1rem 1.5rem;
+      min-width: unset;
+      width: 90vw;
+      max-width: 500px;
+      padding: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.6;
     }
   
     .cardPlanning {
       top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   
     .cardFabrication {
       top: 65%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   
     .cardIntegrated {
       top: 75%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .first_circle,
+    .second_circle,
+    .third_circle {
+      padding-bottom: 15%;
+    }
+
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 0.9rem;
     }
   }
   
