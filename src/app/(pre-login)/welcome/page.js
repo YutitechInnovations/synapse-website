@@ -49,7 +49,7 @@ export default function Welcome() {
       <section
         className={`${styles.heroSection} block md:hidden px-4 pt-[6rem]`}
       >
-        <div className="max-w-lg mx-auto text-left">
+        <div className="max-w-lg mx-auto text-center">
           <h1 className="text-2xl font-bold mb-4 text-[#004C44]">
             Designed for the Smiles You Shape
           </h1>
