@@ -68,10 +68,10 @@ export default function AlignMasters() {
       <ClientOnly>
         <Navbar />
       </ClientOnly>
-      <main className="w-full max-w-7xl mx-auto px-4">
+      <main className="w-full max-w-7xl 3xl:max-w-screen-xl mx-auto px-4">
         <section className="w-full flex flex-col items-center justify-center px-4 md:px-8">
           <h1 className={styles.heroHeading}>AlignMaster™</h1>
-          <p className="text-base md:text-xl text-[#184C3A] mb-10 text-center max-w-2xl font-medium">
+          <p className="text-base md:text-xl text-[#184C3A] mb-10 text-center max-w-2xl 3xl:max-w-4xl font-medium">
             Connect with fellow orthodontic professionals, share experiences,
             and learn from case studies in our global community.
           </p>

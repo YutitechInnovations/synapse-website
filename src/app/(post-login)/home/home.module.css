@@ -78,6 +78,46 @@
   }
 }
 
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .heroContent {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  .heading {
+    font-size: 3rem;
+  }
+  .paragraph {
+    font-size: 1.3rem;
+  }
+  .educationSection {
+    max-width: 1400px;
+  }
+  .rewardCards {
+    max-width: 1200px;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .heroContent {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+  .heading {
+    font-size: 3.5rem;
+  }
+  .paragraph {
+    font-size: 1.5rem;
+  }
+  .educationSection {
+    max-width: 1600px;
+  }
+  .rewardCards {
+    max-width: 1400px;
+  }
+}
+
 .rewardSection {
   width: 100%;
   display: flex;

@@ -9,8 +9,8 @@ export default function Aligners() {
       <Navbar />
       <section className={`${styles.heroSection} mt-12 md:mt-0 `}>
         {/* Content */}
-        <div className={`container w-full ${styles.heroContent} `}>
-          <div className="max-w-3xl w-full">
+        <div className={`${styles.responsiveContainer} w-full ${styles.heroContent} `}>
+          <div className="w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 3xl:max-w-6xl">
             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-[600] mb-6 leading-tight text-[#184C3A]">
               RₓF.O.R.C.E™
             </h1>
@@ -28,7 +28,7 @@ export default function Aligners() {
 
       {/* Smart Force Section */}
       <section className={styles.centerSection}>
-        <div className={styles.centerContent}>
+        <div className={`${styles.responsiveContainer} ${styles.centerContent}`}>
           <h2 className="text-4xl text-center md:text-5xl lg:text-[2rem]  font-[600] text-[#195B48]">
             Smart Force, Thoughtfully Applied
           </h2>
@@ -48,7 +48,7 @@ export default function Aligners() {
 
       {/* BioSmart Systems Section */}
       <section className="w-full bg-white my-14">
-        <div>
+        <div className={styles.responsiveContainer}>
           <div className="w-full flex justify-center items-center text-center flex-col px-2 sm:px-4 md:px-8 lg:px-0">
             <h2 className="text-3xl md:text-4xl font-[600] text-[#195B48] text-left mb-4">
               BioSmart™ Systems: Powered by RₓF.O.R.C.E™
@@ -58,38 +58,6 @@ export default function Aligners() {
               Our aligner systems are available in two options depending on your
               treatment philosophy – click on each of the systems to know more.
             </p>
-            {/* Variant Container */}
-            {/* <div className={styles.variantContainer}>
-            <div className={styles.variantText}>
-              <p className="text-lg text-[#195B48] mb-4">
-                And each system is available in three variants tailored
-                <br />
-                to case complexity:
-              </p>
-              <ul className="text-lg text-[#195B48] list-disc pl-6">
-                <li>
-                  <span className="font-[400]">RxLight</span> – For mild to
-                  moderate cases
-                </li>
-                <li>
-                  <span className="font-[400]">RxPro</span> – For moderate to
-                  advanced corrections
-                </li>
-                <li>
-                  <span className="font-[400]">RxPro+</span> – For complex,
-                  multi-phase treatments
-                </li>
-              </ul>
-            </div>
-            <div className={styles.variantImage}>
-              <Image
-                src={DoctorAligner}
-                alt="Doctor with aligner"
-                fill
-                className="object-cover object-center md:rounded-r-[20px]"
-              />
-            </div>
-          </div> */}
           </div>
           <div className={styles.cardsRow}>
             <Link href="/aligners-biosmart-sm" className="flex-1">

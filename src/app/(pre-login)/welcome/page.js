@@ -20,7 +20,7 @@ export default function Welcome() {
       </ClientOnly>
       <section className={`${styles.heroSection} hidden md:block pt-[4rem]`}>
         <div className={`container ${styles.heroContent}`}>
-          <div className="max-w-5xl w-full">
+          <div className="w-full max-w-5xl 3xl:max-w-6xl">
             <h1 className="text-2xl sm:text-[2.25rem] md:text-[2.875rem] lg:text-[2.875rem] font-semibold mb-6 leading-tight text-[#004C44]">
               Designed for the
               <br />

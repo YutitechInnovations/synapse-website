@@ -52,7 +52,7 @@ export default function FAQ() {
         </div>
 
         <div className="w-full flex justify-center px-2 sm:px-4 py-8 sm:py-16">
-          <div className="space-y-4 w-full max-w-5xl">
+          <div className="space-y-4 w-full max-w-5xl 3xl:max-w-6xl">
             <details
               className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
               style={{

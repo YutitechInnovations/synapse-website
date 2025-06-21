@@ -26,7 +26,7 @@ export default function BioSmartSM() {
       <div className="bg-[#F6F6F3] min-h-screen w-full">
         {/* Hero Section */}
         <section className={`${styles.heroSection}`}>
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-4">
+          <div className={`${styles.heroContainer} mx-auto px-4 sm:px-6 lg:px-4`}>
             <div className="min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col justify-center pt-8 md:pt-20">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-[#004C44] leading-tight">
                 BioSmart™ SM{" "}
@@ -40,7 +40,7 @@ export default function BioSmartSM() {
 
         {/* Introduction */}
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
-          <div className="w-full container px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]">
+          <div className={`${styles.responsiveContainer} w-full px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]`}>
             <p className="text-left">
               With BioSmart™ SM (Smart Memory) aligners, you&apos;re not just
               upgrading materials—you&apos;re advancing toward what is
@@ -56,7 +56,7 @@ export default function BioSmartSM() {
 
         {/* Feature Row 1 */}
         <section className="w-full bg-white flex justify-center py-16 px-4">
-          <div className="max-w-[1240px] w-full flex flex-col gap-20">
+          <div className={`${styles.responsiveContainer} w-full flex flex-col gap-20`}>
             <div className="flex flex-col md:flex-row items-start gap-12">
               <div className="flex-1 w-full flex flex-col gap-8">
                 <div>
@@ -133,7 +133,7 @@ export default function BioSmartSM() {
 
         {/* Testimonial */}
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
-          <div className="max-w-[1270px] w-full px-4 text-[#004C44]">
+          <div className={`${styles.responsiveContainer} w-full px-4 text-[#004C44]`}>
             <p className="text-xl md:text-2xl italic leading-snug mb-6 font-[600]">
               &quot;The innovative advantage of the new aligner material is the
               continuous power transmission thanks to its memory effect.&quot;
@@ -147,10 +147,10 @@ export default function BioSmartSM() {
 
         {/* Treatment Plan Table Section */}
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white py-8 md:py-16">
-          <div className="w-full max-w-[1240px] mx-auto relative mb-[100px]" style={{ minWidth: '0', minHeight: '0' }}>
+          <div className={`${styles.responsiveContainer} w-full mx-auto relative mb-[100px]`} style={{ minWidth: '0', minHeight: '0' }}>
             <div className="overflow-x-auto">
               {/* Table Heading and Subheading (Figma accurate) */}
-              <div className="w-full max-w-[1240px] mx-auto mb-8 pt-8 px-8">
+              <div className="w-full mb-8 pt-8 px-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                   BioSmart™ SM Smart Memory Aligners.<br />
                   Precision-Built. Future-Ready

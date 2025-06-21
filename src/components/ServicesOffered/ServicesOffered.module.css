@@ -296,6 +296,74 @@
     }
   }
   
+  /* Large Desktop (1920px+) */
+  @media (min-width: 1920px) {
+    .section {
+      padding: 6rem 8rem;
+    }
+    .heading {
+      font-size: 3rem;
+    }
+    .circles {
+      width: 700px;
+      height: 700px;
+    }
+    .circlesContainer {
+      min-height: 700px;
+    }
+    .first_circle {
+      width: 18rem;
+      height: 18rem;
+    }
+    .second_circle {
+      width: 28rem;
+      height: 28rem;
+    }
+    .third_circle {
+      width: 38rem;
+      height: 38rem;
+    }
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Ultra-wide Desktop (2560px+) */
+  @media (min-width: 2560px) {
+    .section {
+      padding: 8rem 10rem;
+    }
+    .heading {
+      font-size: 3.5rem;
+    }
+    .circles {
+      width: 800px;
+      height: 800px;
+    }
+    .circlesContainer {
+      min-height: 800px;
+    }
+    .first_circle {
+      width: 20rem;
+      height: 20rem;
+    }
+    .second_circle {
+      width: 32rem;
+      height: 32rem;
+    }
+    .third_circle {
+      width: 42rem;
+      height: 42rem;
+    }
+    .first_circle span,
+    .second_circle span,
+    .third_circle span {
+      font-size: 1.7rem;
+    }
+  }
+  
   /* Responsive: Mobile Small */
   @media (max-width: 400px) {
     .section {

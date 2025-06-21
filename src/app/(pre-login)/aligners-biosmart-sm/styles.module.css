@@ -13,3 +13,32 @@
   min-height: 50vh;
 }
 
+.responsiveContainer {
+  max-width: 1240px;
+}
+
+.heroContainer {
+  width: 100%;
+  max-width: 1280px; /* Default max-width for smaller screens */
+}
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .responsiveContainer {
+    max-width: 1400px;
+  }
+  .heroContainer {
+    max-width: 1400px; /* Adjust for larger screens */
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .responsiveContainer {
+    max-width: 1600px;
+  }
+  .heroContainer {
+    max-width: 1600px; /* Adjust for ultra-wide screens */
+  }
+}
+

@@ -53,7 +53,7 @@ export default function PostLoginHome() {
       </ClientOnly>
       <section className={styles.heroSection}>
         <div className={styles.heroOverlay}>
-          <div className="max-w-5xl px-4 sm:px-6 md:px-12 lg:px-12 py-12 md:py-24 lg:mt-20">
+          <div className="max-w-5xl 3xl:max-w-6xl px-4 sm:px-6 md:px-12 lg:px-12 py-12 md:py-24 lg:mt-20">
             <h1 className="text-2xl sm:text-[4rem] md:text-[2.5rem] lg:text-[2.875rem] font-[600] mb-6 leading-tight text-[#004C44]">
               Designed for the <br /> Smiles You Shape
             </h1>
@@ -75,7 +75,7 @@ export default function PostLoginHome() {
         <h2 className="text-2xl sm:text-[3rem] md:text-[3rem] lg:text-[2.875rem] font-[600] mb-6 leading-tight text-[#004C44]">
           Reward Program
         </h2>
-        <p className="text-[#004C44] text-lg md:text-xl mb-12 text-center max-w-2xl">
+        <p className="text-[#004C44] text-lg md:text-xl mb-12 text-center max-w-2xl 3xl:max-w-4xl">
           Track your reward points, redeem them for products, and view your
           reward history.
         </p>

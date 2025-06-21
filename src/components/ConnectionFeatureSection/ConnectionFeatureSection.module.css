@@ -145,6 +145,60 @@
   }
 }
 
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .section {
+    padding: 6rem 4rem;
+  }
+  .heading {
+    font-size: 2.75rem;
+  }
+  .subheading {
+    font-size: 1.5rem;
+  }
+  .grid {
+    gap: 3rem;
+  }
+  .card {
+    min-width: 380px;
+    max-width: 400px;
+    min-height: 380px;
+  }
+  .cardTitle {
+    font-size: 1.75rem;
+  }
+  .cardDescription {
+    font-size: 16px;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .section {
+    padding: 8rem 6rem;
+  }
+  .heading {
+    font-size: 3.25rem;
+  }
+  .subheading {
+    font-size: 1.75rem;
+  }
+  .grid {
+    gap: 4rem;
+  }
+  .card {
+    min-width: 420px;
+    max-width: 440px;
+    min-height: 420px;
+  }
+  .cardTitle {
+    font-size: 2rem;
+  }
+  .cardDescription {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 600px) {
     .pill {
       padding: 0 24px;

@@ -13,6 +13,11 @@ module.exports = {
       mono: ['var(--font-geist-mono)'],
     },
     extend: {
+      screens: {
+        '2xl': '1536px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
       boxShadow: {
         md: "0px 2px 4px -1px rgba(175, 201, 180, 0.2);",
         lg: "0 1rem 3rem rgba(0, 0, 0, 0.175)",

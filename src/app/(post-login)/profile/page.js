@@ -117,7 +117,7 @@ export default function Profile() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div
-        className="w-full max-w-4xl bg-white border border-[#184C3A] rounded-2xl p-6 mx-auto"
+        className="w-full max-w-4xl 3xl:max-w-6xl bg-white border border-[#184C3A] rounded-2xl p-6 mx-auto"
         style={{ marginTop: "130px" }}
       >
         <h2 className="text-xl md:text-2xl font-bold text-[#184C3A] mb-1">

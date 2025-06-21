@@ -1,0 +1,39 @@
+.educationContainer {
+  width: 100%;
+  padding: 4rem 1rem;
+  margin: 0 auto;
+}
+
+.cardLink {
+  height: 350px; /* Default height for smaller screens */
+}
+
+@media (min-width: 768px) {
+  .educationContainer {
+    padding: 6rem 2rem;
+  }
+  .cardLink {
+    height: 448px; /* Standard height for larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .educationContainer {
+    max-width: 1240px;
+    padding: 6rem 0;
+  }
+}
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .educationContainer {
+    max-width: 1400px;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .educationContainer {
+    max-width: 1600px;
+  }
+} 

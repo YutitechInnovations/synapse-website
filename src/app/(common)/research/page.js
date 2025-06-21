@@ -6,7 +6,7 @@ export default function Research() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full bg-[#F6F6F3]">
       <Navbar />
-      <main className="w-full max-w-7xl mx-auto px-4">
+      <main className="w-full max-w-7xl 3xl:max-w-screen-xl mx-auto px-4">
         <h2 className="mt-[180px] text-[2.875rem] font-bold text-[#004C44] text-center mb-6 leading-[1.1]">
           Research Papers
         </h2>

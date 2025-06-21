@@ -503,3 +503,57 @@ details .group:hover svg {
     font-size: 0.875rem;
   }
 }
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .navbar {
+    padding: 1.25rem 2.5rem;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+  .hero-section p {
+    font-size: 1.4rem;
+  }
+  .reward-program h1 {
+    font-size: 3.5rem;
+  }
+  .reward-program p {
+    font-size: 1.4rem;
+  }
+  .footer h3 {
+    font-size: 1.5rem;
+  }
+  .footer p {
+    font-size: 1rem;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .navbar {
+    padding: 1.5rem 3rem;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
+  }
+  .hero-section h1 {
+    font-size: 4rem;
+  }
+  .hero-section p {
+    font-size: 1.6rem;
+  }
+  .reward-program h1 {
+    font-size: 4rem;
+  }
+  .reward-program p {
+    font-size: 1.6rem;
+  }
+  .footer h3 {
+    font-size: 1.75rem;
+  }
+  .footer p {
+    font-size: 1.1rem;
+  }
+}

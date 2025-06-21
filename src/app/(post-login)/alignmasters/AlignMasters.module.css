@@ -266,4 +266,42 @@
     min-width: 160px;
     padding: 0.7rem 1.2rem;
   }
+}
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .communityHeader {
+    width: 1400px;
+    max-width: 90vw;
+  }
+  .card {
+    width: 1400px;
+    max-width: 90vw;
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+  }
+  .heroHeading {
+    font-size: 3.5rem;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .communityHeader {
+    width: 1600px;
+    max-width: 85vw;
+  }
+  .card {
+    width: 1600px;
+    max-width: 85vw;
+    padding: 3.5rem 3rem 3rem 3rem;
+  }
+  .heroHeading {
+    font-size: 4rem;
+  }
+  .cardName {
+    font-size: 1.3rem;
+  }
+  .cardContent {
+    font-size: 1.2rem;
+  }
 } 

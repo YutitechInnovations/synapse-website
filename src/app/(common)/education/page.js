@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar/Navbar";
 import Image from "next/image";
+import styles from "./education.module.css";
 
 export default function Education() {
   const insightCards = [
@@ -35,7 +36,7 @@ export default function Education() {
     <div className="min-h-screen flex flex-col bg-[#F8FAF9]">
       <Navbar />
       <div
-        className="w-full px-4 sm:px-6 md:px-[6rem] mt-16 sm:mt-24 md:mt-36 mb-20"
+        className={`${styles.educationContainer} mt-16 sm:mt-24 md:mt-36 mb-20`}
         style={{ background: "#F6F6F3", borderRadius: "20px" }}
       >
         <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left">
@@ -46,9 +47,7 @@ export default function Education() {
             <a
               key={index}
               href={card.link}
-              className={
-                "group relative w-full max-w-[595px] h-[448px] rounded-[20px] overflow-hidden shadow-lg bg-white cursor-pointer transition-transform hover:scale-[1.02]"
-              }
+              className={`${styles.cardLink} group relative w-full rounded-[20px] overflow-hidden shadow-lg bg-white cursor-pointer transition-transform hover:scale-[1.02]`}
             >
               <Image
                 src={card.image}

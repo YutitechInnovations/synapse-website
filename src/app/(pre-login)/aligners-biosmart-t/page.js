@@ -30,7 +30,7 @@ export default function BioSmartT() {
       <div className="bg-[#F6F6F3] min-h-screen w-full">
         {/* Hero Section */}
         <section className={`${styles.heroSection}`}>
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-4">
+          <div className={`${styles.responsiveContainer} mx-auto px-4 sm:px-6 lg:px-4`}>
             <div className="min-h-[200px] h-[40vw] max-h-[44rem] flex flex-col justify-center pt-8 md:pt-20">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-[#004C44] leading-tight">
                 BioSmart™ T
@@ -44,7 +44,7 @@ export default function BioSmartT() {
 
         {/* Main Content */}
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
-          <div className="w-full container px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]">
+          <div className={`${styles.responsiveContainer} w-full px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]`}>
             <p className="text-left">
               The BioSmart™ T system brings together established thermoforming
               protocols and case-specific force planning, delivering targeted
@@ -56,7 +56,7 @@ export default function BioSmartT() {
         </section>
 
         <section className="w-full bg-white flex justify-center py-12 px-4">
-          <div className="max-w-[1240px] w-full flex flex-col gap-16">
+          <div className={`${styles.responsiveContainer} w-full flex flex-col gap-16`}>
             {biosmartTBenefits.map((item, i) => (
               <div key={i}>
                 <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
@@ -72,10 +72,10 @@ export default function BioSmartT() {
 
         {/* Treatment Plan Table Section (copied from BioSmart™ SM) */}
         <section className="w-full flex flex-col items-center px-4 md:px-0 bg-white py-8 md:py-16">
-          <div className="w-full max-w-[1240px] mx-auto relative mb-[100px]" style={{ minWidth: '0', minHeight: '0' }}>
+          <div className={`${styles.responsiveContainer} w-full mx-auto relative mb-[100px]`} style={{ minWidth: '0', minHeight: '0' }}>
             <div className="overflow-x-auto">
               {/* Table Heading and Subheading (Figma accurate) */}
-              <div className="w-full max-w-[1240px] mx-auto mb-8 pt-8 px-8">
+              <div className="w-full mb-8 pt-8 px-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                 BioSmart™ T Thermoformed Aligners. <br/>
                 Trusted Craft. Smartly Evolved.

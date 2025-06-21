@@ -35,4 +35,40 @@
 .heroSectionText {
   font-family: 'Poppins', sans-serif;
 }
+
+.responsiveContainer {
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsiveContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsiveContainer {
+    max-width: 1240px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .responsiveContainer {
+    max-width: 1400px;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .responsiveContainer {
+    max-width: 1600px;
+  }
+}
   
