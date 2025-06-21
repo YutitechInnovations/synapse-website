@@ -29,7 +29,7 @@ function ProfileDropdown({ onLogout }) {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 focus:outline-none"
+        className="flex items-center gap-2 focus:outline-none cursor-pointer"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="white">
           <path d="M9 9C7.01 9 5.39 7.39 5.39 5.4C5.39 3.41 7.01 1.8 9 1.8C10.99 1.8 12.61 3.41 12.61 5.4C12.61 7.39 10.99 9 9 9ZM16.2 17.2C16.22 17.42 16.32 17.62 16.49 17.77C16.66 17.92 16.87 18 17.09 18C17.63 18 18.05 17.53 18 17C17.65 13.41 15.43 10.74 12.4 9.61C13.14 9.02 13.72 8.24 14.06 7.35C14.41 6.46 14.51 5.5 14.36 4.56C14 2.2 12.03 0.31 9.65 0.04C6.36 -0.34 3.57 2.2 3.57 5.4C3.57 7.1 4.37 8.62 5.6 9.61C2.57 10.74 0.35 13.41 0 17C-0.01 17.13 0.01 17.25 0.05 17.38C0.09 17.5 0.15 17.61 0.24 17.7C0.32 17.79 0.42 17.87 0.54 17.92C0.66 17.97 0.78 18 0.91 18C1.13 18 1.34 17.92 1.51 17.77C1.68 17.62 1.78 17.42 1.8 17.2C2.16 13.18 5.25 10.8 9 10.8C12.75 10.8 15.84 13.18 16.2 17.2Z" />
@@ -47,7 +47,7 @@ function ProfileDropdown({ onLogout }) {
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
           <button
             onClick={() => router.push("/profile")}
-            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
           >
             Profile
           </button>
@@ -58,7 +58,7 @@ function ProfileDropdown({ onLogout }) {
           </button> */}
           <button
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
+            className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 cursor-pointer"
           >
             Logout
           </button>
@@ -155,7 +155,7 @@ export default function Navbar() {
         setIsMenuOpen(false);
         router.push(href);
       }}
-      className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+      className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer"
     >
       {label}
     </button>
@@ -200,6 +200,7 @@ export default function Navbar() {
                     router.push("/home");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Home
                 </button>
@@ -208,6 +209,7 @@ export default function Navbar() {
                     router.push("/rxtrack");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   RxTrack™
                 </button>
@@ -216,6 +218,7 @@ export default function Navbar() {
                     handleOrthoSync();
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   OrthoSync™
                 </button>
@@ -224,6 +227,7 @@ export default function Navbar() {
                     router.push("/reward-program");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Doctor Reward Program
                 </button>
@@ -232,6 +236,7 @@ export default function Navbar() {
                     router.push("/alignmasters");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   AlignMasters™
                 </button>
@@ -240,6 +245,7 @@ export default function Navbar() {
                     router.push("/e-shop");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   E-Shop
                 </button>
@@ -256,6 +262,7 @@ export default function Navbar() {
                     router.push("/profile");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Profile
                 </button>
@@ -276,6 +283,7 @@ export default function Navbar() {
                     router.push("/welcome");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Home
                 </button>
@@ -284,6 +292,7 @@ export default function Navbar() {
                     router.push("/education");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Education
                 </button>
@@ -292,6 +301,7 @@ export default function Navbar() {
                     router.push("/aboutus");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   About Us
                 </button>
@@ -300,6 +310,7 @@ export default function Navbar() {
                     router.push("/careers");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Careers
                 </button>
@@ -308,6 +319,7 @@ export default function Navbar() {
                     router.push("/aligners");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
                   Aligners
                 </button>
@@ -356,7 +368,7 @@ export default function Navbar() {
                       <li>
                         <button
                           onClick={handleOrthoSync}
-                          className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px]"
+                          className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer"
                         >
                           OrthoSync™
                         </button>
@@ -397,7 +409,7 @@ export default function Navbar() {
                           <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
                             <button
                               type="button"
-                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold"
+                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
                               onMouseDown={() => {
                                 setProductDropdown(false);
                                 router.push("/aligners");
