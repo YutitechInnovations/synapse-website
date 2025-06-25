@@ -323,10 +323,13 @@
       width: 38rem;
       height: 38rem;
     }
+    .first_circle .dot { top: 40%; }
+    .second_circle .dot { top: 65%; }
+    .third_circle .dot { top: 72%; }
     .first_circle span,
     .second_circle span,
     .third_circle span {
-      font-size: 1.5rem;
+      margin-top: 2.5rem;
     }
   }
 
@@ -375,29 +378,14 @@
       font-size: 1.1rem;
     }
   
-    .circles {
-      width: 220px;
-      height: 220px;
-    }
-  
-    .circlesContainer {
-      min-height: 220px;
-    }
-  
-    .first_circle {
-      width: 100px;
-      height: 100px;
-    }
-  
-    .second_circle {
-      width: 165px;
-      height: 165px;
-    }
-  
-    .third_circle {
-      width: 220px;
-      height: 220px;
-    }
+    .circles { width: 220px; height: 220px; }
+    .first_circle { width: 100px; height: 100px; }
+    .second_circle { width: 165px; height: 165px; }
+    .third_circle { width: 220px; height: 220px; }
+    .first_circle .dot { top: 20%; }
+    .second_circle .dot { top: 45%; }
+    .third_circle .dot { top: 70%; }
+    .first_circle span, .second_circle span, .third_circle span { margin-top: 1.7rem; font-size: 0.95rem; }
   }
   
   @media (max-width: 600px) {
@@ -434,10 +422,13 @@
       padding-bottom: 15%;
     }
 
+    .first_circle .dot { top: 35%; }
+    .second_circle .dot { top: 60%; }
+    .third_circle .dot { top: 68%; }
     .first_circle span,
     .second_circle span,
     .third_circle span {
-      font-size: 0.9rem;
+      margin-top: 1.5rem;
     }
   }
   

@@ -35,6 +35,7 @@
   align-items: center;
   text-align: center;
   transition: box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -85,7 +86,7 @@
   
   .pillImage {
     object-fit: contain;
-    height: 28px;
+    height: 40px;
     width: auto;
   }
 
@@ -98,6 +99,11 @@
   .card:nth-child(3) .pillImage {
     filter: brightness(0) invert(1); /* This will make the image white */
   }
+
+.card:nth-child(1) .pill {
+  background: #f0f0f0;
+  border: 1px solid #f0f0f0;
+}
 
 .cardTitle {
   font-size: 1.5rem;

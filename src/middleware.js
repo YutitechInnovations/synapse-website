@@ -2,11 +2,9 @@ import { NextResponse } from "next/server";
 
 export const PUBLIC_ROUTES = [
     "/login",
-    "/privacy",
     "/welcome",
     "/education",
     "/faq",
-    "/aboutus",
     "/blogs",
     "/signup",
     "/careers",
@@ -18,6 +16,10 @@ export const PUBLIC_ROUTES = [
     "/admin-forgot-password",
     "/materials",
     "/research",
+    "/refund-policy",
+    "/shipping-policy",
+    "/privacy-policy",
+    "/terms-conditions",
 ];
 export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
 
@@ -26,7 +28,8 @@ export const USER_ROUTES = [
     "/alignmasters",
     "/orthosync",
     "/rxtrack",
-    "/home"
+    "/home",
+    "/aboutus"
 ];
 
 const isPublicRoute = (path) =>

@@ -249,14 +249,15 @@ export default function Navbar() {
                 >
                   E-Shop
                 </button>
-                {/* <button
+                <button
                   onClick={() => {
-                    router.push("/profile");
+                    router.push("/aboutus");
                     setIsMenuOpen(false);
                   }}
+                  className="cursor-pointer"
                 >
-                  Settings
-                </button> */}
+                  About Us
+                </button>
                 <button
                   onClick={() => {
                     router.push("/profile");
@@ -295,15 +296,6 @@ export default function Navbar() {
                   className="cursor-pointer"
                 >
                   Education
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/aboutus");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  About Us
                 </button>
                 <button
                   onClick={() => {
@@ -376,6 +368,7 @@ export default function Navbar() {
                       <li>{navButton("Reward Program", "/reward-program")}</li>
                       <li>{navButton("AlignMasters™", "/alignmasters")}</li>
                       <li>{navButton("E-Shop", "/e-shop")}</li>
+                      <li>{navButton("About Us", "/aboutus")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>
                       </li>
@@ -421,7 +414,6 @@ export default function Navbar() {
                         )}
                       </li>
                       <li>{navButton("Education", "/education")}</li>
-                      <li>{navButton("About us", "/aboutus")}</li>
                       <li>{navButton("Careers", "/careers")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>

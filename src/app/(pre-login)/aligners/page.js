@@ -15,7 +15,7 @@ export default function Aligners() {
               RₓF.O.R.C.E™
             </h1>
             <p className=" text-[1rem] md:text-xl font-[400] text-[#184C3A]">
-              Orthodontic treatment is most effective when it&apos;s
+            <b>Biomechanics That Make Every Move Count</b> when it&apos;s
               biomechanically intelligent. That&apos;s the idea behind RₓF.O.R.C.E™— our{" "}
               <span className="italic">
                 Force Optimized Responsive Corrective Engine
@@ -33,15 +33,16 @@ export default function Aligners() {
             Smart Force, Thoughtfully Applied
           </h2>
           <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
-          RₓF.O.R.C.E™ applies
-            the right force at the right time by adjusting material behavior and
-            thickness stage by stage. It&apos;s a precision-driven philosophy
-            designed to guide each tooth gently and effectively, ensuring
-            consistency, control, and reduced need for refinements.
+            Before we explore aligners, it's worth understanding what powers them.
           </p>
           <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
-            The result? Improved predictability and better outcomes—from
-            straightforward alignments to complex cases.
+            At the heart of every BioSmart™ treatment is RₓF.O.R.C.E™—our Force Optimized Responsive Corrective Engine.
+          </p>
+          <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
+            This biomechanically intelligent system is designed to move each tooth with just the right amount of force, at just the right time.
+          </p>
+          <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
+            By adjusting material thickness and behaviour across stages, RₓF.O.R.C.E™ helps guide teeth more gently and accurately. This gives you better control, fewer refinements, and more predictable results, even in complex cases.
           </p>
         </div>
       </section>

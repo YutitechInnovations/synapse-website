@@ -221,7 +221,7 @@ export default function PostLoginHome() {
                   <span className="block text-[28px] font-bold text-[#004C44] mb-2">
                     Blogs
                   </span>
-                  <p className="text-[#004C44] text-sm md:text-base">
+                  <p className="text-[#003c36] text-sm md:text-base font-medium">
                     Articles from our team to spark thought and conversation in oral care.
                   </p>
                 </div>
@@ -247,7 +247,7 @@ export default function PostLoginHome() {
                   <span className="block text-[28px] font-bold text-[#004C44] mb-2">
                     Materials & Data
                   </span>
-                  <p className="text-[#004C44] text-sm md:text-base">
+                  <p className="text-[#003c36] text-sm md:text-base font-medium">
                     Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.
                   </p>
                 </div>
@@ -273,7 +273,7 @@ export default function PostLoginHome() {
                   <span className="block text-[28px] font-bold text-[#004C44] mb-2">
                     Research Papers
                   </span>
-                  <p className="text-[#004C44] text-sm md:text-base">
+                  <p className="text-[#003c36] text-sm md:text-base font-medium">
                     Summaries and access to relevant scientific literature that inform and validate clinical practices.
                   </p>
                 </div>
@@ -299,7 +299,7 @@ export default function PostLoginHome() {
                   <span className="block text-[28px] font-bold text-[#004C44] mb-2">
                     Patients&apos; FAQs
                   </span>
-                  <p className="text-[#004C44] text-sm md:text-base">
+                  <p className="text-[#003c36] text-sm md:text-base font-medium">
                     Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.
                   </p>
                 </div>

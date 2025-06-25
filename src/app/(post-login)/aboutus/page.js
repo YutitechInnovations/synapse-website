@@ -99,8 +99,11 @@ export default function About() {
               About Us
             </h1>
             <p className={`font-medium w-full text-left text-xs sm:text-base md:text-xl mb-3 md:mb-6 ${styles.heroSectionText}`}>
-              We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.<br/>
-              Together with clinicians, we strive to make oral care more thoughtful, precise, and human — always keeping the patient&apos;s well-being at the heart of everything we do.</p>
+              We are a multidisciplinary team with experience across oral care, medical solutions, clinical operations and process improvement. Our work is grounded in strong fundamentals, combining biomechanical understanding with evidence-based practices to deliver personalized and effective solutions for our customers. In every offering, we aim to support our customers with reliable tools that is tailored to individual patient needs and physiology.
+            </p>
+            <p className={`font-medium w-full text-left text-xs sm:text-base md:text-xl mb-3 md:mb-6 ${styles.heroSectionText}`}>
+              Together with clinicians, we strive to make oral care more thoughtful, precise, and human — always keeping the patient&apos;s well-being at the heart of everything we do.
+            </p>
           </div>
         </div>
       </section>{" "}
@@ -146,7 +149,7 @@ export default function About() {
         <h2 className="text-3xl md:text-4xl font-semibold text-center mb-0 text-[#184C3A] mt-[40px] max-w-4xl mx-auto px-4">
           Synapse Core Team
         </h2>
-        <div className={`${styles.responsiveContainer} grid grid-cols-1 md:grid-cols-2 gap-12 w-full mx-auto px-2 md:px-0 mt-[32px] mb-[60px]`}>
+        <div className={`${styles.responsiveContainer} grid grid-cols-1 md:grid-cols-2 gap-12 w-full mx-auto px-2 md:px-0`} style={{ marginTop: '30px', marginBottom: '100px' }}>
           {team.map((member, idx) => (
             <div
               key={idx}
@@ -180,4 +183,4 @@ export default function About() {
       </section>{" "}
     </div>
   );
-}
+} 

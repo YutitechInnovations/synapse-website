@@ -87,7 +87,7 @@ export default function BioSmartT() {
               <table className="min-w-full text-center border-separate border-spacing-y-4 px-8">
                 <thead>
                   <tr>
-                    <th className="py-4 px-4 text-base md:text-lg font-semibold text-left  rounded-tl-xl">Treatment Plan</th>
+                    <th className="py-4 px-4 text-base md:text-lg font-semibold text-center  rounded-tl-xl">Treatment Plan</th>
                     <th className="py-4 px-4 text-base md:text-lg font-semibold">Steps</th>
                     <th className="py-4 px-4 text-base md:text-lg font-semibold">Months</th>
                     <th className="py-4 px-4 text-base md:text-lg font-semibold">Retainers</th>
@@ -96,28 +96,28 @@ export default function BioSmartT() {
                 </thead>
                 <tbody>
                   <tr className="bg-[#aafff3]">
-                    <td className="py-4 px-4 font-semibold text-left">RₓLite</td>
+                    <td className="py-4 px-4 font-semibold text-center">RₓLite</td>
                     <td className="py-4 px-4">Up to 12</td>
                     <td className="py-4 px-4">6</td>
                     <td className="py-4 px-4">1</td>
                     <td className="py-4 px-4">0</td>
                   </tr>
                   <tr className="bg-[#1ec9a8] text-white">
-                    <td className="py-4 px-4 font-semibold text-left">RₓPro</td>
+                    <td className="py-4 px-4 font-semibold text-center">RₓPro</td>
                     <td className="py-4 px-4">Up to 24</td>
                     <td className="py-4 px-4">12</td>
                     <td className="py-4 px-4">1</td>
                     <td className="py-4 px-4">1</td>
                   </tr>
                   <tr className="bg-[#009e87] text-white">
-                    <td className="py-4 px-4 font-semibold text-left">RₓPro+</td>
+                    <td className="py-4 px-4 font-semibold text-center">RₓPro+</td>
                     <td className="py-4 px-4">Up to 48</td>
                     <td className="py-4 px-4">24</td>
                     <td className="py-4 px-4">2</td>
                     <td className="py-4 px-4">2</td>
                   </tr>
                   <tr className="bg-[#003c36] text-white">
-                    <td className="py-4 px-4 font-semibold text-left">RₓMax</td>
+                    <td className="py-4 px-4 font-semibold text-center">RₓMax</td>
                     <td className="py-4 px-4">Comprehensive</td>
                     <td className="py-4 px-4">36</td>
                     <td className="py-4 px-4">3</td>

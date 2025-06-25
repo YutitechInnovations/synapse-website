@@ -42,12 +42,14 @@ const Footer = () => {
   if (!hasMounted) return null;
 
   const homeLink = { label: "Home", href: isLoggedIn ? "/home" : "/welcome" };
-  const rightLinks = [homeLink, ...rightLinksStatic];
+  const aboutUsLink = { label: "About Us", href: "/aboutus" };
+  const rightLinks = isLoggedIn 
+    ? [homeLink, aboutUsLink, ...rightLinksStatic]
+    : [homeLink, ...rightLinksStatic];
 
   const showLoginButton = [
     "/welcome",
     "/signup",
-    "/aboutus",
     "/aligners",
     "/aligners-biosmart-sm",
     "/aligners-biosmart-t",
@@ -185,10 +187,28 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6">
             <a
-              href="/privacy"
+              href="/refund-policy"
               className="text-[#08544A] text-sm hover:underline"
             >
-              Terms of Service & Privacy Policy
+              Refund and Cancellation Policy
+            </a>
+            <a
+              href="/shipping-policy"
+              className="text-[#08544A] text-sm hover:underline"
+            >
+              Shipping and Delivery Policy
+            </a>
+            <a
+              href="/privacy-policy"
+              className="text-[#08544A] text-sm hover:underline"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-conditions"
+              className="text-[#08544A] text-sm hover:underline"
+            >
+              Terms and Conditions
             </a>
           </div>
         </div>

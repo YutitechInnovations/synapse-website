@@ -62,7 +62,7 @@ export default function Education() {
                 <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none mb-2">
                   {card.title}
                 </h3>
-                <p className="text-[#004C44] text-sm md:text-base">
+                <p className="text-[#003c36] text-sm md:text-base font-medium">
                   {card.description}
                 </p>
               </div>
