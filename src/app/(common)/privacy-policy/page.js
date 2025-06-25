@@ -16,16 +16,16 @@ export default function PrivacyPolicy() {
             <p>Last Updated: 25/06/2025</p>
           </div>
           
-          <p className="text-gray-700 mb-6">
-            Synapse HealthTech Pvt. Ltd. ("we", "our", "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you visit our website, use our services, or make payments through Razorpay.
+          <p className="text-gray-700 mb-6 text-justify">
+            Synapse HealthTech Pvt. Ltd. (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you visit our website, use our services, or make payments through Razorpay.
           </p>
           
-          <div className="space-y-6">
+          <div className="space-y-6 text-justify">
             <div>
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 1. Information We Collect
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We collect the following types of information:
               </p>
               
@@ -34,10 +34,10 @@ export default function PrivacyPolicy() {
                   <h3 className="text-lg font-medium text-[#184C3A] mb-2">
                     a. Personal Information
                   </h3>
-                  <p className="text-gray-700 mb-2">
+                  <p className="text-gray-700 mb-2 text-justify">
                     When you register, book a consultation, or place an order, we may collect:
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                  <ul className="list-disc pl-6 space-y-1 text-gray-700 text-justify">
                     <li>Full name</li>
                     <li>Date of birth</li>
                     <li>Phone number</li>
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
                   <h3 className="text-lg font-medium text-[#184C3A] mb-2">
                     b. Payment Information
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 text-justify">
                     When you make a payment through Razorpay, we do not store your card or net banking details. Razorpay, our trusted payment gateway, securely processes your payment using industry-standard encryption.
                   </p>
                 </div>
@@ -60,10 +60,10 @@ export default function PrivacyPolicy() {
                   <h3 className="text-lg font-medium text-[#184C3A] mb-2">
                     c. Usage Data
                   </h3>
-                  <p className="text-gray-700 mb-2">
+                  <p className="text-gray-700 mb-2 text-justify">
                     We collect non-personal data to improve our website and services:
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                  <ul className="list-disc pl-6 space-y-1 text-gray-700 text-justify">
                     <li>IP address</li>
                     <li>Browser type</li>
                     <li>Device information</li>
@@ -79,10 +79,10 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 2. How We Use Your Information
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We use the information we collect for the following purposes:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>To provide our products and services</li>
                 <li>To personalize your treatment experience</li>
                 <li>To process and confirm orders and payments</li>
@@ -97,16 +97,16 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 3. Data Sharing and Disclosure
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We do not sell, rent, or trade your personal information. We may share your data only:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3 text-justify">
                 <li>With Razorpay to securely process payments</li>
                 <li>With our logistics and manufacturing partners to fulfill orders</li>
                 <li>With healthcare professionals involved in your treatment</li>
                 <li>To comply with legal obligations or respond to lawful requests by authorities</li>
               </ul>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 All third parties are bound by confidentiality and data protection agreements.
               </p>
             </div>
@@ -115,15 +115,15 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 4. Cookies and Tracking Technologies
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We use cookies to:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3 text-justify">
                 <li>Understand user behavior</li>
                 <li>Offer a personalized experience</li>
                 <li>Improve website performance</li>
               </ul>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 You may control or delete cookies via your browser settings, but doing so may affect your user experience.
               </p>
             </div>
@@ -132,10 +132,10 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 5. Data Security
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We implement appropriate technical and organizational security measures to protect your personal information from unauthorized access, alteration, or disclosure. These include:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>SSL encryption</li>
                 <li>Secure servers</li>
                 <li>Role-based access controls</li>
@@ -147,10 +147,10 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 6. Retention of Information
               </h2>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 We retain your data for as long as necessary to:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>Fulfill the purposes outlined in this policy</li>
                 <li>Comply with applicable laws and regulations</li>
                 <li>Resolve disputes or enforce our agreements</li>

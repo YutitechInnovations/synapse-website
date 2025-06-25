@@ -16,11 +16,11 @@ export default function TermsConditions() {
             <p>Last Updated: 25/06/2025</p>
           </div>
           
-          <p className="text-gray-700 mb-6">
-            These Terms and Conditions ("Terms") govern the access and use of the website www.synapsehealthtech.in and the services provided by Synapse HealthTech Pvt. Ltd. ("we," "us," or "our"), including the manufacturing and supply of BioSmart Clear Aligners to licensed healthcare professionals in India.
+          <p className="text-gray-700 mb-6 text-justify">
+            These Terms and Conditions (&ldquo;Terms&rdquo;) govern the access and use of the website www.synapsehealthtech.in and the services provided by Synapse HealthTech Pvt. Ltd. (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), including the manufacturing and supply of BioSmart Clear Aligners to licensed healthcare professionals in India.
           </p>
           
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 mb-6 text-justify">
             By accessing our website or placing an order, you agree to be bound by these Terms. If you do not agree, please refrain from using our services.
           </p>
           
@@ -29,7 +29,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 1. Eligibility
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>
                   Our services are available only to licensed dental professionals, orthodontists, and dental institutions registered to practice in India.
                 </li>
@@ -43,7 +43,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 2. Registration and Account
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>
                   To place orders, access patient dashboards, or use diagnostic tools, users must create a professional account.
                 </li>
@@ -57,15 +57,15 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 3. Product and Service Scope
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 We offer custom-manufactured clear aligners under the BioSmart brand, along with supporting services including:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-3 text-justify">
                 <li>3D treatment planning</li>
                 <li>Patient-specific diagnostics</li>
                 <li>First Care Kits and post-treatment retainers</li>
               </ul>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 All devices are manufactured based on case submissions and treatment plans approved by the healthcare provider.
               </p>
             </div>
@@ -74,13 +74,13 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 4. Order Process
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>
-                  Orders must be submitted via our digital platform "Orthosync" or approved submission channels.
+                  Orders must be submitted via our digital platform &ldquo;Orthosync&rdquo; or approved submission channels.
                 </li>
                 <li>
                   An order is considered confirmed once:
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
+                  <ul className="list-disc pl-6 mt-2 space-y-1 text-justify">
                     <li>The treatment plan is approved.</li>
                     <li>Full payment or purchase order is received (as applicable).</li>
                   </ul>
@@ -95,7 +95,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 5. Pricing and Payment
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>All prices are exclusive of GST unless stated otherwise.</li>
                 <li>Payments are accepted via Razorpay or approved offline channels.</li>
                 <li>Invoices must be paid as per agreed commercial terms. Delayed payments may attract interest or suspension of services.</li>
@@ -106,7 +106,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 6. Shipping and Delivery
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>Products are shipped pan-India through verified logistics partners.</li>
                 <li>Delivery timelines range from 3–10 business days post-production.</li>
                 <li>We are not liable for delays due to courier disruptions or force majeure events.</li>
@@ -118,11 +118,11 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 7. Cancellation and Refund Policy
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>Orders cannot be canceled once manufacturing begins.</li>
                 <li>
                   Refunds will be considered only in cases of:
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
+                  <ul className="list-disc pl-6 mt-2 space-y-1 text-justify">
                     <li>Duplicate payment</li>
                     <li>Defective or damaged goods (reported within 48 hours of receipt)</li>
                   </ul>
@@ -136,7 +136,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 8. Clinical Responsibility
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>
                   The prescribing healthcare professional is solely responsible for clinical diagnosis, patient suitability, treatment outcomes, and informed consent.
                 </li>
@@ -150,7 +150,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 9. Intellectual Property
               </h2>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 All content, software, logos, images, trademarks, and treatment protocols are the intellectual property of Synapse HealthTech and may not be reproduced or reused without written consent.
               </p>
             </div>
@@ -159,10 +159,10 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 10. Limitation of Liability
               </h2>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-700 mb-3 text-justify">
                 To the maximum extent permitted by law, Synapse HealthTech will not be liable for:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>Any indirect, incidental, or consequential damages.</li>
                 <li>Professional negligence by the prescriber.</li>
                 <li>Patient misuse or non-compliance.</li>
@@ -173,7 +173,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 11. Data Privacy
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>We process data in accordance with our Privacy Policy.</li>
                 <li>All patient information submitted must have prior consent and must comply with data protection regulations.</li>
               </ul>
@@ -183,7 +183,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 12. Termination
               </h2>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 We reserve the right to suspend or terminate services to any user violating our terms or misusing the platform.
               </p>
             </div>
@@ -192,7 +192,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 13. Governing Law and Jurisdiction
               </h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 text-justify">
                 <li>These Terms are governed by the laws of India.</li>
                 <li>Any disputes shall be subject to the exclusive jurisdiction of the courts of Bengaluru, Karnataka.</li>
               </ul>
@@ -202,7 +202,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 14. Contact Information
               </h2>
-              <div className="space-y-2 text-gray-700">
+              <div className="space-y-2 text-gray-700 text-justify">
                 <p className="font-medium">Synapse HealthTech Pvt. Ltd.</p>
                 <p>#10, Flex Coworks, 2nd Floor, 71, 15th Cross Rd., Dollar Layout, JP Nagar 3rd Phase, Bengaluru – 560078</p>
                 <p>
@@ -228,7 +228,7 @@ export default function TermsConditions() {
               <h2 className="text-xl font-semibold text-[#184C3A] mb-3">
                 15. Updates to Terms
               </h2>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-justify">
                 We may revise these Terms at any time. Continued use of the website and services after changes implies acceptance of the updated Terms.
               </p>
             </div>

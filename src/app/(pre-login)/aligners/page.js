@@ -15,7 +15,7 @@ export default function Aligners() {
               RₓF.O.R.C.E™
             </h1>
             <p className=" text-[1rem] md:text-xl font-[400] text-[#184C3A]">
-            <b>Biomechanics That Make Every Move Count</b> when it&apos;s
+            <b>Biomechanics that make every move count</b> when it&apos;s
               biomechanically intelligent. That&apos;s the idea behind RₓF.O.R.C.E™— our{" "}
               <span className="italic">
                 Force Optimized Responsive Corrective Engine
@@ -33,7 +33,7 @@ export default function Aligners() {
             Smart Force, Thoughtfully Applied
           </h2>
           <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
-            Before we explore aligners, it's worth understanding what powers them.
+            Before we explore aligners, it&apos;s worth understanding what powers them.
           </p>
           <p className="text-[1rem] lg:text-[1.1rem] text-justify md:text-xl text-[#195B48]">
             At the heart of every BioSmart™ treatment is RₓF.O.R.C.E™—our Force Optimized Responsive Corrective Engine.
@@ -84,7 +84,7 @@ export default function Aligners() {
           </div>
           <div className="mt-8 flex justify-center items-center px-4 md:px-8 lg:px-0 mb-[100px]">
             <Image
-              src="/images/aligners-img.png"
+              src="/images/aligners-img1.png"
               alt="Aligners Overview"
               width={1240}
               height={606}

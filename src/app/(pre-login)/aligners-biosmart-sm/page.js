@@ -6,12 +6,8 @@ import styles from "./styles.module.css";
 
 export const biosmartSMBenefits = [
   {
-    title: "Strong Structure. Safer Outcomes.",
-    desc: "Nitrogen curing achieves near 100% polymerization, while next-gen resin enhances durability and is certified for biocompatibility.",
-  },
-  {
     title: "Clarity Maintained. Precision Preserved.",
-    desc: "Uncompromised BioSmart\u2122 SM workflows enhance aligner transparency, making them discreet and aesthetically pleasing.",
+    desc: "Uncompromised BioSmart™ SM workflows enhance aligner transparency, making them discreet and aesthetically pleasing.",
   },
   {
     title: "Minimal Add-Ons. Maximum Control.",
@@ -83,7 +79,7 @@ export default function BioSmartSM() {
               </div>
               <div className="flex-1 w-full">
                 <Image
-                  src="/images/bio-smart-sm-1.png"
+                  src="/images/bio-smart-sm-11.png"
                   alt="Contour and Thickness"
                   width={500}
                   height={300}
@@ -94,8 +90,9 @@ export default function BioSmartSM() {
 
             {/* Row 2 */}
             <div className="flex flex-col md:flex-row items-start gap-12">
-              <div className="flex-1 w-full">
-                <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-8">
+              <div className="flex-1 w-full flex flex-col gap-8">
+                <div>
+                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
                   Steady Force. <br className="hidden md:block" /> Reliable
                   Results.
                 </h3>
@@ -103,10 +100,19 @@ export default function BioSmartSM() {
                   Smart memory aligner maintains consistent force for efficient
                   translatory movement and rotation.
                 </p>
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
+                    Strong Structure. <br className="hidden md:block" /> Safer Outcomes.
+                  </h3>
+                  <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                    Nitrogen curing achieves near 100% polymerization, while next-gen resin enhances durability and is certified for biocompatibility.
+                  </p>
+                </div>
               </div>
               <div className="flex-1 w-full">
                 <Image
-                  src="/images/bio-smart-sm-2.png"
+                  src="/images/bio-smart-sm-22.png"
                   alt="Steady Force"
                   width={400}
                   height={300}
