@@ -62,7 +62,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
           can feel free to reach out to us for more details!
         </p>
         <p className={styles.paragraph_styles}>
-          <b>Click on the dots to know more.</b>
+          <b>Click on the circles to know more.</b>
         </p>
 
         <div className={styles.circlesContainer} ref={circlesRef}>
@@ -71,7 +71,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               className={styles.third_circle}
               onClick={() => setActive(active === "integrated" ? null : "integrated")}
             >
-              <div className={styles.dot} />
+              {/* <div className={styles.dot} /> */}
               <span>Integrated Align 360</span>
               {active === "integrated" && (
                 <div
@@ -98,7 +98,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               className={styles.second_circle}
               onClick={() => setActive(active === "fabrication" ? null : "fabrication")}
             >
-              <div className={styles.dot} />
+              {/* <div className={styles.dot} /> */}
               <span>Plan Fabrication</span>
               {active === "fabrication" && (
                 <div
@@ -113,7 +113,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               className={styles.first_circle}
               onClick={() => setActive(active === "planning" ? null : "planning")}
             >
-              <div className={styles.dot} />
+              {/* <div className={styles.dot} /> */}
               <span>
                 {" "}
                 Aligner Treatment

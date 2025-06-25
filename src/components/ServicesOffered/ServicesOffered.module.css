@@ -389,6 +389,17 @@
   }
   
   @media (max-width: 600px) {
+    .section {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .paragraph_styles:last-of-type {
+      margin-bottom: 0.25rem;
+    }
+    .circlesContainer {
+      min-height: 0;
+      padding-bottom: 0.25rem;
+    }
     .descriptionCard {
       min-width: unset;
       width: 90vw;
@@ -429,6 +440,16 @@
     .second_circle span,
     .third_circle span {
       margin-top: 1.5rem;
+    }
+
+    /* Reduce gap below the last info text and above the circles */
+    .paragraph_styles:last-of-type {
+      margin-bottom: 0.75rem;
+    }
+
+    /* Reduce gap below the circles and next section */
+    .circlesContainer {
+      padding-bottom: 0.75rem;
     }
   }
   
