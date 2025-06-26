@@ -191,11 +191,11 @@ export default function ContactUs() {
                   <span className={styles.checkboxText}>
                     I accept the{" "}
                     <a 
-                      href="/terms-conditions" 
-                      onClick={handleTermsClick}
+                      href="/privacy-policy" 
+                      onClick={e => { e.preventDefault(); router.push('/privacy-policy'); }}
                       className={styles.termsLink}
                     >
-                      Terms and Conditions
+                      Privacy Policy
                     </a>
                   </span>
                 </label>
