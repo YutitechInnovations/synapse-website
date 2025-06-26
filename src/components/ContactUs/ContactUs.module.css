@@ -330,4 +330,11 @@
     height: 35px;
     font-size: 1.25rem;
   }
+}
+
+@media (max-width: 900px) {
+  .info,
+  .formContainer {
+    min-width: 0;
+  }
 } 
