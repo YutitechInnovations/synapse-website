@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 import axios from "../../network/index.js";
 import { handleToast } from "../../network/helper.js";
 import styles from "./ContactUs.module.css";
 
 export default function ContactUs() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,6 +14,7 @@ export default function ContactUs() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,8 +24,30 @@ export default function ContactUs() {
     }));
   };
 
+  const handleCheckboxChange = (e) => {
+    setAcceptTerms(e.target.checked);
+  };
+
+  const handleTermsClick = (e) => {
+    e.preventDefault();
+    router.push('/terms-conditions');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!acceptTerms) {
+      handleToast({
+        err: {
+          response: {
+            data: {
+              message: "Please accept the terms and conditions to submit the form."
+            }
+          }
+        }
+      });
+      return;
+    }
     
     if (isSubmitting) return;
     
@@ -41,6 +66,7 @@ export default function ContactUs() {
             subject: "",
             message: "",
           });
+          setAcceptTerms(false);
         }
       });
     } catch (error) {
@@ -62,7 +88,7 @@ export default function ContactUs() {
           <div className={styles.info}>
             <h3 className={styles.infoTitle}>Get in Touch</h3>
             <p className={styles.infoDescription}>
-              We're here to help you with any questions about our orthodontic solutions, 
+              We&apos;re here to help you with any questions about our orthodontic solutions, 
               technical support, or partnership opportunities.
             </p>
             
@@ -153,10 +179,32 @@ export default function ContactUs() {
                 />
               </div>
               
+              <div className={styles.termsContainer}>
+                <label className={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={acceptTerms}
+                    onChange={handleCheckboxChange}
+                    className={styles.checkbox}
+                    required
+                  />
+                  <span className={styles.checkboxText}>
+                    I accept the{" "}
+                    <a 
+                      href="/terms-conditions" 
+                      onClick={handleTermsClick}
+                      className={styles.termsLink}
+                    >
+                      Terms and Conditions
+                    </a>
+                  </span>
+                </label>
+              </div>
+              
               <button 
                 type="submit" 
                 className={styles.submitButton}
-                disabled={isSubmitting}
+                disabled={isSubmitting || !acceptTerms}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
