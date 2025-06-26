@@ -2,6 +2,7 @@ import ClientOnly from "../../../components/ClientOnly";
 import Navbar from "../../../components/Navbar/Navbar.js";
 import ServicesOffered from "../../../components/ServicesOffered/ServicesOffered.js";
 import ConnectionFeatureSection from "../../../components/ConnectionFeatureSection/ConnectionFeatureSection";
+import ContactUs from "../../../components/ContactUs/ContactUs";
 import styles from "./hero-section.module.css";
 
 export const metadata = {
@@ -66,6 +67,7 @@ export default function Welcome() {
 
       <ServicesOffered />
       <ConnectionFeatureSection isLoggedIn={false} />
+      <ContactUs />
     </div>
   );
 }

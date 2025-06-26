@@ -1,0 +1,296 @@
+.section {
+  width: 100%;
+  background: #f8f9fa;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  color: #004C44;
+}
+
+.subheading {
+  text-align: center;
+  margin: 0 auto 3rem auto;
+  font-size: 18px;
+  font-weight: 400;
+  color: #004C44;
+  max-width: 600px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.info {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  min-width: 400px;
+  height: fit-content;
+}
+
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #004C44;
+}
+
+.infoDescription {
+  font-size: 16px;
+  color: #004C44;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contactMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.methodTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #004C44;
+}
+
+.methodValue {
+  font-size: 1rem;
+  color: #004C44;
+  line-height: 1.4;
+}
+
+.formContainer {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  min-width: 400px;
+  height: fit-content;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #004C44;
+}
+
+.input,
+.textarea {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #004C44;
+  box-shadow: 0 0 0 3px rgba(0, 76, 68, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitButton {
+  background: #004C44;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #003a33;
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (min-width: 900px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: stretch;
+  }
+  
+  .section {
+    padding: 5rem 0;
+  }
+  
+  .heading {
+    font-size: 2.25rem;
+  }
+  
+  .subheading {
+    font-size: 1.25rem;
+  }
+  
+  .info,
+  .formContainer {
+    min-width: 450px;
+    height: 100%;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .section {
+    padding: 6rem 0;
+  }
+  
+  .heading {
+    font-size: 2.75rem;
+  }
+  
+  .subheading {
+    font-size: 1.5rem;
+  }
+  
+  .content {
+    gap: 5rem;
+  }
+  
+  .info,
+  .formContainer {
+    padding: 3rem;
+    min-width: 500px;
+    height: 100%;
+  }
+}
+
+/* Ultra-wide Desktop (2560px+) */
+@media (min-width: 2560px) {
+  .section {
+    padding: 8rem 0;
+  }
+  
+  .heading {
+    font-size: 3.25rem;
+  }
+  
+  .subheading {
+    font-size: 1.75rem;
+  }
+  
+  .content {
+    gap: 6rem;
+  }
+  
+  .info,
+  .formContainer {
+    padding: 4rem;
+    min-width: 550px;
+    height: 100%;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .heading {
+    font-size: 1.75rem;
+  }
+  
+  .subheading {
+    font-size: 16px;
+  }
+  
+  .info,
+  .formContainer {
+    padding: 1.5rem;
+  }
+  
+  .contactMethod {
+    gap: 0.75rem;
+  }
+  
+  .icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+} 
