@@ -299,12 +299,39 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/careers");
+                    router.push("/login");
                     setIsMenuOpen(false);
                   }}
                   className="cursor-pointer"
                 >
-                  Careers
+                  OrthoSync™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  RₓTrack™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  AlignMasters™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  E-Shop
                 </button>
                 <button
                   onClick={() => {
@@ -314,6 +341,15 @@ export default function Navbar() {
                   className="cursor-pointer"
                 >
                   Aligners
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/welcome#contact-us");
+                    setIsMenuOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  Contact Us
                 </button>
                 <button
                   className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
@@ -385,7 +421,7 @@ export default function Navbar() {
                           onClick={handleProductClick}
                           className="text-white flex items-center gap-1 md:px-2 py-1 md:rounded-md focus:outline-none cursor-pointer"
                         >
-                          Product
+                          Products
                           <svg
                             className={`ml-1 w-4 h-4 transition-transform duration-200 ${
                               productDropdown ? "rotate-180" : ""
@@ -410,18 +446,42 @@ export default function Navbar() {
                             >
                               Aligners
                             </button>
+                            <button
+                              type="button"
+                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
+                              onMouseDown={() => {
+                                setProductDropdown(false);
+                                router.push("/aligners-biosmart-sm");
+                              }}
+                            >
+                              BioSmart-SM
+                            </button>
+                            <button
+                              type="button"
+                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
+                              onMouseDown={() => {
+                                setProductDropdown(false);
+                                router.push("/aligners-biosmart-t");
+                              }}
+                            >
+                              BioSmart-T
+                            </button>
                           </div>
                         )}
                       </li>
                       <li>{navButton("Education", "/education")}</li>
-                      <li>{navButton("Careers", "/careers")}</li>
+                      <li>{navButton("OrthoSync™", "/login")}</li>
+                      <li>{navButton("RₓTrack™", "/login")}</li>
+                      <li>{navButton("AlignMasters™", "/login")}</li>
+                      <li>{navButton("E-Shop", "/login")}</li>
+                      <li>{navButton("Contact Us", "/welcome#contact-us")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>
                       </li>
                       <li className="flex items-center md:ml-[30px]">
                         <button
                           onClick={() => router.push("/login")}
-                          className="px-6 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2"
+                          className="px-5.5 py-2 bg-[var(--primary)] text-white font-bold rounded-xl shadow-md transition cursor-pointer text-base ml-2"
                         >
                           Login
                         </button>

@@ -1,16 +1,26 @@
 "use client";
+import React from "react";
 
-import Navbar from "@/components/Navbar/Navbar";
+export default function PrivacyPolicyModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
 
-export default function PrivacyPolicy() {
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen bg-[#F8FAF9] flex flex-col items-center py-12 px-4 pt-[140px]">
-        <div className="w-full max-w-4xl 3xl:max-w-6xl bg-white rounded-2xl shadow p-8">
-          <h1 className="text-3xl font-bold text-[#184C3A] mb-4">
+    <div className="fixed inset-0 bg-green-100 bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-[#184C3A]">
             Privacy Policy
           </h1>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+            aria-label="Close modal"
+          >
+            ×
+          </button>
+        </div>
+        
+        <div className="px-6 py-4">
           <div className="text-sm text-gray-500 mb-6 space-y-1">
             <p>Effective Date: 01/06/2025</p>
             <p>Last Updated: 25/06/2025</p>
@@ -231,7 +241,16 @@ export default function PrivacyPolicy() {
             </div>
           </div>
         </div>
+        
+        <div className="sticky bottom-0 bg-white border-t border-gray-200 px-6 py-4 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-6 py-2 bg-[#184C3A] text-white font-semibold rounded-lg hover:bg-[#0f3a2a] transition-colors"
+          >
+            Close
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 } 

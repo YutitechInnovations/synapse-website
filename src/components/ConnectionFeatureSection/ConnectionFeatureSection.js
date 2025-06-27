@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import styles from "./ConnectionFeatureSection.module.css";
 import { getOrthoSyncUrl } from "@/services/auth.js";
-import { RxTrackIcon } from "@/theme/icons";
 
 const features = [
   {
@@ -92,35 +90,6 @@ export default function ConnectionFeatureSection({
               if (e.key === "Enter") handleCardClick(feature.link);
             }}
           >
-            <div className={styles.pill}>
-              {feature.title === "OrthoSync™" && (
-                <div className={styles.pillInner}>
-                  <Image
-                    src="/images/orthosync.png"
-                    alt={feature.title}
-                    width={120}
-                    height={40}
-                    className={styles.pillImage}
-                  />
-                </div>
-              )}
-              {feature.title === "RₓTrack™" && (
-                <div className={styles.pillInner}>
-                  <RxTrackIcon className={styles.pillLogo} />
-                </div>
-              )}
-              {feature.title === "AlignMasters™" && (
-                <div className={styles.pillInner}>
-                  <Image
-                    src="/images/align.png"
-                    alt={feature.title}
-                    width={120}
-                    height={40}
-                    className={styles.pillImage}
-                  />
-                </div>
-              )}
-            </div>
             <h3 className={styles.cardTitle}>{feature.title}</h3>
             <div className={styles.cardSubtitle}>{feature.subtitle}</div>
             <p className={styles.cardDescription}>{feature.description}</p>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import axios from "../../network/index.js";
 import { handleToast } from "../../network/helper.js";
 import styles from "./ContactUs.module.css";
+import PrivacyPolicyModal from "./PrivacyPolicyModal.js";
 
 export default function ContactUs() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function ContactUs() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -77,7 +79,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className={styles.section}>
+    <section id="contact-us" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading}>Contact Us</h2>
         <p className={styles.subheading}>
@@ -191,8 +193,8 @@ export default function ContactUs() {
                   <span className={styles.checkboxText}>
                     I accept the{" "}
                     <a 
-                      href="/privacy-policy" 
-                      onClick={e => { e.preventDefault(); router.push('/privacy-policy'); }}
+                      href="#" 
+                      onClick={e => { e.preventDefault(); setIsPrivacyModalOpen(true); }}
                       className={styles.termsLink}
                     >
                       Privacy Policy
@@ -212,6 +214,11 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
     </section>
   );
 } 

@@ -154,19 +154,19 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
           <div className="text-white text-base leading-relaxed space-y-1">
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">
+              <span className="font-semibold">
                 Toll Free Number:
               </span>{" "}
               1800 202 3282
             </p>
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">
+              <span className="font-semibold">
                 Email ID:
               </span>{" "}
               support@synapsehealthtech.in
             </p>
             <p>
-              <span className="font-semibold border-b border-white pb-0.5">
+              <span className="font-semibold">
                 Corporate Office Address:
               </span>{" "}
               No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,
