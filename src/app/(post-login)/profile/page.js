@@ -49,42 +49,11 @@ export default function Profile() {
     e.preventDefault();
     if (!isFormChanged) return;
 
-    if (!formData.fullName.trim()) {
-      toast.error("Full name is required");
-      return;
-    }
-
-    if (!formData.mobile.trim()) {
-      toast.error("Mobile number is required");
-      return;
-    }
-
-    const mobile = formData.mobile.trim();
-    if (!/^\d{10}$/.test(mobile)) {
-      toast.error("Mobile number must be exactly 10 digits");
-      return;
-    }
-
-    if (!formData.role.trim()) {
-      toast.error("Practice type is required");
-      return;
-    }
-
-    if (!formData.iosReg.trim()) {
-      toast.error("iOS Registration Number is required");
-      return;
-    }
-
-    if (formData.practiceAddress.trim().length < 10) {
-      toast.error("Practice address must be at least 10 characters");
-      return;
-    }
-
     try {
       await withLoader(async () => {
         const payload = {
           full_name: formData.fullName.trim(),
-          mobile_number: mobile,
+          mobile_number: formData.mobile.trim(),
           role: formData.role.trim(),
           ios_number: formData.iosReg.trim(),
           practice_address: formData.practiceAddress.trim(),

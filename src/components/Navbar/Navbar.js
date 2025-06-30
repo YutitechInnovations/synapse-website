@@ -543,45 +543,45 @@ export default function Navbar() {
                           setIsMenuOpen(false);
                         }}
                         className="cursor-pointer text-left"
-                      >
-                        RxTrack™
-                      </button>
-                      <button
-                        onClick={() => {
-                          handleOrthoSync();
-                          setIsMenuOpen(false);
-                        }}
+                >
+                  RxTrack™
+                </button>
+                <button
+                  onClick={() => {
+                    handleOrthoSync();
+                    setIsMenuOpen(false);
+                  }}
                         className="cursor-pointer text-left"
-                      >
-                        OrthoSync™
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push("/reward-program");
-                          setIsMenuOpen(false);
-                        }}
+                >
+                  OrthoSync™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/reward-program");
+                    setIsMenuOpen(false);
+                  }}
                         className="cursor-pointer text-left"
-                      >
-                        Doctor Reward Program
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push("/alignmasters");
-                          setIsMenuOpen(false);
-                        }}
+                >
+                  Doctor Reward Program
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/alignmasters");
+                    setIsMenuOpen(false);
+                  }}
                         className="cursor-pointer text-left"
-                      >
-                        AlignMasters™
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push("/e-shop");
-                          setIsMenuOpen(false);
-                        }}
+                >
+                  AlignMasters™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/e-shop");
+                    setIsMenuOpen(false);
+                  }}
                         className="cursor-pointer text-left"
-                      >
-                        E-Shop
-                      </button>
+                >
+                  E-Shop
+                </button>
                     </div>
                   </div>
                 )}
@@ -636,42 +636,42 @@ export default function Navbar() {
                 <div className="w-full">
                   <div className="text-lg font-semibold text-[#004C44] mb-3">Members Lounge</div>
                   <div className="flex flex-col gap-3 ml-4">
-                    <button
-                      onClick={() => {
-                        router.push("/login");
-                        setIsMenuOpen(false);
-                      }}
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
                       className="cursor-pointer text-left"
-                    >
-                      OrthoSync™
-                    </button>
-                    <button
-                      onClick={() => {
-                        router.push("/login");
-                        setIsMenuOpen(false);
-                      }}
+                >
+                  OrthoSync™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
                       className="cursor-pointer text-left"
-                    >
-                      RₓTrack™
-                    </button>
-                    <button
-                      onClick={() => {
-                        router.push("/login");
-                        setIsMenuOpen(false);
-                      }}
+                >
+                  RₓTrack™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
                       className="cursor-pointer text-left"
-                    >
-                      AlignMasters™
-                    </button>
-                    <button
-                      onClick={() => {
-                        router.push("/login");
-                        setIsMenuOpen(false);
-                      }}
+                >
+                  AlignMasters™
+                </button>
+                <button
+                  onClick={() => {
+                    router.push("/login");
+                    setIsMenuOpen(false);
+                  }}
                       className="cursor-pointer text-left"
-                    >
-                      E-Shop
-                    </button>
+                >
+                  E-Shop
+                </button>
                   </div>
                 </div>
                 <button

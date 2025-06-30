@@ -81,7 +81,7 @@ instance.interceptors.response.use(
 
       // For all other errors, just reject with the original error
       // Let individual components handle their own error messages
-      return Promise.reject(error);
+        return Promise.reject(error);
     } else if (error.request) {
       // The request was made but no response was received
       console.error(
@@ -94,7 +94,7 @@ instance.interceptors.response.use(
       // Something happened in setting up the request
       console.error("Request setup failed:", error.message);
       // Let individual components handle this error
-      return Promise.reject(error);
+    return Promise.reject(error);
     }
   }
 );
