@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import axios from "../../network/index.js";
 import { handleToast } from "../../network/helper.js";
+import { useLoader } from "@/context/LoaderContext";
 import styles from "./ContactUs.module.css";
 import PrivacyPolicyModal from "./PrivacyPolicyModal.js";
 
 export default function ContactUs() {
   const router = useRouter();
+  const { withLoader } = useLoader();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
@@ -51,11 +52,8 @@ export default function ContactUs() {
       return;
     }
     
-    if (isSubmitting) return;
-    
-    setIsSubmitting(true);
-    
     try {
+      await withLoader(async () => {
       const response = await axios.post("/user/contact", formData);
       
       handleToast({
@@ -71,10 +69,9 @@ export default function ContactUs() {
           setAcceptTerms(false);
         }
       });
+      }, "Sending your message...");
     } catch (error) {
       handleToast({ err: error });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -206,9 +203,9 @@ export default function ContactUs() {
               <button 
                 type="submit" 
                 className={styles.submitButton}
-                disabled={isSubmitting || !acceptTerms}
+                disabled={!acceptTerms}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Message
               </button>
             </form>
           </div>

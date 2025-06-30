@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { doctorLogin, getOrthoSyncUrl } from "@/services/auth";
 import { authenticate } from "@/network/helper";
-import Loader from "../Loader/Loader";
+import { useLoader } from "@/context/LoaderContext";
+
 const handleOrthoSync = async () => {
   try {
     const response = await getOrthoSyncUrl();
@@ -31,6 +32,7 @@ const handleOrthoSync = async () => {
 };
 const LoginForm = () => {
   const router = useRouter();
+  const { showLoader, hideLoader } = useLoader();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setFormError] = useState("");
@@ -54,6 +56,7 @@ const LoginForm = () => {
 
     try {
       setLoading(true);
+      showLoader("Signing you in...");
       const response = await doctorLogin({ email, password });
       await authenticate(response, () => {
         toast.success(response.message || "Login successful!");
@@ -69,12 +72,12 @@ const LoginForm = () => {
       console.error("Login error", err);
     } finally {
       setLoading(false);
+      hideLoader();
     }
   };
 
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
-      {loading && <Loader />}
       <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48]">
         Enter your Email Id
       </h1>

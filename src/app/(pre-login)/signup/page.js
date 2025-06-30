@@ -5,7 +5,7 @@ import { registerDoctor } from "@/services/auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import Loader from "@/components/Loader/Loader";
+import { useLoader } from "@/context/LoaderContext";
 import { successIcon as SuccessIcon } from "@/theme/icons";
 
 const RegistrationSubmitted = () => {
@@ -29,6 +29,7 @@ const RegistrationSubmitted = () => {
 
 const SignupForm = () => {
   const router = useRouter();
+  const { withLoader } = useLoader();
   const [authInformation, setAuthInformation] = useState({
     fingerprint: "",
     brand: "",
@@ -49,7 +50,6 @@ const SignupForm = () => {
   const [errors, setErrors] = useState({});
 
   const [isSubmited, setIsSubmited] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [isApproved, setIsApproved] = useState(true);
   const [passwordSection, setPasswordSection] = useState(false);
   const [resetPasswordData, setResetPasswordData] = useState({
@@ -140,24 +140,22 @@ const SignupForm = () => {
       ...data,
       metainfo: authInformation,
     };
+    
     try {
-      setLoading(true);
+      await withLoader(async () => {
+        const result = await registerDoctor(payload);
 
-      const result = await registerDoctor(payload);
+        if (result.status && result.status.toLowerCase() === "failed") {
+          toast.error("Registration failed");
+          return;
+        }
 
-      if (result.status && result.status.toLowerCase() === "failed") {
-        toast.error("Registration failed");
-        return;
-      }
-
-      // If no failure, handle success
-      toast.success(result.message || "Registration successful! Please login.");
-      setIsSubmited(true);
+        // If no failure, handle success
+        toast.success(result.message || "Registration successful! Please login.");
+        setIsSubmited(true);
+      }, "Creating your account...");
     } catch (error) {
       console.log(error);
-      setLoading(false);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -190,7 +188,6 @@ const SignupForm = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
-      {loading && <Loader />}
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">
         Sign Up to your account{" "}
       </h1>

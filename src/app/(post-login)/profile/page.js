@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import { editUserDetails } from "@/services/auth";
 import toast from "react-hot-toast";
-import Loader from "@/components/Loader/Loader";
+import { useLoader } from "@/context/LoaderContext";
 
 export default function Profile() {
+  const { withLoader } = useLoader();
   const [originalData, setOriginalData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -81,35 +81,34 @@ export default function Profile() {
     }
 
     try {
-      setLoading(true);
-      const payload = {
-        full_name: formData.fullName.trim(),
-        mobile_number: mobile,
-        role: formData.role.trim(),
-        ios_number: formData.iosReg.trim(),
-        practice_address: formData.practiceAddress.trim(),
-      };
+      await withLoader(async () => {
+        const payload = {
+          full_name: formData.fullName.trim(),
+          mobile_number: mobile,
+          role: formData.role.trim(),
+          ios_number: formData.iosReg.trim(),
+          practice_address: formData.practiceAddress.trim(),
+        };
 
-      const response = await editUserDetails(payload);
+        const response = await editUserDetails(payload);
 
-      if (response.status === "success") {
-        const stored = localStorage.getItem("loggedUser");
-        if (stored) {
-          const user = JSON.parse(stored);
-          const updatedUser = { ...user, ...payload };
-          localStorage.setItem("loggedUser", JSON.stringify(updatedUser));
+        if (response.status === "success") {
+          const stored = localStorage.getItem("loggedUser");
+          if (stored) {
+            const user = JSON.parse(stored);
+            const updatedUser = { ...user, ...payload };
+            localStorage.setItem("loggedUser", JSON.stringify(updatedUser));
+          }
+
+          toast.success("Profile updated successfully");
+          setOriginalData(formData);
+        } else {
+          toast.error(response.message || "Failed to update profile");
         }
-
-        toast.success("Profile updated successfully");
-        setOriginalData(formData);
-      } else {
-        toast.error(response.message || "Failed to update profile");
-      }
+      }, "Updating your profile...");
     } catch (error) {
       console.error("Profile update error:", error);
       toast.error(error.message || "Failed to update profile");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -216,15 +215,13 @@ export default function Profile() {
           </div>
           <div className="md:col-span-2 flex justify-start mt-2">
             <button
-              disabled={!isFormChanged || loading}
+              disabled={!isFormChanged}
               type="submit"
               className={`bg-[#08544A] text-white font-semibold rounded-[10px] px-10 py-3 shadow-md transition text-base ${
-                isFormChanged && !loading
-                  ? "hover:bg-[#184C3A] active:scale-95"
-                  : "opacity-70 cursor-not-allowed"
+                isFormChanged ? "hover:bg-[#184C3A] active:scale-95" : "opacity-70 cursor-not-allowed"
               }`}
             >
-              {loading ? <Loader /> : "Save Changes"}
+              {isFormChanged ? "Save Changes" : "Updating..."}
             </button>
           </div>
         </form>

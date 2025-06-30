@@ -7,11 +7,14 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 import { getOrthoSyncUrl } from "@/services/auth.js";
 import toast from "react-hot-toast";
+import { useLoader } from "@/context/LoaderContext";
 
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
   const router = useRouter();
+  const { withLoader } = useLoader();
+
   useEffect(() => {
     function handleClick(e) {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
@@ -20,9 +23,11 @@ function ProfileDropdown({ onLogout }) {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await withLoader(async () => {
     onLogout();
     window.location.href = "/welcome";
+    }, "Signing you out...");
   };
 
   return (
@@ -78,6 +83,7 @@ export default function Navbar() {
       localStorage.getItem("isLoggedIn") === "true"
   );
   const [hasMounted, setHasMounted] = useState(false);
+  const { withLoader } = useLoader();
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
@@ -142,11 +148,13 @@ export default function Navbar() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await withLoader(async () => {
     Cookies.remove("access_token");
     sessionStorage.clear();
     localStorage.clear();
     window.location.href = "/welcome";
+    }, "Signing you out...");
   };
 
   const navButton = (label, href) => (

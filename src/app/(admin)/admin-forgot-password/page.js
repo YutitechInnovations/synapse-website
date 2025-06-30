@@ -2,11 +2,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useLoader } from "@/context/LoaderContext";
 
 const AdminForgotPasswordForm = () => {
   const router = useRouter();
+  const { withLoader } = useLoader();
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -21,43 +22,42 @@ const AdminForgotPasswordForm = () => {
     setError("");
 
     try {
-      setLoading(true);
-      const response = await fetch(
-        " https://synapsehealthtech.in/api/admin/admin_forgot_password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({ email }),
+      await withLoader(async () => {
+        const response = await fetch(
+          " https://synapsehealthtech.in/api/admin/admin_forgot_password",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        // First check if the response is ok
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => null);
+          throw new Error(
+            errorData?.message || `HTTP error! status: ${response.status}`
+          );
         }
-      );
 
-      // First check if the response is ok
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(
-          errorData?.message || `HTTP error! status: ${response.status}`
-        );
-      }
+        // Try to parse the response as JSON
+        const data = await response.json().catch(() => null);
 
-      // Try to parse the response as JSON
-      const data = await response.json().catch(() => null);
-
-      if (data) {
-        toast.success(
-          data.message || "Password reset email sent successfully!"
-        );
-        router.push("/admin");
-      } else {
-        throw new Error("Invalid response from server");
-      }
+        if (data) {
+          toast.success(
+            data.message || "Password reset email sent successfully!"
+          );
+          router.push("/admin");
+        } else {
+          throw new Error("Invalid response from server");
+        }
+      }, "Sending admin reset email...");
     } catch (err) {
       console.error("Admin forgot password error:", err);
       toast.error(err.message || "Failed to send reset email");
-    } finally {
-      setLoading(false);
     }
   };
 

@@ -14,6 +14,7 @@ import {
 
 import { adminLogout } from "@/services/auth";
 import { logout } from "@/network/helper";
+import { useLoader } from "@/context/LoaderContext";
 
 const navItems = [
   { label: "Dashboard", href: "/admin/dashboard", icon: DashboardIcon },
@@ -48,6 +49,14 @@ const navItems = [
 export default function AdminSidebar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { withLoader } = useLoader();
+
+  const handleAdminLogout = async () => {
+    await withLoader(async () => {
+      await adminLogout();
+      logout();
+    }, "Signing you out...");
+  };
 
   // Sidebar content as a function for reuse
   const sidebarContent = (
@@ -110,10 +119,7 @@ export default function AdminSidebar() {
           );
         })}
         <Link
-          onClick={() => {
-            adminLogout();
-            logout();
-          }}
+          onClick={handleAdminLogout}
           href={"/admin"}
           className={`flex flex-col items-center justify-center transition text-white hover:bg-[#004C44] `}
           style={{

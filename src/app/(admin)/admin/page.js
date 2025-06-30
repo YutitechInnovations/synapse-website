@@ -4,17 +4,17 @@ import { useRouter } from "next/navigation";
 import { adminLogin } from "@/services/auth";
 import { authenticate } from "@/network/helper";
 import toast from "react-hot-toast";
-import Loader from "@/components/Loader/Loader";
+import { useLoader } from "@/context/LoaderContext";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
 export default function AdminLogin() {
   const router = useRouter();
+  const { withLoader } = useLoader();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,28 +32,27 @@ export default function AdminLogin() {
     }
 
     setError("");
-    setLoading(true);
 
     try {
-      const response = await adminLogin({ email, password });
+      await withLoader(async () => {
+        const response = await adminLogin({ email, password });
 
-      if (response?.status === "success") {
-        Cookies.set("adminId", response.admin_id);
-        Cookies.set("token", response.token);
-        Cookies.set("user", JSON.stringify(response));
-        toast.success(response.message || "Login successful!");
-        router.replace("/admin/doctor-management");
-      }
+        if (response?.status === "success") {
+          Cookies.set("adminId", response.admin_id);
+          Cookies.set("token", response.token);
+          Cookies.set("user", JSON.stringify(response));
+          toast.success(response.message || "Login successful!");
+          router.replace("/admin/doctor-management");
+        }
+      }, "Signing you in...");
     } catch (err) {
       console.error("Admin login error:", err);
       toast.error("Email or Password Incorrect");
-      setLoading(false);
     }
   };
 
   return (
     <div className="w-full flex flex-col items-center justify-center px-4 min-h-screen bg-[#F8FAF9]">
-      {loading && <Loader />}
       <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48] mt-8 mb-2">
         Admin Login
       </h1>

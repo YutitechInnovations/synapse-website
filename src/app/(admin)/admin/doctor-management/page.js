@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";
+import { useLoader } from "@/context/LoaderContext";
 
 function useDebouncedValue(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -99,6 +100,7 @@ function StatusDropdown({ value, onChange }) {
 }
 
 export default function DoctorManagement() {
+  const { withLoader } = useLoader();
   const [filterString, setFilterString] = useState({
     limit: 10,
     offset: 0,
@@ -128,17 +130,27 @@ export default function DoctorManagement() {
     }
   }, [doctorsDetails]);
 
-  const handleStatusChange = ({ userId, status }) => {
-    handleStatusChangeAPI(
-      { userId, status },
-      {
-        onSuccess: () => {
-          setTimeout(() => {
-            refetch();
-          }, 1000);
-        },
-      }
-    );
+  const handleStatusChange = async ({ userId, status }) => {
+    const actionText = status === "approve" ? "Approving" : "Rejecting";
+    
+    await withLoader(async () => {
+      return new Promise((resolve, reject) => {
+        handleStatusChangeAPI(
+          { userId, status },
+          {
+            onSuccess: (data) => {
+              setTimeout(() => {
+                refetch();
+              }, 1000);
+              resolve(data);
+            },
+            onError: (error) => {
+              reject(error);
+            }
+          }
+        );
+      });
+    }, `${actionText} doctor...`);
   };
 
   const totalCount = doctorsDetails?.stats?.total_users || 0;

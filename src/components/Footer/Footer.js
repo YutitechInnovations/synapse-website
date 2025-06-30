@@ -15,7 +15,6 @@ const leftLinks = [
 const rightLinksStatic = [
   { label: "Education", href: "/education" },
   { label: "FAQs", href: "/faq" },
-  { label: "Careers", href: "/careers" },
 ];
 
 const Footer = () => {
@@ -43,9 +42,13 @@ const Footer = () => {
 
   const homeLink = { label: "Home", href: isLoggedIn ? "/home" : "/welcome" };
   const aboutUsLink = { label: "About Us", href: "/aboutus" };
+  
+  // For pre-login users, add contact us section link instead of careers
+  const contactUsLink = { label: "Contact Us", href: "/welcome#contact-us" };
+  
   const rightLinks = isLoggedIn 
     ? [homeLink, aboutUsLink, ...rightLinksStatic]
-    : [homeLink, ...rightLinksStatic];
+    : [homeLink, contactUsLink, ...rightLinksStatic];
 
   const showLoginButton = [
     "/welcome",

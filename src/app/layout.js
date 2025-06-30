@@ -4,8 +4,9 @@ import ConditionalFooter from "../components/ConditionalFooter";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import { LoaderProvider } from "@/context/LoaderContext";
 import { AuthProvider } from "@/context/AuthContext";
-
+import GlobalLoader from "@/components/GlobalLoader/GlobalLoader";
 
 import { Poppins, Sora } from 'next/font/google';
 
@@ -23,7 +24,6 @@ const sora = Sora({
   display: 'swap',
 });
 
-
 export default function RootLayout({ children }) {
   const [queryClient] = useState(() => new QueryClient());
   return (
@@ -37,10 +37,12 @@ export default function RootLayout({ children }) {
       >
         <Toaster />
         <QueryClientProvider client={queryClient}>
+          <LoaderProvider>
+            <GlobalLoader />
           <AuthProvider>
-            {" "}
             <main>{children}</main>
           </AuthProvider>
+          </LoaderProvider>
         </QueryClientProvider>
         <ConditionalFooter />
       </body>
