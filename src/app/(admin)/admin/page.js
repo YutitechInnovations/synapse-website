@@ -47,7 +47,7 @@ export default function AdminLogin() {
       }, "Signing you in...");
     } catch (err) {
       console.error("Admin login error:", err);
-      toast.error("Email or Password Incorrect");
+      toast.error(err.message || "Login failed. Please try again.");
     }
   };
 

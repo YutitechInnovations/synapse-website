@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";
 import { useLoader } from "@/context/LoaderContext";
+import toast from "react-hot-toast";
 
 function useDebouncedValue(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -139,12 +140,17 @@ export default function DoctorManagement() {
           { userId, status },
           {
             onSuccess: (data) => {
+              const successMessage = status === "approve" 
+                ? (data?.message || "Doctor approved successfully")
+                : (data?.message || "Doctor rejected successfully");
+              toast.success(successMessage);
               setTimeout(() => {
                 refetch();
               }, 1000);
               resolve(data);
             },
             onError: (error) => {
+              toast.error(error.message || `Failed to ${status} doctor`);
               reject(error);
             }
           }

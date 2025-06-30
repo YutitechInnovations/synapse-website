@@ -64,10 +64,9 @@ instance.interceptors.response.use(
     }
 
     if (error.response) {
-      const { data, status } = error.response;
-      let errorMessage = "An unknown error occurred";
+      const { status } = error.response;
 
-      // Handle authentication errors
+      // Handle authentication errors only
       if ((status === 401) && !isLoggingOut) {
         isLoggingOut = true;
         try {
@@ -80,68 +79,23 @@ instance.interceptors.response.use(
         return Promise.reject(error);
       }
 
-      // Handle 404 errors
-      if (status === 404) {
-        // Check if this is a login request and provide better error message
-        const isLoginRequest = error.config?.url?.includes('login') || 
-                              error.config?.url?.includes('user_login') || 
-                              error.config?.url?.includes('admin_login');
-        
-        if (isLoginRequest) {
-          errorMessage = "User does not exist";
-        } else {
-          errorMessage = "Resource not found";
-        }
-        
-        handleToast({
-          err: { response: { data: { message: errorMessage } } },
-        });
-        return Promise.reject(error);
-      }
-
-      // Handle validation errors
-      if (data?.errors) {
-        if (Array.isArray(data.errors)) {
-          errorMessage = data.errors.join(", ");
-        } else if (typeof data.errors === "object") {
-          const messages = Object.values(data.errors).flat().join(", ");
-          errorMessage = messages || "Validation errors occurred.";
-        }
-      } else if (data?.message) {
-        errorMessage = data.message;
-      }
-
-      handleToast({
-        err: { response: { data: { message: errorMessage } } },
-      });
+      // For all other errors, just reject with the original error
+      // Let individual components handle their own error messages
+      return Promise.reject(error);
     } else if (error.request) {
       // The request was made but no response was received
       console.error(
         "No response received from server. Request details:",
         error.request
       );
-      handleToast({
-        err: {
-          response: {
-            data: {
-              message: "No response from server. Please check your connection.",
-            },
-          },
-        },
-      });
+      // Let individual components handle this error
+      return Promise.reject(error);
     } else {
       // Something happened in setting up the request
       console.error("Request setup failed:", error.message);
-      handleToast({
-        err: {
-          response: {
-            data: { message: error.message || "Request setup failed" },
-          },
-        },
-      });
+      // Let individual components handle this error
+      return Promise.reject(error);
     }
-
-    return Promise.reject(error);
   }
 );
 
