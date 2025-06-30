@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   DashboardIcon,
   DoctorManagementIcon,
@@ -48,6 +48,7 @@ const navItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { withLoader } = useLoader();
 
@@ -55,6 +56,7 @@ export default function AdminSidebar() {
     await withLoader(async () => {
       await adminLogout();
       logout();
+      router.push("/welcome");
     }, "Signing you out...");
   };
 

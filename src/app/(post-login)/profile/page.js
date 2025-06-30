@@ -221,7 +221,7 @@ export default function Profile() {
                 isFormChanged ? "hover:bg-[#184C3A] active:scale-95" : "opacity-70 cursor-not-allowed"
               }`}
             >
-              {isFormChanged ? "Save Changes" : "Updating..."}
+              Update
             </button>
           </div>
         </form>

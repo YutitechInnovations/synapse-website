@@ -53,9 +53,7 @@ const Footer = () => {
   const showLoginButton = [
     "/welcome",
     "/signup",
-    "/aligners",
-    "/aligners-biosmart-sm",
-    "/aligners-biosmart-t",
+    
     "/login",
   ].includes(pathname);
 

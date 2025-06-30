@@ -82,7 +82,17 @@ instance.interceptors.response.use(
 
       // Handle 404 errors
       if (status === 404) {
-        errorMessage = "Resource not found";
+        // Check if this is a login request and provide better error message
+        const isLoginRequest = error.config?.url?.includes('login') || 
+                              error.config?.url?.includes('user_login') || 
+                              error.config?.url?.includes('admin_login');
+        
+        if (isLoginRequest) {
+          errorMessage = "User does not exist";
+        } else {
+          errorMessage = "Resource not found";
+        }
+        
         handleToast({
           err: { response: { data: { message: errorMessage } } },
         });

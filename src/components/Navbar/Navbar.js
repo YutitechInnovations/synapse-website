@@ -73,6 +73,234 @@ function ProfileDropdown({ onLogout }) {
   );
 }
 
+function MembersLoungeDropdown({ handleOrthoSync }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  const router = useRouter();
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+      >
+        Members Lounge
+        <svg
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-3 min-w-[200px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/rxtrack");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            RxTrack™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              handleOrthoSync();
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            OrthoSync™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/reward-program");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            Reward Program
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/alignmasters");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            AlignMasters™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/e-shop");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            E-Shop
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ProductsDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  const router = useRouter();
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+      >
+        Products
+        <svg
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/aligners");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            Aligners
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/aligners-biosmart-sm");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            BioSmart-SM
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/aligners-biosmart-t");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            BioSmart-T
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PreLoginMembersLoungeDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  const router = useRouter();
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+      >
+        Members Lounge
+        <svg
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-3 min-w-[200px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/login");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            OrthoSync™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/login");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            RₓTrack™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/login");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            AlignMasters™
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/login");
+            }}
+            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+          >
+            E-Shop
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
@@ -84,11 +312,62 @@ export default function Navbar() {
   );
   const [hasMounted, setHasMounted] = useState(false);
   const { withLoader } = useLoader();
+  const [isApproved, setIsApproved] = useState(
+    typeof window !== "undefined" && 
+    localStorage.getItem("userApproved") === "true"
+  );
+  const [approvalChecked, setApprovalChecked] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
     setHasMounted(true);
   }, []);
+
+  // Check approval status only once when logged in
+  useEffect(() => {
+    const checkApproval = async () => {
+      if (!isLoggedIn || approvalChecked) return;
+      
+      // Check if we already have approval status in localStorage
+      const storedApproval = localStorage.getItem("userApproved");
+      if (storedApproval !== null) {
+        setIsApproved(storedApproval === "true");
+        setApprovalChecked(true);
+        return;
+      }
+
+      try {
+        const response = await getOrthoSyncUrl();
+        // If the API returns a valid URL or status, consider approved
+        if (
+          (response && response.data && response.data.orthosync_url) ||
+          (response && response.status !== "failed")
+        ) {
+          setIsApproved(true);
+          localStorage.setItem("userApproved", "true");
+        } else {
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        }
+      } catch (err) {
+        // If error message indicates not approved, set false
+        if (
+          err?.response?.data?.message?.toLowerCase().includes("not approved") ||
+          err?.message?.toLowerCase().includes("not approved") ||
+          err?.response?.data?.message?.toLowerCase().includes("synapse admin approval required")
+        ) {
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        } else {
+          // For other errors, default to not approved
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        }
+      }
+      setApprovalChecked(true);
+    };
+    checkApproval();
+  }, [isLoggedIn, approvalChecked]);
 
   useEffect(() => {
     const handleStorageChange = (event) => {
@@ -153,6 +432,7 @@ export default function Navbar() {
     Cookies.remove("access_token");
     sessionStorage.clear();
     localStorage.clear();
+    localStorage.removeItem("userApproved");
     window.location.href = "/welcome";
     }, "Signing you out...");
   };
@@ -212,51 +492,99 @@ export default function Navbar() {
                 >
                   Home
                 </button>
+                <div className="w-full">
+                  <div className="text-lg font-semibold text-[#004C44] mb-3">Products</div>
+                  <div className="flex flex-col gap-3 ml-4">
+                    <button
+                      onClick={() => {
+                        router.push("/aligners");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      Aligners
+                    </button>
+                    <button
+                      onClick={() => {
+                        router.push("/aligners-biosmart-sm");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      BioSmart-SM
+                    </button>
+                    <button
+                      onClick={() => {
+                        router.push("/aligners-biosmart-t");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      BioSmart-T
+                    </button>
+                  </div>
+                </div>
                 <button
                   onClick={() => {
-                    router.push("/rxtrack");
+                    router.push("/education");
                     setIsMenuOpen(false);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-left"
                 >
-                  RxTrack™
+                  Education
                 </button>
-                <button
-                  onClick={() => {
-                    handleOrthoSync();
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  OrthoSync™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/reward-program");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  Doctor Reward Program
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/alignmasters");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  AlignMasters™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/e-shop");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  E-Shop
-                </button>
+                {isApproved && (
+                  <div className="w-full">
+                    <div className="text-lg font-semibold text-[#004C44] mb-3">Members Lounge</div>
+                    <div className="flex flex-col gap-3 ml-4">
+                      <button
+                        onClick={() => {
+                          router.push("/rxtrack");
+                          setIsMenuOpen(false);
+                        }}
+                        className="cursor-pointer text-left"
+                      >
+                        RxTrack™
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleOrthoSync();
+                          setIsMenuOpen(false);
+                        }}
+                        className="cursor-pointer text-left"
+                      >
+                        OrthoSync™
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push("/reward-program");
+                          setIsMenuOpen(false);
+                        }}
+                        className="cursor-pointer text-left"
+                      >
+                        Doctor Reward Program
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push("/alignmasters");
+                          setIsMenuOpen(false);
+                        }}
+                        className="cursor-pointer text-left"
+                      >
+                        AlignMasters™
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push("/e-shop");
+                          setIsMenuOpen(false);
+                        }}
+                        className="cursor-pointer text-left"
+                      >
+                        E-Shop
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <button
                   onClick={() => {
                     router.push("/aboutus");
@@ -305,42 +633,47 @@ export default function Navbar() {
                 >
                   Education
                 </button>
-                <button
-                  onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  OrthoSync™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  RₓTrack™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  AlignMasters™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  E-Shop
-                </button>
+                <div className="w-full">
+                  <div className="text-lg font-semibold text-[#004C44] mb-3">Members Lounge</div>
+                  <div className="flex flex-col gap-3 ml-4">
+                    <button
+                      onClick={() => {
+                        router.push("/login");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      OrthoSync™
+                    </button>
+                    <button
+                      onClick={() => {
+                        router.push("/login");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      RₓTrack™
+                    </button>
+                    <button
+                      onClick={() => {
+                        router.push("/login");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      AlignMasters™
+                    </button>
+                    <button
+                      onClick={() => {
+                        router.push("/login");
+                        setIsMenuOpen(false);
+                      }}
+                      className="cursor-pointer text-left"
+                    >
+                      E-Shop
+                    </button>
+                  </div>
+                </div>
                 <button
                   onClick={() => {
                     router.push("/aligners");
@@ -400,18 +733,15 @@ export default function Navbar() {
                   {isLoggedIn ? (
                     <>
                       <li>{navButton("Home", "/home")}</li>
-                      <li>{navButton("RxTrack™", "/rxtrack")}</li>
                       <li>
-                        <button
-                          onClick={handleOrthoSync}
-                          className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer"
-                        >
-                          OrthoSync™
-                        </button>
+                        <ProductsDropdown />
                       </li>
-                      <li>{navButton("Reward Program", "/reward-program")}</li>
-                      <li>{navButton("AlignMasters™", "/alignmasters")}</li>
-                      <li>{navButton("E-Shop", "/e-shop")}</li>
+                      <li>{navButton("Education", "/education")}</li>
+                      {isApproved && (
+                        <li>
+                          <MembersLoungeDropdown handleOrthoSync={handleOrthoSync} />
+                        </li>
+                      )}
                       <li>{navButton("About Us", "/aboutus")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>
@@ -478,10 +808,9 @@ export default function Navbar() {
                         )}
                       </li>
                       <li>{navButton("Education", "/education")}</li>
-                      <li>{navButton("OrthoSync™", "/login")}</li>
-                      <li>{navButton("RₓTrack™", "/login")}</li>
-                      <li>{navButton("AlignMasters™", "/login")}</li>
-                      <li>{navButton("E-Shop", "/login")}</li>
+                      <li>
+                        <PreLoginMembersLoungeDropdown />
+                      </li>
                       <li>{navButton("Contact Us", "/welcome#contact-us")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>

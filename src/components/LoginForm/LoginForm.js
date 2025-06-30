@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
-import { doctorLogin, getOrthoSyncUrl } from "@/services/auth";
+import { doctorLogin, adminLogin, getOrthoSyncUrl } from "@/services/auth";
 import { authenticate } from "@/network/helper";
 import { useLoader } from "@/context/LoaderContext";
 
@@ -30,16 +30,28 @@ const handleOrthoSync = async () => {
       err?.response?.data?.message || err?.message || "Something went wrong";
   }
 };
+
 const LoginForm = () => {
   const router = useRouter();
   const { showLoader, hideLoader } = useLoader();
+  const [activeTab, setActiveTab] = useState("doctor"); // "doctor" or "admin"
+  
+  // Form states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setFormError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
+  // Reset form when switching tabs
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+    setFormError("");
+    setShowPassword(false);
+  }, [activeTab]);
+
+  const handleDoctorLogin = async (e) => {
     e.preventDefault();
 
     if (!email.trim()) {
@@ -70,27 +82,92 @@ const LoginForm = () => {
       });
     } catch (err) {
       console.error("Login error", err);
+      setFormError(err.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
       hideLoader();
     }
   };
 
+  const handleAdminLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setFormError("Please enter your email.");
+      return;
+    }
+
+    if (!password.trim()) {
+      setFormError("Please enter your password.");
+      return;
+    }
+
+    setFormError("");
+
+    try {
+      setLoading(true);
+      showLoader("Signing you in...");
+      const response = await adminLogin({ email, password });
+      
+      // Store admin token and redirect to admin dashboard
+      if (response.token) {
+        localStorage.setItem("adminToken", response.token);
+        toast.success(response.message || "Admin login successful!");
+        router.replace("/admin/dashboard");
+      }
+    } catch (err) {
+      console.error("Admin login error", err);
+      setFormError(err.message || "Admin login failed. Please try again.");
+    } finally {
+      setLoading(false);
+      hideLoader();
+    }
+  };
+
+  const handleSubmit = activeTab === "doctor" ? handleDoctorLogin : handleAdminLogin;
+
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48]">
-        Enter your Email Id
+        Welcome Back
       </h1>
       <p className="text-base md:text-lg font-normal text-center text-[#195B48] mb-6">
         Access your Synapse dashboard and tools
       </p>
       <div className="w-full max-w-md bg-white border border-[#195B48]/30 rounded-xl p-6 md:p-6 flex flex-col items-center shadow-sm">
+        {/* Tab Navigation */}
+        <div className="w-full mb-6">
+          <div className="flex bg-gray-100 rounded-lg p-1">
+            <button
+              onClick={() => setActiveTab("doctor")}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ease-in-out cursor-pointer ${
+                activeTab === "doctor"
+                  ? "bg-white text-[#195B48] shadow-sm"
+                  : "text-gray-600 hover:text-[#195B48] hover:bg-gray-50"
+              }`}
+            >
+              Doctor Login
+            </button>
+            <button
+              onClick={() => setActiveTab("admin")}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ease-in-out cursor-pointer ${
+                activeTab === "admin"
+                  ? "bg-white text-[#195B48] shadow-sm"
+                  : "text-gray-600 hover:text-[#195B48] hover:bg-gray-50"
+              }`}
+            >
+              Admin Login
+            </button>
+          </div>
+        </div>
+
         <h2 className="text-xl md:text-2xl font-semibold text-[#195B48] mb-1 w-full text-left">
-          Enter your Email Id
+          {activeTab === "doctor" ? "Doctor Sign In" : "Admin Sign In"}
         </h2>
         <p className="text-base font-normal text-[#195B48] mb-6 w-full text-left">
           Enter your credentials to access your account
         </p>
+        
         <form onSubmit={handleSubmit} className="w-full">
           <div className="mb-1">
             <label className="frm-label" htmlFor="email">
@@ -123,7 +200,7 @@ const LoginForm = () => {
               {showPassword ? (
                 <svg
                   onClick={() => setShowPassword(false)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -139,7 +216,7 @@ const LoginForm = () => {
               ) : (
                 <svg
                   onClick={() => setShowPassword(true)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -155,33 +232,56 @@ const LoginForm = () => {
               )}
             </div>
           </div>
-          <div className="w-full text-right mb-1">
-            <Link
-              href="/forgot-password"
-              className="text-[#195B48] hover:underline text-sm cursor-pointer"
-            >
-              Forgot Password?
-            </Link>
-          </div>
+          
+          {/* Show forgot password only for doctor login */}
+          {activeTab === "doctor" && (
+            <div className="w-full text-right mb-1">
+              <Link
+                href="/forgot-password"
+                className="text-[#195B48] hover:underline text-sm cursor-pointer"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+          )}
+          
+          {/* Show forgot password for admin login */}
+          {activeTab === "admin" && (
+            <div className="w-full text-right mb-1">
+              <Link
+                href="/admin-forgot-password"
+                className="text-[#195B48] hover:underline text-sm cursor-pointer"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+          )}
+          
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
+          
           <button
-            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors cursor-pointer"
+            className="w-full bg-[#195B48] text-white font-semibold rounded-md py-2.5 text-base mt-2 mb-2 hover:bg-[#174a3a] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"
+            disabled={loading}
           >
-            Sign In
+            {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
-        <div className="flex flex-col sm:flex-row items-center justify-between mt-1 w-full">
-          <p className="font-semibold text-[15px] text-[#195B48] text-center sm:text-left mb-2 sm:mb-0">
-            Don&apos;t have an account?
-          </p>
-          <Link
-            href="/signup"
-            className="font-semibold text-[15px] text-[#195B48] hover:underline"
-          >
-            Register here
-          </Link>
-        </div>
+        
+        {/* Show register link only for doctor login */}
+        {activeTab === "doctor" && (
+          <div className="flex flex-col sm:flex-row items-center justify-between mt-1 w-full">
+            <p className="font-semibold text-[15px] text-[#195B48] text-center sm:text-left mb-2 sm:mb-0">
+              Don&apos;t have an account?
+            </p>
+            <Link
+              href="/signup"
+              className="font-semibold text-[15px] text-[#195B48] hover:underline"
+            >
+              Register here
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
