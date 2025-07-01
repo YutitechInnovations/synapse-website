@@ -129,17 +129,17 @@ const Footer = () => {
                 const isRestricted = ["/rxtrack", "/alignmasters", "/e-shop"].includes(link.href);
                 if (link.href === "/orthosync") {
                   return (
-                    <li key={link.href}>
+                <li key={link.href}>
                       {isLoggedIn ? (
-                        <button
-                          onClick={handleOrthoSync}
+                      <button
+                        onClick={handleOrthoSync}
                           className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
-                        >
-                          {link.label}
-                        </button>
-                      ) : (
-                        <a
-                          href="/login"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <a
+                        href="/login"
                           className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
                         >
                           {link.label}
@@ -155,9 +155,9 @@ const Footer = () => {
                           <a
                             href={link.href}
                             className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
-                          >
-                            {link.label}
-                          </a>
+                      >
+                        {link.label}
+                      </a>
                         ) : (
                           <button
                             onClick={() => toast.error("Synapse Admin Approval Required")}
@@ -165,16 +165,16 @@ const Footer = () => {
                           >
                             {link.label}
                           </button>
-                        )
-                      ) : (
-                        <a
+                    )
+                  ) : (
+                    <a
                           href="/login"
                           className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
-                        >
-                          {link.label}
-                        </a>
-                      )}
-                    </li>
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
                   );
                 } else {
                   return (

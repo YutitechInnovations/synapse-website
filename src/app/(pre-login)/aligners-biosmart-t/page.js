@@ -75,7 +75,7 @@ export default function BioSmartT() {
           <div className={`${styles.responsiveContainer} w-full mx-auto relative mb-[100px]`} style={{ minWidth: '0', minHeight: '0' }}>
             <div className="overflow-x-auto">
               {/* Table Heading and Subheading (Figma accurate) */}
-              <div className="w-full mb-8 pt-8 px-8">
+              <div className="w-full mb-8 pt-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                 BioSmart™ T Thermoformed Aligners. <br/>
                 Trusted Craft. Smartly Evolved.
@@ -84,7 +84,7 @@ export default function BioSmartT() {
                 The BioSmart™ T Thermoformed Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences
                 </p>
               </div>
-              <table className="min-w-full text-center border-separate border-spacing-y-4 px-8">
+              <table className="min-w-full text-center border-separate border-spacing-y-4">
                 <thead>
                   <tr>
                     <th className="py-4 px-4 text-base md:text-lg font-semibold text-center  rounded-tl-xl">Treatment Plan</th>

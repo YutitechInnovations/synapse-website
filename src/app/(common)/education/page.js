@@ -36,10 +36,10 @@ export default function Education() {
     <div className="min-h-screen flex flex-col bg-[#F8FAF9]">
       <Navbar />
       <div
-        className={`${styles.educationContainer} mt-16 sm:mt-24 md:mt-36 mb-20`}
+        className={`${styles.educationContainer} mt-24 sm:mt-32 md:mt-40 mb-20`}
         style={{ background: "#F6F6F3", borderRadius: "20px" }}
       >
-        <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left">
+        <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left mt-16">
           Education
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[50px] gap-y-[32px] ">

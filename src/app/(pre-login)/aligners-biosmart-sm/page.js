@@ -36,7 +36,7 @@ export default function BioSmartSM() {
 
         {/* Introduction */}
         <section className="w-full bg-[#F6F6F3] flex justify-center items-center py-16 md:py-20">
-          <div className={`${styles.responsiveContainer} w-full px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]`}>
+          <div className={`${styles.heroContainer} w-full px-4 text-[18px] md:text-[20px] leading-relaxed text-[#004C44]`}>
             <p className="text-left">
               With BioSmart™ SM (Smart Memory) aligners, you&apos;re not just
               upgrading materials—you&apos;re advancing toward what is
@@ -156,7 +156,7 @@ export default function BioSmartSM() {
           <div className={`${styles.responsiveContainer} w-full mx-auto relative mb-[100px]`} style={{ minWidth: '0', minHeight: '0' }}>
             <div className="overflow-x-auto">
               {/* Table Heading and Subheading (Figma accurate) */}
-              <div className="w-full mb-8 pt-8 px-8">
+              <div className="w-full mb-8 pt-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                   BioSmart™ SM Smart Memory Aligners.<br />
                   Precision-Built. Future-Ready
@@ -165,7 +165,7 @@ export default function BioSmartSM() {
                   The BioSmart™ SM Smart Memory Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences.
                 </p>
               </div>
-              <table className="min-w-full text-center border-separate border-spacing-y-4 px-8">
+              <table className="min-w-full text-center border-separate border-spacing-y-4">
                 <thead>
                   <tr>
                     <th className="py-4 px-4 text-base md:text-lg font-semibold text-center  rounded-tl-xl">Treatment Plan</th>

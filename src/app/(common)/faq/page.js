@@ -1,7 +1,58 @@
+"use client";
 import Navbar from "../../../components/Navbar/Navbar.js";
 import Image from "next/image";
+import { useState, useMemo } from "react";
 
 export default function FAQ() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const faqData = [
+    {
+      question: "Is Aligner treatment painful?",
+      answer: "Some discomfort or tooth soreness is common, especially when starting a new set of aligners. This is a normal sign that your teeth are shifting as planned. The discomfort usually fades within a few days. If it persists, contact your doctor."
+    },
+    {
+      question: "Are there food restrictions during aligner treatment?",
+      answer: "No food restrictions! Just remove your aligners before eating or drinking anything except water. Remember to brush your teeth before putting them back in."
+    },
+    {
+      question: "Can I drink hot or cold beverages while wearing my aligners?",
+      answer: "It's recommended to only drink water while wearing your aligners. Hot beverages can warp the plastic, and other drinks can stain them or get trapped between your teeth and aligners."
+    },
+    {
+      question: "Can I chew gum while wearing aligners?",
+      answer: "No, you should not chew gum while wearing aligners. Gum can stick to them and damage the plastic. Remove your aligners if you want to chew gum."
+    },
+    {
+      question: "Will smoking or chewing tobacco stain my aligners?",
+      answer: "Yes, smoking or using tobacco products can stain your aligners. We recommend removing aligners when smoking and cleaning them thoroughly before putting them back in."
+    },
+    {
+      question: "How much should I soak direct aligner in hot water?",
+      answer: "Follow your doctor's specific instructions for soaking aligners. Generally, use lukewarm (not hot) water and approved cleaning solutions only."
+    },
+    {
+      question: "What should I do if I lose or break an aligner?",
+      answer: "Contact your doctor immediately if you lose or break an aligner. They will advise whether to move to the next set or order a replacement."
+    },
+    {
+      question: "What happens if I lose or break an attachment?",
+      answer: "If an attachment falls off or breaks, schedule an appointment with your doctor as soon as possible to have it replaced."
+    }
+  ];
+
+  const filteredFAQs = useMemo(() => {
+    if (!searchTerm.trim()) {
+      return faqData;
+    }
+    
+    const searchLower = searchTerm.toLowerCase();
+    return faqData.filter(faq => 
+      faq.question.toLowerCase().includes(searchLower) ||
+      faq.answer.toLowerCase().includes(searchLower)
+    );
+  }, [searchTerm]);
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
       <Navbar />
@@ -27,6 +78,8 @@ export default function FAQ() {
               <input
                 type="text"
                 placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="faq-search w-full max-w-lg mx-auto"
                 aria-label="Search FAQs"
               />
@@ -53,294 +106,53 @@ export default function FAQ() {
 
         <div className="w-full flex justify-center px-2 sm:px-4 py-8 sm:py-16">
           <div className="space-y-4 w-full max-w-5xl 3xl:max-w-6xl">
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span>Is Aligner treatment painful?</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#004C44"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  Some discomfort or tooth soreness is common, especially when
-                  starting a new set of aligners. This is a normal sign that
-                  your teeth are shifting as planned. The discomfort usually
-                  fades within a few days. If it persists, contact your doctor.
+            {filteredFAQs.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-lg text-gray-600">
+                  No FAQs found matching "{searchTerm}". Try a different search term.
                 </p>
               </div>
-            </details>
-
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  Are there food restrictions during aligner treatment?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
+            ) : (
+              filteredFAQs.map((faq, index) => (
+                <details
+                  key={index}
+                  className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
+                  style={{
+                    borderRadius: "20px",
+                    borderWidth: "1px",
+                    padding: "30px",
+                  }}
                 >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  No food restrictions! Just remove your aligners before eating
-                  or drinking anything except water. Remember to brush your
-                  teeth before putting them back in.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  Can I drink hot or cold beverages while wearing my aligners?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  It&apos;s recommended to only drink water while wearing your
-                  aligners. Hot beverages can warp the plastic, and other drinks
-                  can stain them or get trapped between your teeth and aligners.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  Can I chew gum while wearing aligners?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  No, you should not chew gum while wearing aligners. Gum can
-                  stick to them and damage the plastic. Remove your aligners if
-                  you want to chew gum.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0  card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  Will smoking or chewing tobacco stain my aligners?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  Yes, smoking or using tobacco products can stain your
-                  aligners. We recommend removing aligners when smoking and
-                  cleaning them thoroughly before putting them back in.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0 card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  How much should I soak direct aligner in hot water?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  Follow your doctor&apos;s specific instructions for soaking
-                  aligners. Generally, use lukewarm (not hot) water and approved
-                  cleaning solutions only.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  What should I do if I lose or break an aligner?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  Contact your doctor immediately if you lose or break an
-                  aligner. They will advise whether to move to the next set or
-                  order a replacement.
-                </p>
-              </div>
-            </details>
-
-            <details
-              className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-              style={{
-                borderRadius: "20px",
-                borderWidth: "1px",
-                padding: "30px",
-              }}
-            >
-              <summary className="flex justify-between items-center">
-                <span className="font-semibold text-lg">
-                  What happens if I lose or break an attachment?
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#006D38"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transition-transform duration-200 mr-4"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div>
-                <p>
-                  If an attachment falls off or breaks, schedule an appointment
-                  with your doctor as soon as possible to have it replaced.
-                </p>
-              </div>
-            </details>
+                  <summary className="flex justify-between items-center">
+                    <span className="font-semibold text-lg">
+                      {faq.question}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#006D38"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="transition-transform duration-200 mr-4"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </summary>
+                  <div>
+                    <p>
+                      {faq.answer}
+                    </p>
+                  </div>
+                </details>
+              ))
+            )}
           </div>
         </div>
-      </section>{" "}
+      </section>
     </div>
   );
 }

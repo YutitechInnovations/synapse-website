@@ -50,7 +50,7 @@ const AdminForgotPasswordForm = () => {
           toast.success(
             data.message || "Password reset email sent successfully!"
           );
-          router.push("/admin");
+          router.push("/login");
         } else {
           throw new Error("Invalid response from server");
         }
