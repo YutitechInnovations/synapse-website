@@ -21,22 +21,35 @@ const Footer = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isApproved, setIsApproved] = useState(false);
+  const [approvalChecked, setApprovalChecked] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     const updateLoginStatus = () => {
       setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
     };
-
     setHasMounted(true);
     updateLoginStatus();
-
     window.addEventListener("storage", updateLoginStatus);
-
     return () => {
       window.removeEventListener("storage", updateLoginStatus);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn || approvalChecked) return;
+    // Check if we already have approval status in localStorage
+    const storedApproval = localStorage.getItem("userApproved");
+    if (storedApproval !== null) {
+      setIsApproved(storedApproval === "true");
+      setApprovalChecked(true);
+      return;
+    }
+    // Fallback: not approved
+    setIsApproved(false);
+    setApprovalChecked(true);
+  }, [isLoggedIn, approvalChecked]);
 
   if (!hasMounted) return null;
 
@@ -111,41 +124,78 @@ const Footer = () => {
           <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
           <div className="flex flex-col md:flex-row gap-2 md:gap-16">
             <ul className="space-y-2 text-base font-normal">
-              {leftLinks.map((link) => (
-                <li key={link.href}>
-                  {link.href === "/orthosync" ? (
-                    isLoggedIn ? (
-                      <button
-                        onClick={handleOrthoSync}
-                        className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
-                      >
-                        {link.label}
-                      </button>
-                    ) : (
+              {leftLinks.map((link) => {
+                // Special handling for approval-restricted links
+                const isRestricted = ["/rxtrack", "/alignmasters", "/e-shop"].includes(link.href);
+                if (link.href === "/orthosync") {
+                  return (
+                    <li key={link.href}>
+                      {isLoggedIn ? (
+                        <button
+                          onClick={handleOrthoSync}
+                          className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
+                        >
+                          {link.label}
+                        </button>
+                      ) : (
+                        <a
+                          href="/login"
+                          className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  );
+                } else if (isRestricted) {
+                  return (
+                    <li key={link.href}>
+                      {isLoggedIn ? (
+                        isApproved ? (
+                          <a
+                            href={link.href}
+                            className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
+                          >
+                            {link.label}
+                          </a>
+                        ) : (
+                          <button
+                            onClick={() => toast.error("Synapse Admin Approval Required")}
+                            className="text-left text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
+                          >
+                            {link.label}
+                          </button>
+                        )
+                      ) : (
+                        <a
+                          href="/login"
+                          className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={link.href}>
                       <a
-                        href="/login"
-                        className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                        href={isLoggedIn ? link.href : "/login"}
+                        className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
                       >
                         {link.label}
                       </a>
-                    )
-                  ) : (
-                    <a
-                      href={isLoggedIn ? link.href : "/login"}
-                      className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
-                    >
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
+                    </li>
+                  );
+                }
+              })}
             </ul>
             <ul className="space-y-2 text-base font-normal">
               {rightLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150"
+                    className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer"
                   >
                     {link.label}
                   </a>
