@@ -9,6 +9,8 @@ import { getOrthoSyncUrl } from "@/services/auth.js";
 import toast from "react-hot-toast";
 import { useLoader } from "@/context/LoaderContext";
 
+// Navbar is now responsive for tablet screens. Dropdowns and menus have improved touch targets and spacing for tablets.
+
 function ProfileDropdown({ onLogout }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
@@ -90,7 +92,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+        className="text-left font-semibold text-[18px] lg:text-base text-[#195B48] lg:text-white lg:font-normal lg:text-center lg:ml-[30px] cursor-pointer flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
       >
         Members Lounge
         <svg
@@ -106,7 +108,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
         </svg>
       </button>
       {open && (
-        <div className="absolute left-0 top-full mt-3 min-w-[200px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+        <div className="absolute left-0 top-full mt-3 min-w-[220px] sm:min-w-[240px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
           <button
             onClick={() => {
               setOpen(false);
@@ -175,7 +177,7 @@ function ProductsDropdown() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+        className="text-left font-semibold text-[18px] lg:text-base text-[#195B48] lg:text-white lg:font-normal lg:text-center lg:ml-[30px] cursor-pointer flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
       >
         Products
         <svg
@@ -191,7 +193,7 @@ function ProductsDropdown() {
         </svg>
       </button>
       {open && (
-        <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+        <div className="absolute left-0 top-full mt-3 min-w-[200px] sm:min-w-[220px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
           <button
             onClick={() => {
               setOpen(false);
@@ -242,7 +244,7 @@ function PreLoginMembersLoungeDropdown() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="text-left font-semibold text-[18px] md:text-base text-[#195B48] md:text-white md:font-normal md:text-center md:ml-[30px] cursor-pointer flex items-center gap-1"
+        className="text-left font-semibold text-[18px] lg:text-base text-[#195B48] lg:text-white lg:font-normal lg:text-center lg:ml-[30px] cursor-pointer flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
       >
         Members Lounge
         <svg
@@ -258,7 +260,7 @@ function PreLoginMembersLoungeDropdown() {
         </svg>
       </button>
       {open && (
-        <div className="absolute left-0 top-full mt-3 min-w-[200px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+        <div className="absolute left-0 top-full mt-3 min-w-[220px] sm:min-w-[240px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
           <button
             onClick={() => {
               setOpen(false);
@@ -451,7 +453,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setIsMenuOpen(false);
       }
     };
@@ -467,12 +469,12 @@ export default function Navbar() {
   return (
     <>
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col text-[#004C44] p-6">
+        <div className="fixed inset-0 bg-white z-50 flex flex-col text-[#004C44] p-4 sm:p-6 lg:hidden">
           {/* Close Button */}
           <div className="flex justify-end">
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-bold text-[#004C44]"
+              className="text-2xl sm:text-3xl font-bold text-[#004C44] p-2"
               aria-label="Close menu"
             >
               ×
@@ -480,7 +482,7 @@ export default function Navbar() {
           </div>
 
           {/* Menu Items */}
-          <div className="flex flex-col items-start gap-6 mt-8 text-lg font-normal text-left">
+          <div className="flex flex-col items-start gap-4 sm:gap-6 mt-6 sm:mt-8 text-base sm:text-lg font-normal text-left">
             {isLoggedIn ? (
               <>
                 <button
@@ -709,17 +711,17 @@ export default function Navbar() {
 
       <div
         className={`fixed top-0 z-50 w-full bg-transparent ${
-          isMenuOpen ? "hidden md:block" : ""
+          isMenuOpen ? "hidden lg:block" : ""
         }`}
       >
         {" "}
-        <div className="flex items-center justify-center container mx-auto min-w-0">
+        <div className="flex items-center justify-center container mx-auto min-w-0 px-4 sm:px-6 lg:px-8">
           <nav
             className={`${styles.navbar} flex items-center w-full relative min-w-0`}
           >
-            <div className="flex items-center flex-1 min-w-0 justify-between md:justify-start">
+            <div className="flex items-center flex-1 min-w-0 justify-between lg:justify-start">
               <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+                className="lg:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
                 type="button"
@@ -728,7 +730,7 @@ export default function Navbar() {
                 <span className="block w-7 h-1 bg-white rounded mb-1"></span>
                 <span className="block w-7 h-1 bg-white rounded"></span>
               </button>
-              <div className="hidden md:flex items-center gap-[1.875rem] min-w-0">
+              <div className="hidden lg:flex items-center gap-[1.875rem] min-w-0">
                 <ul className="flex flex-row items-center p-0 w-auto min-w-0">
                   {isLoggedIn ? (
                     <>

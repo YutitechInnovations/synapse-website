@@ -64,6 +64,12 @@ const LoginForm = () => {
       return;
     }
 
+    // Add frontend password validation
+    if (password.length < 8) {
+      setFormError("Password must be at least 8 characters long.");
+      return;
+    }
+
     setFormError("");
 
     try {
@@ -99,6 +105,12 @@ const LoginForm = () => {
 
     if (!password.trim()) {
       setFormError("Please enter your password.");
+      return;
+    }
+
+    // Add frontend password validation
+    if (password.length < 8) {
+      setFormError("Password must be at least 8 characters long.");
       return;
     }
 

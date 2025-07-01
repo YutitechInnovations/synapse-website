@@ -144,9 +144,11 @@ const SignupForm = () => {
     try {
       await withLoader(async () => {
         const result = await registerDoctor(payload);
+        
+        console.log("Registration result:", result); // Debug log
 
         if (result.status && result.status.toLowerCase() === "failed") {
-          toast.error("Registration failed");
+          toast.error(result.message || "Registration failed");
           return;
         }
 
@@ -156,6 +158,12 @@ const SignupForm = () => {
       }, "Creating your account...");
     } catch (error) {
       console.log(error);
+      // Display the error message to the user
+      if (error.message) {
+        toast.error(error.message);
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
     }
   };
 

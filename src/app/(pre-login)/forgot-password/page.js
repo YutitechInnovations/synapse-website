@@ -57,7 +57,15 @@ export default function ForgotPasswordPage() {
       }, "Sending reset email...");
     } catch (err) {
       console.error("Forgot password error:", err);
-      toast.error(err.message || "Failed to send reset email");
+      
+      // Handle validation errors (422 status)
+      if (err.response?.status === 422 && err.response?.data?.detail) {
+        const validationError = err.response.data.detail[0];
+        const errorMessage = validationError?.msg || "Validation error";
+        toast.error(errorMessage);
+      } else {
+        toast.error(err.message || "Failed to send reset email");
+      }
     }
   };
 

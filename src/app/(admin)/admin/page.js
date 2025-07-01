@@ -31,6 +31,13 @@ export default function AdminLogin() {
       return;
     }
 
+    // Add frontend password validation
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      toast.error("Password must be at least 8 characters long");
+      return;
+    }
+
     setError("");
 
     try {

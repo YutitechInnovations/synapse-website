@@ -11,7 +11,7 @@ const instance = axios.create({
     "Content-Type": "application/json",
   },
   withCredentials: false, // Changed to false since we're handling credentials manually
-  validateStatus: (status) => status >= 200 && status < 400,
+  validateStatus: (status) => status >= 200 && status < 500,
 });
 
 // Request interceptor: Attach token from localStorage or Cookies
@@ -67,7 +67,12 @@ instance.interceptors.response.use(
       const { status } = error.response;
 
       // Handle authentication errors only
-      if ((status === 401) && !isLoggingOut) {
+      // Don't auto-logout for login endpoints when credentials are wrong
+      const isLoginEndpoint = error.config?.url?.includes('login') || 
+                             error.config?.url?.includes('user_login') || 
+                             error.config?.url?.includes('admin_login');
+      
+      if ((status === 401) && !isLoggingOut && !isLoginEndpoint) {
         isLoggingOut = true;
         try {
           await instance.post("/logout");

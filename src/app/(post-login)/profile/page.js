@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
-import { editUserDetails } from "@/services/auth";
+import { editUserDetails, getUserDetails } from "@/services/auth";
 import toast from "react-hot-toast";
 import { useLoader } from "@/context/LoaderContext";
 
 export default function Profile() {
   const { withLoader } = useLoader();
   const [originalData, setOriginalData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -19,21 +20,69 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    const stored = localStorage.getItem("loggedUser");
-    if (stored) {
-      const user = JSON.parse(stored);
-      const populated = {
-        fullName: user.full_name || "",
-        email: user.email || "",
-        mobile: user.mobile_number || "",
-        role: user.role || "",
-        iosReg: user.ios_number || "",
-        practiceAddress: user.practice_address || "",
-      };
-      setFormData(populated);
-      setOriginalData(populated);
-    }
+    fetchUserDetails();
   }, []);
+
+  const fetchUserDetails = async () => {
+    try {
+      setLoading(true);
+      const response = await getUserDetails();
+      
+      if (response.status === "success") {
+        // Handle both response.data and direct response structure
+        const userData = response.data || response;
+        const populated = {
+          fullName: userData.full_name || userData.fullName || "",
+          email: userData.email || "",
+          mobile: userData.mobile_number || userData.mobile || "",
+          role: userData.role || "",
+          iosReg: userData.ios_number || userData.iosReg || "",
+          practiceAddress: userData.practice_address || userData.practiceAddress || "",
+        };
+        setFormData(populated);
+        setOriginalData(populated);
+      } else {
+        // Fallback to localStorage if API fails
+        const stored = localStorage.getItem("loggedUser");
+        if (stored) {
+          const user = JSON.parse(stored);
+          const populated = {
+            fullName: user.full_name || "",
+            email: user.email || "",
+            mobile: user.mobile_number || "",
+            role: user.role || "",
+            iosReg: user.ios_number || "",
+            practiceAddress: user.practice_address || "",
+          };
+          setFormData(populated);
+          setOriginalData(populated);
+        }
+        toast.error(response.message || "Failed to fetch user details");
+      }
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+      
+      // Fallback to localStorage if API fails
+      const stored = localStorage.getItem("loggedUser");
+      if (stored) {
+        const user = JSON.parse(stored);
+        const populated = {
+          fullName: user.full_name || "",
+          email: user.email || "",
+          mobile: user.mobile_number || "",
+          role: user.role || "",
+          iosReg: user.ios_number || "",
+          practiceAddress: user.practice_address || "",
+        };
+        setFormData(populated);
+        setOriginalData(populated);
+      }
+      
+      toast.error(error.message || "Failed to fetch user details");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const isFormChanged =
     JSON.stringify(formData) !== JSON.stringify(originalData);
@@ -62,6 +111,7 @@ export default function Profile() {
         const response = await editUserDetails(payload);
 
         if (response.status === "success") {
+          // Update localStorage with the fresh data
           const stored = localStorage.getItem("loggedUser");
           if (stored) {
             const user = JSON.parse(stored);
@@ -71,6 +121,9 @@ export default function Profile() {
 
           toast.success("Profile updated successfully");
           setOriginalData(formData);
+          
+          // Optionally refresh user details from API to ensure consistency
+          // await fetchUserDetails();
         } else {
           toast.error(response.message || "Failed to update profile");
         }
@@ -88,12 +141,30 @@ export default function Profile() {
         className="w-full max-w-4xl 3xl:max-w-6xl bg-white border border-[#184C3A] rounded-2xl p-6 mx-auto"
         style={{ marginTop: "130px" }}
       >
-        <h2 className="text-xl md:text-2xl font-bold text-[#184C3A] mb-1">
-          Profile Information
-        </h2>
-        <p className="text-[#184C3A] text-base mb-6">
-          Update your personal information and preferences
-        </p>
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-[#184C3A] mb-1">
+              Profile Information
+            </h2>
+            <p className="text-[#184C3A] text-base">
+              Update your personal information and preferences
+            </p>
+          </div>
+          <button
+            onClick={fetchUserDetails}
+            disabled={loading}
+            className="bg-[#184C3A] text-white px-4 py-2 rounded-lg hover:bg-[#0f3a2e] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? "Refreshing..." : "Refresh"}
+          </button>
+        </div>
+        
+        {loading ? (
+          <div className="flex items-center justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#184C3A]"></div>
+            <span className="ml-3 text-[#184C3A]">Loading profile...</span>
+          </div>
+        ) : (
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -194,6 +265,7 @@ export default function Profile() {
             </button>
           </div>
         </form>
+        )}
       </div>
     </div>
   );

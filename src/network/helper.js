@@ -163,9 +163,21 @@ export const handleToast = ({ res, err, next }) => {
     const data = err?.response?.data;
 
     // Validation errors
-    if (status === 422 && data?.errors) {
-      const validationErrors = Object.values(data.errors).flat();
-      validationErrors.forEach((message) => toast.error(message));
+    if (status === 422) {
+      if (data?.detail && Array.isArray(data.detail)) {
+        // Handle FastAPI validation errors
+        data.detail.forEach((error) => {
+          toast.error(error.msg || "Validation error");
+        });
+      } else if (data?.errors) {
+        // Handle other validation error formats
+        const validationErrors = Object.values(data.errors).flat();
+        validationErrors.forEach((message) => toast.error(message));
+      } else if (data?.message) {
+        toast.error(data.message);
+      } else {
+        toast.error("Validation error");
+      }
     } else if (data?.message) {
       toast.error(data.message);
     } else if (err.message) {
