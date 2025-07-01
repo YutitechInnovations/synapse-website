@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useDoctors, useHandleDoctorStatus } from "@/hooks/useDoctors";

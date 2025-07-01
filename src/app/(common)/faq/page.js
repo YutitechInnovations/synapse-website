@@ -51,7 +51,7 @@ export default function FAQ() {
       faq.question.toLowerCase().includes(searchLower) ||
       faq.answer.toLowerCase().includes(searchLower)
     );
-  }, [searchTerm]);
+  }, [searchTerm, faqData]);
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
@@ -109,7 +109,7 @@ export default function FAQ() {
             {filteredFAQs.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-lg text-gray-600">
-                  No FAQs found matching "{searchTerm}". Try a different search term.
+                  No FAQs found matching &quot;{searchTerm}&quot;. Try a different search term.
                 </p>
               </div>
             ) : (
