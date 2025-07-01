@@ -171,8 +171,8 @@ export const handleToast = ({ res, err, next }) => {
         });
       } else if (data?.errors) {
         // Handle other validation error formats
-        const validationErrors = Object.values(data.errors).flat();
-        validationErrors.forEach((message) => toast.error(message));
+      const validationErrors = Object.values(data.errors).flat();
+      validationErrors.forEach((message) => toast.error(message));
       } else if (data?.message) {
         toast.error(data.message);
       } else {

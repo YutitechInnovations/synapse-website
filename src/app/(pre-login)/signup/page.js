@@ -9,6 +9,9 @@ import { useLoader } from "@/context/LoaderContext";
 import { successIcon as SuccessIcon } from "@/theme/icons";
 
 const RegistrationSubmitted = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="w-full flex justify-center px-4">
       <div className="w-full max-w-lg bg-white border border-[#184C3A] rounded-2xl px-8  pt-8 pb-10 flex flex-col items-start shadow-sm">
@@ -144,7 +147,7 @@ const SignupForm = () => {
     try {
       await withLoader(async () => {
         const result = await registerDoctor(payload);
-        
+
         console.log("Registration result:", result); // Debug log
 
         if (result.status && result.status.toLowerCase() === "failed") {

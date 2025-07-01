@@ -116,7 +116,7 @@ export default function PostLoginHome() {
               </span>
             </div>
             <span className="text-[#004C44] text-[40px] font-extrabold leading-tight">
-              1250 pts
+              0 pts
             </span>
           </div>
           {/* Total Earned Card */}
@@ -151,7 +151,7 @@ export default function PostLoginHome() {
               </span>
             </div>
             <span className="text-[#004C44] text-[40px] font-bold leading-tight">
-              1650 pts
+              0 pts
             </span>
           </div>
           {/* Total Redeemed Card */}
@@ -182,7 +182,7 @@ export default function PostLoginHome() {
               </span>
             </div>
             <span className="text-[#004C44] text-[40px] font-extrabold leading-tight">
-              400 pts
+              0 pts
             </span>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function Profile() {
     fullName: "",
     email: "",
     mobile: "",
-    role: "",
+    practiceType: "",
     iosReg: "",
     practiceAddress: "",
   });
@@ -28,16 +28,15 @@ export default function Profile() {
       setLoading(true);
       const response = await getUserDetails();
       
-      if (response.status === "success") {
-        // Handle both response.data and direct response structure
-        const userData = response.data || response;
+      if (response.status === "success" && response.data) {
+        const userData = response.data;
         const populated = {
-          fullName: userData.full_name || userData.fullName || "",
+          fullName: userData.full_name || "",
           email: userData.email || "",
-          mobile: userData.mobile_number || userData.mobile || "",
-          role: userData.role || "",
-          iosReg: userData.ios_number || userData.iosReg || "",
-          practiceAddress: userData.practice_address || userData.practiceAddress || "",
+          mobile: userData.mobile_number || "",
+          practiceType: userData.practice_type || "",
+          iosReg: userData.ios_number || "",
+          practiceAddress: userData.practice_address || "",
         };
         setFormData(populated);
         setOriginalData(populated);
@@ -50,7 +49,7 @@ export default function Profile() {
             fullName: user.full_name || "",
             email: user.email || "",
             mobile: user.mobile_number || "",
-            role: user.role || "",
+            practiceType: user.practice_type || "",
             iosReg: user.ios_number || "",
             practiceAddress: user.practice_address || "",
           };
@@ -70,7 +69,7 @@ export default function Profile() {
           fullName: user.full_name || "",
           email: user.email || "",
           mobile: user.mobile_number || "",
-          role: user.role || "",
+          practiceType: user.practice_type || "",
           iosReg: user.ios_number || "",
           practiceAddress: user.practice_address || "",
         };
@@ -103,7 +102,7 @@ export default function Profile() {
         const payload = {
           full_name: formData.fullName.trim(),
           mobile_number: formData.mobile.trim(),
-          role: formData.role.trim(),
+          practice_type: formData.practiceType.trim(),
           ios_number: formData.iosReg.trim(),
           practice_address: formData.practiceAddress.trim(),
         };
@@ -121,9 +120,8 @@ export default function Profile() {
 
           toast.success("Profile updated successfully");
           setOriginalData(formData);
-          
-          // Optionally refresh user details from API to ensure consistency
-          // await fetchUserDetails();
+          // Refresh user details from API to ensure consistency
+          await fetchUserDetails();
         } else {
           toast.error(response.message || "Failed to update profile");
         }
@@ -143,12 +141,12 @@ export default function Profile() {
       >
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-[#184C3A] mb-1">
-              Profile Information
-            </h2>
+        <h2 className="text-xl md:text-2xl font-bold text-[#184C3A] mb-1">
+          Profile Information
+        </h2>
             <p className="text-[#184C3A] text-base">
-              Update your personal information and preferences
-            </p>
+          Update your personal information and preferences
+        </p>
           </div>
           <button
             onClick={fetchUserDetails}
@@ -217,9 +215,9 @@ export default function Profile() {
             </label>
             <input
               id="practiceType"
-              name="role"
+              name="practiceType"
               type="text"
-              value={formData.role}
+              value={formData.practiceType}
               onChange={handleChange}
               className="border border-[#B6C3C7] rounded-lg px-4 py-2 text-[#184C3C] bg-white"
             />

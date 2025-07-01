@@ -64,7 +64,7 @@ export default function ForgotPasswordPage() {
         const errorMessage = validationError?.msg || "Validation error";
         toast.error(errorMessage);
       } else {
-        toast.error(err.message || "Failed to send reset email");
+      toast.error(err.message || "Failed to send reset email");
       }
     }
   };
