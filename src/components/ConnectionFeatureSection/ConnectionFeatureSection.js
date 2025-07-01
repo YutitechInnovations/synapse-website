@@ -3,6 +3,7 @@ import React from "react";
 import { useRouter } from 'next/navigation';
 import styles from "./ConnectionFeatureSection.module.css";
 import { getOrthoSyncUrl } from "@/services/auth.js";
+import { toast } from "react-hot-toast";
 
 const features = [
   {
@@ -33,34 +34,36 @@ export default function ConnectionFeatureSection({
   onOrthoSyncClick,
 }) {
   const router = useRouter();
-  const handleOrthoSync = async () => {
-    try {
-      const response = await getOrthoSyncUrl();
-      const url = response?.data?.orthosync_url || response?.url;
-      const status = response?.data?.status;
-      const message = response?.data?.message;
-
-      if (url) {
-        window.open(url, "_blank");
-      } else {
-        if (status === "failed") {
-          toast.error(message || "Unable to open OrthoSync. Please try again.");
-        } else {
-          toast.error("OrthoSync URL not available.");
-        }
-      }
-    } catch (err) {
-      console.log(err);
-      const errorMessage =
-        err?.response?.data?.message || err?.message || "Something went wrong";
-    }
-  };
-  const handleCardClick = (link) => {
+  const handleCardClick = async (link) => {
     if (isLoggedIn) {
-      if (link === "/orthosync" && typeof onOrthoSyncClick === "function") {
-        handleOrthoSync();
-      } else {
-        router.push(link);
+      // Check approval for all cards
+      try {
+        const response = await getOrthoSyncUrl();
+        const url = response?.data?.orthosync_url || response?.url;
+        const status = response?.data?.status;
+        const message = response?.data?.message;
+        // If not approved, show toast and do not navigate
+        if (!url) {
+          if (status === "failed" && message && message.toLowerCase().includes("admin approval required")) {
+            toast.error("Synapse Admin Approval Required");
+            return;
+          } else if (status === "failed") {
+            toast.error(message || "Unable to open OrthoSync. Please try again.");
+            return;
+          } else {
+            toast.error("Synapse Admin Approval Required");
+            return;
+          }
+        }
+        // If approved, navigate as normal
+        if (link === "/orthosync" && typeof onOrthoSyncClick === "function") {
+          window.open(url, "_blank");
+        } else {
+          router.push(link);
+        }
+      } catch (err) {
+        const errorMessage = err?.response?.data?.message || err?.message || "Something went wrong";
+        toast.error(errorMessage);
       }
     } else {
       router.push("/login");

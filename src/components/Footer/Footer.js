@@ -61,11 +61,21 @@ const Footer = () => {
     try {
       const response = await getOrthoSyncUrl();
       const url = response?.data?.orthosync_url || response?.url;
+      const status = response?.data?.status;
+      const message = response?.data?.message;
 
       if (url) {
         window.open(url, "_blank");
       } else {
-        toast.error("OrthoSync URL not available.");
+        if (status === "failed") {
+          if (message && message.toLowerCase().includes("admin approval required")) {
+            toast.error("Synapse Admin Approval Required");
+          } else {
+            toast.error(message || "Unable to open OrthoSync. Please try again.");
+          }
+        } else {
+          toast.error("Synapse Admin Approval Required");
+        }
       }
     } catch (err) {
       console.log(err);
