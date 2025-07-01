@@ -38,17 +38,48 @@ const Footer = () => {
   }, []);
 
   useEffect(() => {
-    if (!isLoggedIn || approvalChecked) return;
-    // Check if we already have approval status in localStorage
-    const storedApproval = localStorage.getItem("userApproved");
-    if (storedApproval !== null) {
-      setIsApproved(storedApproval === "true");
+    const checkApproval = async () => {
+      if (!isLoggedIn || approvalChecked) return;
+      
+      // Check if we already have approval status in localStorage
+      const storedApproval = localStorage.getItem("userApproved");
+      if (storedApproval !== null) {
+        setIsApproved(storedApproval === "true");
+        setApprovalChecked(true);
+        return;
+      }
+
+      try {
+        const response = await getOrthoSyncUrl();
+        // If the API returns a valid URL or status, consider approved
+        if (
+          (response && response.data && response.data.orthosync_url) ||
+          (response && response.status !== "failed")
+        ) {
+          setIsApproved(true);
+          localStorage.setItem("userApproved", "true");
+        } else {
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        }
+      } catch (err) {
+        // If error message indicates not approved, set false
+        if (
+          err?.response?.data?.message?.toLowerCase().includes("not approved") ||
+          err?.message?.toLowerCase().includes("not approved") ||
+          err?.response?.data?.message?.toLowerCase().includes("synapse admin approval required")
+        ) {
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        } else {
+          // For other errors, default to not approved
+          setIsApproved(false);
+          localStorage.setItem("userApproved", "false");
+        }
+      }
       setApprovalChecked(true);
-      return;
-    }
-    // Fallback: not approved
-    setIsApproved(false);
-    setApprovalChecked(true);
+    };
+    checkApproval();
   }, [isLoggedIn, approvalChecked]);
 
   if (!hasMounted) return null;
