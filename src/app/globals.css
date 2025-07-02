@@ -41,6 +41,10 @@ body {
   color: var(--text-primary);
   font-family: var(--font-poppins);
   font-style: normal;
+  /* Custom cursor: Rotated SVG for modern browsers, PNG for Safari, auto as fallback */
+  cursor: url('/favicon-cursor.svg') 11 10, url('/favicon-cursor.png') 11 10, auto;
+  /* If your PNG is a different size, adjust the hotspot accordingly. */
+  /* Safari may require PNG fallback. */
 }
 .btn-primary {
   background-color: var(--primary);
