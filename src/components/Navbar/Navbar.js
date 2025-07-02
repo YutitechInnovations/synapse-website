@@ -162,12 +162,16 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
 
 function ProductsDropdown() {
   const [open, setOpen] = useState(false);
+  const [alignersOpen, setAlignersOpen] = useState(false);
   const ref = useRef();
   const router = useRouter();
 
   useEffect(() => {
     function handleClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+        setAlignersOpen(false);
+      }
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -181,9 +185,7 @@ function ProductsDropdown() {
       >
         Products
         <svg
-          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -193,34 +195,52 @@ function ProductsDropdown() {
         </svg>
       </button>
       {open && (
-        <div className="absolute left-0 top-full mt-3 min-w-[200px] sm:min-w-[220px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
-          <button
-            onClick={() => {
-              setOpen(false);
-              router.push("/aligners");
-            }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
-          >
-            Aligners
-          </button>
-          <button
-            onClick={() => {
-              setOpen(false);
-              router.push("/aligners-biosmart-sm");
-            }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
-          >
-            BioSmart-SM
-          </button>
-          <button
-            onClick={() => {
-              setOpen(false);
-              router.push("/aligners-biosmart-t");
-            }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
-          >
-            BioSmart-T
-          </button>
+        <div
+          className="absolute left-0 top-full mt-3 min-w-[180px] bg-white rounded-2xl shadow-lg py-2 z-50 border"
+        >
+          <div className="relative">
+            <button
+              type="button"
+              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50 flex items-center justify-between"
+              onClick={() => setAlignersOpen((v) => !v)}
+              style={{background: alignersOpen ? '#F6F6F3' : 'transparent'}}
+            >
+              <span>Aligners</span>
+              <svg
+                className={`ml-2 w-4 h-4 transition-transform duration-200 ${alignersOpen ? "rotate-90" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            {alignersOpen && (
+              <div
+                className="absolute left-full top-0 ml-2 min-w-[180px] bg-white rounded-2xl shadow-lg py-2 z-50 border"
+              >
+                <button
+                  onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners'); }}
+                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                >
+                  Overview
+                </button>
+                <button
+                  onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
+                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                >
+                  BioSmart-SM
+                </button>
+                <button
+                  onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
+                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                >
+                  BioSmart-T
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -231,6 +251,7 @@ function PreLoginMembersLoungeDropdown() {
   const [open, setOpen] = useState(false);
   const ref = useRef();
   const router = useRouter();
+  const [alignersOpen, setAlignersOpen] = useState(false);
 
   useEffect(() => {
     function handleClick(e) {
@@ -264,7 +285,7 @@ function PreLoginMembersLoungeDropdown() {
           <button
             onClick={() => {
               setOpen(false);
-              router.push("/login");
+              toast.error('Please sign in or register to access this feature.');
             }}
             className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
           >
@@ -273,7 +294,7 @@ function PreLoginMembersLoungeDropdown() {
           <button
             onClick={() => {
               setOpen(false);
-              router.push("/login");
+              toast.error('Please sign in or register to access this feature.');
             }}
             className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
           >
@@ -282,7 +303,7 @@ function PreLoginMembersLoungeDropdown() {
           <button
             onClick={() => {
               setOpen(false);
-              router.push("/login");
+              toast.error('Please sign in or register to access this feature.');
             }}
             className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
           >
@@ -291,7 +312,7 @@ function PreLoginMembersLoungeDropdown() {
           <button
             onClick={() => {
               setOpen(false);
-              router.push("/login");
+              toast.error('Please sign in or register to access this feature.');
             }}
             className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
           >
@@ -319,6 +340,7 @@ export default function Navbar() {
     localStorage.getItem("userApproved") === "true"
   );
   const [approvalChecked, setApprovalChecked] = useState(false);
+  const [alignersOpen, setAlignersOpen] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
@@ -640,8 +662,7 @@ export default function Navbar() {
                   <div className="flex flex-col gap-3 ml-4">
                 <button
                   onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
+                    toast.error('Please sign in or register to access this feature.');
                   }}
                       className="cursor-pointer text-left"
                 >
@@ -649,8 +670,7 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
+                    toast.error('Please sign in or register to access this feature.');
                   }}
                       className="cursor-pointer text-left"
                 >
@@ -658,8 +678,7 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
+                    toast.error('Please sign in or register to access this feature.');
                   }}
                       className="cursor-pointer text-left"
                 >
@@ -667,8 +686,7 @@ export default function Navbar() {
                 </button>
                 <button
                   onClick={() => {
-                    router.push("/login");
-                    setIsMenuOpen(false);
+                    toast.error('Please sign in or register to access this feature.');
                   }}
                       className="cursor-pointer text-left"
                 >
@@ -676,15 +694,6 @@ export default function Navbar() {
                 </button>
                   </div>
                 </div>
-                <button
-                  onClick={() => {
-                    router.push("/aligners");
-                    setIsMenuOpen(false);
-                  }}
-                  className="cursor-pointer"
-                >
-                  Aligners
-                </button>
                 <button
                   onClick={() => {
                     router.push("/welcome#contact-us");
@@ -778,34 +787,45 @@ export default function Navbar() {
                           <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
                             <button
                               type="button"
-                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
-                              onMouseDown={() => {
-                                setProductDropdown(false);
-                                router.push("/aligners");
-                              }}
+                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50 flex items-center justify-between"
+                              onClick={() => setAlignersOpen((v) => !v)}
+                              style={{background: alignersOpen ? '#F6F6F3' : 'transparent'}}
                             >
-                              Aligners
+                              <span>Aligners</span>
+                              <svg
+                                className={`ml-2 w-4 h-4 transition-transform duration-200 ${alignersOpen ? "rotate-90" : ""}`}
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M9 5l7 7-7 7" />
+                              </svg>
                             </button>
-                            <button
-                              type="button"
-                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
-                              onMouseDown={() => {
-                                setProductDropdown(false);
-                                router.push("/aligners-biosmart-sm");
-                              }}
-                            >
-                              BioSmart-SM
-                            </button>
-                            <button
-                              type="button"
-                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer"
-                              onMouseDown={() => {
-                                setProductDropdown(false);
-                                router.push("/aligners-biosmart-t");
-                              }}
-                            >
-                              BioSmart-T
-                            </button>
+                            {alignersOpen && (
+                              <div
+                                className="absolute left-full top-0 ml-2 min-w-[180px] bg-white rounded-2xl shadow-lg py-2 z-50 border"
+                              >
+                                <button
+                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners'); }}
+                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                >
+                                  Overview
+                                </button>
+                                <button
+                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
+                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                >
+                                  BioSmart-SM
+                                </button>
+                                <button
+                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
+                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                >
+                                  BioSmart-T
+                                </button>
+                              </div>
+                            )}
                           </div>
                         )}
                       </li>

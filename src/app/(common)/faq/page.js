@@ -6,52 +6,50 @@ import { useState, useMemo } from "react";
 export default function FAQ() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const faqData = [
-    {
-      question: "Is Aligner treatment painful?",
-      answer: "Some discomfort or tooth soreness is common, especially when starting a new set of aligners. This is a normal sign that your teeth are shifting as planned. The discomfort usually fades within a few days. If it persists, contact your doctor."
-    },
-    {
-      question: "Are there food restrictions during aligner treatment?",
-      answer: "No food restrictions! Just remove your aligners before eating or drinking anything except water. Remember to brush your teeth before putting them back in."
-    },
-    {
-      question: "Can I drink hot or cold beverages while wearing my aligners?",
-      answer: "It's recommended to only drink water while wearing your aligners. Hot beverages can warp the plastic, and other drinks can stain them or get trapped between your teeth and aligners."
-    },
-    {
-      question: "Can I chew gum while wearing aligners?",
-      answer: "No, you should not chew gum while wearing aligners. Gum can stick to them and damage the plastic. Remove your aligners if you want to chew gum."
-    },
-    {
-      question: "Will smoking or chewing tobacco stain my aligners?",
-      answer: "Yes, smoking or using tobacco products can stain your aligners. We recommend removing aligners when smoking and cleaning them thoroughly before putting them back in."
-    },
-    {
-      question: "How much should I soak direct aligner in hot water?",
-      answer: "Follow your doctor's specific instructions for soaking aligners. Generally, use lukewarm (not hot) water and approved cleaning solutions only."
-    },
-    {
-      question: "What should I do if I lose or break an aligner?",
-      answer: "Contact your doctor immediately if you lose or break an aligner. They will advise whether to move to the next set or order a replacement."
-    },
-    {
-      question: "What happens if I lose or break an attachment?",
-      answer: "If an attachment falls off or breaks, schedule an appointment with your doctor as soon as possible to have it replaced."
-    }
-  ];
-
   const filteredFAQs = useMemo(() => {
+    const faqData = [
+      {
+        question: "Is Aligner treatment painful?",
+        answer: "Some discomfort or tooth soreness is common, especially when starting a new set of aligners. This is a normal sign that your teeth are shifting as planned. The discomfort usually fades within a few days. If it persists, contact your doctor."
+      },
+      {
+        question: "Are there food restrictions during aligner treatment?",
+        answer: "No food restrictions! Just remove your aligners before eating or drinking anything except water. Remember to brush your teeth before putting them back in."
+      },
+      {
+        question: "Can I drink hot or cold beverages while wearing my aligners?",
+        answer: "It's recommended to only drink water while wearing your aligners. Hot beverages can warp the plastic, and other drinks can stain them or get trapped between your teeth and aligners."
+      },
+      {
+        question: "Can I chew gum while wearing aligners?",
+        answer: "No, you should not chew gum while wearing aligners. Gum can stick to them and damage the plastic. Remove your aligners if you want to chew gum."
+      },
+      {
+        question: "Will smoking or chewing tobacco stain my aligners?",
+        answer: "Yes, smoking or using tobacco products can stain your aligners. We recommend removing aligners when smoking and cleaning them thoroughly before putting them back in."
+      },
+      {
+        question: "How much should I soak direct aligner in hot water?",
+        answer: "Follow your doctor's specific instructions for soaking aligners. Generally, use lukewarm (not hot) water and approved cleaning solutions only."
+      },
+      {
+        question: "What should I do if I lose or break an aligner?",
+        answer: "Contact your doctor immediately if you lose or break an aligner. They will advise whether to move to the next set or order a replacement."
+      },
+      {
+        question: "What happens if I lose or break an attachment?",
+        answer: "If an attachment falls off or breaks, schedule an appointment with your doctor as soon as possible to have it replaced."
+      }
+    ];
     if (!searchTerm.trim()) {
       return faqData;
     }
-    
     const searchLower = searchTerm.toLowerCase();
     return faqData.filter(faq => 
       faq.question.toLowerCase().includes(searchLower) ||
       faq.answer.toLowerCase().includes(searchLower)
     );
-  }, [searchTerm, faqData]);
+  }, [searchTerm]);
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">

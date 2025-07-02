@@ -5,6 +5,7 @@ import styles from "./ServicesOffered.module.css";
 
 const ServiceCircle = () => {
   const [active, setActive] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const circlesRef = useRef(null);
 
   const descriptions = {
@@ -33,20 +34,42 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
     },
   };
 
-  // Close on outside click
   useEffect(() => {
+    // Function to check if device is desktop/laptop
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
+
+  // Close on outside click (only for mobile/tablet)
+  useEffect(() => {
+    if (isDesktop) return;
     const handleClickOutside = (event) => {
-      // Check if the click is within any of the circles
       const isClickInCircle = event.target.closest(`.${styles.first_circle}, .${styles.second_circle}, .${styles.third_circle}`);
-      
       if (!isClickInCircle) {
         setActive(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isDesktop]);
+
+  // Handlers for hover (desktop) and click (mobile/tablet)
+  const handleActivate = (circle) => {
+    if (isDesktop) {
+      setActive(circle);
+    } else {
+      setActive(active === circle ? null : circle);
+    }
+  };
+  const handleDeactivate = (circle) => {
+    if (isDesktop) {
+      setActive((prev) => (prev === circle ? null : prev));
+    }
+  };
 
   return (
     <section className={styles.section}>
@@ -62,14 +85,16 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
           can feel free to reach out to us for more details!
         </p>
         <p className={styles.paragraph_styles}>
-          <b>Click on the circles to know more.</b>
+          <b>{isDesktop ? "Hover over the circles to know more." : "Click on the circles to know more."}</b>
         </p>
 
         <div className={styles.circlesContainer} ref={circlesRef}>
           <div className={styles.circles}>
-            <div 
+            <div
               className={styles.third_circle}
-              onClick={() => setActive(active === "integrated" ? null : "integrated")}
+              onClick={!isDesktop ? () => handleActivate("integrated") : undefined}
+              onMouseEnter={isDesktop ? () => handleActivate("integrated") : undefined}
+              onMouseLeave={isDesktop ? () => handleDeactivate("integrated") : undefined}
             >
               {/* <div className={styles.dot} /> */}
               <span>Integrated Align 360</span>
@@ -94,9 +119,11 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               )}
             </div>
 
-            <div 
+            <div
               className={styles.second_circle}
-              onClick={() => setActive(active === "fabrication" ? null : "fabrication")}
+              onClick={!isDesktop ? () => handleActivate("fabrication") : undefined}
+              onMouseEnter={isDesktop ? () => handleActivate("fabrication") : undefined}
+              onMouseLeave={isDesktop ? () => handleDeactivate("fabrication") : undefined}
             >
               {/* <div className={styles.dot} /> */}
               <span>Plan Fabrication</span>
@@ -109,9 +136,11 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               )}
             </div>
 
-            <div 
+            <div
               className={styles.first_circle}
-              onClick={() => setActive(active === "planning" ? null : "planning")}
+              onClick={!isDesktop ? () => handleActivate("planning") : undefined}
+              onMouseEnter={isDesktop ? () => handleActivate("planning") : undefined}
+              onMouseLeave={isDesktop ? () => handleDeactivate("planning") : undefined}
             >
               {/* <div className={styles.dot} /> */}
               <span>

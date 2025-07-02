@@ -141,7 +141,7 @@ const LoginForm = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center px-4">
       <h1 className="text-3xl md:text-4xl font-bold text-center text-[#195B48]">
-        Welcome Back
+        Welcome 
       </h1>
       <p className="text-base md:text-lg font-normal text-center text-[#195B48] mb-6">
         Access your Synapse dashboard and tools

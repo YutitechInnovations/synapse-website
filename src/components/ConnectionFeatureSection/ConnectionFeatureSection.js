@@ -66,11 +66,7 @@ export default function ConnectionFeatureSection({
         toast.error(errorMessage);
       }
     } else {
-      router.push("/login");
-      localStorage.setItem(
-        "redirectUrl",
-        link === "/orthosync" ? "/orthosync" : link
-      );
+      toast.error('Please sign in or register to access this feature.');
     }
   };
 

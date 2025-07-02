@@ -81,7 +81,7 @@ export default function BioSmartT() {
                 Trusted Craft. Smartly Evolved.
                 </h2>
                 <p className="text-[#195B48] text-[20px] font-normal leading-relaxed text-left mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                The BioSmart™ T Thermoformed Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences
+                The BioSmart™ T Thermoformed Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences.
                 </p>
               </div>
               <table className="min-w-full text-center border-separate border-spacing-y-4">
@@ -128,7 +128,7 @@ export default function BioSmartT() {
               {/* Bottom left note text (not absolute, sits above image) */}
               <div className="pl-8 pt-4">
                 <span className="text-[#195B48] text-sm italic">
-                  *Mid-Course correction is quarterly across all plans
+                <b>Mid-Course correction is quarterly across all plans</b>
                 </span>
               </div>
             </div>

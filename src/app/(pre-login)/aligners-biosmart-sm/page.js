@@ -159,7 +159,7 @@ export default function BioSmartSM() {
               <div className="w-full mb-8 pt-8">
                 <h2 className="text-[#004C44] text-[36px] font-extrabold leading-tight mb-4">
                   BioSmart™ SM Smart Memory Aligners.<br />
-                  Precision-Built. Future-Ready
+                  Precision-Built. Future-Ready.
                 </h2>
                 <p className="text-[#195B48] text-[20px] font-normal leading-relaxed text-left mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   The BioSmart™ SM Smart Memory Aligner System offers four treatment options, giving you control to manage each case in line with your clinical preferences.
@@ -217,8 +217,8 @@ export default function BioSmartSM() {
             <Image
               src="/images/power.png"
               alt="Power Icon"
-              width={134}
-              height={116}
+              width={220}
+              height={180}
               className="absolute right-0 -bottom-14 z-10"
             />
           </div>

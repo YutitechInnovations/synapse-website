@@ -57,12 +57,14 @@ export default function Education() {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
               {/* Gradient overlay for text visibility */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/90 to-transparent z-10" />
+              <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
+                <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              </div>
               <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
                 <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none mb-2">
                   {card.title}
                 </h3>
-                <p className="text-[#003c36] text-sm md:text-base font-medium">
+                <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
                   {card.description}
                 </p>
               </div>

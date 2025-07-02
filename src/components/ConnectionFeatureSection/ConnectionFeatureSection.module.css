@@ -56,6 +56,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  background: #004C44;
+  color: #FFFFFF;
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .cardSubtitle {
