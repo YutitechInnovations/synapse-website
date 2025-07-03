@@ -327,6 +327,8 @@ function PreLoginMembersLoungeDropdown() {
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
+  const [alignersOpen, setAlignersOpen] = useState(false);
+  const [membersLoungeOpen, setMembersLoungeOpen] = useState(false);
   const productRef = useRef();
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -340,7 +342,11 @@ export default function Navbar() {
     localStorage.getItem("userApproved") === "true"
   );
   const [approvalChecked, setApprovalChecked] = useState(false);
-  const [alignersOpen, setAlignersOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState({
+    products: false,
+    aligners: false,
+    membersLounge: false,
+  });
 
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
@@ -486,6 +492,33 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const toggleProducts = () => setMobileDropdown(d => ({
+    ...d,
+    products: !d.products,
+    aligners: false,
+    membersLounge: false,
+  }));
+  const toggleAligners = () => setMobileDropdown(d => ({
+    ...d,
+    aligners: !d.aligners,
+  }));
+  const toggleMembersLounge = () => setMobileDropdown(d => ({
+    ...d,
+    membersLounge: !d.membersLounge,
+    products: false,
+    aligners: false,
+  }));
+  const resetDropdowns = () => setMobileDropdown({
+    products: false,
+    aligners: false,
+    membersLounge: false,
+  });
+
+  const closeMenuAndResetDropdowns = () => {
+    setIsMenuOpen(false);
+    resetDropdowns();
+  };
+
   if (!hasMounted) return null;
 
   return (
@@ -510,7 +543,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/home");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                   className="cursor-pointer"
                 >
@@ -522,7 +555,7 @@ export default function Navbar() {
                     <button
                       onClick={() => {
                         router.push("/aligners");
-                        setIsMenuOpen(false);
+                        closeMenuAndResetDropdowns();
                       }}
                       className="cursor-pointer text-left"
                     >
@@ -531,7 +564,7 @@ export default function Navbar() {
                     <button
                       onClick={() => {
                         router.push("/aligners-biosmart-sm");
-                        setIsMenuOpen(false);
+                        closeMenuAndResetDropdowns();
                       }}
                       className="cursor-pointer text-left"
                     >
@@ -540,7 +573,7 @@ export default function Navbar() {
                     <button
                       onClick={() => {
                         router.push("/aligners-biosmart-t");
-                        setIsMenuOpen(false);
+                        closeMenuAndResetDropdowns();
                       }}
                       className="cursor-pointer text-left"
                     >
@@ -551,7 +584,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/education");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                   className="cursor-pointer text-left"
                 >
@@ -564,7 +597,7 @@ export default function Navbar() {
                       <button
                         onClick={() => {
                           router.push("/rxtrack");
-                          setIsMenuOpen(false);
+                          closeMenuAndResetDropdowns();
                         }}
                         className="cursor-pointer text-left"
                 >
@@ -573,7 +606,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     handleOrthoSync();
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                         className="cursor-pointer text-left"
                 >
@@ -582,7 +615,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/reward-program");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                         className="cursor-pointer text-left"
                 >
@@ -591,7 +624,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/alignmasters");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                         className="cursor-pointer text-left"
                 >
@@ -600,7 +633,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/e-shop");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                         className="cursor-pointer text-left"
                 >
@@ -612,7 +645,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/aboutus");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                   className="cursor-pointer"
                 >
@@ -621,7 +654,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/profile");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                   className="cursor-pointer"
                 >
@@ -631,7 +664,7 @@ export default function Navbar() {
                   className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
                   onClick={() => {
                     handleLogout();
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                 >
                   Logout
@@ -642,72 +675,127 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     router.push("/welcome");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  Home
+                  <span>Home</span>
                 </button>
                 <button
                   onClick={() => {
                     router.push("/education");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  Education
+                  <span>Education</span>
                 </button>
-                <div className="w-full">
-                  <div className="text-lg font-semibold text-[#004C44] mb-3">Members Lounge</div>
-                  <div className="flex flex-col gap-3 ml-4">
-                <button
-                  onClick={() => {
-                    toast.error('Please sign in or register to access this feature.');
-                  }}
-                      className="cursor-pointer text-left"
-                >
-                  OrthoSync™
-                </button>
-                <button
-                  onClick={() => {
-                    toast.error('Please sign in or register to access this feature.');
-                  }}
-                      className="cursor-pointer text-left"
-                >
-                  RₓTrack™
-                </button>
-                <button
-                  onClick={() => {
-                    toast.error('Please sign in or register to access this feature.');
-                  }}
-                      className="cursor-pointer text-left"
-                >
-                  AlignMasters™
-                </button>
-                <button
-                  onClick={() => {
-                    toast.error('Please sign in or register to access this feature.');
-                  }}
-                      className="cursor-pointer text-left"
-                >
-                  E-Shop
-                </button>
-                  </div>
-                </div>
                 <button
                   onClick={() => {
                     router.push("/welcome#contact-us");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  Contact Us
+                  <span>Contact Us</span>
                 </button>
+                <div className="w-full">
+                  <button
+                    onClick={toggleProducts}
+                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                    type="button"
+                  >
+                    <span>Products</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.products ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileDropdown.products && (
+                    <div className="flex flex-col gap-1">
+                      <button
+                        onClick={toggleAligners}
+                        className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                        type="button"
+                      >
+                        <span>Aligners</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.aligners ? 'rotate-90' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                      {mobileDropdown.aligners && (
+                        <div className="flex flex-col gap-1">
+                          <button
+                            onClick={() => { router.push('/aligners'); closeMenuAndResetDropdowns(); }}
+                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                          >
+                            <span>Overview</span>
+                          </button>
+                          <button
+                            onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
+                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                          >
+                            <span>BioSmart-SM</span>
+                          </button>
+                          <button
+                            onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
+                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                          >
+                            <span>BioSmart-T</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <div className="w-full">
+                  <button
+                    onClick={toggleMembersLounge}
+                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                    type="button"
+                  >
+                    <span>Members Lounge</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.membersLounge ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileDropdown.membersLounge && (
+                    <div className="flex flex-col gap-1">
+                      {['OrthoSync™', 'RₓTrack™', 'AlignMasters™', 'E-Shop'].map((item) => (
+                        <button
+                          key={item}
+                          onClick={() => toast.error('Please sign in or register to access this feature.')}
+                          className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 cursor-not-allowed hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                          style={{ pointerEvents: 'auto' }}
+                        >
+                          <span>{item}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 <button
                   className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
                   onClick={() => {
                     router.push("/login");
-                    setIsMenuOpen(false);
+                    closeMenuAndResetDropdowns();
                   }}
                 >
                   Sign Up / Sign In
@@ -788,7 +876,10 @@ export default function Navbar() {
                             <button
                               type="button"
                               className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50 flex items-center justify-between"
-                              onClick={() => setAlignersOpen((v) => !v)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setAlignersOpen((v) => !v);
+                              }}
                               style={{background: alignersOpen ? '#F6F6F3' : 'transparent'}}
                             >
                               <span>Aligners</span>
@@ -807,19 +898,31 @@ export default function Navbar() {
                                 className="absolute left-full top-0 ml-2 min-w-[180px] bg-white rounded-2xl shadow-lg py-2 z-50 border"
                               >
                                 <button
-                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners'); }}
+                                  onClick={() => {
+                                    setProductDropdown(false);
+                                    setAlignersOpen(false);
+                                    router.push('/aligners');
+                                  }}
                                   className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
                                 >
                                   Overview
                                 </button>
                                 <button
-                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
+                                  onClick={() => {
+                                    setProductDropdown(false);
+                                    setAlignersOpen(false);
+                                    router.push('/aligners-biosmart-sm');
+                                  }}
                                   className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
                                 >
                                   BioSmart-SM
                                 </button>
                                 <button
-                                  onClick={() => { setProductDropdown(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
+                                  onClick={() => {
+                                    setProductDropdown(false);
+                                    setAlignersOpen(false);
+                                    router.push('/aligners-biosmart-t');
+                                  }}
                                   className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
                                 >
                                   BioSmart-T
