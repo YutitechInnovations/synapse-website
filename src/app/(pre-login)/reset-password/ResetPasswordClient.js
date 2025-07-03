@@ -48,7 +48,13 @@ export default function ResetPasswordClient() {
     setLoading(true);
     try {
       const res = await instance.post("/user/set_password", { password, token });
-      const isSuccess = res.data && (res.data.success === true || res.data.success === "true");
+      const apiMessage = res.data?.message || "";
+      const isSuccess =
+        res.data?.success === true ||
+        res.data?.success === "true" ||
+        res.data?.status === "success" ||
+        /success/i.test(apiMessage);
+
       if (isSuccess) {
         setSuccess("Password reset successful! Redirecting to login...");
         toast.success("Password reset successful! Redirecting to login...");
@@ -56,8 +62,8 @@ export default function ResetPasswordClient() {
           router.push("/login");
         }, 2000);
       } else {
-        setError(res.data?.message || "Failed to reset password. Please try again.");
-        toast.error(res.data?.message || "Failed to reset password. Please try again.");
+        setError(apiMessage || "Failed to reset password. Please try again.");
+        toast.error(apiMessage || "Failed to reset password. Please try again.");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to reset password. Please try again.");
