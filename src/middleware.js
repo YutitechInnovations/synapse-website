@@ -20,6 +20,7 @@ export const PUBLIC_ROUTES = [
     "/shipping-policy",
     "/privacy-policy",
     "/terms-conditions",
+    "/reset-password",
 ];
 export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
 
