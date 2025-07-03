@@ -54,7 +54,7 @@ function ProfileDropdown({ onLogout }) {
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
           <button
             onClick={() => router.push("/profile")}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>Profile</span>
           </button>
@@ -65,7 +65,7 @@ function ProfileDropdown({ onLogout }) {
           </button> */}
           <button
             onClick={handleLogout}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>Logout</span>
           </button>
@@ -113,7 +113,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               router.push("/rxtrack");
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>RxTrack™</span>
           </button>
@@ -122,7 +122,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               handleOrthoSync();
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>OrthoSync™</span>
           </button>
@@ -131,7 +131,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               router.push("/reward-program");
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>Reward Program</span>
           </button>
@@ -140,7 +140,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               router.push("/alignmasters");
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>AlignMasters™</span>
           </button>
@@ -149,7 +149,7 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               router.push("/e-shop");
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>E-Shop</span>
           </button>
@@ -200,7 +200,7 @@ function ProductsDropdown() {
           <div className="relative">
             <button
               type="button"
-              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between"
+              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 setAlignersOpen((v) => !v);
@@ -224,19 +224,19 @@ function ProductsDropdown() {
               >
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners'); }}
-                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                 >
                   <span>Overview</span>
                 </button>
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
-                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                 >
                   <span>BioSmart-SM</span>
                 </button>
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
-                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                 >
                   <span>BioSmart-T</span>
                 </button>
@@ -288,7 +288,7 @@ function PreLoginMembersLoungeDropdown() {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>OrthoSync™</span>
           </button>
@@ -297,7 +297,7 @@ function PreLoginMembersLoungeDropdown() {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>RₓTrack™</span>
           </button>
@@ -306,7 +306,7 @@ function PreLoginMembersLoungeDropdown() {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>AlignMasters™</span>
           </button>
@@ -315,7 +315,7 @@ function PreLoginMembersLoungeDropdown() {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
           >
             <span>E-Shop</span>
           </button>
@@ -546,14 +546,14 @@ export default function Navbar() {
                     router.push("/home");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>Home</span>
                 </button>
                 {/* Products Dropdown - always shown */}
                 <button
                   onClick={toggleProducts}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                   type="button"
                 >
                   <span>Products</span>
@@ -571,7 +571,7 @@ export default function Navbar() {
                   <div className="flex flex-col gap-1">
                     <button
                       onClick={toggleAligners}
-                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                       type="button"
                     >
                       <span>Aligners</span>
@@ -589,19 +589,19 @@ export default function Navbar() {
                       <div className="flex flex-col gap-1">
                         <button
                           onClick={() => { router.push('/aligners'); closeMenuAndResetDropdowns(); }}
-                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                         >
                           <span>Overview</span>
                         </button>
                         <button
                           onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
-                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                         >
                           <span>BioSmart-SM</span>
                         </button>
                         <button
                           onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
-                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                         >
                           <span>BioSmart-T</span>
                         </button>
@@ -615,7 +615,7 @@ export default function Navbar() {
                   <>
                     <button
                       onClick={toggleMembersLounge}
-                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                       type="button"
                     >
                       <span>Members Lounge</span>
@@ -632,17 +632,32 @@ export default function Navbar() {
                     {mobileDropdown.membersLounge && (
                       <div className="flex flex-col gap-1">
                         <button
-  onClick={async () => {
-    await handleOrthoSync();
-    closeMenuAndResetDropdowns();
-  }}
-  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
->
-  <span>OrthoSync™</span>
-</button>
-                        <button onClick={() => { router.push('/rxtrack'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>RxTrack™</span></button>
-                        <button onClick={() => { router.push('/alignmasters'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>AlignMasters™</span></button>
-                        <button onClick={() => { router.push('/e-shop'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>E-Shop</span></button>
+                          onClick={async () => {
+                            await handleOrthoSync();
+                            closeMenuAndResetDropdowns();
+                          }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                        >
+                          <span>OrthoSync™</span>
+                        </button>
+                        <button
+                          onClick={() => { router.push('/rxtrack'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                        >
+                          <span>RxTrack™</span>
+                        </button>
+                        <button
+                          onClick={() => { router.push('/alignmasters'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                        >
+                          <span>AlignMasters™</span>
+                        </button>
+                        <button
+                          onClick={() => { router.push('/e-shop'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                        >
+                          <span>E-Shop</span>
+                        </button>
                       </div>
                     )}
                   </>
@@ -652,7 +667,7 @@ export default function Navbar() {
                     router.push("/aboutus");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>About Us</span>
                 </button>
@@ -661,7 +676,7 @@ export default function Navbar() {
                     router.push("/profile");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>Profile</span>
                 </button>
@@ -682,7 +697,7 @@ export default function Navbar() {
                     router.push("/welcome");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>Home</span>
                 </button>
@@ -691,7 +706,7 @@ export default function Navbar() {
                     router.push("/education");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>Education</span>
                 </button>
@@ -700,14 +715,14 @@ export default function Navbar() {
                     router.push("/welcome#contact-us");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                 >
                   <span>Contact Us</span>
                 </button>
                 <div className="w-full">
                   <button
                     onClick={toggleProducts}
-                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                     type="button"
                   >
                     <span>Products</span>
@@ -725,7 +740,7 @@ export default function Navbar() {
                     <div className="flex flex-col gap-1">
                       <button
                         onClick={toggleAligners}
-                        className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                        className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                         type="button"
                       >
                         <span>Aligners</span>
@@ -743,19 +758,19 @@ export default function Navbar() {
                         <div className="flex flex-col gap-1">
                           <button
                             onClick={() => { router.push('/aligners'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           >
                             <span>Overview</span>
                           </button>
                           <button
                             onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           >
                             <span>BioSmart-SM</span>
                           </button>
                           <button
                             onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           >
                             <span>BioSmart-T</span>
                           </button>
@@ -767,7 +782,7 @@ export default function Navbar() {
                 <div className="w-full">
                   <button
                     onClick={toggleMembersLounge}
-                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                    className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
                     type="button"
                   >
                     <span>Members Lounge</span>
@@ -787,7 +802,7 @@ export default function Navbar() {
                         <button
                           key={item}
                           onClick={() => toast.error('Please sign in or register to access this feature.')}
-                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           style={{ pointerEvents: 'auto' }}
                         >
                           <span>{item}</span>
@@ -878,7 +893,7 @@ export default function Navbar() {
                           <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
                             <button
                               type="button"
-                              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between"
+                              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between cursor-pointer"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setAlignersOpen((v) => !v);
@@ -906,7 +921,7 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners');
                                   }}
-                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                 >
                                   <span>Overview</span>
                                 </button>
@@ -916,7 +931,7 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners-biosmart-sm');
                                   }}
-                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                 >
                                   <span>BioSmart-SM</span>
                                 </button>
@@ -926,7 +941,7 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners-biosmart-t');
                                   }}
-                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                 >
                                   <span>BioSmart-T</span>
                                 </button>
