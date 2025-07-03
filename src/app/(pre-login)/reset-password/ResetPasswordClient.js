@@ -48,7 +48,8 @@ export default function ResetPasswordClient() {
     setLoading(true);
     try {
       const res = await instance.post("/user/set_password", { password, token });
-      if (res.data && res.data.success) {
+      const isSuccess = res.data && (res.data.success === true || res.data.success === "true");
+      if (isSuccess) {
         setSuccess("Password reset successful! Redirecting to login...");
         toast.success("Password reset successful! Redirecting to login...");
         redirectTimeout.current = setTimeout(() => {
