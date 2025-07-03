@@ -27,8 +27,8 @@ function ProfileDropdown({ onLogout }) {
 
   const handleLogout = async () => {
     await withLoader(async () => {
-    onLogout();
-    window.location.href = "/welcome";
+      onLogout();
+      window.location.href = "/welcome";
     }, "Signing you out...");
   };
 
@@ -54,9 +54,9 @@ function ProfileDropdown({ onLogout }) {
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg py-2 z-50">
           <button
             onClick={() => router.push("/profile")}
-            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            Profile
+            <span>Profile</span>
           </button>
           {/* <button
             className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
@@ -65,9 +65,9 @@ function ProfileDropdown({ onLogout }) {
           </button> */}
           <button
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 cursor-pointer"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            Logout
+            <span>Logout</span>
           </button>
         </div>
       )}
@@ -96,9 +96,8 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
       >
         Members Lounge
         <svg
-          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""
+            }`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -114,45 +113,45 @@ function MembersLoungeDropdown({ handleOrthoSync }) {
               setOpen(false);
               router.push("/rxtrack");
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            RxTrack™
+            <span>RxTrack™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               handleOrthoSync();
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            OrthoSync™
+            <span>OrthoSync™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               router.push("/reward-program");
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            Reward Program
+            <span>Reward Program</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               router.push("/alignmasters");
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            AlignMasters™
+            <span>AlignMasters™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               router.push("/e-shop");
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            E-Shop
+            <span>E-Shop</span>
           </button>
         </div>
       )}
@@ -201,9 +200,12 @@ function ProductsDropdown() {
           <div className="relative">
             <button
               type="button"
-              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50 flex items-center justify-between"
-              onClick={() => setAlignersOpen((v) => !v)}
-              style={{background: alignersOpen ? '#F6F6F3' : 'transparent'}}
+              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between"
+              onClick={(e) => {
+                e.stopPropagation();
+                setAlignersOpen((v) => !v);
+              }}
+              style={{ background: alignersOpen ? '#F6F6F3' : 'transparent' }}
             >
               <span>Aligners</span>
               <svg
@@ -222,21 +224,21 @@ function ProductsDropdown() {
               >
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners'); }}
-                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                 >
-                  Overview
+                  <span>Overview</span>
                 </button>
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
-                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                 >
-                  BioSmart-SM
+                  <span>BioSmart-SM</span>
                 </button>
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
-                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                 >
-                  BioSmart-T
+                  <span>BioSmart-T</span>
                 </button>
               </div>
             )}
@@ -269,9 +271,8 @@ function PreLoginMembersLoungeDropdown() {
       >
         Members Lounge
         <svg
-          className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""
+            }`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -287,36 +288,36 @@ function PreLoginMembersLoungeDropdown() {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            OrthoSync™
+            <span>OrthoSync™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            RₓTrack™
+            <span>RₓTrack™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            AlignMasters™
+            <span>AlignMasters™</span>
           </button>
           <button
             onClick={() => {
               setOpen(false);
               toast.error('Please sign in or register to access this feature.');
             }}
-            className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
           >
-            E-Shop
+            <span>E-Shop</span>
           </button>
         </div>
       )}
@@ -333,12 +334,12 @@ export default function Navbar() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(
     typeof window !== "undefined" &&
-      localStorage.getItem("isLoggedIn") === "true"
+    localStorage.getItem("isLoggedIn") === "true"
   );
   const [hasMounted, setHasMounted] = useState(false);
   const { withLoader } = useLoader();
   const [isApproved, setIsApproved] = useState(
-    typeof window !== "undefined" && 
+    typeof window !== "undefined" &&
     localStorage.getItem("userApproved") === "true"
   );
   const [approvalChecked, setApprovalChecked] = useState(false);
@@ -357,7 +358,7 @@ export default function Navbar() {
   useEffect(() => {
     const checkApproval = async () => {
       if (!isLoggedIn || approvalChecked) return;
-      
+
       // Check if we already have approval status in localStorage
       const storedApproval = localStorage.getItem("userApproved");
       if (storedApproval !== null) {
@@ -459,11 +460,11 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await withLoader(async () => {
-    Cookies.remove("access_token");
-    sessionStorage.clear();
-    localStorage.clear();
-    localStorage.removeItem("userApproved");
-    window.location.href = "/welcome";
+      Cookies.remove("access_token");
+      sessionStorage.clear();
+      localStorage.clear();
+      localStorage.removeItem("userApproved");
+      window.location.href = "/welcome";
     }, "Signing you out...");
   };
 
@@ -545,120 +546,124 @@ export default function Navbar() {
                     router.push("/home");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  Home
+                  <span>Home</span>
                 </button>
-                <div className="w-full">
-                  <div className="text-lg font-semibold text-[#004C44] mb-3">Products</div>
-                  <div className="flex flex-col gap-3 ml-4">
-                    <button
-                      onClick={() => {
-                        router.push("/aligners");
-                        closeMenuAndResetDropdowns();
-                      }}
-                      className="cursor-pointer text-left"
-                    >
-                      Aligners
-                    </button>
-                    <button
-                      onClick={() => {
-                        router.push("/aligners-biosmart-sm");
-                        closeMenuAndResetDropdowns();
-                      }}
-                      className="cursor-pointer text-left"
-                    >
-                      BioSmart-SM
-                    </button>
-                    <button
-                      onClick={() => {
-                        router.push("/aligners-biosmart-t");
-                        closeMenuAndResetDropdowns();
-                      }}
-                      className="cursor-pointer text-left"
-                    >
-                      BioSmart-T
-                    </button>
-                  </div>
-                </div>
+                {/* Products Dropdown - always shown */}
                 <button
-                  onClick={() => {
-                    router.push("/education");
-                    closeMenuAndResetDropdowns();
-                  }}
-                  className="cursor-pointer text-left"
+                  onClick={toggleProducts}
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                  type="button"
                 >
-                  Education
+                  <span>Products</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.products ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
+                {mobileDropdown.products && (
+                  <div className="flex flex-col gap-1">
+                    <button
+                      onClick={toggleAligners}
+                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                      type="button"
+                    >
+                      <span>Aligners</span>
+                      <svg
+                        className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.aligners ? 'rotate-90' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    {mobileDropdown.aligners && (
+                      <div className="flex flex-col gap-1">
+                        <button
+                          onClick={() => { router.push('/aligners'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                        >
+                          <span>Overview</span>
+                        </button>
+                        <button
+                          onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                        >
+                          <span>BioSmart-SM</span>
+                        </button>
+                        <button
+                          onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+                        >
+                          <span>BioSmart-T</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Members Lounge Dropdown - only for approved users */}
                 {isApproved && (
-                  <div className="w-full">
-                    <div className="text-lg font-semibold text-[#004C44] mb-3">Members Lounge</div>
-                    <div className="flex flex-col gap-3 ml-4">
-                      <button
-                        onClick={() => {
-                          router.push("/rxtrack");
-                          closeMenuAndResetDropdowns();
-                        }}
-                        className="cursor-pointer text-left"
-                >
-                  RxTrack™
-                </button>
-                <button
-                  onClick={() => {
-                    handleOrthoSync();
-                    closeMenuAndResetDropdowns();
-                  }}
-                        className="cursor-pointer text-left"
-                >
-                  OrthoSync™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/reward-program");
-                    closeMenuAndResetDropdowns();
-                  }}
-                        className="cursor-pointer text-left"
-                >
-                  Doctor Reward Program
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/alignmasters");
-                    closeMenuAndResetDropdowns();
-                  }}
-                        className="cursor-pointer text-left"
-                >
-                  AlignMasters™
-                </button>
-                <button
-                  onClick={() => {
-                    router.push("/e-shop");
-                    closeMenuAndResetDropdowns();
-                  }}
-                        className="cursor-pointer text-left"
-                >
-                  E-Shop
-                </button>
-                    </div>
-                  </div>
+                  <>
+                    <button
+                      onClick={toggleMembersLounge}
+                      className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
+                      type="button"
+                    >
+                      <span>Members Lounge</span>
+                      <svg
+                        className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.membersLounge ? 'rotate-180' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {mobileDropdown.membersLounge && (
+                      <div className="flex flex-col gap-1">
+                        <button
+  onClick={async () => {
+    await handleOrthoSync();
+    closeMenuAndResetDropdowns();
+  }}
+  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
+>
+  <span>OrthoSync™</span>
+</button>
+                        <button onClick={() => { router.push('/rxtrack'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>RxTrack™</span></button>
+                        <button onClick={() => { router.push('/alignmasters'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>AlignMasters™</span></button>
+                        <button onClick={() => { router.push('/e-shop'); closeMenuAndResetDropdowns(); }} className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"><span>E-Shop</span></button>
+                      </div>
+                    )}
+                  </>
                 )}
                 <button
                   onClick={() => {
                     router.push("/aboutus");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  About Us
+                  <span>About Us</span>
                 </button>
                 <button
                   onClick={() => {
                     router.push("/profile");
                     closeMenuAndResetDropdowns();
                   }}
-                  className="cursor-pointer"
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2"
                 >
-                  Profile
+                  <span>Profile</span>
                 </button>
                 <button
                   className="w-full text-center bg-[#004C44] text-white font-bold py-3 px-4 rounded-lg shadow-md"
@@ -738,19 +743,19 @@ export default function Navbar() {
                         <div className="flex flex-col gap-1">
                           <button
                             onClick={() => { router.push('/aligners'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                           >
                             <span>Overview</span>
                           </button>
                           <button
                             onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                           >
                             <span>BioSmart-SM</span>
                           </button>
                           <button
                             onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
-                            className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                            className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                           >
                             <span>BioSmart-T</span>
                           </button>
@@ -782,7 +787,7 @@ export default function Navbar() {
                         <button
                           key={item}
                           onClick={() => toast.error('Please sign in or register to access this feature.')}
-                          className="w-full text-left text-base font-semibold text-[#004C44] opacity-60 cursor-not-allowed hover:bg-gray-100 rounded flex items-center justify-between gap-2 px-4 py-2"
+                          className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                           style={{ pointerEvents: 'auto' }}
                         >
                           <span>{item}</span>
@@ -807,9 +812,8 @@ export default function Navbar() {
       )}
 
       <div
-        className={`fixed top-0 z-50 w-full bg-transparent ${
-          isMenuOpen ? "hidden lg:block" : ""
-        }`}
+        className={`fixed top-0 z-50 w-full bg-transparent ${isMenuOpen ? "hidden lg:block" : ""
+          }`}
       >
         {" "}
         <div className="flex items-center justify-center container mx-auto min-w-0 px-4 sm:px-6 lg:px-8">
@@ -860,9 +864,8 @@ export default function Navbar() {
                         >
                           Products
                           <svg
-                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-                              productDropdown ? "rotate-180" : ""
-                            }`}
+                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${productDropdown ? "rotate-180" : ""
+                              }`}
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
@@ -875,12 +878,12 @@ export default function Navbar() {
                           <div className="absolute left-0 top-full mt-3 min-w-[190px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
                             <button
                               type="button"
-                              className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50 flex items-center justify-between"
+                              className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 setAlignersOpen((v) => !v);
                               }}
-                              style={{background: alignersOpen ? '#F6F6F3' : 'transparent'}}
+                              style={{ background: alignersOpen ? '#F6F6F3' : 'transparent' }}
                             >
                               <span>Aligners</span>
                               <svg
@@ -903,9 +906,9 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners');
                                   }}
-                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                                 >
-                                  Overview
+                                  <span>Overview</span>
                                 </button>
                                 <button
                                   onClick={() => {
@@ -913,9 +916,9 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners-biosmart-sm');
                                   }}
-                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                                 >
-                                  BioSmart-SM
+                                  <span>BioSmart-SM</span>
                                 </button>
                                 <button
                                   onClick={() => {
@@ -923,9 +926,9 @@ export default function Navbar() {
                                     setAlignersOpen(false);
                                     router.push('/aligners-biosmart-t');
                                   }}
-                                  className="block w-full text-left px-8 py-2 text-[#004C44] font-semibold cursor-pointer hover:bg-gray-50"
+                                  className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded"
                                 >
-                                  BioSmart-T
+                                  <span>BioSmart-T</span>
                                 </button>
                               </div>
                             )}
