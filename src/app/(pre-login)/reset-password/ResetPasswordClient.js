@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import instance from "../../../network/index.js";
 import Navbar from "../../../components/Navbar/Navbar.js";
 import ClientOnly from "../../../components/ClientOnly.js";
+import toast from "react-hot-toast";
 
 export default function ResetPasswordClient() {
   const router = useRouter();
@@ -15,6 +16,14 @@ export default function ResetPasswordClient() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const redirectTimeout = useRef();
+
+  useEffect(() => {
+    return () => {
+      if (redirectTimeout.current) clearTimeout(redirectTimeout.current);
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,14 +50,17 @@ export default function ResetPasswordClient() {
       const res = await instance.post("/user/set_password", { password, token });
       if (res.data && res.data.success) {
         setSuccess("Password reset successful! Redirecting to login...");
-        setTimeout(() => {
+        toast.success("Password reset successful! Redirecting to login...");
+        redirectTimeout.current = setTimeout(() => {
           router.push("/login");
         }, 2000);
       } else {
         setError(res.data?.message || "Failed to reset password. Please try again.");
+        toast.error(res.data?.message || "Failed to reset password. Please try again.");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to reset password. Please try again.");
+      toast.error(err.response?.data?.message || "Failed to reset password. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -66,7 +78,7 @@ export default function ResetPasswordClient() {
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center" style={{fontFamily: 'Poppins, sans-serif'}}>Reset Password</h2>
           <p className="text-base sm:text-lg text-center mb-6 text-[var(--text-primary)]" style={{fontFamily: 'Poppins, sans-serif'}}>Enter your new password below.</p>
-          {error && <div className="mb-4 text-red-600 text-center">{error}</div>}
+          {error && !success && <div className="mb-4 text-red-600 text-center">{error}</div>}
           {success && <div className="mb-4 text-green-600 text-center">{success}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
