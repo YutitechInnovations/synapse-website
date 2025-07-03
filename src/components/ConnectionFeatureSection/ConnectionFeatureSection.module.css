@@ -1,6 +1,9 @@
 .section {
   width: 100%;
   background: #fff;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
 }
 
 .heading {
@@ -23,6 +26,9 @@
   gap: 1rem;
   max-width: 70rem;
   margin: 0 auto;
+  width: 100%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
 }
 
 .card {
@@ -154,5 +160,89 @@
   }
   .cardDescription {
     font-size: 18px;
+  }
+}
+
+/* Mobile: stack cards, add spacing, constrain card width */
+@media (max-width: 600px) {
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .heading {
+    font-size: 1.5rem;
+  }
+  .subheading {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .grid {
+    gap: 1.25rem;
+    padding: 0;
+  }
+  .card {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    min-height: unset;
+    box-sizing: border-box;
+  }
+  .cardTitle {
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+  }
+  .cardSubtitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .cardDescription {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    text-align: left;
+  }
+}
+
+/* Tablet: stack cards, but add more padding and spacing */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .card {
+    min-width: 0;
+    max-width: 90vw;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+    border-radius: 1.1rem;
+    min-height: unset;
+    box-sizing: border-box;
+  }
+  .cardTitle {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .cardSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .cardDescription {
+    font-size: 1.05rem;
+    margin-bottom: 1.1rem;
+    margin-top: 0.7rem;
+    text-align: left;
   }
 } 

@@ -186,4 +186,23 @@
   .educationCard {
     height: 448px;
   }
+}
+
+@media (max-width: 900px) {
+  .rewardSection {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .rewardCards {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .educationSection {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .educationGrid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 } 

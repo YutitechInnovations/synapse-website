@@ -338,4 +338,110 @@
   .formContainer {
     min-width: 0;
   }
+}
+
+/* --- Responsive Contact Form Improvements --- */
+
+/* Remove fixed min-widths for better flexibility */
+.info,
+.formContainer {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make form fields and button full width on mobile */
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .formGroup {
+    width: 100%;
+  }
+  .input,
+  .textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    box-sizing: border-box;
+  }
+  .submitButton {
+    width: 100%;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    font-size: 1.1rem;
+    padding: 1rem 0;
+    max-width: 100%;
+  }
+  .termsContainer {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .checkboxLabel {
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+  }
+  .checkboxText {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .formContainer {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .info {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}
+
+/* Tablet: stack columns, but keep balanced look */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .formContainer,
+  .info {
+    padding: 2rem 1.5rem;
+    border-radius: 1.25rem;
+  }
+}
+
+/* Desktop: two columns for .formRow */
+@media (min-width: 1025px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .submitButton {
+    width: auto;
+    min-width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+/* Always center the submit button */
+.submitButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Prevent overflow for all form elements */
+.form,
+.formContainer,
+.input,
+.textarea {
+  max-width: 100%;
+  box-sizing: border-box;
 } 

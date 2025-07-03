@@ -85,7 +85,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
           can feel free to reach out to us for more details!
         </p>
         <p className={styles.paragraph_styles}>
-          <b>{isDesktop ? "Hover over the circles to know more." : "Click on the circles to know more."}</b>
+          <b>{"Tap or hover over the circles to know more."}</b>
         </p>
 
         <div className={styles.circlesContainer} ref={circlesRef}>
