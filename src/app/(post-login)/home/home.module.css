@@ -167,6 +167,16 @@
     gap: 2rem 3rem;
   }
 }
+@media (min-width: 768px) and (max-width: 1240px) {
+  .educationSection {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .educationGrid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .educationCard {
   border-radius: 20px;
   overflow: hidden;
