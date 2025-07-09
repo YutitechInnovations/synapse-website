@@ -195,8 +195,8 @@ export default function PostLoginHome() {
       />
 
       {/* Education Section */}
-      <section className={styles.educationSection}>
-        <div className="w-full max-w-[1240px] mx-auto">
+      <div style={{ background: '#F8FAF9', width: '100%', padding: '4rem 0' }}>
+        <section className={styles.educationSection}>
           <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-8 text-left">
             Education
           </h2>
@@ -204,118 +204,102 @@ export default function PostLoginHome() {
             {/* Blogs Card */}
             <a
               href="/blogs"
-              className={
-                styles.educationCard +
-                " group block transition-transform hover:scale-[1.02] cursor-pointer"
-              }
+              className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
-              <div className="relative w-full h-full">
+              <div className="w-full h-[380px] relative">
                 <Image
-                  src="/images/education-blogs.png"
+                  src="/images/education-blogs1.png"
                   alt="Blogs"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  width={595}
+                  height={380}
+                  className="object-cover rounded-t-2xl w-full h-full"
                 />
-                <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
-                  <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              </div>
+              <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
+                <div>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Blogs</h3>
+                  <p className="text-[#004C44] text-base mb-6">Articles from our team to spark thought and conversation in oral care.</p>
                 </div>
-                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
-                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
-                    Blogs
-                  </span>
-                  <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
-                    Articles from our team to spark thought and conversation in oral care.
-                  </p>
-                </div>
+                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                  Go <span className="ml-1 text-lg">→</span>
+                </span>
               </div>
             </a>
             {/* Materials & Data Card */}
             <a
               href="/materials"
-              className={
-                styles.educationCard +
-                " group block transition-transform hover:scale-[1.02] cursor-pointer"
-              }
+              className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
-              <div className="relative w-full h-full">
+              <div className="w-full h-[380px] relative">
                 <Image
-                  src="/images/education-material.png"
+                  src="/images/education-material1.png"
                   alt="Materials & Data"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  width={595}
+                  height={380}
+                  className="object-cover rounded-t-2xl w-full h-full"
                 />
-                <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
-                  <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              </div>
+              <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
+                <div>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Materials & Data</h3>
+                  <p className="text-[#004C44] text-base mb-6">Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.</p>
                 </div>
-                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
-                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
-                    Materials & Data
-                  </span>
-                  <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
-                    Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.
-                  </p>
-                </div>
+                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                  Go <span className="ml-1 text-lg">→</span>
+                </span>
               </div>
             </a>
             {/* Research Papers Card */}
             <a
               href="/research"
-              className={
-                styles.educationCard +
-                " group block transition-transform hover:scale-[1.02] cursor-pointer"
-              }
+              className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
-              <div className="relative w-full h-full">
+              <div className="w-full h-[380px] relative">
                 <Image
-                  src="/images/education-research.png"
+                  src="/images/education-research1.png"
                   alt="Research Papers"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  width={595}
+                  height={380}
+                  className="object-cover rounded-t-2xl w-full h-full"
                 />
-                <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
-                  <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              </div>
+              <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
+                <div>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Research Papers</h3>
+                  <p className="text-[#004C44] text-base mb-6">Summaries and access to relevant scientific literature that inform and validate clinical practices.</p>
                 </div>
-                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
-                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
-                    Research Papers
-                  </span>
-                  <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
-                    Summaries and access to relevant scientific literature that inform and validate clinical practices.
-                  </p>
-                </div>
+                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                  Go <span className="ml-1 text-lg">→</span>
+                </span>
               </div>
             </a>
-            {/* Patients&apos; FAQs Card */}
+            {/* Patients' FAQs Card */}
             <a
               href="/faq"
-              className={
-                styles.educationCard +
-                " group block transition-transform hover:scale-[1.02] cursor-pointer"
-              }
+              className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
-              <div className="relative w-full h-full">
+              <div className="w-full h-[380px] relative">
                 <Image
-                  src="/images/education-faq.png"
-                  alt="Patients&apos; FAQs"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  src="/images/education-faq1.png"
+                  alt="Patients' FAQs"
+                  width={595}
+                  height={380}
+                  className="object-cover rounded-t-2xl w-full h-full"
                 />
-                <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
-                  <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              </div>
+              <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
+                <div>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Patients' FAQs</h3>
+                  <p className="text-[#004C44] text-base mb-6">Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.</p>
                 </div>
-                <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
-                  <span className="block text-[28px] font-bold text-[#004C44] mb-2">
-                    Patients&apos; FAQs
-                  </span>
-                  <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
-                    Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.
-                  </p>
-                </div>
+                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                  Go <span className="ml-1 text-lg">→</span>
+                </span>
               </div>
             </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

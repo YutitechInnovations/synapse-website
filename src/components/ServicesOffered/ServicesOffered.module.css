@@ -391,14 +391,15 @@
   @media (max-width: 600px) {
     .section {
       padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0;
     }
     .paragraph_styles:last-of-type {
       margin-bottom: 0.25rem;
     }
     .circlesContainer {
       min-height: 0;
-      padding-bottom: 0.25rem;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
     }
     .descriptionCard {
       min-width: unset;
@@ -439,7 +440,8 @@
     .first_circle span,
     .second_circle span,
     .third_circle span {
-      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      margin-top: 1.2rem;
     }
 
     /* Reduce gap below the last info text and above the circles */

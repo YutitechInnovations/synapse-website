@@ -237,68 +237,44 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Right: Contact Info */}
+        {/* Right: Policies */}
         <div className="flex flex-col w-full md:w-1/3">
-          <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
-          <div className="text-white text-base leading-relaxed space-y-1">
-            <p>
-              <span className="font-semibold">
-                Toll Free Number:
-              </span>{" "}
-              1800 202 3282
-            </p>
-            <p>
-              <span className="font-semibold">
-                Email ID:
-              </span>{" "}
-              support@synapsehealthtech.in
-            </p>
-            <p>
-              <span className="font-semibold">
-                Corporate Office Address:
-              </span>{" "}
-              No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,
-              <br />
-              Sarakki Industrial Layout, J P Nagar 3rd phase,
-              <br />
-              Bangalore – 560078,Karnataka
-            </p>
+          <h3 className="text-white font-bold text-lg mb-4">Policies</h3>
+          <div className="text-white text-base leading-relaxed space-y-2">
+            <a
+              href="/refund-policy"
+              className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer block"
+            >
+              Refund and Cancellation Policy
+            </a>
+            <a
+              href="/shipping-policy"
+              className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer block"
+            >
+              Shipping and Delivery Policy
+            </a>
+            <a
+              href="/privacy-policy"
+              className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer block"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-conditions"
+              className="text-white no-underline hover:underline hover:text-[#7fdcc9] transition-colors duration-150 cursor-pointer block"
+            >
+              Terms and Conditions
+            </a>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="w-full bg-white py-4">
-        <div className="w-full max-w-[85rem] mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-12">
-          <p className="text-[#08544A] text-sm text-center md:text-left mb-2 md:mb-0">
+        <div className="w-full max-w-[85rem] mx-auto flex justify-start items-center px-4 md:px-12">
+          <p className="text-[#08544A] text-sm text-left">
             © 2025 Synapse. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <a
-              href="/refund-policy"
-              className="text-[#08544A] text-sm hover:underline"
-            >
-              Refund and Cancellation Policy
-            </a>
-            <a
-              href="/shipping-policy"
-              className="text-[#08544A] text-sm hover:underline"
-            >
-              Shipping and Delivery Policy
-            </a>
-            <a
-              href="/privacy-policy"
-              className="text-[#08544A] text-sm hover:underline"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="/terms-conditions"
-              className="text-[#08544A] text-sm hover:underline"
-            >
-              Terms and Conditions
-            </a>
-          </div>
         </div>
       </div>
     </footer>

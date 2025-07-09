@@ -420,11 +420,18 @@
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-  .formContainer,
-  .info {
-    padding: 2rem 1.5rem;
-    border-radius: 1.25rem;
+  .formContainer {
+    padding: 1rem 0.5rem;
+    border-radius: 1rem;
     max-width: 100%;
+    box-sizing: border-box;
+  }
+  .formGroup {
+    width: 100%;
+  }
+  .input,
+  .textarea {
+    width: 100%;
     box-sizing: border-box;
   }
   .container {

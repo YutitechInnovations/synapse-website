@@ -150,6 +150,8 @@
   max-width: 1240px;
   margin: 0 auto;
   padding: 2rem 0.5rem;
+  background: #F8FAF9;
+  border-radius: 20px;
 }
 @media (min-width: 768px) {
   .educationSection {
@@ -188,6 +190,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border: none;
 }
 .educationCard:hover {
   transform: scale(1.02);

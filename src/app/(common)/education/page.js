@@ -9,25 +9,25 @@ export default function Education() {
     {
       title: "Blogs",
       description: "Articles from our team to spark thought and conversation in oral care.",
-      image: "/images/education-blogs.png",
+      image: "/images/education-blogs1.png",
       link: "/blogs",
     },
     {
       title: "Materials & Data",
       description: "Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.",
-      image: "/images/education-material.png",
+      image: "/images/education-material1.png",
       link: "/materials",
     },
     {
       title: "Research Papers",
       description: "Summaries and access to relevant scientific literature that inform and validate clinical practices.",
-      image: "/images/education-research.png",
+      image: "/images/education-research1.png",
       link: "/research",
     },
     {
       title: "Patients' FAQs",
       description: "Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.",
-      image: "/images/education-faq.png",
+      image: "/images/education-faq1.png",
       link: "/faq",
     },
   ];
@@ -37,38 +37,33 @@ export default function Education() {
       <Navbar />
       <div
         className={`${styles.educationContainer} mt-24 sm:mt-32 md:mt-40 mb-20`}
-        style={{ background: "#F6F6F3", borderRadius: "20px" }}
       >
         <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-10 text-left mt-16">
           Education
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[50px] gap-y-[32px] ">
           {insightCards.map((card, index) => (
-            <a
+            <div
               key={index}
-              href={card.link}
-              className={`${styles.cardLink} group relative w-full rounded-[20px] overflow-hidden shadow-lg bg-white cursor-pointer transition-transform hover:scale-[1.02]`}
+              className={`${styles.eduCard} w-full rounded-2xl shadow-md bg-white flex flex-col overflow-hidden`}
             >
               <Image
                 src={card.image}
                 width={595}
-                height={448}
+                height={380}
                 alt={card.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-[380px] object-cover rounded-t-2xl"
               />
-              {/* Gradient overlay for text visibility */}
-              <div className="absolute bottom-0 left-0 w-full" style={{height: '75%'}}>
-                <div className="w-full h-full bg-gradient-to-t from-white/95 to-transparent z-10" />
+              <div className="flex flex-col flex-1 justify-between p-6">
+                <div>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">{card.title}</h3>
+                  <p className="text-[#004C44] text-base mb-6">{card.description}</p>
+                </div>
+                <a href={card.link} className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                  Go <span className="ml-1 text-lg">→</span>
+                </a>
               </div>
-              <div className="absolute bottom-8 left-8 z-20 max-w-[80%]">
-                <h3 className="text-[28px] font-bold text-[#004C44] drop-shadow-none mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-[#003c36] text-sm md:text-base font-medium" style={{ color: '#004C44', fontWeight: 600 }}>
-                  {card.description}
-                </p>
-              </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
