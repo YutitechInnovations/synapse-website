@@ -289,7 +289,7 @@ export default function PostLoginHome() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
                 <div>
-                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Patients' FAQs</h3>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Patients&#39; FAQs</h3>
                   <p className="text-[#004C44] text-base mb-6">Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.</p>
                 </div>
                 <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
