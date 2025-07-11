@@ -5,6 +5,8 @@ import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import styles from "../../../components/ContactUs/ContactUs.module.css";
 import PrivacyPolicyModal from "../../../components/ContactUs/PrivacyPolicyModal";
 import Navbar from "../../../components/Navbar/Navbar";
+import { submitSupportRequest } from "../../../services/support";
+import { handleToast } from "../../../network/helper";
 
 const categoryOptions = [
   "Clinical Support",
@@ -61,6 +63,7 @@ export default function OrthodontistSupport() {
   });
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -89,9 +92,9 @@ export default function OrthodontistSupport() {
     setAcceptTerms(e.target.checked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your API call here
+    
     // Validation
     if (!formData.name || !formData.email || !formData.phone || !formData.category || !formData.subject || !formData.message) {
       alert("Please fill all required fields.");
@@ -101,16 +104,51 @@ export default function OrthodontistSupport() {
       alert("Please accept the privacy policy.");
       return;
     }
-    alert("Form submitted! (API integration pending)");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      category: "",
-      subject: "",
-      message: "",
-    });
-    setAcceptTerms(false);
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare the data for the API
+      const supportData = {
+        full_name: formData.name,
+        email: formData.email,
+        phone_number: formData.phone,
+        category: formData.category,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      const response = await submitSupportRequest(supportData);
+      
+      // Handle success
+      handleToast({ 
+        res: { message: "Support request submitted successfully! We'll get back to you soon." },
+        next: () => {
+          // Reset form on success
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            category: "",
+            subject: "",
+            message: "",
+          });
+          setAcceptTerms(false);
+        }
+      });
+    } catch (error) {
+      // Handle error
+      handleToast({ 
+        err: { 
+          response: { 
+            data: { message: error.message },
+            status: 400 
+          } 
+        } 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -285,10 +323,11 @@ export default function OrthodontistSupport() {
                     !formData.phone ||
                     !formData.category ||
                     !formData.subject ||
-                    !formData.message
+                    !formData.message ||
+                    isSubmitting
                   }
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
