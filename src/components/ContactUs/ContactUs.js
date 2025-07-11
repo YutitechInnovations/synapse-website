@@ -1,11 +1,26 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
+import { Listbox } from '@headlessui/react';
+import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import axios from "../../network/index.js";
 import { handleToast } from "../../network/helper.js";
 import { useLoader } from "@/context/LoaderContext";
 import styles from "./ContactUs.module.css";
 import PrivacyPolicyModal from "./PrivacyPolicyModal.js";
+
+const personaOptions = [
+  "I am an orthodontist",
+  "I am a general dentist",
+  "I am a dental clinic staff member",
+  "I am a current BioSmart patient",
+  "I am a parent/guardian of a patient",
+  "I am considering treatment for myself",
+  "I am exploring treatment for my child or family member",
+  "I represent a dental organization or DSO",
+  "I am interested in business or partnership opportunities",
+  "Other (Please Specify)"
+];
 
 export default function ContactUs() {
   const router = useRouter();
@@ -14,8 +29,10 @@ export default function ContactUs() {
     name: "",
     email: "",
     subject: "",
+    persona: "",
     message: "",
   });
+  const [otherPersona, setOtherPersona] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
@@ -25,6 +42,20 @@ export default function ContactUs() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handlePersonaChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      persona: value
+    }));
+    if (value !== "Other (Please Specify)") {
+      setOtherPersona("");
+    }
+  };
+
+  const handleOtherPersonaChange = (e) => {
+    setOtherPersona(e.target.value);
   };
 
   const handleCheckboxChange = (e) => {
@@ -39,6 +70,30 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (!formData.persona) {
+      handleToast({
+        err: {
+          response: {
+            data: {
+              message: "Please select your profession/persona to submit the form."
+            }
+          }
+        }
+      });
+      return;
+    }
+    if (formData.persona === "Other (Please Specify)" && !otherPersona.trim()) {
+      handleToast({
+        err: {
+          response: {
+            data: {
+              message: "Please specify your profession/persona."
+            }
+          }
+        }
+      });
+      return;
+    }
     if (!acceptTerms) {
       handleToast({
         err: {
@@ -51,24 +106,30 @@ export default function ContactUs() {
       });
       return;
     }
-    
     try {
       await withLoader(async () => {
-      const response = await axios.post("/user/contact", formData);
-      
-      handleToast({
-        res: response.data,
-        next: () => {
-          // Reset form on successful submission
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-          setAcceptTerms(false);
-        }
-      });
+        const payload = {
+          ...formData,
+          persona:
+            formData.persona === "Other (Please Specify)"
+              ? `Other: ${otherPersona}`
+              : formData.persona,
+        };
+        const response = await axios.post("/user/contact", payload);
+        handleToast({
+          res: response.data,
+          next: () => {
+            setFormData({
+              name: "",
+              email: "",
+              subject: "",
+              persona: "",
+              message: "",
+            });
+            setOtherPersona("");
+            setAcceptTerms(false);
+          }
+        });
       }, "Sending your message...");
     } catch (error) {
       handleToast({ err: error });
@@ -166,6 +227,59 @@ export default function ContactUs() {
               </div>
               
               <div className={styles.formGroup}>
+                <label className={styles.label}>Which of the following best describes you? *</label>
+                <Listbox value={formData.persona} onChange={handlePersonaChange}>
+                  <div className={styles.listboxContainer}>
+                    <Listbox.Button className={styles.listboxButton}>
+                      <span className={styles.listboxButtonText}>
+                        {formData.persona || "Select your profession/persona"}
+                      </span>
+                      <ChevronUpDownIcon
+                        className={styles.listboxIcon}
+                        aria-hidden="true"
+                      />
+                    </Listbox.Button>
+                    <Listbox.Options className={styles.listboxOptions}>
+                      {personaOptions.map((persona, index) => (
+                        <Listbox.Option
+                          key={index}
+                          className={({ active }) =>
+                            `${styles.listboxOption} ${active ? styles.listboxOptionActive : ''}`
+                          }
+                          value={persona}
+                        >
+                          {({ selected }) => (
+                            <>
+                              <span className={styles.listboxOptionText}>
+                                {persona}
+                              </span>
+                              {selected && (
+                                <CheckIcon className={styles.listboxCheckIcon} aria-hidden="true" />
+                              )}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </div>
+                </Listbox>
+              </div>
+              {formData.persona === "Other (Please Specify)" && (
+                <div className={styles.formGroup}>
+                  <label className={styles.label} htmlFor="otherPersona">Please specify *</label>
+                  <input
+                    type="text"
+                    id="otherPersona"
+                    name="otherPersona"
+                    value={otherPersona}
+                    onChange={handleOtherPersonaChange}
+                    className={styles.input}
+                    required
+                  />
+                </div>
+              )}
+              
+              <div className={styles.formGroup}>
                 <label htmlFor="message" className={styles.label}>Message *</label>
                 <textarea
                   id="message"
@@ -203,7 +317,7 @@ export default function ContactUs() {
               <button 
                 type="submit" 
                 className={styles.submitButton}
-                disabled={!acceptTerms}
+                disabled={!acceptTerms || !formData.persona || (formData.persona === "Other (Please Specify)" && !otherPersona.trim())}
               >
                 Send Message
               </button>

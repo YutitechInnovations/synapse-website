@@ -325,6 +325,51 @@ function PreLoginMembersLoungeDropdown() {
   );
 }
 
+function SupportDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+  const router = useRouter();
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="text-left font-semibold text-[18px] lg:text-base text-[#195B48] lg:text-white lg:font-normal lg:text-center lg:ml-[30px] cursor-pointer flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
+      >
+        Support
+        <svg
+          className={`ml-1 w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-3 min-w-[200px] bg-white rounded-2xl shadow-lg py-2 z-50 border">
+          <button
+            onClick={() => {
+              setOpen(false);
+              router.push("/orthodontist-support");
+            }}
+            className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
+          >
+            <span>Orthodontist Support</span>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
@@ -719,6 +764,15 @@ export default function Navbar() {
                 >
                   <span>Contact Us</span>
                 </button>
+                <button
+                  onClick={() => {
+                    router.push("/support");
+                    closeMenuAndResetDropdowns();
+                  }}
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
+                >
+                  <span>Support</span>
+                </button>
                 <div className="w-full">
                   <button
                     onClick={toggleProducts}
@@ -855,6 +909,7 @@ export default function Navbar() {
                         <ProductsDropdown />
                       </li>
                       <li>{navButton("Education", "/education")}</li>
+                      <li><SupportDropdown /></li>
                       {isApproved && (
                         <li>
                           <MembersLoungeDropdown handleOrthoSync={handleOrthoSync} />
@@ -951,9 +1006,8 @@ export default function Navbar() {
                         )}
                       </li>
                       <li>{navButton("Education", "/education")}</li>
-                      <li>
-                        <PreLoginMembersLoungeDropdown />
-                      </li>
+                      <li><PreLoginMembersLoungeDropdown /></li>
+                      <li><SupportDropdown /></li>
                       <li>{navButton("Contact Us", "/welcome#contact-us")}</li>
                       <li className="flex items-center md:ml-[30px] mx-2">
                         <span className="block h-6 w-px bg-white opacity-40"></span>

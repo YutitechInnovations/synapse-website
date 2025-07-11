@@ -217,6 +217,95 @@
   color: #003a33;
 }
 
+/* Listbox Styles */
+.listboxContainer {
+  position: relative;
+}
+
+.listboxButton {
+  position: relative;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+}
+
+.listboxButton:hover {
+  border-color: #004C44;
+}
+
+.listboxButton:focus {
+  outline: none;
+  border-color: #004C44;
+  box-shadow: 0 0 0 3px rgba(0, 76, 68, 0.1);
+}
+
+.listboxButtonText {
+  color: #004C44;
+  text-align: left;
+}
+
+.listboxButtonText:empty::before {
+  content: "Select your profession/persona";
+  color: #6b7280;
+}
+
+.listboxIcon {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.listboxOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin-top: 0.25rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.listboxOption {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s;
+}
+
+.listboxOption:hover,
+.listboxOptionActive {
+  background-color: #f3f4f6;
+}
+
+.listboxOptionText {
+  color: #004C44;
+  font-size: 16px;
+  flex: 1;
+}
+
+.listboxCheckIcon {
+  width: 20px;
+  height: 20px;
+  color: #004C44;
+  flex-shrink: 0;
+}
+
 /* Responsive Design */
 @media (min-width: 900px) {
   .content {
@@ -370,7 +459,8 @@
     width: 100%;
   }
   .input,
-  .textarea {
+  .textarea,
+  .listboxButton {
     width: 100%;
     font-size: 1rem;
     padding: 0.75rem 1rem;
@@ -397,6 +487,15 @@
   .checkboxText {
     font-size: 0.95rem;
     line-height: 1.4;
+  }
+  .listboxOptions {
+    max-height: 250px;
+  }
+  .listboxOption {
+    padding: 0.5rem 0.75rem;
+  }
+  .listboxOptionText {
+    font-size: 14px;
   }
   .formContainer {
     padding: 1rem;
@@ -430,7 +529,8 @@
     width: 100%;
   }
   .input,
-  .textarea {
+  .textarea,
+  .listboxButton {
     width: 100%;
     box-sizing: border-box;
   }
@@ -467,7 +567,12 @@
 .form,
 .formContainer,
 .input,
-.textarea {
+.textarea,
+.listboxButton {
   max-width: 100%;
   box-sizing: border-box;
+} 
+
+.withNavbarOffset {
+  margin-top: 70px;
 } 

@@ -21,6 +21,7 @@ export const PUBLIC_ROUTES = [
     "/privacy-policy",
     "/terms-conditions",
     "/reset-password",
+    "/orthodontist-support",
 ];
 export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
 
