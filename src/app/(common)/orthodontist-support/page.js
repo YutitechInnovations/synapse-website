@@ -95,29 +95,69 @@ export default function OrthodontistSupport() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.category || !formData.subject || !formData.message) {
-      alert("Please fill all required fields.");
-      return;
+    // Enhanced validation
+    const errors = [];
+    
+    if (!formData.name?.trim()) {
+      errors.push("Full name is required");
     }
+    
+    if (!formData.email?.trim()) {
+      errors.push("Email address is required");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.push("Please enter a valid email address");
+    }
+    
+    if (!formData.phone?.trim()) {
+      errors.push("Phone number is required");
+    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+      errors.push("Please enter a valid phone number");
+    }
+    
+    if (!formData.category?.trim()) {
+      errors.push("Category is required");
+    }
+    
+    if (!formData.subject?.trim()) {
+      errors.push("Subject is required");
+    }
+    
+    if (!formData.message?.trim()) {
+      errors.push("Message is required");
+    } else if (formData.message.trim().length < 5) {
+      errors.push("Message must be at least 5 characters long");
+    }
+    
     if (!acceptTerms) {
-      alert("Please accept the privacy policy.");
+      errors.push("Please accept the privacy policy");
+    }
+    
+    if (errors.length > 0) {
+      handleToast({ 
+        err: { 
+          response: { 
+            data: { message: errors.join(", ") },
+            status: 400 
+          } 
+        } 
+      });
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Prepare the data for the API
+      // Prepare the data for the API with proper trimming
       const supportData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        category: formData.category,
-        subject: formData.subject,
-        message: formData.message,
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim(),
+        category: formData.category.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
       };
 
+      console.log("Sending support data:", supportData);
       const response = await submitSupportRequest(supportData);
       
       // Handle success
@@ -137,15 +177,9 @@ export default function OrthodontistSupport() {
         }
       });
     } catch (error) {
-      // Handle error
-      handleToast({ 
-        err: { 
-          response: { 
-            data: { message: error.message },
-            status: 400 
-          } 
-        } 
-      });
+      console.error("Support request error:", error);
+      // Handle error - pass the actual error object
+      handleToast({ err: error });
     } finally {
       setIsSubmitting(false);
     }

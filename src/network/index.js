@@ -27,6 +27,16 @@ instance.interceptors.request.use(
       config.headers["Authorization"] = `Bearer ${token}`;
     }
 
+    // Debug logging for support requests
+    if (config.url.includes('support')) {
+      console.log("Support request config:", {
+        url: config.url,
+        method: config.method,
+        headers: config.headers,
+        data: config.data
+      });
+    }
+
     return config;
   },
   (error) => {

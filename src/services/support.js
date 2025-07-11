@@ -6,10 +6,19 @@ export const submitSupportRequest = async (supportData) => {
     return response.data;
   } catch (error) {
     // Handle validation errors (422 status)
-    if (error.response?.status === 422 && error.response?.data?.detail) {
-      const validationError = error.response.data.detail[0];
-      const errorMessage = validationError?.msg || "Validation error";
-      throw new Error(errorMessage);
+    if (error.response?.status === 422) {
+      console.error("Validation Error Details:", error.response.data);
+      
+      if (error.response?.data?.detail && Array.isArray(error.response.data.detail)) {
+        // Handle FastAPI validation errors
+        const validationErrors = error.response.data.detail;
+        const errorMessages = validationErrors.map(err => err.msg || `${err.loc?.join('.')}: ${err.type}`).join(', ');
+        throw new Error(errorMessages);
+      } else if (error.response?.data?.message) {
+        throw new Error(error.response.data.message);
+      } else {
+        throw new Error("Validation error: Please check your input data");
+      }
     }
     
     // Handle common error status codes

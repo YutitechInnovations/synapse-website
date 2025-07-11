@@ -392,6 +392,7 @@ export default function Navbar() {
     products: false,
     aligners: false,
     membersLounge: false,
+    support: false,
   });
 
   useEffect(() => {
@@ -543,6 +544,7 @@ export default function Navbar() {
     products: !d.products,
     aligners: false,
     membersLounge: false,
+    support: false,
   }));
   const toggleAligners = () => setMobileDropdown(d => ({
     ...d,
@@ -553,11 +555,20 @@ export default function Navbar() {
     membersLounge: !d.membersLounge,
     products: false,
     aligners: false,
+    support: false,
+  }));
+  const toggleSupport = () => setMobileDropdown(d => ({
+    ...d,
+    support: !d.support,
+    products: false,
+    aligners: false,
+    membersLounge: false,
   }));
   const resetDropdowns = () => setMobileDropdown({
     products: false,
     aligners: false,
     membersLounge: false,
+    support: false,
   });
 
   const closeMenuAndResetDropdowns = () => {
@@ -717,6 +728,35 @@ export default function Navbar() {
                   <span>About Us</span>
                 </button>
                 <button
+                  onClick={toggleSupport}
+                  className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
+                  type="button"
+                >
+                  <span>Support</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.support ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {mobileDropdown.support && (
+                  <div className="flex flex-col gap-1">
+                    <button
+                      onClick={() => {
+                        router.push('/orthodontist-support');
+                        closeMenuAndResetDropdowns();
+                      }}
+                      className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                    >
+                      <span>Orthodontist Support</span>
+                    </button>
+                  </div>
+                )}
+                <button
                   onClick={() => {
                     router.push("/profile");
                     closeMenuAndResetDropdowns();
@@ -765,14 +805,34 @@ export default function Navbar() {
                   <span>Contact Us</span>
                 </button>
                 <button
-                  onClick={() => {
-                    router.push("/support");
-                    closeMenuAndResetDropdowns();
-                  }}
+                  onClick={toggleSupport}
                   className="w-full text-left text-base font-semibold text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded flex items-center justify-between gap-2 cursor-pointer"
+                  type="button"
                 >
                   <span>Support</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown.support ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
+                {mobileDropdown.support && (
+                  <div className="flex flex-col gap-1">
+                    <button
+                      onClick={() => {
+                        router.push('/orthodontist-support');
+                        closeMenuAndResetDropdowns();
+                      }}
+                      className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                    >
+                      <span>Orthodontist Support</span>
+                    </button>
+                  </div>
+                )}
                 <div className="w-full">
                   <button
                     onClick={toggleProducts}

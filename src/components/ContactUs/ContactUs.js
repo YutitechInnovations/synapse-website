@@ -70,36 +70,47 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Enhanced validation
+    const errors = [];
+    
+    if (!formData.name?.trim()) {
+      errors.push("Full name is required");
+    }
+    
+    if (!formData.email?.trim()) {
+      errors.push("Email address is required");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.push("Please enter a valid email address");
+    }
+    
+    if (!formData.subject?.trim()) {
+      errors.push("Subject is required");
+    }
+    
     if (!formData.persona) {
-      handleToast({
-        err: {
-          response: {
-            data: {
-              message: "Please select your profession/persona to submit the form."
-            }
-          }
-        }
-      });
-      return;
+      errors.push("Please select your profession/persona to submit the form");
     }
+    
     if (formData.persona === "Other (Please Specify)" && !otherPersona.trim()) {
-      handleToast({
-        err: {
-          response: {
-            data: {
-              message: "Please specify your profession/persona."
-            }
-          }
-        }
-      });
-      return;
+      errors.push("Please specify your profession/persona");
     }
+    
+    if (!formData.message?.trim()) {
+      errors.push("Message is required");
+    } else if (formData.message.trim().length < 5) {
+      errors.push("Message must be at least 5 characters long");
+    }
+    
     if (!acceptTerms) {
+      errors.push("Please accept the privacy policy to submit the form");
+    }
+    
+    if (errors.length > 0) {
       handleToast({
         err: {
           response: {
             data: {
-              message: "Please accept the terms and conditions to submit the form."
+              message: errors.join(", ")
             }
           }
         }
@@ -108,13 +119,18 @@ export default function ContactUs() {
     }
     try {
       await withLoader(async () => {
+        // Prepare the data for the API with proper trimming
         const payload = {
-          ...formData,
-          persona:
-            formData.persona === "Other (Please Specify)"
-              ? `Other: ${otherPersona}`
-              : formData.persona,
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          subject: formData.subject.trim(),
+          persona: formData.persona === "Other (Please Specify)"
+            ? `Other: ${otherPersona.trim()}`
+            : formData.persona,
+          message: formData.message.trim(),
         };
+        
+        console.log("Sending contact data:", payload);
         const response = await axios.post("/user/contact", payload);
         handleToast({
           res: response.data,
