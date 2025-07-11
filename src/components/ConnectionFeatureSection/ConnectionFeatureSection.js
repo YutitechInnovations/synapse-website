@@ -72,11 +72,12 @@ export default function ConnectionFeatureSection({
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.heading}>Where Care Meets Connection</h2>
-      <p className={styles.subheading}>
-        Our ecosystem of engagement that brings patients, doctors and care
-        journeys closer than ever.
-      </p>
+      <div style={{ textAlign: 'center' }}>
+        <h2 className={styles.heading}>Where Care Meets Connection</h2>
+        <p className={styles.subheading}>
+          Our ecosystem of engagement that brings patients, doctors and care journeys closer than ever.
+        </p>
+      </div>
       <div className={styles.grid}>
         {features.map((feature, idx) => (
           <div

@@ -16,11 +16,11 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
     },
     fabrication: {
       title: "Plan Fabrication",
-      text: `A well-crafted plan deserves world-class execution.\n 
-      We bring your approved plans to life with precision fabrication powered by advanced 3D printing systems and consumables sourced from the USA, Germany, and Korea. With full transparency—from material selection to dispatch tracking—you stay informed and in control at every stage.`,
+      text: `A well-crafted plan deserves world-class execution.\n
+We bring your approved plans to life with precision fabrication powered by advanced 3D printing systems and consumables sourced from the USA, Germany, and Korea. With full transparency—from material selection to dispatch tracking—you stay informed and in control at every stage.`,
     },
     integrated: {
-      title: "Integrated Align 360",
+      title: "Integrated Align 360°",
       text: [
         "Planning and manufacturing are just the beginning. Complete the circle with connected care.",
         "We help extend the impact of your care with integrated engagement tools designed to keep both you and your patients connected.",
@@ -35,7 +35,6 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
   };
 
   useEffect(() => {
-    // Function to check if device is desktop/laptop
     const checkIsDesktop = () => {
       setIsDesktop(window.innerWidth >= 1024);
     };
@@ -44,7 +43,6 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
     return () => window.removeEventListener("resize", checkIsDesktop);
   }, []);
 
-  // Close on outside click (only for mobile/tablet)
   useEffect(() => {
     if (isDesktop) return;
     const handleClickOutside = (event) => {
@@ -57,7 +55,6 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isDesktop]);
 
-  // Handlers for hover (desktop) and click (mobile/tablet)
   const handleActivate = (circle) => {
     if (isDesktop) {
       setActive(circle);
@@ -75,7 +72,6 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
     <section className={styles.section}>
       <div className={styles.inner}>
         <h2 className={styles.heading}>Synapse – Services Offered</h2>
-
         <p className={styles.paragraph_styles}>
           Our range of services are designed to support your practice, enhance
           patient journeys, and empower every smile you shape.
@@ -85,7 +81,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
           can feel free to reach out to us for more details!
         </p>
         <p className={styles.paragraph_styles}>
-          <b>{"Tap or hover over the circles to know more."}</b>
+          <b>Tap or hover over the circles to know more.</b>
         </p>
 
         <div className={styles.circlesContainer} ref={circlesRef}>
@@ -96,27 +92,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               onMouseEnter={isDesktop ? () => handleActivate("integrated") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("integrated") : undefined}
             >
-              {/* <div className={styles.dot} /> */}
-              <span>Integrated Align 360</span>
-              {active === "integrated" && (
-                <div
-                  className={`${styles.descriptionCard} ${styles.cardIntegrated}`}
-                >
-                  {descriptions.integrated.text.map((para, idx) => (
-                    <p key={idx}>{para}</p>
-                  ))}
-
-                  <ul className={styles.bulletList}>
-                    {descriptions.integrated.bullets.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-
-                  <p className={styles.footnote}>
-                    {descriptions.integrated.footnote}
-                  </p>
-                </div>
-              )}
+              {active !== "integrated" && <span>Integrated Align 360°</span>}
             </div>
 
             <div
@@ -125,15 +101,7 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               onMouseEnter={isDesktop ? () => handleActivate("fabrication") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("fabrication") : undefined}
             >
-              {/* <div className={styles.dot} /> */}
-              <span>Plan Fabrication</span>
-              {active === "fabrication" && (
-                <div
-                  className={`${styles.descriptionCard} ${styles.cardFabrication}`}
-                >
-                  <p>{descriptions.fabrication.text}</p>
-                </div>
-              )}
+              {active !== "fabrication" && <span>Plan Fabrication</span>}
             </div>
 
             <div
@@ -142,21 +110,44 @@ With our proprietary RₓF.O.R.C.E™ philosophy, we engineer treatment plans th
               onMouseEnter={isDesktop ? () => handleActivate("planning") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("planning") : undefined}
             >
-              {/* <div className={styles.dot} /> */}
-              <span>
-                {" "}
-                Aligner Treatment
-                <br />
-                Planning
-              </span>
-              {active === "planning" && (
-                <div
-                  className={`${styles.descriptionCard} ${styles.cardPlanning}`}
-                >
-                  <p>{descriptions.planning.text}</p>
-                </div>
+              {active !== "planning" && (
+                <span>
+                  Aligner Treatment
+                  <br />
+                  Planning
+                </span>
               )}
             </div>
+
+            {/* Render description cards OUTSIDE the circle divs */}
+            {active === "planning" && (
+              <div className={`${styles.descriptionCard} ${styles.cardPlanning}`}>
+                <h3 style={{ fontWeight: 'bold' }}>{descriptions.planning.title}</h3>
+                <p>{descriptions.planning.text}</p>
+              </div>
+            )}
+
+            {active === "fabrication" && (
+              <div className={`${styles.descriptionCard} ${styles.cardFabrication}`}>
+                <h3 style={{ fontWeight: 'bold' }}>{descriptions.fabrication.title}</h3>
+                <p>{descriptions.fabrication.text}</p>
+              </div>
+            )}
+
+            {active === "integrated" && (
+              <div className={`${styles.descriptionCard} ${styles.cardIntegrated}`}>
+                <h3 style={{ fontWeight: 'bold' }}>{descriptions.integrated.title}</h3>
+                {descriptions.integrated.text.map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+                <ul className={styles.bulletList}>
+                  {descriptions.integrated.bullets.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+                <p className={styles.footnote}>{descriptions.integrated.footnote}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

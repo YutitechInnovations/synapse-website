@@ -232,13 +232,13 @@ function ProductsDropdown() {
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-sm'); }}
                   className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                 >
-                  <span>BioSmart-SM</span>
+                  <span>BioSmart™ SM</span>
                 </button>
                 <button
                   onClick={() => { setOpen(false); setAlignersOpen(false); router.push('/aligners-biosmart-t'); }}
                   className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                 >
-                  <span>BioSmart-T</span>
+                  <span>BioSmart™ T</span>
                 </button>
               </div>
             )}
@@ -642,13 +642,13 @@ export default function Navbar() {
                           onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
                           className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                         >
-                          <span>BioSmart-SM</span>
+                          <span>BioSmart™ SM</span>
                         </button>
                         <button
                           onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
                           className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                         >
-                          <span>BioSmart-T</span>
+                          <span>BioSmart™ T</span>
                         </button>
                       </div>
                     )}
@@ -820,13 +820,13 @@ export default function Navbar() {
                             onClick={() => { router.push('/aligners-biosmart-sm'); closeMenuAndResetDropdowns(); }}
                             className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           >
-                            <span>BioSmart-SM</span>
+                            <span>BioSmart™ SM</span>
                           </button>
                           <button
                             onClick={() => { router.push('/aligners-biosmart-t'); closeMenuAndResetDropdowns(); }}
                             className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                           >
-                            <span>BioSmart-T</span>
+                            <span>BioSmart™ T</span>
                           </button>
                         </div>
                       )}
@@ -988,7 +988,7 @@ export default function Navbar() {
                                   }}
                                   className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                 >
-                                  <span>BioSmart-SM</span>
+                                  <span>BioSmart™ SM</span>
                                 </button>
                                 <button
                                   onClick={() => {
@@ -998,7 +998,7 @@ export default function Navbar() {
                                   }}
                                   className="w-full text-left text-base font-normal text-[#004C44] px-4 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                 >
-                                  <span>BioSmart-T</span>
+                                  <span>BioSmart™ T</span>
                                 </button>
                               </div>
                             )}

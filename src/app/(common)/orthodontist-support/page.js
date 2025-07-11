@@ -110,9 +110,9 @@ export default function OrthodontistSupport() {
     try {
       // Prepare the data for the API
       const supportData = {
-        full_name: formData.name,
+        name: formData.name,
         email: formData.email,
-        phone_number: formData.phone,
+        phone: formData.phone,
         category: formData.category,
         subject: formData.subject,
         message: formData.message,

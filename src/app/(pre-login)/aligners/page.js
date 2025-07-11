@@ -14,13 +14,8 @@ export default function Aligners() {
             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-[600] mb-6 leading-tight text-[#184C3A]">
               RₓF.O.R.C.E™
             </h1>
-            <p className=" text-[1rem] md:text-xl font-[400] text-[#184C3A]">
-            <b>Biomechanics that make every move count</b> when it&apos;s
-              biomechanically intelligent. That&apos;s the idea behind RₓF.O.R.C.E™— our{" "}
-              <span className="italic">
-                Force Optimized Responsive Corrective Engine
-              </span>
-              .
+            <p className="text-base md:text-xl font-medium text-[#184C3A]">
+            Biomechanics that make every move count.
             </p>
           </div>
         </div>
