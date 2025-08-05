@@ -54,21 +54,15 @@ export default function CreateBlog() {
           // Upload directly to cloud storage
           await uploadImageToCloud(signed_url, file);
           
-          // Store the final file URL in form
-          // Check if object_key is already a full URL or just a key
-          let fileUrl;
-          if (object_key.startsWith('http://') || object_key.startsWith('https://')) {
-            // object_key is already a full URL
-            fileUrl = object_key;
-          } else {
-            // object_key is just a key, construct the full URL
-            fileUrl = `https://synapse-blogs.s3.ap-south-1.amazonaws.com/blogs/${object_key}`;
-          }
+          // Backend always returns the full URL, so use it directly
+          console.log("Object key from backend:", object_key);
+          const fileUrl = object_key;
+          console.log("Using file URL directly:", fileUrl);
+          setForm(prev => ({ ...prev, image: fileUrl }));
           
-          // Clean the URL to handle any malformed URLs
-          const cleanedFileUrl = cleanImageUrl(fileUrl);
-          setForm(prev => ({ ...prev, image: cleanedFileUrl }));
-          setImagePreview(cleanedFileUrl);
+          // Create local preview URL for immediate display
+          const localPreviewUrl = URL.createObjectURL(file);
+          setImagePreview(localPreviewUrl);
         } else {
           console.error("Response status is not success:", response);
           throw new Error(response.message || "Failed to get upload URL");
@@ -92,6 +86,19 @@ export default function CreateBlog() {
     setError("");
     
     try {
+      // Check if user is authenticated before creating blog
+      const token = localStorage.getItem("token") || 
+                   localStorage.getItem("access_token") || 
+                   document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
+      
+      if (!token) {
+        setError("Authentication required. Please log in again.");
+        router.push("/login");
+        return;
+      }
+      
+      console.log("Submitting blog with token:", token ? `${token.substring(0, 20)}...` : "NOT FOUND");
+      
       const response = await createBlog({
         title: form.title,
         slug: form.slug,
@@ -109,7 +116,14 @@ export default function CreateBlog() {
       }
     } catch (error) {
       console.error("Error creating blog:", error);
-      setError(error.message || "Failed to create blog. Please try again.");
+      
+      // Handle authentication errors
+      if (error.message.includes("Invalid token") || error.message.includes("401")) {
+        setError("Your session has expired. Please log in again.");
+        router.push("/login");
+      } else {
+        setError(error.message || "Failed to create blog. Please try again.");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -222,7 +236,22 @@ export default function CreateBlog() {
                     </div>
                   </div>
                 ) : (
-                  <img src={imagePreview} alt="Preview" className="mt-2 rounded-lg max-h-40 object-contain border" />
+                  <div>
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview" 
+                      className="mt-2 rounded-lg max-h-40 object-contain border" 
+                      onError={(e) => {
+                        console.error("Image preview failed to load:", imagePreview);
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <div className="mt-2 text-xs text-gray-500" style={{ display: 'none' }}>
+                      <p>Image preview not available</p>
+                      <p>URL: {imagePreview}</p>
+                    </div>
+                  </div>
                 )
               )}
             </div>

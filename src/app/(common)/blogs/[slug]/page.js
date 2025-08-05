@@ -209,17 +209,47 @@ export default function BlogDetail() {
           <div className="p-8">
             <article className="prose prose-lg max-w-none">
               <div className="text-gray-800 leading-relaxed space-y-6">
-                {(blog.content || blog.body || blog.text) ? (
-                  (blog.content || blog.body || blog.text).split("\n\n").map((paragraph, idx) => (
-                    <p key={idx} className="text-lg leading-8">
-                      {paragraph}
-                    </p>
-                  ))
-                ) : (
-                  <p className="text-lg leading-8 text-gray-500">
-                    Content not available for this blog post.
-                  </p>
-                )}
+                {(() => {
+                  const content = blog.content || blog.body || blog.text;
+                  
+                  if (content) {
+                    // Handle different content formats
+                    if (typeof content === 'string') {
+                      // Split by double newlines for paragraphs
+                      const paragraphs = content.split("\n\n");
+                      
+                      // If there's only one paragraph (no double newlines), split by single newlines
+                      if (paragraphs.length === 1 && content.includes('\n')) {
+                        const lines = content.split('\n');
+                        return lines.map((line, idx) => (
+                          <p key={idx} className="text-lg leading-8">
+                            {line}
+                          </p>
+                        ));
+                      }
+                      
+                      // Otherwise, display as paragraphs
+                      return paragraphs.map((paragraph, idx) => (
+                        <p key={idx} className="text-lg leading-8">
+                          {paragraph}
+                        </p>
+                      ));
+                    } else {
+                      // If content is not a string, try to convert it
+                      return (
+                        <p className="text-lg leading-8">
+                          {String(content)}
+                        </p>
+                      );
+                    }
+                  } else {
+                    return (
+                      <p className="text-lg leading-8 text-gray-500">
+                        Content not available for this blog post.
+                      </p>
+                    );
+                  }
+                })()}
               </div>
             </article>
 

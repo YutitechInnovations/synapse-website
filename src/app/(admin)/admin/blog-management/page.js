@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import instance from "../../../../network";
 import { deleteBlog } from "../../../../services/blogs";
-import { cleanImageUrl } from "../../../../utils/imageUrlCleaner";
+
 
 export default function BlogManagement() {
   const [blogs, setBlogs] = useState([]);
@@ -22,12 +22,8 @@ export default function BlogManagement() {
       const response = await instance.get("/blogs/get_all_blogs");
       
               if (response.data.status === "success") {
-          // Clean any malformed image URLs
-        const cleanedBlogs = response.data.data.map(blog => ({
-          ...blog,
-          image: cleanImageUrl(blog.image)
-        }));
-        setBlogs(cleanedBlogs || []);
+          // Use the image URLs as they are from the backend
+          setBlogs(response.data.data || []);
       } else {
         setError("Failed to load blogs");
       }

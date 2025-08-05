@@ -79,6 +79,13 @@ export const createBlog = async (blogData) => {
                      localStorage.getItem("access_token") || 
                      document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
         
+        console.log("Token for blog creation:", token ? `${token.substring(0, 20)}...` : "NOT FOUND");
+        console.log("Token sources:", {
+            localStorage_token: localStorage.getItem("token") ? "EXISTS" : "NOT FOUND",
+            localStorage_access_token: localStorage.getItem("access_token") ? "EXISTS" : "NOT FOUND",
+            cookie_access_token: document.cookie.includes("access_token") ? "EXISTS" : "NOT FOUND"
+        });
+        
         if (!token) {
             throw new Error("No authentication token found. Please log in again.");
         }
@@ -91,6 +98,11 @@ export const createBlog = async (blogData) => {
         });
         return res.data;
     } catch (error) {
+        console.error("Blog creation error:", {
+            status: error.response?.status,
+            data: error.response?.data,
+            message: error.message
+        });
         const message = error?.response?.data?.message || error?.message || "Failed to create blog";
         throw new Error(message);
     }

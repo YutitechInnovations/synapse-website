@@ -2,8 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
-import { getBlogImagePresignedUrl, uploadImageToCloud, updateBlog, getBlogBySlug, getAllBlogs } from "../../../../../../services/blogs";
-import { cleanImageUrl } from "../../../../../../utils/imageUrlCleaner";
+import { getBlogImagePresignedUrl, uploadImageToCloud, updateBlog } from "../../../../../../services/blogs";
 import instance from "../../../../../../network";
 
 export default function EditBlog() {
@@ -26,41 +25,34 @@ export default function EditBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        // First, we need to get the blog by slug to get the blog_id
-        // We'll need to get all blogs and find the one with matching slug
-        const response = await getAllBlogs();
+        // The slug parameter is actually the blog_id
+        const blogId = slug;
         
-        if (response.success && response.data) {
-          const blog = response.data.find(b => b.slug === slug);
+        // Fetch the specific blog using the blog_id
+        const blogResponse = await instance.get(`/blogs/get_blog_by_id?blog_id=${blogId}`);
+        
+        if (blogResponse.data.status === "success" && blogResponse.data.data) {
+          const blogData = blogResponse.data.data;
+          console.log("Blog data received:", blogData);
+          console.log("Image URL from backend:", blogData.image);
           
-          if (blog) {
-            const blogId = blog.id || blog.blog_id;
-            
-            // Now fetch the specific blog using the blog_id
-            const blogResponse = await instance.get(`/blogs/get_blog_by_id?blog_id=${blogId}`);
-            
-            if (blogResponse.data.success && blogResponse.data.data) {
-              const blogData = blogResponse.data.data;
-              // Clean any malformed image URLs
-              const cleanedImage = cleanImageUrl(blogData.image || "");
-              setForm({
-                title: blogData.title || "",
-                slug: blogData.slug || "",
-                date: blogData.date || "",
-                summary: blogData.summary || "",
-                image: cleanedImage,
-                content: blogData.content || "",
-              });
-              setImagePreview(cleanedImage);
-              setBlogId(blogId); // Store the blog ID for update
-            } else {
-              setError("Failed to load blog details");
-            }
-          } else {
-            setError("Blog not found");
-          }
+          // Use the image URL as is from the backend
+          const imageUrl = blogData.image || "";
+          
+          // For preview, try the backend URL first, but we'll handle errors gracefully
+          
+          setForm({
+            title: blogData.title || "",
+            slug: blogData.slug || "",
+            date: blogData.date || "",
+            summary: blogData.summary || "",
+            image: imageUrl,
+            content: blogData.content || "",
+          });
+          setImagePreview(imageUrl);
+          setBlogId(blogId); // Store the blog ID for update
         } else {
-          setError("Failed to load blog");
+          setError("Failed to load blog details");
         }
       } catch (error) {
         console.error("Error fetching blog:", error);
@@ -103,16 +95,17 @@ export default function EditBlog() {
         // Request presigned URL from backend
         const response = await getBlogImagePresignedUrl(file.name, file.type, file.size);
         
-        if (response.success) {
-          const { presignedUrl, fileUrl } = response.data;
+        if (response.status === "success") {
+          const { signed_url, object_key } = response.data;
           
           // Upload directly to cloud storage
-          await uploadImageToCloud(presignedUrl, file);
+          await uploadImageToCloud(signed_url, file);
           
-          // Clean and store the final file URL in form
-          const cleanedFileUrl = cleanImageUrl(fileUrl);
-          setForm(prev => ({ ...prev, image: cleanedFileUrl }));
-          setImagePreview(cleanedFileUrl);
+          // Backend always returns the full URL, so use it directly
+          const fileUrl = object_key;
+          
+          setForm(prev => ({ ...prev, image: fileUrl }));
+          setImagePreview(fileUrl);
         } else {
           throw new Error(response.message || "Failed to get upload URL");
         }
@@ -149,7 +142,7 @@ export default function EditBlog() {
         content: form.content
       });
       
-      if (response.success) {
+      if (response.status === "success") {
         alert("Blog updated successfully!");
         router.push("/admin/blog-management");
       } else {
@@ -314,7 +307,22 @@ export default function EditBlog() {
                     </div>
                   </div>
                 ) : (
-                  <img src={imagePreview} alt="Preview" className="mt-2 rounded-lg max-h-40 object-contain border" />
+                  <div>
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview" 
+                      className="mt-2 rounded-lg max-h-40 object-contain border" 
+                      onError={(e) => {
+                        console.error("Image preview failed to load:", imagePreview);
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <div className="mt-2 text-xs text-gray-500" style={{ display: 'none' }}>
+                      <p>Image preview not available</p>
+                      <p>URL: {imagePreview}</p>
+                    </div>
+                  </div>
                 )
               )}
             </div>
