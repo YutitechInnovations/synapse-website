@@ -23,7 +23,7 @@ export const PUBLIC_ROUTES = [
     "/reset-password",
     "/orthodontist-support",
 ];
-export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program"];
+export const ADMIN_ROUTES = ["/admin/dashboard", "/admin/doctor-management", "/admin/reward-program", "/admin/blog-management"];
 
 export const USER_ROUTES = [
     "/reward-program",

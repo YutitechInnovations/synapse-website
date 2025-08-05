@@ -117,7 +117,7 @@ export const registerDoctor = async (data) => {
 
   try {
     const response = await instance.post(`user/user_register`, payload);
-    console.log("Registration API response:", response); // Debug log
+    
     return response.data; // return the API response data
   } catch (error) {
     // Handle validation errors (422 status)

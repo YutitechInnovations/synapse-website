@@ -148,7 +148,7 @@ const SignupForm = () => {
       await withLoader(async () => {
         const result = await registerDoctor(payload);
 
-        console.log("Registration result:", result); // Debug log
+
 
         if (result.status && result.status.toLowerCase() === "failed") {
           toast.error(result.message || "Registration failed");

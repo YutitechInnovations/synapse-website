@@ -134,6 +134,28 @@ export const LogoutIcon = ({ isActive }) => (
   </svg>
 );
 
+export const BlogManagementIcon = ({ isActive }) => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M26 4H6C4.89543 4 4 4.89543 4 6V26C4 27.1046 4.89543 28 6 28H26C27.1046 28 28 27.1046 28 26V6C28 4.89543 27.1046 4 26 4Z"
+      stroke={isActive ? "#195B48" : "#fff"}
+      strokeWidth="2"
+    />
+    <path
+      d="M8 12H24M8 16H20M8 20H16"
+      stroke={isActive ? "#195B48" : "#fff"}
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 export const RxTrackIcon = ({ className = "" }) => (
   <svg
     className={className}

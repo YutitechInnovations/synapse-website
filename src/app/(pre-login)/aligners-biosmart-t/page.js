@@ -128,7 +128,11 @@ export default function BioSmartT() {
               {/* Bottom left note text (not absolute, sits above image) */}
               <div className="pl-8 pt-4">
                 <span className="text-[#195B48] text-sm italic">
-                <b>Mid-Course correction is quarterly across all plans</b>
+                  <b>Mid-Course correction is quarterly across all plans.</b>
+                </span>
+                <br />
+                <span className="text-[#195B48] text-sm italic">
+                  <b>Column Steps include refinement steps too.</b>
                 </span>
               </div>
             </div>

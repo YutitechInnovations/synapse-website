@@ -19,7 +19,7 @@ const categoryOptions = [
 const subjectOptions = {
   "Clinical Support": [
     "Treatment Planning",
-    "BioSmart-SM Protocol",
+    "BioSmart SM™ Protocol",
     "Case Revisions",
     "Retainer Requests",
     "Report a Case Issue"
@@ -32,8 +32,8 @@ const subjectOptions = {
     "Upload/Rx Form Help"
   ],
   "Partnership": [
-    "Join BioSmart Network",
-    "ClearForms OEM Inquiry",
+    "Join BioSmart™ Network",
+    "ClearForms™ OEM Inquiry",
     "Marketing Material Request",
     "Schedule a Demo",
     "DSO Onboarding"
@@ -212,7 +212,6 @@ export default function OrthodontistSupport() {
                 <ul style={{marginTop: '0.5em', paddingLeft: '1.2em'}}>
                   <li>If you’re unsure which category to select, choose the one that most closely matches your concern.</li>
                   <li>For urgent clinical or patient issues, select the appropriate support category for faster assistance.</li>
-                  <li>All fields marked with * are required.</li>
                 </ul>
               </div>
             </div>

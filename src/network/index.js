@@ -21,10 +21,21 @@ instance.interceptors.request.use(
     if (config.url) {
       config.url = config.url.replace(/^\/+/, "");
     }
-    const token = localStorage.getItem("token") || Cookies.get("access_token");
+    const token = localStorage.getItem("token") || 
+                  localStorage.getItem("access_token") || 
+                  Cookies.get("access_token") ||
+                  document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
+      console.log(`Adding Authorization header for ${config.url}: Bearer ${token.substring(0, 20)}...`);
+    } else {
+      console.warn(`No token found for ${config.url}. Available tokens:`, {
+        localStorage_token: localStorage.getItem("token") ? "EXISTS" : "NOT FOUND",
+        localStorage_access_token: localStorage.getItem("access_token") ? "EXISTS" : "NOT FOUND",
+        cookies_access_token: Cookies.get("access_token") ? "EXISTS" : "NOT FOUND",
+        document_cookie: document.cookie.includes("access_token") ? "EXISTS" : "NOT FOUND"
+      });
     }
 
     // Debug logging for support requests

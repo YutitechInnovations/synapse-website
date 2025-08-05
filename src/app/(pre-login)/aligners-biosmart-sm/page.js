@@ -125,12 +125,26 @@ export default function BioSmartSM() {
             <div className="flex flex-col gap-8">
               {biosmartSMBenefits.map((item, i) => (
                 <div key={i}>
-                  <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-base md:text-[20px] text-[#004C44] mb-4">
-                    {item.desc}
-                  </p>
+                  <div>
+                    <h3 className="text-xl md:text-3xl font-semibold text-[#004C44] mb-4">
+                      {item.title}
+                    </h3>
+                    <p className="text-base md:text-[20px] text-[#004C44] mb-4">
+                      {item.desc}
+                    </p>
+                    {/* Show power.png image only for the second item (Minimal Add-Ons. Maximum Control.) */}
+                    {i === 1 && (
+                      <div className="flex justify-end mt-6">
+                        <Image
+                          src="/images/power.png"
+                          alt="Powered By Graphy"
+                          width={180}
+                          height={150}
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -209,18 +223,15 @@ export default function BioSmartSM() {
               {/* Bottom left note text (not absolute, sits above image) */}
               <div className="pl-8 pt-4">
                 <span className="text-[#195B48] text-sm italic">
-                  <b>Mid-Course correction is quarterly across all plans</b>
+                  <b>Mid-Course correction is quarterly across all plans.</b>
+                </span>
+                <br />
+                <span className="text-[#195B48] text-sm italic">
+                  <b>Column Steps include refinement steps too.</b>
                 </span>
               </div>
             </div>
-            {/* Power Icon absolutely positioned just below the card, bottom right */}
-            <Image
-              src="/images/power.png"
-              alt="Power Icon"
-              width={220}
-              height={180}
-              className="absolute right-0 -bottom-14 z-10"
-            />
+
           </div>
         </section>
       </div>

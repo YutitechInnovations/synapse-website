@@ -9,6 +9,7 @@ import {
   CommunityManagementIcon,
   EShopInventoryIcon,
   OrderHistoryIcon,
+  BlogManagementIcon,
   LogoutIcon,
 } from "@/theme/icons";
 
@@ -34,6 +35,11 @@ const navItems = [
     icon: CommunityManagementIcon,
   },
   {
+    label: "Blog Management",
+    href: "/admin/blog-management",
+    icon: BlogManagementIcon,
+  },
+  {
     label: "E-shop Inventory",
     href: "/admin/e-shop",
     icon: EShopInventoryIcon,
@@ -43,7 +49,6 @@ const navItems = [
     icon: OrderHistoryIcon,
     href: "/admin/orders",
   },
-  ,
 ];
 
 export default function AdminSidebar() {
@@ -84,7 +89,7 @@ export default function AdminSidebar() {
           alt="Synapse Logo"
         />
       </div>
-      <nav className="flex-1 flex flex-col gap-y-2 w-full items-center ">
+      <nav className="flex-1 flex flex-col gap-y-2 w-full items-center overflow-y-auto">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           let Icon = item?.icon;
@@ -120,10 +125,11 @@ export default function AdminSidebar() {
             </Link>
           );
         })}
-        <Link
+      </nav>
+      <div className="mt-auto mb-4">
+        <button
           onClick={handleAdminLogout}
-          href={"/admin"}
-          className={`flex flex-col items-center justify-center transition text-white hover:bg-[#004C44] `}
+          className={`flex flex-col items-center justify-center transition text-white hover:bg-[#004C44] cursor-pointer`}
           style={{
             width: "149px",
             height: "74px",
@@ -135,9 +141,9 @@ export default function AdminSidebar() {
           <span className="mb-2">
             <LogoutIcon />
           </span>
-          <span className={`text-[12px] text-center  text-white`}>Logout</span>
-        </Link>
-      </nav>
+          <span className={`text-[12px] text-center text-white`}>Logout</span>
+        </button>
+      </div>
     </aside>
   );
 
