@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./home.module.css";
 import ConnectionFeatureSection from "../../../components/ConnectionFeatureSection/ConnectionFeatureSection";
 import ClientOnly from "../../../components/ClientOnly";
@@ -202,7 +203,7 @@ export default function PostLoginHome() {
           </h2>
           <div className={styles.educationGrid}>
             {/* Blogs Card */}
-            <a
+            <Link
               href="/blogs"
               className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
@@ -224,7 +225,7 @@ export default function PostLoginHome() {
                   Go <span className="ml-1 text-lg">→</span>
                 </span>
               </div>
-            </a>
+            </Link>
             {/* Materials & Data Card */}
             <a
               href="/materials"

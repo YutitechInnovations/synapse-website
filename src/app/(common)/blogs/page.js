@@ -3,6 +3,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import instance from "../../../network";
 import { cleanImageUrl } from "../../../utils/imageUrlCleaner";
 
@@ -157,9 +158,11 @@ function BlogsContent() {
                 {/* Enhanced Image Container */}
                 <div className="relative w-full h-48 overflow-hidden">
                   {blog.image ? (
-                    <img 
+                    <Image 
                       src={blog.image} 
                       alt={blog.title} 
+                      width={400}
+                      height={192}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       onError={(e) => {
                         console.error("Public blog image failed to load:", blog.image);

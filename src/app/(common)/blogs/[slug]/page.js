@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Navbar from "../../../../components/Navbar/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import instance from "../../../../network";
 import { cleanImageUrl } from "../../../../utils/imageUrlCleaner";
 
@@ -146,9 +147,11 @@ export default function BlogDetail() {
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8">
           {blog.image && (
             <div className="w-full h-80 relative">
-              <img 
+              <Image 
                 src={blog.image} 
                 alt={blog.title} 
+                width={800}
+                height={320}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   console.error("Blog detail image failed to load:", blog.image);

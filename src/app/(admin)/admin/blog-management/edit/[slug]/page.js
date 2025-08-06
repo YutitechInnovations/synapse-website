@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getBlogImagePresignedUrl, uploadImageToCloud, updateBlog } from "../../../../../../services/blogs";
 import instance from "../../../../../../network";
 import toast from "react-hot-toast";
@@ -376,9 +377,11 @@ export default function EditBlog() {
               {/* Current Image Display */}
               {form.image && (
                 <div className="relative">
-                  <img 
+                  <Image 
                     src={form.image} 
                     alt="Current Blog Image" 
+                    width={400}
+                    height={192}
                     className="w-full rounded-xl max-h-48 object-contain border-2 border-gray-200 shadow-md" 
                     onError={(e) => {
                       console.error("Current image failed to load:", form.image);

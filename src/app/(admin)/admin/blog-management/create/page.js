@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getBlogImagePresignedUrl, uploadImageToCloud, createBlog } from "../../../../../services/blogs";
 import { cleanImageUrl } from "../../../../../utils/imageUrlCleaner";
 import toast from "react-hot-toast";
@@ -273,9 +274,11 @@ export default function CreateBlog() {
                   </div>
                 ) : (
                   <div className="mt-4">
-                    <img 
+                    <Image 
                       src={imagePreview} 
                       alt="Preview" 
+                      width={400}
+                      height={192}
                       className="rounded-xl max-h-48 object-contain border-2 border-gray-200 shadow-md" 
                       onError={(e) => {
                         console.error("Image preview failed to load:", imagePreview);

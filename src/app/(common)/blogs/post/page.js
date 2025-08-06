@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import mockBlogs from "../../../../constant/mockBlogs";
 import Navbar from "../../../../components/Navbar/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth } from "../../../../context/AuthContext";
 
 export default function PostBlog() {
@@ -191,7 +192,7 @@ export default function PostBlog() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200" 
                 />
                 {imagePreview && (
-                  <img src={imagePreview} alt="Preview" className="mt-2 rounded-lg max-h-40 object-contain border" />
+                  <Image src={imagePreview} alt="Preview" width={400} height={160} className="mt-2 rounded-lg max-h-40 object-contain border" />
                 )}
               </div>
             </div>

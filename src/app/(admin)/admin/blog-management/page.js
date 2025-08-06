@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import instance from "../../../../network";
 import { deleteBlog } from "../../../../services/blogs";
 import toast from "react-hot-toast";
@@ -186,9 +187,11 @@ export default function BlogManagement() {
                         <div className="flex-shrink-0 h-16 w-16">
                           <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden shadow-md group-hover:shadow-lg transition-shadow duration-300">
                             {blog.image ? (
-                              <img 
+                              <Image 
                                 src={blog.image} 
                                 alt={blog.title} 
+                                width={64}
+                                height={64}
                                 className="h-16 w-16 object-cover rounded-2xl group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
                                   console.error("Image failed to load:", blog.image);
