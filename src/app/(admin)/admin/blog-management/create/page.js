@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getBlogImagePresignedUrl, uploadImageToCloud, createBlog } from "../../../../../services/blogs";
-
 import { cleanImageUrl } from "../../../../../utils/imageUrlCleaner";
+import toast from "react-hot-toast";
 
 export default function CreateBlog() {
   const router = useRouter();
@@ -19,8 +19,6 @@ export default function CreateBlog() {
   const [error, setError] = useState("");
   const [imagePreview, setImagePreview] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -70,7 +68,7 @@ export default function CreateBlog() {
       } catch (error) {
         console.error("Error uploading image:", error);
         setImagePreview("");
-        alert(`Failed to upload image: ${error.message}`);
+        toast.error(`Failed to upload image: ${error.message}`);
       }
     }
   };
@@ -109,7 +107,7 @@ export default function CreateBlog() {
       });
       
       if (response.status === "success") {
-        alert("Blog created successfully!");
+        toast.success("Blog created successfully!");
         router.push("/admin/blog-management");
       } else {
         setError(response.message || "Failed to create blog");
@@ -130,40 +128,57 @@ export default function CreateBlog() {
   };
 
   return (
-    <div className="w-full">
-      <div className="mb-6">
+    <div className="w-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen p-6">
+      {/* Enhanced Header Section */}
+      <div className="mb-8">
         <Link 
           href="/admin/blog-management" 
-          className="inline-flex items-center text-[#195B48] hover:text-[#144636] mb-4 transition-colors"
+          className="group inline-flex items-center text-[#195B48] hover:text-[#144636] mb-6 transition-all duration-300"
         >
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Blog Management
+          <div className="flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-200 group-hover:shadow-md group-hover:border-[#195B48]/20 transition-all duration-300">
+            <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Blog Management
+          </div>
         </Link>
-        <h1 className="text-[2rem] font-bold text-[#004C44] leading-tight">Create New Blog Post</h1>
-        <p className="text-gray-600 mt-2">
-          Create and publish a new blog post for the orthodontic community.
-        </p>
+        
+        <div className="flex items-center space-x-4 mb-6">
+          <div className="w-14 h-14 bg-gradient-to-br from-[#195B48] to-[#144636] rounded-2xl flex items-center justify-center shadow-lg">
+            <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#195B48] leading-tight">
+              Create New Blog Post
+            </h1>
+            <p className="text-gray-600 mt-1">Create and publish a new blog post for the orthodontic community</p>
+          </div>
+        </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="bg-gradient-to-r from-[#195B48] to-[#144636] px-6 py-4 rounded-t-lg">
-          <h2 className="text-xl font-semibold text-white flex items-center">
-            <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      {/* Enhanced Main Form Card */}
+      <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+        <div className="bg-gradient-to-r from-[#195B48] to-[#144636] px-8 py-6">
+          <h2 className="text-2xl font-bold text-white flex items-center">
+            <svg className="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
             Blog Details
           </h2>
+          <p className="text-white/80 mt-1">Fill in the details below to create your new blog post</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="p-8 space-y-8">
           {/* Title Field */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-              </svg>
+          <div className="group">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+              <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+              </div>
               Blog Title *
             </label>
             <input 
@@ -171,17 +186,19 @@ export default function CreateBlog() {
               value={form.title} 
               onChange={handleChange} 
               placeholder="Enter an engaging title for your blog post..." 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200 text-lg" 
+              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 text-lg bg-white hover:border-gray-300" 
               required 
             />
           </div>
 
           {/* Blog Link Name Field */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
+          <div className="group">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+              <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </div>
               Blog Link Name *
             </label>
             <input 
@@ -189,19 +206,26 @@ export default function CreateBlog() {
               value={form.slug} 
               onChange={handleChange} 
               placeholder="my-awesome-blog-post (no spaces, use hyphens)" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200" 
+              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 bg-white hover:border-gray-300" 
               required 
             />
-            <p className="text-xs text-gray-500 mt-1">This will be used in the blog's web address. Use only letters, numbers, and hyphens (no spaces).</p>
+            <p className="text-sm text-gray-500 mt-2 flex items-center">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              This will be used in the blog's web address. Use only letters, numbers, and hyphens (no spaces).
+            </p>
           </div>
 
           {/* Date and Image Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="group">
+              <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                  <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
                 Publication Date *
               </label>
               <input 
@@ -209,38 +233,50 @@ export default function CreateBlog() {
                 value={form.date} 
                 onChange={handleChange} 
                 type="date" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200" 
+                className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 bg-white hover:border-gray-300" 
                 required 
               />
             </div>
             
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+            <div className="group">
+              <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                  <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
+                  </svg>
+                </div>
                 Featured Image (Upload)
               </label>
-              <input 
-                type="file" 
-                accept="image/*" 
-                onChange={handleImageChange} 
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200" 
-              />
+              <div className="relative">
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  onChange={handleImageChange} 
+                  className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 bg-white hover:border-gray-300 cursor-pointer" 
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-6 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  </svg>
+                </div>
+              </div>
               {imagePreview && (
                 imagePreview === "loading" ? (
-                  <div className="mt-2 rounded-lg max-h-40 border border-gray-300 flex items-center justify-center bg-gray-50">
-                    <div className="text-center py-4">
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#195B48] mx-auto mb-2"></div>
-                      <p className="text-sm text-gray-600">Uploading image...</p>
+                  <div className="mt-4 rounded-xl max-h-48 border-2 border-gray-200 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+                    <div className="text-center py-8">
+                      <div className="relative">
+                        <div className="w-8 h-8 border-4 border-[#195B48]/20 border-t-[#195B48] rounded-full animate-spin mx-auto mb-3"></div>
+                        <div className="absolute inset-0 w-8 h-8 border-4 border-transparent border-t-[#195B48]/40 rounded-full animate-spin mx-auto" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
+                      </div>
+                      <p className="text-sm text-gray-600 font-medium">Uploading image...</p>
                     </div>
                   </div>
                 ) : (
-                  <div>
+                  <div className="mt-4">
                     <img 
                       src={imagePreview} 
                       alt="Preview" 
-                      className="mt-2 rounded-lg max-h-40 object-contain border" 
+                      className="rounded-xl max-h-48 object-contain border-2 border-gray-200 shadow-md" 
                       onError={(e) => {
                         console.error("Image preview failed to load:", imagePreview);
                         e.target.style.display = 'none';
@@ -258,11 +294,13 @@ export default function CreateBlog() {
           </div>
 
           {/* Summary Field */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-              </svg>
+          <div className="group">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+              <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                </svg>
+              </div>
               Brief Summary
             </label>
             <textarea 
@@ -270,17 +308,19 @@ export default function CreateBlog() {
               value={form.summary} 
               onChange={handleChange} 
               placeholder="A short summary of your blog post (will appear in the blog list)..." 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200 resize-none" 
+              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 resize-none bg-white hover:border-gray-300" 
               rows="3"
             />
           </div>
 
           {/* Content Field */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+          <div className="group">
+            <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+              <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
+                <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
               Blog Content *
             </label>
             <textarea 
@@ -288,44 +328,56 @@ export default function CreateBlog() {
               value={form.content} 
               onChange={handleChange} 
               placeholder="Write your blog content here. You can use paragraphs by separating them with double line breaks..." 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200 resize-none" 
+              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 resize-none bg-white hover:border-gray-300" 
               rows="12"
               required 
             />
-            <p className="text-xs text-gray-500 mt-1">Use double line breaks to create paragraphs</p>
+            <p className="text-sm text-gray-500 mt-2 flex items-center">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Use double line breaks to create paragraphs
+            </p>
           </div>
 
           {error && (
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="p-6 bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-200 rounded-xl">
               <div className="flex items-center">
-                <svg className="w-5 h-5 text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-red-800">{error}</span>
+                <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-red-800 font-medium">{error}</span>
               </div>
             </div>
           )}
 
-          <div className="flex gap-4 pt-6">
+          <div className="flex gap-6 pt-8">
             <Link 
               href="/admin/blog-management" 
-              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="group px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 flex items-center"
             >
+              <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
               Cancel
             </Link>
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="px-8 py-3 bg-gradient-to-r from-[#195B48] to-[#144636] text-white rounded-lg font-semibold hover:from-[#144636] hover:to-[#0f3528] transition-all duration-200 flex items-center shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group px-8 py-4 bg-gradient-to-r from-[#195B48] to-[#144636] text-white rounded-xl font-semibold hover:from-[#144636] hover:to-[#0f3328] transition-all duration-300 flex items-center shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
             >
               {isSubmitting ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="relative">
+                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin mr-3"></div>
+                  </div>
                   Creating...
                 </>
               ) : (
                 <>
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                   Publish Blog Post
@@ -335,8 +387,6 @@ export default function CreateBlog() {
           </div>
         </form>
       </div>
-      
-
     </div>
   );
 } 
