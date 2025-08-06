@@ -233,9 +233,7 @@ export default function BlogManagement() {
                           day: 'numeric' 
                         })}
                       </div>
-                      <div className="text-xs text-gray-400 mt-1">
-                        {Math.ceil((blog.content || blog.summary || '').split(/\s+/).length / 200)} min read
-                      </div>
+
                     </td>
                     <td className="px-6 py-6 hidden md:table-cell">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-100 to-green-200 text-green-800 shadow-sm">

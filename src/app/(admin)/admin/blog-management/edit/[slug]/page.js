@@ -297,7 +297,7 @@ export default function EditBlog() {
         </div>
         
         <form onSubmit={handleSubmit} className="p-8 space-y-8">
-          {/* Title Field */}
+          {/* Title Field - Locked for editing */}
           <div className="group">
             <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
               <div className="w-8 h-8 bg-[#195B48]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-[#195B48]/20 transition-colors duration-300">
@@ -305,16 +305,21 @@ export default function EditBlog() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
               </div>
-              Blog Title *
+                             Blog Title *
             </label>
             <input 
               name="title" 
               value={form.title} 
-              onChange={handleChange} 
-              placeholder="Enter an engaging title for your blog post..." 
-              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-[#195B48]/20 focus:border-[#195B48] transition-all duration-300 text-lg bg-white hover:border-gray-300" 
-              required 
+              disabled
+              placeholder="Blog title cannot be changed after creation" 
+              className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-600 cursor-not-allowed" 
             />
+            <p className="text-sm text-gray-500 mt-2 flex items-center">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Blog title cannot be modified after creation. To change the title, please create a new blog post.
+            </p>
           </div>
 
           {/* Blog Link Name Field */}
