@@ -62,6 +62,7 @@ We bring your approved plans to life with precision fabrication powered by advan
       setActive(active === circle ? null : circle);
     }
   };
+
   const handleDeactivate = (circle) => {
     if (isDesktop) {
       setActive((prev) => (prev === circle ? null : prev));
@@ -92,7 +93,7 @@ We bring your approved plans to life with precision fabrication powered by advan
               onMouseEnter={isDesktop ? () => handleActivate("integrated") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("integrated") : undefined}
             >
-              {active !== "integrated" && <span>Integrated Align 360°</span>}
+              {(isDesktop || active !== "integrated") && <span>Integrated Align 360°</span>}
             </div>
 
             <div
@@ -101,7 +102,7 @@ We bring your approved plans to life with precision fabrication powered by advan
               onMouseEnter={isDesktop ? () => handleActivate("fabrication") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("fabrication") : undefined}
             >
-              {active !== "fabrication" && <span>Plan Fabrication</span>}
+              {(isDesktop || active !== "fabrication") && <span>Plan Fabrication</span>}
             </div>
 
             <div
@@ -110,7 +111,7 @@ We bring your approved plans to life with precision fabrication powered by advan
               onMouseEnter={isDesktop ? () => handleActivate("planning") : undefined}
               onMouseLeave={isDesktop ? () => handleDeactivate("planning") : undefined}
             >
-              {active !== "planning" && (
+              {(isDesktop || active !== "planning") && (
                 <span>
                   Aligner Treatment
                   <br />

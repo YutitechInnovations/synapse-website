@@ -122,12 +122,24 @@
     gap: 1rem;
   }
   
-  .cardPlanning,
-  .cardFabrication,
-  .cardIntegrated {
-    top: 50%;
+  .cardPlanning {
+    top: -40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    z-index: 2000;
+  }
+
+  .cardFabrication {
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+  }
+
+  .cardIntegrated {
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 2000;
   }
   
@@ -396,24 +408,6 @@
       padding: 1.25rem;
       font-size: 1rem;
       line-height: 1.6;
-    }
-  
-    .cardPlanning {
-      top: -60%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  
-    .cardFabrication {
-      top: 65%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  
-    .cardIntegrated {
-      top: 75%;
-      left: 50%;
-      transform: translateX(-50%);
     }
 
     .first_circle,
