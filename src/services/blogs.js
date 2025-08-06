@@ -31,44 +31,42 @@ export const getBlogImagePresignedUrl = async (fileName, fileType, fileSize) => 
     }
 };
 
-// Upload image directly to cloud storage using presigned URL
+// Upload image to cloud storage using backend proxy
 export const uploadImageToCloud = async (presignedUrl, file) => {
     try {
-        // Validate file size (10MB limit)
-        const maxSize = 10 * 1024 * 1024; // 10MB
-        if (file.size > maxSize) {
-            throw new Error('File size exceeds 10MB limit');
-        }
+        // Create FormData for the proxy upload
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('presigned_url', presignedUrl);
         
-        // Validate file type
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-        if (!allowedTypes.includes(file.type)) {
-            throw new Error('Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed');
-        }
+        // Get authentication token
+        const token = localStorage.getItem("token") || 
+                     localStorage.getItem("access_token") || 
+                     document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
         
-        // Upload directly to S3 using the presigned URL
-        const uploadResponse = await fetch(presignedUrl, {
-            method: 'PUT',
-            body: file,
+        // Upload through our backend proxy
+        const uploadResponse = await fetch('/api/upload-image', {
+            method: 'POST',
+            body: formData,
             headers: {
-                'Content-Type': file.type
+                'Authorization': `Bearer ${token}`
             }
         });
         
         if (!uploadResponse.ok) {
-            console.error('S3 upload failed:', uploadResponse.status, uploadResponse.statusText);
-            throw new Error(`Upload failed with status: ${uploadResponse.status}`);
+            const errorData = await uploadResponse.json();
+            throw new Error(errorData.error || `Upload failed with status: ${uploadResponse.status}`);
         }
         
-        return {
-            success: true,
-            message: 'File uploaded successfully',
-            fileName: file.name,
-            fileSize: file.size,
-            fileType: file.type
-        };
+        const result = await uploadResponse.json();
+        
+        if (!result.success) {
+            throw new Error(result.error || 'Upload failed');
+        }
+        
+        return result;
     } catch (error) {
-        console.error('Direct S3 upload failed:', error);
+        console.error('Backend proxy upload failed:', error);
         throw new Error(`Failed to upload image: ${error.message}`);
     }
 };
