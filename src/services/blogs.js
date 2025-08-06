@@ -34,6 +34,23 @@ export const getBlogImagePresignedUrl = async (fileName, fileType, fileSize) => 
 // Upload image to cloud storage using backend proxy
 export const uploadImageToCloud = async (presignedUrl, file) => {
     try {
+        // Validate file size (10MB limit)
+        const maxSize = 10 * 1024 * 1024; // 10MB
+        if (file.size > maxSize) {
+            throw new Error('File size exceeds 10MB limit');
+        }
+        
+        // Validate file type
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!allowedTypes.includes(file.type)) {
+            throw new Error('Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed');
+        }
+
+        console.log('Attempting upload via API route...');
+        console.log('File name:', file.name);
+        console.log('File size:', file.size);
+        console.log('File type:', file.type);
+        
         // Create FormData for the proxy upload
         const formData = new FormData();
         formData.append('file', file);
@@ -53,8 +70,11 @@ export const uploadImageToCloud = async (presignedUrl, file) => {
             }
         });
         
+        console.log('API route response status:', uploadResponse.status);
+        
         if (!uploadResponse.ok) {
-            const errorData = await uploadResponse.json();
+            console.error('API route failed:', uploadResponse.status, uploadResponse.statusText);
+            const errorData = await uploadResponse.json().catch(() => ({ error: 'Unknown error' }));
             throw new Error(errorData.error || `Upload failed with status: ${uploadResponse.status}`);
         }
         
@@ -64,9 +84,10 @@ export const uploadImageToCloud = async (presignedUrl, file) => {
             throw new Error(result.error || 'Upload failed');
         }
         
+        console.log('Upload successful via API route!');
         return result;
     } catch (error) {
-        console.error('Backend proxy upload failed:', error);
+        console.error('Upload failed:', error);
         throw new Error(`Failed to upload image: ${error.message}`);
     }
 };
