@@ -237,7 +237,7 @@ export default function EditBlog() {
             </svg>
           </div>
           <h2 className="text-2xl font-bold text-[#195B48] mb-4">Blog Not Found</h2>
-          <p className="text-gray-600 mb-8">The blog post you're trying to edit doesn't exist.</p>
+          <p className="text-gray-600 mb-8">The blog post you&apos;re trying to edit doesn&apos;t exist.</p>
           <Link
             href="/admin/blog-management"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#195B48] to-[#144636] text-white rounded-xl font-semibold hover:from-[#144636] hover:to-[#0f3328] transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -338,7 +338,7 @@ export default function EditBlog() {
               <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              This will be used in the blog's web address. Use only letters, numbers, and hyphens (no spaces).
+              This will be used in the blog&apos;s web address. Use only letters, numbers, and hyphens (no spaces).
             </p>
           </div>
 

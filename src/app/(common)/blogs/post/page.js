@@ -105,7 +105,7 @@ export default function PostBlog() {
           </p>
           <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg inline-block">
             <p className="text-sm text-green-800">
-              <span className="font-semibold">Welcome!</span> You're logged in and can post blogs.
+              <span className="font-semibold">Welcome!</span> You&apos;re logged in and can post blogs.
             </p>
           </div>
           <div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg inline-block">
@@ -157,7 +157,7 @@ export default function PostBlog() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#195B48] focus:border-transparent transition-all duration-200" 
                 required 
               />
-              <p className="text-xs text-gray-500 mt-1">This will be used in the blog's web address. Use only letters, numbers, and hyphens (no spaces).</p>
+              <p className="text-xs text-gray-500 mt-1">This will be used in the blog&apos;s web address. Use only letters, numbers, and hyphens (no spaces).</p>
             </div>
             {/* Date and Image Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

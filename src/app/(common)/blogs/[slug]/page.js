@@ -72,7 +72,7 @@ export default function BlogDetail() {
     if (slug) {
       fetchBlog();
     }
-  }, [slug]);
+  }, [slug, blogId]);
 
   // Calculate reading time (average 200 words per minute)
   const wordCount = blog?.content?.split(/\s+/).length || 0;
