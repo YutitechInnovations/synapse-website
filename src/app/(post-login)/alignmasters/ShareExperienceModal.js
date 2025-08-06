@@ -34,7 +34,7 @@ export default function ShareExperienceModal({ open, onClose }) {
 
     for (const file of files) {
       try {
-        const { data, key } = await getPresignedUrl(file.name);
+        const { data, key } = await getPresignedUrl(file.name, file.type, file.size);
 
         await fetch(data?.signed_url, {
           method: "PUT",

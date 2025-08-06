@@ -15,7 +15,9 @@ export const getBlogImagePresignedUrl = async (fileName, fileType, fileSize) => 
 
     // Use blogs endpoint directly
     const res = await instance.post("/blogs/get_presigned_url", {
-        file_name: fileName
+        file_name: fileName,
+        file_type: fileType,
+        file_size: fileSize
     }, {
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -31,7 +33,7 @@ export const getBlogImagePresignedUrl = async (fileName, fileType, fileSize) => 
     }
 };
 
-// Upload image to cloud storage using backend proxy
+// Upload image directly to cloud storage using presigned URL
 export const uploadImageToCloud = async (presignedUrl, file) => {
     try {
         // Validate file size (10MB limit)
@@ -46,46 +48,41 @@ export const uploadImageToCloud = async (presignedUrl, file) => {
             throw new Error('Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed');
         }
 
-        console.log('Attempting upload via API route...');
+        console.log('Attempting direct upload to cloud storage...');
         console.log('File name:', file.name);
         console.log('File size:', file.size);
         console.log('File type:', file.type);
+        console.log('Presigned URL:', presignedUrl);
         
-        // Create FormData for the proxy upload
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('presigned_url', presignedUrl);
-        
-        // Get authentication token
-        const token = localStorage.getItem("token") || 
-                     localStorage.getItem("access_token") || 
-                     document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
-        
-        // Upload through our backend proxy
-        const uploadResponse = await fetch('/api/upload-image', {
-            method: 'POST',
-            body: formData,
+        // Upload directly to cloud storage using the presigned URL
+        const uploadResponse = await fetch(presignedUrl, {
+            method: 'PUT',
+            body: file,
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Content-Type': file.type
             }
         });
         
-        console.log('API route response status:', uploadResponse.status);
+        console.log('Direct upload response status:', uploadResponse.status);
         
         if (!uploadResponse.ok) {
-            console.error('API route failed:', uploadResponse.status, uploadResponse.statusText);
-            const errorData = await uploadResponse.json().catch(() => ({ error: 'Unknown error' }));
-            throw new Error(errorData.error || `Upload failed with status: ${uploadResponse.status}`);
+            console.error('Direct upload failed:', uploadResponse.status, uploadResponse.statusText);
+            console.error('Response headers:', Object.fromEntries(uploadResponse.headers.entries()));
+            
+            // Try to get error details from response
+            let errorDetails = '';
+            try {
+                const errorText = await uploadResponse.text();
+                errorDetails = errorText ? ` - ${errorText}` : '';
+            } catch (e) {
+                // Ignore error reading response body
+            }
+            
+            throw new Error(`Upload failed with status: ${uploadResponse.status}${errorDetails}`);
         }
         
-        const result = await uploadResponse.json();
-        
-        if (!result.success) {
-            throw new Error(result.error || 'Upload failed');
-        }
-        
-        console.log('Upload successful via API route!');
-        return result;
+        console.log('Upload successful directly to cloud storage!');
+        return { success: true, message: 'File uploaded successfully' };
     } catch (error) {
         console.error('Upload failed:', error);
         throw new Error(`Failed to upload image: ${error.message}`);

@@ -37,9 +37,13 @@ export const likeTestimonial = async (testimonialId) => {
     }
 };
 
-export const getPresignedUrl = async (fileName) => {
+export const getPresignedUrl = async (fileName, fileType, fileSize) => {
     try {
-        const res = await instance.post(`/testimonials/get_presigned_url`, { file_name: fileName });
+        const res = await instance.post(`/testimonials/get_presigned_url`, { 
+            file_name: fileName,
+            file_type: fileType,
+            file_size: fileSize
+        });
         return res.data; // usually includes the URL and key
     } catch (error) {
         const message =
