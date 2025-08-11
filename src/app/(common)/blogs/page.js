@@ -18,11 +18,22 @@ const TABS = [
   },
 ];
 
+// Sort options configuration
+const SORT_OPTIONS = [
+  { key: "newest", label: "Newest", icon: "↓" },
+  { key: "oldest", label: "Oldest", icon: "↑" },
+  { key: "title", label: "Title A-Z", icon: "A→Z" },
+  { key: "title-desc", label: "Title Z-A", icon: "Z→A" },
+];
+
 function BlogsContent() {
   const searchParams = useSearchParams();
   const [blogs, setBlogs] = useState([]);
+  const [originalBlogs, setOriginalBlogs] = useState([]); // Keep original order
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [sortBy, setSortBy] = useState("newest"); // Default sort
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
   
   const initialTab = (() => {
     const tabParam = searchParams.get("tab");
@@ -53,6 +64,7 @@ function BlogsContent() {
             ...blog,
             image: cleanImageUrl(blog.image)
           }));
+          setOriginalBlogs(cleanedBlogs || []); // Store original order
           setBlogs(cleanedBlogs || []);
         } else {
           setError("Failed to load blogs");
@@ -67,8 +79,36 @@ function BlogsContent() {
 
     fetchBlogs();
   }, []);
-  
+
+  // Sort blogs based on selected option
+  useEffect(() => {
+    if (originalBlogs.length === 0) return;
+
+    const sortedBlogs = [...originalBlogs].sort((a, b) => {
+      switch (sortBy) {
+        case "newest":
+          return new Date(b.date) - new Date(a.date);
+        case "oldest":
+          return new Date(a.date) - new Date(b.date);
+        case "title":
+          return a.title.localeCompare(b.title);
+        case "title-desc":
+          return b.title.localeCompare(a.title);
+        default:
+          return new Date(b.date) - new Date(a.date);
+      }
+    });
+
+    setBlogs(sortedBlogs);
+  }, [sortBy, originalBlogs]);
+
+  const handleSortChange = (newSortBy) => {
+    setSortBy(newSortBy);
+    setShowSortDropdown(false);
+  };
+
   const currentTab = TABS.find((tab) => tab.key === activeTab);
+  const currentSortOption = SORT_OPTIONS.find(option => option.key === sortBy);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -100,14 +140,44 @@ function BlogsContent() {
             </div>
           </div>
           
-          <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-200">
-            <span className="text-[#195B48] font-medium text-sm">Sort by:</span>
-            <button className="px-4 py-2 rounded-full border border-[#195B48] bg-gradient-to-r from-[#195B48] to-[#144636] text-white font-semibold flex items-center gap-2 hover:from-[#144636] hover:to-[#0f3328] transition-all duration-300 transform hover:scale-105 shadow-md">
-              Newest
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-              </svg>
-            </button>
+          {/* Enhanced Sort Dropdown */}
+          <div className="relative">
+            <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-200">
+              <span className="text-[#195B48] font-medium text-sm">Sort by:</span>
+              <button 
+                onClick={() => setShowSortDropdown(!showSortDropdown)}
+                className="px-4 py-2 rounded-full border border-[#195B48] bg-gradient-to-r from-[#195B48] to-[#144636] text-white font-semibold flex items-center gap-2 hover:from-[#144636] hover:to-[#0f3328] transition-all duration-300 transform hover:scale-105 shadow-md"
+              >
+                {currentSortOption?.label || "Newest"}
+                <svg className={`w-4 h-4 transition-transform duration-300 ${showSortDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Sort Dropdown Menu */}
+            {showSortDropdown && (
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-50">
+                {SORT_OPTIONS.map((option) => (
+                  <button
+                    key={option.key}
+                    onClick={() => handleSortChange(option.key)}
+                    className={`w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 ${
+                      sortBy === option.key ? 'bg-[#195B48]/10 text-[#195B48] font-semibold' : 'text-gray-700'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      {option.label}
+                    </span>
+                    {sortBy === option.key && (
+                      <svg className="w-4 h-4 text-[#195B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -263,6 +333,14 @@ function BlogsContent() {
           </div>
         )}
       </main>
+
+      {/* Click outside to close dropdown */}
+      {showSortDropdown && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setShowSortDropdown(false)}
+        />
+      )}
 
       <style jsx>{`
         @keyframes fadeInUp {
