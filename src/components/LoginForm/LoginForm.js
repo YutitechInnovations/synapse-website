@@ -282,8 +282,8 @@ const LoginForm = () => {
         
         {/* Show register link only for doctor login */}
         {activeTab === "doctor" && (
-          <div className="flex flex-col sm:flex-row items-center justify-between mt-1 w-full">
-            <p className="font-semibold text-[15px] text-[#195B48] text-center sm:text-left mb-2 sm:mb-0">
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 mt-1 w-full">
+            <p className="font-semibold text-[15px] text-[#195B48] text-center sm:text-left">
               Don&apos;t have an account?
             </p>
             <Link
