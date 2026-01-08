@@ -35,8 +35,8 @@ const navItems = [
     icon: CommunityManagementIcon,
   },
   {
-    label: "Blog Management",
-    href: "/admin/blog-management",
+    label: "Content Management",
+    href: "/admin/content-management",
     icon: BlogManagementIcon,
   },
   {

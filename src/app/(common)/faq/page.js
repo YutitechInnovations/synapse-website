@@ -1,55 +1,65 @@
 "use client";
 import Navbar from "../../../components/Navbar/Navbar.js";
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { getAllFaqs } from "../../../services/faqs";
 
 export default function FAQ() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [faqs, setFaqs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const itemsPerPage = 10;
 
-  const filteredFAQs = useMemo(() => {
-    const faqData = [
-      {
-        question: "Is Aligner treatment painful?",
-        answer: "Some discomfort or tooth soreness is common, especially when starting a new set of aligners. This is a normal sign that your teeth are shifting as planned. The discomfort usually fades within a few days. If it persists, contact your doctor."
-      },
-      {
-        question: "Are there food restrictions during aligner treatment?",
-        answer: "No food restrictions! Just remove your aligners before eating or drinking anything except water. Remember to brush your teeth before putting them back in."
-      },
-      {
-        question: "Can I drink hot or cold beverages while wearing my aligners?",
-        answer: "It's recommended to only drink water while wearing your aligners. Hot beverages can warp the plastic, and other drinks can stain them or get trapped between your teeth and aligners."
-      },
-      {
-        question: "Can I chew gum while wearing aligners?",
-        answer: "No, you should not chew gum while wearing aligners. Gum can stick to them and damage the plastic. Remove your aligners if you want to chew gum."
-      },
-      {
-        question: "Will smoking or chewing tobacco stain my aligners?",
-        answer: "Yes, smoking or using tobacco products can stain your aligners. We recommend removing aligners when smoking and cleaning them thoroughly before putting them back in."
-      },
-      {
-        question: "How much should I soak direct aligner in hot water?",
-        answer: "Follow your doctor's specific instructions for soaking aligners. Generally, use lukewarm (not hot) water and approved cleaning solutions only."
-      },
-      {
-        question: "What should I do if I lose or break an aligner?",
-        answer: "Contact your doctor immediately if you lose or break an aligner. They will advise whether to move to the next set or order a replacement."
-      },
-      {
-        question: "What happens if I lose or break an attachment?",
-        answer: "If an attachment falls off or breaks, schedule an appointment with your doctor as soon as possible to have it replaced."
+  const fetchFaqs = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError("");
+      const offset = (currentPage - 1) * itemsPerPage;
+      const response = await getAllFaqs({
+        limit: itemsPerPage,
+        offset,
+        query: searchQuery,
+      });
+
+      if (response.status === "success") {
+        setFaqs(response.data || []);
+        setTotalCount(response.resp_count || response.data?.length || 0);
+      } else {
+        setError("Failed to load FAQs");
       }
-    ];
-    if (!searchTerm.trim()) {
-      return faqData;
+    } catch (error) {
+      console.error("Error fetching FAQs:", error);
+      setError("Failed to load FAQs. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
-    const searchLower = searchTerm.toLowerCase();
-    return faqData.filter(faq => 
-      faq.question.toLowerCase().includes(searchLower) ||
-      faq.answer.toLowerCase().includes(searchLower)
-    );
+  }, [currentPage, searchQuery]);
+
+  useEffect(() => {
+    fetchFaqs();
+  }, [fetchFaqs]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setSearchQuery(searchTerm);
+      setCurrentPage(1);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
   }, [searchTerm]);
+
+  const totalPages = Math.ceil(totalCount / itemsPerPage);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full">
@@ -104,49 +114,130 @@ export default function FAQ() {
 
         <div className="w-full flex justify-center px-2 sm:px-4 py-8 sm:py-16">
           <div className="space-y-4 w-full max-w-5xl 3xl:max-w-6xl">
-            {filteredFAQs.length === 0 ? (
+            {isLoading ? (
+              <div className="text-center py-8">
+                <div className="inline-block w-12 h-12 border-4 border-[#006D38]/20 border-t-[#006D38] rounded-full animate-spin"></div>
+                <p className="text-lg text-gray-600 mt-4">Loading FAQs...</p>
+              </div>
+            ) : error ? (
+              <div className="text-center py-8">
+                <p className="text-lg text-red-600">{error}</p>
+              </div>
+            ) : faqs.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-lg text-gray-600">
-                  No FAQs found matching &quot;{searchTerm}&quot;. Try a different search term.
+                  {searchTerm
+                    ? `No FAQs found matching "${searchTerm}". Try a different search term.`
+                    : "No FAQs available at the moment."}
                 </p>
               </div>
             ) : (
-              filteredFAQs.map((faq, index) => (
-                <details
-                  key={index}
-                  className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
-                  style={{
-                    borderRadius: "20px",
-                    borderWidth: "1px",
-                    padding: "30px",
-                  }}
-                >
-                  <summary className="flex justify-between items-center">
-                    <span className="font-semibold text-lg">
-                      {faq.question}
-                    </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#006D38"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition-transform duration-200 mr-4"
+              <>
+                {faqs.map((faq, index) => (
+                  <details
+                    key={faq.faq_id || faq.id || index}
+                    className="card card-p-0 card2 border-[#004C44] group cursor-pointer"
+                    style={{
+                      borderRadius: "20px",
+                      borderWidth: "1px",
+                      padding: "30px",
+                    }}
+                  >
+                    <summary className="flex justify-between items-center">
+                      <span className="font-semibold text-lg">
+                        {faq.question}
+                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#006D38"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-transform duration-200 mr-4"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </summary>
+                    <div>
+                      <p>{faq.answer}</p>
+                    </div>
+                  </details>
+                ))}
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
+                    <button
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="px-4 py-2 rounded-lg border border-[#006D38] text-[#006D38] hover:bg-[#006D38] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#006D38]"
                     >
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </summary>
-                  <div>
-                    <p>
-                      {faq.answer}
-                    </p>
+                      Previous
+                    </button>
+
+                    <div className="flex gap-2">
+                      {[...Array(totalPages)].map((_, index) => {
+                        const pageNumber = index + 1;
+                        // Show first page, last page, current page, and pages around current
+                        if (
+                          pageNumber === 1 ||
+                          pageNumber === totalPages ||
+                          (pageNumber >= currentPage - 1 &&
+                            pageNumber <= currentPage + 1)
+                        ) {
+                          return (
+                            <button
+                              key={pageNumber}
+                              onClick={() => handlePageChange(pageNumber)}
+                              className={`px-4 py-2 rounded-lg border transition-colors ${
+                                currentPage === pageNumber
+                                  ? "bg-[#006D38] text-white border-[#006D38]"
+                                  : "border-[#006D38] text-[#006D38] hover:bg-[#006D38] hover:text-white"
+                              }`}
+                            >
+                              {pageNumber}
+                            </button>
+                          );
+                        } else if (
+                          pageNumber === currentPage - 2 ||
+                          pageNumber === currentPage + 2
+                        ) {
+                          return (
+                            <span
+                              key={pageNumber}
+                              className="px-2 py-2 text-gray-500"
+                            >
+                              ...
+                            </span>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+
+                    <button
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="px-4 py-2 rounded-lg border border-[#006D38] text-[#006D38] hover:bg-[#006D38] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#006D38]"
+                    >
+                      Next
+                    </button>
                   </div>
-                </details>
-              ))
+                )}
+
+                {/* Results info */}
+                {totalCount > 0 && (
+                  <div className="text-center text-gray-600 mt-4">
+                    Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
+                    {Math.min(currentPage * itemsPerPage, totalCount)} of{" "}
+                    {totalCount} FAQs
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
