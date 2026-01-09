@@ -196,7 +196,7 @@ export default function PostLoginHome() {
       />
 
       {/* Education Section */}
-      <div style={{ background: '#F8FAF9', width: '100%', padding: '4rem 0' }}>
+      <div style={{ background: "#F8FAF9", width: "100%", padding: "4rem 0" }}>
         <section className={styles.educationSection}>
           <h2 className="text-[32px] md:text-[36px] lg:text-[38px] font-semibold text-[#004C44] mb-8 text-left">
             Education
@@ -218,16 +218,23 @@ export default function PostLoginHome() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
                 <div>
-                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Blogs</h3>
-                  <p className="text-[#004C44] text-base mb-6">Articles from our team to spark thought and conversation in oral care.</p>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">
+                    Blogs
+                  </h3>
+                  <p className="text-[#004C44] text-base mb-6">
+                    Articles from our team to spark thought and conversation in
+                    oral care.
+                  </p>
                 </div>
-                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                <span
+                  className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}
+                >
                   Go <span className="ml-1 text-lg">→</span>
                 </span>
               </div>
             </Link>
             {/* Materials & Data Card */}
-            <a
+            <Link
               href="/materials"
               className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
@@ -242,16 +249,24 @@ export default function PostLoginHome() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
                 <div>
-                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Materials & Data</h3>
-                  <p className="text-[#004C44] text-base mb-6">Access material safety data sheets (MSDS), technical specifications, and reference documents for clinical materials.</p>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">
+                    Materials & Data
+                  </h3>
+                  <p className="text-[#004C44] text-base mb-6">
+                    Access material safety data sheets (MSDS), technical
+                    specifications, and reference documents for clinical
+                    materials.
+                  </p>
                 </div>
-                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                <span
+                  className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}
+                >
                   Go <span className="ml-1 text-lg">→</span>
                 </span>
               </div>
-            </a>
+            </Link>
             {/* Research Papers Card */}
-            <a
+            <Link
               href="/research"
               className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
@@ -266,16 +281,23 @@ export default function PostLoginHome() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
                 <div>
-                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Research Papers</h3>
-                  <p className="text-[#004C44] text-base mb-6">Summaries and access to relevant scientific literature that inform and validate clinical practices.</p>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">
+                    Research Papers
+                  </h3>
+                  <p className="text-[#004C44] text-base mb-6">
+                    Summaries and access to relevant scientific literature that
+                    inform and validate clinical practices.
+                  </p>
                 </div>
-                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                <span
+                  className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}
+                >
                   Go <span className="ml-1 text-lg">→</span>
                 </span>
               </div>
-            </a>
+            </Link>
             {/* Patients' FAQs Card */}
-            <a
+            <Link
               href="/faq"
               className={`${styles.eduCard} group block transition-transform hover:scale-[1.02] cursor-pointer`}
             >
@@ -290,14 +312,21 @@ export default function PostLoginHome() {
               </div>
               <div className="flex flex-col flex-1 justify-between p-6 bg-white rounded-b-2xl">
                 <div>
-                  <h3 className="text-xl font-bold text-[#004C44] mb-2">Patients&#39; FAQs</h3>
-                  <p className="text-[#004C44] text-base mb-6">Clear, straightforward answers to common patient questions, designed to support clinician–patient communication.</p>
+                  <h3 className="text-xl font-bold text-[#004C44] mb-2">
+                    Patients&#39; FAQs
+                  </h3>
+                  <p className="text-[#004C44] text-base mb-6">
+                    Clear, straightforward answers to common patient questions,
+                    designed to support clinician–patient communication.
+                  </p>
                 </div>
-                <span className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}>
+                <span
+                  className={`${styles.goLink} flex items-center text-[#00715D] font-semibold text-base hover:underline w-fit`}
+                >
                   Go <span className="ml-1 text-lg">→</span>
                 </span>
               </div>
-            </a>
+            </Link>
           </div>
         </section>
       </div>
