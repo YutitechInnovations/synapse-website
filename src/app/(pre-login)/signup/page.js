@@ -143,12 +143,10 @@ const SignupForm = () => {
       ...data,
       metainfo: authInformation,
     };
-    
+
     try {
       await withLoader(async () => {
         const result = await registerDoctor(payload);
-
-
 
         if (result.status && result.status.toLowerCase() === "failed") {
           toast.error(result.message || "Registration failed");
@@ -156,11 +154,12 @@ const SignupForm = () => {
         }
 
         // If no failure, handle success
-        toast.success(result.message || "Registration successful! Please login.");
+        toast.success(
+          result.message || "Registration successful! Please login."
+        );
         setIsSubmited(true);
       }, "Creating your account...");
     } catch (error) {
-      console.log(error);
       // Display the error message to the user
       if (error.message) {
         toast.error(error.message);
@@ -424,7 +423,10 @@ const SignupForm = () => {
               Policy. We&apos;ll occasionally send you account related emails.
             </p>
 
-            <button className="btn-primary cmnbtn w-full cursor-pointer" type="submit">
+            <button
+              className="btn-primary cmnbtn w-full cursor-pointer"
+              type="submit"
+            >
               Register
             </button>
           </form>

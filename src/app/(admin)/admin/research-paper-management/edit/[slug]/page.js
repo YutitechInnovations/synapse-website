@@ -59,10 +59,6 @@ export default function EditResearchPaper() {
 
         if (paperResponse.status === "success" && paperResponse.data) {
           const paperData = paperResponse.data;
-          console.log("Research paper data received:", paperData);
-          console.log("Image URL from backend:", paperData.image);
-          console.log("Image URL type:", typeof paperData.image);
-          console.log("Image URL length:", paperData.image?.length);
 
           // Use the image URL as is from the backend
           const imageUrl = cleanImageUrl(paperData.image || "");
@@ -126,10 +122,6 @@ export default function EditResearchPaper() {
         if (response.status === "success") {
           const { signed_url, object_key } = response.data;
           
-          console.log("Response from getBlogImagePresignedUrl:", response);
-          console.log("Signed URL:", signed_url);
-          console.log("Object key:", object_key);
-          
           // Upload directly to cloud storage
           await uploadImageToCloud(signed_url, file);
           
@@ -138,11 +130,9 @@ export default function EditResearchPaper() {
           if (object_key.startsWith('http')) {
             // If object_key is already a full URL, use it as is
             fileUrl = cleanImageUrl(object_key);
-            console.log("Object key is already a full URL, using as is:", fileUrl);
           } else {
             // If object_key is just a filename, construct the full URL
             fileUrl = `https://synapse-blogs.s3.ap-south-1.amazonaws.com/blogs/${object_key}`;
-            console.log("Object key is filename, constructing full URL:", fileUrl);
           }
           
           setForm(prev => ({ ...prev, image: fileUrl }));

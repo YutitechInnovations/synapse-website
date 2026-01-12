@@ -21,32 +21,43 @@ instance.interceptors.request.use(
     if (config.url) {
       config.url = config.url.replace(/^\/+/, "");
     }
-    const token = localStorage.getItem("token") || 
-                  localStorage.getItem("access_token") || 
-                  Cookies.get("access_token") ||
-                  document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
+    const token =
+      localStorage.getItem("token") ||
+      localStorage.getItem("access_token") ||
+      Cookies.get("access_token") ||
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("access_token="))
+        ?.split("=")[1];
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
-      console.log(`Adding Authorization header for ${config.url}: Bearer ${token.substring(0, 20)}...`);
     } else {
       console.warn(`No token found for ${config.url}. Available tokens:`, {
-        localStorage_token: localStorage.getItem("token") ? "EXISTS" : "NOT FOUND",
-        localStorage_access_token: localStorage.getItem("access_token") ? "EXISTS" : "NOT FOUND",
-        cookies_access_token: Cookies.get("access_token") ? "EXISTS" : "NOT FOUND",
-        document_cookie: document.cookie.includes("access_token") ? "EXISTS" : "NOT FOUND"
+        localStorage_token: localStorage.getItem("token")
+          ? "EXISTS"
+          : "NOT FOUND",
+        localStorage_access_token: localStorage.getItem("access_token")
+          ? "EXISTS"
+          : "NOT FOUND",
+        cookies_access_token: Cookies.get("access_token")
+          ? "EXISTS"
+          : "NOT FOUND",
+        document_cookie: document.cookie.includes("access_token")
+          ? "EXISTS"
+          : "NOT FOUND",
       });
     }
 
     // Debug logging for support requests
-    if (config.url.includes('support')) {
-      console.log("Support request config:", {
-        url: config.url,
-        method: config.method,
-        headers: config.headers,
-        data: config.data
-      });
-    }
+    // if (config.url.includes('support')) {
+    //   console.log("Support request config:", {
+    //     url: config.url,
+    //     method: config.method,
+    //     headers: config.headers,
+    //     data: config.data
+    //   });
+    // }
 
     return config;
   },
@@ -74,7 +85,7 @@ instance.interceptors.response.use(
     // Log detailed error information
     if (process.env.NODE_ENV !== "production") {
       console.error("Response error:", {
-          message: error.message || "Something went wrong",
+        message: error.message || "Something went wrong",
         status:
           error.response?.status ||
           "No status (possibly network or CORS error)",
@@ -89,11 +100,12 @@ instance.interceptors.response.use(
 
       // Handle authentication errors only
       // Don't auto-logout for login endpoints when credentials are wrong
-      const isLoginEndpoint = error.config?.url?.includes('login') || 
-                             error.config?.url?.includes('user_login') || 
-                             error.config?.url?.includes('admin_login');
-      
-      if ((status === 401) && !isLoggingOut && !isLoginEndpoint) {
+      const isLoginEndpoint =
+        error.config?.url?.includes("login") ||
+        error.config?.url?.includes("user_login") ||
+        error.config?.url?.includes("admin_login");
+
+      if (status === 401 && !isLoggingOut && !isLoginEndpoint) {
         isLoggingOut = true;
         try {
           await instance.post("/logout");
@@ -107,7 +119,7 @@ instance.interceptors.response.use(
 
       // For all other errors, just reject with the original error
       // Let individual components handle their own error messages
-        return Promise.reject(error);
+      return Promise.reject(error);
     } else if (error.request) {
       // The request was made but no response was received
       console.error(
@@ -120,7 +132,7 @@ instance.interceptors.response.use(
       // Something happened in setting up the request
       console.error("Request setup failed:", error.message);
       // Let individual components handle this error
-    return Promise.reject(error);
+      return Promise.reject(error);
     }
   }
 );

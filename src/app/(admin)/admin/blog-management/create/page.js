@@ -54,9 +54,7 @@ export default function CreateBlog() {
           await uploadImageToCloud(signed_url, file);
           
           // Backend always returns the full URL, so use it directly
-          console.log("Object key from backend:", object_key);
           const fileUrl = object_key;
-          console.log("Using file URL directly:", fileUrl);
           setForm(prev => ({ ...prev, image: fileUrl }));
           
           // Create local preview URL for immediate display
@@ -96,7 +94,6 @@ export default function CreateBlog() {
         return;
       }
       
-      console.log("Submitting blog with token:", token ? `${token.substring(0, 20)}...` : "NOT FOUND");
       
       const response = await createBlog({
         title: form.title,

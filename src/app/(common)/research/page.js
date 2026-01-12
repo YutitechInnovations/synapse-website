@@ -79,13 +79,7 @@ function BlogsContent() {
               response.resp_count / itemsPerPage
             );
             setTotalPages(calculatedPages);
-            console.log("Pagination Debug:", {
-              resp_count: response.resp_count,
-              itemsPerPage,
-              calculatedPages,
-              currentPage,
-              papersReceived: cleanedPapers.length,
-            });
+           
           } else if (response.total !== undefined) {
             setTotalCount(response.total);
             setTotalPages(Math.ceil(response.total / itemsPerPage));

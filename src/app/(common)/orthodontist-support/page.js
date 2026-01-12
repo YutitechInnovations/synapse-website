@@ -157,7 +157,6 @@ export default function OrthodontistSupport() {
         message: formData.message.trim(),
       };
 
-      console.log("Sending support data:", supportData);
       const response = await submitSupportRequest(supportData);
       
       // Handle success

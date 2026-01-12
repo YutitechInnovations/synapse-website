@@ -60,15 +60,14 @@ export default function CreateMaterialNData() {
         const response = await getArticlePresignedUrl(file.name);
 
         if (response.status === "success") {
-          console.log("Presigned URL response:", response.data);
-          const { signed_url, file_url } = response.data;
+          const { signed_url, object_key } = response.data;
 
           // Upload directly to cloud storage
           await uploadFileToCloud(signed_url, file);
 
           // Backend returns the full URL
-          console.log("File URL from backend:", file_url);
-          setForm((prev) => ({ ...prev, image: file_url }));
+
+          setForm((prev) => ({ ...prev, image: object_key }));
 
           // Create local preview URL for immediate display
           const localPreviewUrl = URL.createObjectURL(file);
@@ -111,10 +110,7 @@ export default function CreateMaterialNData() {
         return;
       }
 
-      console.log(
-        "Submitting blog with token:",
-        token ? `${token.substring(0, 20)}...` : "NOT FOUND"
-      );
+    
 
       const response = await createArticle({
         title: form.title,
@@ -124,6 +120,8 @@ export default function CreateMaterialNData() {
         image: form.image,
         content: form.content,
       });
+
+     
 
       if (response.status === "success") {
         toast.success("Material created successfully!");

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
-import { Listbox } from '@headlessui/react';
-import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
+import { useRouter } from "next/navigation";
+import { Listbox } from "@headlessui/react";
+import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 import axios from "../../network/index.js";
 import { handleToast } from "../../network/helper.js";
 import { useLoader } from "@/context/LoaderContext";
@@ -19,7 +19,7 @@ const personaOptions = [
   "I am exploring treatment for my child or family member",
   "I represent a dental organization or DSO",
   "I am interested in business or partnership opportunities",
-  "Other (Please Specify)"
+  "Other (Please Specify)",
 ];
 
 export default function ContactUs() {
@@ -38,16 +38,16 @@ export default function ContactUs() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handlePersonaChange = (value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      persona: value
+      persona: value,
     }));
     if (value !== "Other (Please Specify)") {
       setOtherPersona("");
@@ -64,56 +64,56 @@ export default function ContactUs() {
 
   const handleTermsClick = (e) => {
     e.preventDefault();
-    router.push('/terms-conditions');
+    router.push("/terms-conditions");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Enhanced validation
     const errors = [];
-    
+
     if (!formData.name?.trim()) {
       errors.push("Full name is required");
     }
-    
+
     if (!formData.email?.trim()) {
       errors.push("Email address is required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.push("Please enter a valid email address");
     }
-    
+
     if (!formData.subject?.trim()) {
       errors.push("Subject is required");
     }
-    
+
     if (!formData.persona) {
       errors.push("Please select your profession/persona to submit the form");
     }
-    
+
     if (formData.persona === "Other (Please Specify)" && !otherPersona.trim()) {
       errors.push("Please specify your profession/persona");
     }
-    
+
     if (!formData.message?.trim()) {
       errors.push("Message is required");
     } else if (formData.message.trim().length < 5) {
       errors.push("Message must be at least 5 characters long");
     }
-    
+
     if (!acceptTerms) {
       errors.push("Please accept the privacy policy to submit the form");
     }
-    
+
     if (errors.length > 0) {
       handleToast({
         err: {
           response: {
             data: {
-              message: errors.join(", ")
-            }
-          }
-        }
+              message: errors.join(", "),
+            },
+          },
+        },
       });
       return;
     }
@@ -124,13 +124,13 @@ export default function ContactUs() {
           name: formData.name.trim(),
           email: formData.email.trim().toLowerCase(),
           subject: formData.subject.trim(),
-          persona: formData.persona === "Other (Please Specify)"
-            ? `Other: ${otherPersona.trim()}`
-            : formData.persona,
+          persona:
+            formData.persona === "Other (Please Specify)"
+              ? `Other: ${otherPersona.trim()}`
+              : formData.persona,
           message: formData.message.trim(),
         };
-        
-        console.log("Sending contact data:", payload);
+
         const response = await axios.post("/user/contact", payload);
         handleToast({
           res: response.data,
@@ -144,7 +144,7 @@ export default function ContactUs() {
             });
             setOtherPersona("");
             setAcceptTerms(false);
-          }
+          },
         });
       }, "Sending your message...");
     } catch (error) {
@@ -157,26 +157,30 @@ export default function ContactUs() {
       <div className={styles.container}>
         <h2 className={styles.heading}>Contact Us</h2>
         <p className={styles.subheading}>
-          Get in touch with our team for any questions, support, or partnership inquiries.
+          Get in touch with our team for any questions, support, or partnership
+          inquiries.
         </p>
-        
+
         <div className={styles.content}>
           <div className={styles.info}>
             <h3 className={styles.infoTitle}>Get in Touch</h3>
             <p className={styles.infoDescription}>
-              We&apos;re here to help you with any questions about our orthodontic solutions, 
-              technical support, or partnership opportunities.
+              We&apos;re here to help you with any questions about our
+              orthodontic solutions, technical support, or partnership
+              opportunities.
             </p>
-            
+
             <div className={styles.contactMethods}>
               <div className={styles.contactMethod}>
                 <div className={styles.icon}>✉️</div>
                 <div>
                   <h4 className={styles.methodTitle}>Email</h4>
-                  <p className={styles.methodValue}>support@synapsehealthtech.in</p>
+                  <p className={styles.methodValue}>
+                    support@synapsehealthtech.in
+                  </p>
                 </div>
               </div>
-              
+
               <div className={styles.contactMethod}>
                 <div className={styles.icon}>📱</div>
                 <div>
@@ -184,26 +188,30 @@ export default function ContactUs() {
                   <p className={styles.methodValue}>1800 202 3282</p>
                 </div>
               </div>
-              
+
               <div className={styles.contactMethod}>
                 <div className={styles.icon}>🏢</div>
                 <div>
                   <h4 className={styles.methodTitle}>Corporate Office</h4>
                   <p className={styles.methodValue}>
-                    No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,<br />
-                    Sarakki Industrial Layout, J P Nagar 3rd phase,<br />
+                    No.10, Flex CoWorks, 2nd Floor, 71, 15th Cross Road,
+                    <br />
+                    Sarakki Industrial Layout, J P Nagar 3rd phase,
+                    <br />
                     Bangalore – 560078, Karnataka
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className={styles.formContainer}>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="name" className={styles.label}>Full Name *</label>
+                  <label htmlFor="name" className={styles.label}>
+                    Full Name *
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -214,9 +222,11 @@ export default function ContactUs() {
                     required
                   />
                 </div>
-                
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="email" className={styles.label}>Email Address *</label>
+                  <label htmlFor="email" className={styles.label}>
+                    Email Address *
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -228,9 +238,11 @@ export default function ContactUs() {
                   />
                 </div>
               </div>
-              
+
               <div className={styles.formGroup}>
-                <label htmlFor="subject" className={styles.label}>Subject *</label>
+                <label htmlFor="subject" className={styles.label}>
+                  Subject *
+                </label>
                 <input
                   type="text"
                   id="subject"
@@ -241,10 +253,15 @@ export default function ContactUs() {
                   required
                 />
               </div>
-              
+
               <div className={styles.formGroup}>
-                <label className={styles.label}>Which of the following best describes you? *</label>
-                <Listbox value={formData.persona} onChange={handlePersonaChange}>
+                <label className={styles.label}>
+                  Which of the following best describes you? *
+                </label>
+                <Listbox
+                  value={formData.persona}
+                  onChange={handlePersonaChange}
+                >
                   <div className={styles.listboxContainer}>
                     <Listbox.Button className={styles.listboxButton}>
                       <span className={styles.listboxButtonText}>
@@ -260,7 +277,9 @@ export default function ContactUs() {
                         <Listbox.Option
                           key={index}
                           className={({ active }) =>
-                            `${styles.listboxOption} ${active ? styles.listboxOptionActive : ''}`
+                            `${styles.listboxOption} ${
+                              active ? styles.listboxOptionActive : ""
+                            }`
                           }
                           value={persona}
                         >
@@ -270,7 +289,10 @@ export default function ContactUs() {
                                 {persona}
                               </span>
                               {selected && (
-                                <CheckIcon className={styles.listboxCheckIcon} aria-hidden="true" />
+                                <CheckIcon
+                                  className={styles.listboxCheckIcon}
+                                  aria-hidden="true"
+                                />
                               )}
                             </>
                           )}
@@ -282,7 +304,9 @@ export default function ContactUs() {
               </div>
               {formData.persona === "Other (Please Specify)" && (
                 <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="otherPersona">Please specify *</label>
+                  <label className={styles.label} htmlFor="otherPersona">
+                    Please specify *
+                  </label>
                   <input
                     type="text"
                     id="otherPersona"
@@ -294,9 +318,11 @@ export default function ContactUs() {
                   />
                 </div>
               )}
-              
+
               <div className={styles.formGroup}>
-                <label htmlFor="message" className={styles.label}>Message *</label>
+                <label htmlFor="message" className={styles.label}>
+                  Message *
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -307,7 +333,7 @@ export default function ContactUs() {
                   required
                 />
               </div>
-              
+
               <div className={styles.termsContainer}>
                 <label className={styles.checkboxLabel}>
                   <input
@@ -319,9 +345,12 @@ export default function ContactUs() {
                   />
                   <span className={styles.checkboxText}>
                     I accept the{" "}
-                    <a 
-                      href="#" 
-                      onClick={e => { e.preventDefault(); setIsPrivacyModalOpen(true); }}
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsPrivacyModalOpen(true);
+                      }}
                       className={styles.termsLink}
                     >
                       Privacy Policy
@@ -329,11 +358,16 @@ export default function ContactUs() {
                   </span>
                 </label>
               </div>
-              
-              <button 
-                type="submit" 
+
+              <button
+                type="submit"
                 className={styles.submitButton}
-                disabled={!acceptTerms || !formData.persona || (formData.persona === "Other (Please Specify)" && !otherPersona.trim())}
+                disabled={
+                  !acceptTerms ||
+                  !formData.persona ||
+                  (formData.persona === "Other (Please Specify)" &&
+                    !otherPersona.trim())
+                }
               >
                 Send Message
               </button>
@@ -341,11 +375,11 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      
-      <PrivacyPolicyModal 
-        isOpen={isPrivacyModalOpen} 
-        onClose={() => setIsPrivacyModalOpen(false)} 
+
+      <PrivacyPolicyModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
       />
     </section>
   );
-} 
+}
